@@ -1,6 +1,7 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (env, argv) => {
 
@@ -8,8 +9,9 @@ module.exports = (env, argv) => {
     entry: ['./src/main.ts', './src/assets/sass/main.sass'],
     plugins: [
       new VueLoaderPlugin(),
-      new MiniCssExtractPlugin() // extract css to a separate file, instead of having it loaded from js
+      new MiniCssExtractPlugin(), // extract css to a separate file, instead of having it loaded from js
       // thus we can increase load time, since css is not required for domready state
+      new HtmlWebpackPlugin({hash: true, template: 'src/index.html'}),
     ],
     resolve: {
       extensions: ['.ts', '.js', '.vue', '.json'],
@@ -37,32 +39,25 @@ module.exports = (env, argv) => {
             "sass-loader?indentedSyntax"
           ]
         },
+        { // always load fonts to file, so when multiple fonts are present browser decides which one it needs by itself
+          test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]?[sha512:hash:base64:6]',
+          }
+        },
+        {
+          test: /\.(png|jpg|gif)$/, //pack image to base64 when its size is less than 16k, otherwise leave it as a file
+          loader: 'url-loader',
+          options: {
+            limit: 16384
+          }
+        },
       ],
     },
   };
 
   if (argv.mode === 'development') {
-    // create vendor.js file for development so webpack doesn't need to reassemble it every time
-    // you can remove `argv.mode === 'development'` if you want it for prod. Or remove this if at all
-    conf.optimization = {
-      splitChunks: {
-        chunks: 'all',
-        minSize: 0,
-        maxAsyncRequests: Infinity,
-        maxInitialRequests: Infinity,
-        name: true,
-        cacheGroups: {
-          vendor: {
-            name: 'vendor',
-            chunks: 'initial',
-            reuseExistingChunk: true,
-            priority: -5,
-            enforce: true,
-            test: /[\\/]node_modules[\\/]/
-          },
-        }
-      }
-    };
     conf.devtool = '#source-map';
   }
   return conf;

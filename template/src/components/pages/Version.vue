@@ -1,19 +1,21 @@
 <template>
-    <div class="box" @click="incVersion" v-bind:title="version">
+    <div class="box" @click="incVersion" v-html="divData">
+        <div v-bind:html="version" @click></div>
     </div>
 </template>
 
 <script lang="ts">
   import Component from "vue-class-component";
-  import {mapMutations, mapState} from "vuex";
   import Vue from 'vue';
+  import {Mutation, State} from "vuex-class";
 
-  @Component({
-    computed: {...mapState(['version'])},
-    methods: {...mapMutations(['incVersion'])}
-  })
+  @Component
   export default class Main extends Vue {
-
+      @State version;
+      @Mutation incVersion;
+      get divData() {
+        return `Vuex mapped state sample: ${this.version}. Click to mutate`;
+      }
   }
 </script>
 <style lang="sass">

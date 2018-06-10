@@ -1,18 +1,16 @@
 <template>
     <div class="box">
-        <router-link to="/version" class="hover">Version</router-link>
+        <router-link to="/version" >Vue-Router Test</router-link>
+        <router-link to="/">Home Page</router-link>
         <router-view></router-view>
     </div>
 </template>
 
 <script lang="ts">
   import Component from "vue-class-component";
-  import {mapState} from "vuex";
   import Vue from 'vue';
 
-  @Component({
-    computed: mapState(['growls']),
-  })
+  @Component
   export default class Main extends Vue {
 
   }
