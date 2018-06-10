@@ -8,7 +8,8 @@ module.exports = (env, argv) => {
     entry: ['./src/main.ts', './src/assets/sass/main.sass'],
     plugins: [
       new VueLoaderPlugin(),
-      new MiniCssExtractPlugin()
+      new MiniCssExtractPlugin() // extract css to a separate file, instead of having it loaded from js
+      // thus we can increase load time, since css is not required for domready state
     ],
     resolve: {
       extensions: ['.ts', '.js', '.vue', '.json'],
@@ -41,6 +42,8 @@ module.exports = (env, argv) => {
   };
 
   if (argv.mode === 'development') {
+    // create vendor.js file for development so webpack doesn't need to reassemble it every time
+    // you can remove `argv.mode === 'development'` if you want it for prod. Or remove this if at all
     conf.optimization = {
       splitChunks: {
         chunks: 'all',

@@ -1,6 +1,5 @@
 <template>
-    <div class="box" @click="incVersion">
-        {{version}}
+    <div class="box" @click="incVersion" :title="version">
     </div>
 </template>
 
