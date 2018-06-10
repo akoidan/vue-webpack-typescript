@@ -1,4 +1,6 @@
 {
+  "name": "{{ name }}",
+  "author": "{{ author }}",
   "scripts": {
     "prod": "webpack --mode production",
     "dev": "webpack-dev-server --mode development"
