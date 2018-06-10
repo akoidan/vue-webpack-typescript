@@ -1,7 +1,17 @@
-This is a starter template for Vue + TypeScript + Sass + VueRouter + Vuex, that features:
+# Minial Valuable typescript vuejs config
 
-  - No overhead t doesn't have an overhead that you should parse in the future.
-  - Full support for webpack4, using all its features
+## It combines:
+ - Vue
+ - TypeScript, and all types for class-component and vuex
+ - Sass, and loaders to extract single css, resolve base64 urls and file urls.
+ - VueRouter with interfaced state.
+ - Vuex
+
+## It features:
+  - The minimal (60 lines of code) valuable webpack config, that you can easily grasp
+  - Takes advantages of webpack4 features
+
+## To get started:
 
 ```bash
 # install vue-cli if you don't have it yet
