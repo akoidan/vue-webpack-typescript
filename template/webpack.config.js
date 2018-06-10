@@ -9,9 +9,8 @@ module.exports = (env, argv) => {
     entry: ['./src/main.ts', './src/assets/sass/main.sass'],
     plugins: [
       new VueLoaderPlugin(),
-      new MiniCssExtractPlugin(), // extract css to a separate file, instead of having it loaded from js
-      // thus we can increase load time, since css is not required for domready state
-      new HtmlWebpackPlugin({hash: true, template: 'src/index.html'}),
+      new MiniCssExtractPlugin(), // extract css to a separate file, instead of having it loaded from js thus we can increase load time, since css is not required for domready state
+      new HtmlWebpackPlugin({hash: true, template: 'src/index.html'}), // this plugin is required to change hashes of js/css for index.html
     ],
     resolve: {
       extensions: ['.ts', '.js', '.vue', '.json'],
@@ -39,7 +38,7 @@ module.exports = (env, argv) => {
             "sass-loader?indentedSyntax"
           ]
         },
-        { // always load fonts to file, so when multiple fonts are present browser decides which one it needs by itself
+        { // always save fonts as files, so in case of multiple urls for same font browser only downloads the required one
           test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
           loader: 'file-loader',
           options: {

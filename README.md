@@ -8,7 +8,7 @@
  - Vuex
 
 ## It features:
-  - The minimal (60 lines of code) valuable webpack config, that you can easily grasp
+  - The minimal (60 lines of code) webpack config, that you can easily grasp
   - Takes advantages of webpack4 features
 
 ## To get started:
