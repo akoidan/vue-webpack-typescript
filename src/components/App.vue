@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <router-link to="/version">Version</router-link>
+        <router-link to="/version" class="hover">Version</router-link>
         <router-view></router-view>
     </div>
 </template>
@@ -18,10 +18,6 @@
   }
 </script>
 <style lang="sass">
-    @mixin border-radius($radius)
-        -webkit-border-radius: $radius
-        border-radius: $radius
-    .box
-        @include border-radius(10px)
-
+    .hover:not(:hover)
+        text-decoration: none
 </style>
