@@ -1,5 +1,5 @@
 <template>
-    <div class="box" @click="incVersion" :title="version">
+    <div class="box" @click="incVersion" v-bind:title="version">
     </div>
 </template>
 
