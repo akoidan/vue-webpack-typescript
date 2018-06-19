@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "//": [
+      "style-loder: hotreload works only with styles injected from js atm, so we need it for dev",
       "css-loader: ability to load css from files",
       "mini-css-extract-plugin: extract files from .vue and .sass to a separate file",
       "html-webpack-plugin: generate index.html with file hashes",
@@ -26,6 +27,7 @@
       "file-loader: allows to copy files specifies as urls in css to output directory",
       "url-loader: allows to copy files speicified as urls into base64 data"
     ],
+    "style-loader": "^0.21.0",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",

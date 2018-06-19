@@ -1,6 +1,7 @@
 # Minial Valuable typescript vuejs config
 
 ## It combines:
+ - Webpack dev server configured with css/js hotreloading
  - Vue
  - TypeScript, and all types for class-component and vuex
  - Sass, and loaders to extract single css, resolve base64 urls and file urls.

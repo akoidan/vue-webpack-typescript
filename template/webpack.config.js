@@ -5,16 +5,48 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (env, argv) => {
 
-  const conf =  {
+  let plugins;
+  let sasscPlugins;
+  plugins = [
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({hash: true, template: 'src/index.html'}),
+  ];
+
+  if (argv.mode === 'production') {
+    const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+    plugins.push(new MiniCssExtractPlugin());
+    sasscPlugins = [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: "sass-loader",
+        options: {
+          indentedSyntax: true,
+          includePaths: [path.resolve(__dirname, 'src/assets/sass')]
+        }
+      }
+    ];
+  } else if (argv.mode === 'development') {
+    sasscPlugins = [
+      "style-loader", 'css-loader?sourceMap',
+      {
+        loader: "sass-loader",
+        options: {
+          indentedSyntax: true,
+          includePaths: [path.resolve(__dirname, 'src/assets/sass')]
+        }
+      }
+    ];
+  } else {
+    throw `Pass --mode production/development, current ${argv.mode} is invalid`
+  }
+  const conf = {
     entry: ['./src/main.ts', './src/assets/sass/main.sass'],
-    plugins: [
-      new VueLoaderPlugin(),
-      new MiniCssExtractPlugin(), // extract css to a separate file, instead of having it loaded from js thus we can increase load time, since css is not required for domready state
-      new HtmlWebpackPlugin({hash: true, template: 'src/index.html'}), // this plugin is required to change hashes of js/css for index.html
-    ],
+    plugins,
     resolve: {
       extensions: ['.ts', '.js', '.vue', '.json'],
     },
+    devtool: '#source-map',
     module: {
       rules: [
         {
@@ -32,11 +64,7 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.sass$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            "css-loader",
-            "sass-loader?indentedSyntax"
-          ]
+          use: sasscPlugins,
         },
         { // always save fonts as files, so in case of multiple urls for same font browser only downloads the required one
           test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
@@ -56,8 +84,5 @@ module.exports = (env, argv) => {
     },
   };
 
-  if (argv.mode === 'development') {
-    conf.devtool = '#source-map';
-  }
   return conf;
 };
