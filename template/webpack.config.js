@@ -2,6 +2,7 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const name = '[name].[ext]?[sha512:hash:base64:6]';
 
 module.exports = (env, argv) => {
 
@@ -67,17 +68,20 @@ module.exports = (env, argv) => {
           use: sasscPlugins,
         },
         { // always save fonts as files, so in case of multiple urls for same font browser only downloads the required one
-          test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
+          test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]?[sha512:hash:base64:6]',
+            outputPath: 'font',  // put fonts into separate folder, so we don't have millions of files in root of dist
+            name,
           }
         },
         {
-          test: /\.(png|jpg|gif)$/, //pack image to base64 when its size is less than 16k, otherwise leave it as a file
+          test: /\.(png|jpg|gif|svg)$/, //pack image to base64 when its size is less than 16k, otherwise leave it as a file
           loader: 'url-loader',
           options: {
-            limit: 16384
+            limit: 16384,
+            outputPath: 'img', // put image into separate folder, so we don't have millions of files in root of dist
+            name
           }
         },
       ],
