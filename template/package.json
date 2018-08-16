@@ -1,6 +1,6 @@
 {
-  "name": "as",
-  "author": "d",
+  "name": "{{ name }}",
+  "author": "{{ author }}",
   "scripts": {
     "prod": "webpack --progress --mode production ",
     "dev": "webpack-dev-server --mode development --hot"
