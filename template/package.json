@@ -1,6 +1,6 @@
 {
-  "name": "asd",
-  "author": "sd",
+  "name": "{{ name }}",
+  "author": "{{ author }}",
   "scripts": {
     "build": "webpack --progress --mode production ",
     "start": "webpack-dev-server --host 0.0.0.0 --mode development --hot --port 9084"
