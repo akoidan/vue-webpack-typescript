@@ -1,0 +1,23 @@
+@mixin linear-gradient-values($value...)
+  background-image: -webkit-linear-gradient($value)
+  background-image: -moz-linear-gradient($value)
+  background-image: -o-linear-gradient($value)
+  background-image: -ms-linear-gradient($value)
+  background-image: linear-gradient($value)
+
+@mixin linear-gradient($begin, $end)
+  @include linear-gradient-values($begin 0%, $end 100%)
+
+@mixin linear-double-gradient($f1, $f2, $s1, $s2)
+  background-image: -webkit-linear-gradient($s1, $s2), -webkit-linear-gradient($f1, $f2)
+  background-image: -moz-linear-gradient($s1, $s2), -moz-linear-gradient($f1, $f2)
+  background-image: -o-linear-gradient($s1, $s2), -o-linear-gradient($f1, $f2)
+  background-image: linear-gradient($s1, $s2), linear-gradient($f1, $f2)
+  background-image: -ms-linear-gradient($s1, $s2), -ms-linear-gradient($f1, $f2)
+
+@mixin transition($text...)
+  -webkit-transition: $text
+  -moz-transition: $text
+  -o-transition: $text
+  -ms-transition: $text
+  transition: $text
