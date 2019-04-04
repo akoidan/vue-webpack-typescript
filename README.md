@@ -13,8 +13,5 @@
 ## To get started:
 
 ```bash
-# install vue-cli if you don't have it yet
-npm install -g vue-cli
-# create a new project
-vue init deathangel908/vue-webpack-minimal my-project
+npx vue-cli init deathangel908/vue-webpack-minimal folder-name
 ```
