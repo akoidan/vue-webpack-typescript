@@ -5,24 +5,28 @@
     </div>
 </template>
 <script lang="ts">
-  import {State, Action, Mutation} from 'vuex-class';
+  import logoPng from '@/assets/images/logo.png';
   import {Component, Prop, Vue} from 'vue-property-decorator';
-  import t8 from '@/assets/images/logo.png';
 
+  /**
+   * Num comp
+   */
   @Component
   export default class Num extends Vue {
-    @Prop() i!: number;
-    @Prop() a!: number[];
+    @Prop()
+    private i!: number;
+    @Prop()
+    private a!: number[];
 
-    get t8() {
-      return t8;
+    get t8(): unknown {
+      return logoPng;
     }
 
-    updated() {
+    private updated(): void {
       this.logger.log('updated')();
     }
 
-    created() {
+    private created(): void {
       this.logger.log('created')();
     }
   }

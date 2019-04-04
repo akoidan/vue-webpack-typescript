@@ -1,22 +1,18 @@
 {
-  "extends": "./node_modules/gts/tslint.json",
+  "extends": ["./node_modules/tslint-microsoft-contrib/tslint.json"],
+  "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
-    "quotemark": [true, "single"],
+    "no-plusplus": false,
+    "no-default-export": false, // https://github.com/vuejs/vue-loader/issues/1234
+    "no-implicit-dependencies": [true, ["@"]],
+    "no-submodule-imports": [true, "@"],
     "indent": [
       true,
       "spaces",
       2
     ],
-    "comment-format": [
-      true,
-      "check-space"
-    ],
-    "no-eval": true,
-    "one-line": [
-      true,
-      "check-open-brace",
-      "check-whitespace"
-    ],
+    "no-increment-decrement": false,
+    "arrow-return-shorthand": true,
     "typedef-whitespace": [
       true,
       {

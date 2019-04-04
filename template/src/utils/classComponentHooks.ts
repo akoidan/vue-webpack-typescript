@@ -1,4 +1,4 @@
-import Component from 'vue-class-component';
+import {Component } from 'vue-property-decorator';
 
 // Register the router hooks with their names
 Component.registerHooks([

@@ -5,15 +5,20 @@
 </template>
 
 <script lang="ts">
-  import Component from 'vue-class-component';
-  import Vue from 'vue';
+  import vue from 'vue';
+  import {Component} from 'vue-property-decorator';
   import {Mutation, State} from 'vuex-class';
 
+  /**
+   * Version comp
+   */
   @Component
-  export default class Version extends Vue {
-      @State version!: number;
-      @Mutation incVersion!: () => void ;
-      get divData() {
+  export default class Version extends vue {
+      @State
+      private version!: number;
+      @Mutation
+      private incVersion!: () => void ;
+      get divData(): string {
         return `Vuex mapped state sample: ${this.version}. Click to mutate`;
       }
   }
