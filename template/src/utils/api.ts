@@ -1,9 +1,7 @@
+import {TestResponse} from '@/types/dto';
+import {loggerFactory} from '@/utils/loggerFactory';
+import {Xhr} from '@/utils/xhr';
 import {Logger} from 'lines-logger';
-
-import {TestResponse} from '../types/dto';
-
-import {loggerFactory} from './loggerFactory';
-import {Xhr} from './xhr';
 
 export class Api {
   private readonly xhr: Xhr;

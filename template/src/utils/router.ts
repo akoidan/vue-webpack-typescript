@@ -1,7 +1,6 @@
+import Version from '@/components/pages/Version.vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
-import Version from '../components/pages/Version.vue';
 
 Vue.use(VueRouter);
 

@@ -1,4 +1,4 @@
-import {SessionHolder} from '../types/model';
+import {SessionHolder} from '@/types/model';
 
 export class SessionHolderImpl {
   set session(value: string|null) {

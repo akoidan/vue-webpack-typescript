@@ -1,12 +1,10 @@
+import {SessionHolder} from '@/types/model';
+import {Api} from '@/utils/api';
+import {loggerFactory} from '@/utils/loggerFactory';
+import {SessionHolderImpl} from '@/utils/sessionHolder';
+import {Xhr} from '@/utils/xhr';
 import mobile from 'is-mobile';
 import {Logger} from 'lines-logger';
-
-import {SessionHolder} from '../types/model';
-
-import {Api} from './api';
-import {loggerFactory} from './loggerFactory';
-import {SessionHolderImpl} from './sessionHolder';
-import {Xhr} from './xhr';
 
 export const globalLogger: Logger =
     loggerFactory.getLoggerColor('global', '#007a70');

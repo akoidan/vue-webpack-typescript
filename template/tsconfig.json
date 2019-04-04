@@ -1,7 +1,11 @@
 {
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "lib": ["es2017", "dom"],
     "declaration": false,
     "target": "es5",

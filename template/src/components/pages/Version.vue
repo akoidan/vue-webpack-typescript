@@ -5,12 +5,12 @@
 </template>
 
 <script lang="ts">
-  import Component from "vue-class-component";
+  import Component from 'vue-class-component';
   import Vue from 'vue';
-  import {Mutation, State} from "vuex-class";
+  import {Mutation, State} from 'vuex-class';
 
   @Component
-  export default class Main extends Vue {
+  export default class Version extends Vue {
       @State version!: number;
       @Mutation incVersion!: () => void ;
       get divData() {

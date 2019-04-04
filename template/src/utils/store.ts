@@ -1,6 +1,6 @@
+import {RootState} from '@/types/model';
 import Vue from 'vue';
 import Vuex, {Store, StoreOptions} from 'vuex';
-import {RootState} from '../types/model';
 
 Vue.use(Vuex);
 

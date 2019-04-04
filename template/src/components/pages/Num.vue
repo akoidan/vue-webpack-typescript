@@ -5,9 +5,9 @@
     </div>
 </template>
 <script lang="ts">
-  import {State, Action, Mutation} from "vuex-class";
-  import {Component, Prop, Vue} from "vue-property-decorator";
-  import t8 from "../../assets/images/t8.svg";
+  import {State, Action, Mutation} from 'vuex-class';
+  import {Component, Prop, Vue} from 'vue-property-decorator';
+  import t8 from '@/assets/images/logo.png';
 
   @Component
   export default class Num extends Vue {
@@ -19,11 +19,11 @@
     }
 
     updated() {
-      this.logger.log("updated")();
+      this.logger.log('updated')();
     }
 
     created() {
-      this.logger.log("created")();
+      this.logger.log('created')();
     }
   }
 </script>

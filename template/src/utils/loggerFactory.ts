@@ -1,5 +1,5 @@
+import {IS_DEBUG} from '@/utils/consts';
 import {LoggerFactory, LogStrict} from 'lines-logger';
-import {IS_DEBUG} from './consts';
 
 
 export const loggerFactory: LoggerFactory =

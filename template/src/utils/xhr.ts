@@ -1,6 +1,5 @@
+import {loggerFactory} from '@/utils/loggerFactory';
 import {Logger} from 'lines-logger';
-
-import {loggerFactory} from './loggerFactory';
 
 
 /**

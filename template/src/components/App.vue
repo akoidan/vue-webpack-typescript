@@ -6,22 +6,22 @@
 </template>
 
 <script lang="ts">
-  import Component from "vue-class-component";
+  import Component from 'vue-class-component';
   import Vue from 'vue';
-  import Num from "./pages/Num.vue";
-  import variables from "../variables.json"
+  import Num from './pages/Num.vue';
+  import variables from '@/variables.json';
 
   @Component({
     components: {Num}
   })
-  export default class Main extends Vue {
-    i: number = 0;
+  export default class App extends Vue {
+    i = 0;
     a: number[] = [];
     created() {
-        this.logger.log("Variable in Js example {}", variables["bodyHeight"])();
+        this.logger.log('Variable in Js example {}', variables['bodyHeight'])();
     }
     add() {
-      this.a.splice(1, 0 , this.i++)
+      this.a.splice(1, 0 , this.i++);
     }
   }
 </script>

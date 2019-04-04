@@ -133,7 +133,10 @@ module.exports = (env, argv) => {
     entry: ['./src/main.ts'],
     plugins,
     resolve: {
-      extensions: ['.ts', '.js', '.vue', '.json'],
+      extensions: ['.ts', '.vue', '.json', ".js"],
+      alias: {
+        '@': path.join(__dirname, 'src')
+      }
     },
     output: {
       crossOriginLoading: 'anonymous',
@@ -154,6 +157,17 @@ module.exports = (env, argv) => {
           options: {
             appendTsSuffixTo: [/\.vue$/]
           }
+        },
+        {
+          test: /\.vue.ts$/,
+          exclude: /node_modules/,
+          enforce: 'pre',
+          use: [
+            {
+              loader: 'vue-tslint-loader',
+              options: { /* Loader options go here */ }
+            }
+          ]
         },
         {
           exclude: /node_modules/,

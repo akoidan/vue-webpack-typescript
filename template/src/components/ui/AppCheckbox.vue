@@ -30,8 +30,8 @@
 
 <style lang="sass" scoped>
 
-  @import "../../assets/sass/mixins"
-  @import "../../assets/sass/variables"
+  @import "@/assets/sass/mixins"
+  @import "@/assets/sass/variables"
 
   input[type=checkbox]
     display: none
