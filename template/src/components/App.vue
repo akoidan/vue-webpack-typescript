@@ -8,8 +8,8 @@
 <script lang="ts">
   import Component from 'vue-class-component';
   import Vue from 'vue';
-  import Num from './pages/Num.vue';
-  import variables from '@/variables.json';
+  import Num from "./pages/Num.vue"; // TODO remove double quotes
+  import variables from "@/variables.json";
 
   @Component({
     components: {Num}
