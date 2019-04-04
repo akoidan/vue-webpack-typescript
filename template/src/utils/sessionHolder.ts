@@ -1,11 +1,14 @@
 import {SessionHolder} from '../types/model';
 
-export default class SessionHolderImpl {
-  set session(value: string) {
+export class SessionHolderImpl {
+  set session(value: string|null) {
+    if (value) {
       localStorage.setItem('session_id', value);
+    } else {
+      localStorage.removeItem('session_id');
+    }
   }
-  get session(): string {
-   return localStorage.getItem('session_id');
+  get session(): string|null {
+    return localStorage.getItem('session_id');
   }
-
 }

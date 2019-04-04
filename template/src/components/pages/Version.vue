@@ -11,8 +11,8 @@
 
   @Component
   export default class Main extends Vue {
-      @State version;
-      @Mutation incVersion;
+      @State version!: number;
+      @Mutation incVersion!: () => void ;
       get divData() {
         return `Vuex mapped state sample: ${this.version}. Click to mutate`;
       }

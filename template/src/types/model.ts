@@ -1,7 +1,11 @@
 export interface RootState {
-    version: number;
+  version: number;
 }
 
 export interface SessionHolder {
-    session: string;
+  session: string|null;
+}
+
+export interface Variables {
+  bodyHeight: number;
 }

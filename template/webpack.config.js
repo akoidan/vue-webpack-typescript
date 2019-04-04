@@ -8,7 +8,6 @@ const sass = require("node-sass");
 const sassUtils = require("node-sass-utils")(sass);
 const sassVars = require('./src/variables')
 const child_process = require('child_process');
-const WebpackGitHash = require('webpack-git-hash');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 
 const sasFunctions = {
@@ -78,16 +77,15 @@ module.exports = (env, argv) => {
   let gitHash;
   try {
     gitHash = child_process.execSync('git rev-parse --short=10 HEAD', { encoding: 'utf8' });
-    gitHash = gitHash.trim()
+    gitHash = gitHash.trim();
+    options.GIT_HASH = gitHash;
+    console.log(`Git hash = ${gitHash}`)
   } catch (e) {
-    console.error("Git command not found, using date as hash")
-    gitHash = String(Date.now())
+    console.error("Git hash is unavailable");
   }
-  console.log("Using hash ", gitHash)
   plugins = [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({template: 'src/index.ejs', hash: false, inject: false, sid: options.SID, gitHash: gitHash}),
-    new WebpackGitHash(),
+    new HtmlWebpackPlugin({template: 'src/index.ejs', hash: false, inject: false}),
   ];
   const sassLoader = {
     loader: "sass-loader",
@@ -99,7 +97,7 @@ module.exports = (env, argv) => {
   };
   if (isProd) {
     const CleanWebpackPlugin = require('clean-webpack-plugin');
-    plugins.push(new CleanWebpackPlugin('./dist'));
+    plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["./dist"]}));
     const MiniCssExtractPlugin = require("mini-css-extract-plugin");
     const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
     const SriPlugin = require('webpack-subresource-integrity');

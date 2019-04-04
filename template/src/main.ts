@@ -1,39 +1,59 @@
 import './utils/classComponentHooks.ts';
-import Vue from 'vue';
+
+import {Logger} from 'lines-logger';
+import {Component, Vue} from 'vue-property-decorator';
+
 import App from './components/App.vue';
-import router from './utils/router';
-import store from './utils/store';
-import {globalLogger} from "./utils/singletons";
-import loggerFactory from "./utils/loggerFactory";
+import {GIT_HASH} from './utils/consts';
+import {loggerFactory} from './utils/loggerFactory';
+import {router} from './utils/router';
+import {globalLogger} from './utils/singletons';
+import {store} from './utils/store';
 
-Vue.mixin({
-  computed: {
-    logger() {
-      if (!this.__logger && this.$options['_componentTag'] !== 'router-link') {
-        let name = this.$options['_componentTag'] || 'vue-comp';
-        if (!this.$options['_componentTag']) {
-          globalLogger.warn('Can\'t detect tag of {}', this)();
-        }
-        if (this.id) {
-          name += `:${this.id}`;
-        }
-        this.__logger = loggerFactory.getLoggerColor(name, '#35495e');
-      }
-      return this.__logger;
+
+
+window.GIT_VERSION = GIT_HASH;
+
+
+@Component
+export class LoggerMixin extends Vue {
+  _logger: Logger|null = null;
+
+  id = '';
+
+
+  get logger(): Logger {
+    interface CompTag {
+      _componentTag: string;
     }
-  },
-  updated: function() {
-    this.logger && this.logger.trace('Updated')();
-  },
-  created: function() {
-    this.logger &&  this.logger.trace('Created')();
-  },
-});
+    const $option = (this.$options as CompTag)._componentTag;
+    if (!this._logger && $option !== 'router-link') {
+      let name = $option || 'vue-comp';
+      if (!$option) {
+        globalLogger.warn('Can\'t detect tag of {}', this)();
+      }
+      if (this.id) {
+        name += `:${this.id}`;
+      }
+      this._logger = loggerFactory.getLoggerColor(name, '#35495e');
+    }
+    return this._logger as Logger;  // failsfale for component
+  }
+  updated() {
+    if (this.logger) {
+      this.logger.trace('Updated')();
+    }
+  }
+  created() {
+    if (this.logger) {
+      this.logger.trace('Created')();
+    }
+  }
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-  new Vue({
-    router,
-    store,
-    render: h => h(App)
-  }).$mount('#app');
+
+Vue.mixin(new LoggerMixin());
+
+document.addEventListener('DOMContentLoaded', () => {
+  new Vue({router, store, render: h => h(App)}).$mount('#app');
 });
