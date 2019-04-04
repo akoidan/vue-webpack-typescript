@@ -85,7 +85,7 @@ module.exports = (env, argv) => {
   }
   plugins = [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({template: 'src/index.ejs', hash: false, inject: false}),
+    new HtmlWebpackPlugin({template: 'src/index.ejs', inject: false}),
   ];
   const sassLoader = {
     loader: "sass-loader",
