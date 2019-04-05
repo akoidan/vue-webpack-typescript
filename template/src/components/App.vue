@@ -22,7 +22,7 @@
     private a: number[] = [];
 
     private created(): void {
-      this.logger.log('Variable in Js example {}', variablesJson.bodyHeight)();
+      this.logger.log("Variable in Js example {}", variablesJson.bodyHeight)();
     }
 
     private add(): void {

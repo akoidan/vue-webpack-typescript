@@ -3,6 +3,7 @@
   "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
     "no-plusplus": false,
+    "import-name": [ true, { ".vue": "" }], // TODO allow vue files to be named as vue
     "no-default-export": false, // https://github.com/vuejs/vue-loader/issues/1234
     "no-implicit-dependencies": [true, ["@"]],
     "no-submodule-imports": [true, "@"],
