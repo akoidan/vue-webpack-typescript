@@ -1,6 +1,11 @@
 <template>
-    <div class="box" @click="add">
-        click me
+    <div>
+        <div class="top">
+            <img src="@/assets/images/logo.png"/>
+            <router-link to="/posts">Posts</router-link>
+            <router-link to="/users">Users</router-link>
+        </div>
+        <router-view/>
     </div>
 </template>
 
@@ -26,9 +31,14 @@
     }
   }
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
     // variable in css example
     $height: get("bodyHeight")
-    div
-        height: 1px * $height
+
+    img
+        height: 20px
+    .top *
+        margin-right: 10px
+
+
 </style>

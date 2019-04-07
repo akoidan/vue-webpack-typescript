@@ -133,7 +133,7 @@ module.exports = (env, argv) => {
     entry: ['./src/main.ts'],
     plugins,
     resolve: {
-      extensions: ['.ts', '.vue', '.json', ".js"],
+      extensions: ['.ts', '.vue', '.json', ".js", '.png', ".sass"],
       alias: {
         '@': path.join(__dirname, 'src')
       }
@@ -147,6 +147,9 @@ module.exports = (env, argv) => {
       maxAssetSize: 2048000
     },
     devtool: '#source-map',
+    devServer: {
+      historyApiFallback: true
+    },
     // optimization: {minimize: true},
     module: {
       rules: [

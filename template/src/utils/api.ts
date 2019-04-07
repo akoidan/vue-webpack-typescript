@@ -1,4 +1,4 @@
-import {TestResponse} from '@/types/dto';
+import {Post, User} from '@/types/dto';
 import {API_URL} from '@/utils/consts';
 import {loggerFactory} from '@/utils/loggerFactory';
 import {Xhr} from '@/utils/xhr';
@@ -16,7 +16,11 @@ export class Api {
     this.xhr = xhr;
   }
 
-  public async test(a: string): Promise<TestResponse> {
-    return this.xhr.doPost<TestResponse>(`${API_URL}/api/v1/employees`, {a});
+  public async getPosts(): Promise<Post[]> {
+    return this.xhr.doGet<Post[]>(`${API_URL}/posts`);
+  }
+
+  public async getUsers(): Promise<User[]> {
+    return this.xhr.doGet<User[]>(`${API_URL}/users`);
   }
 }

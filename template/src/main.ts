@@ -18,6 +18,7 @@ Vue.use(Vuex);
 
 const store: Store<RootState> = new Store<RootState>(storeState);
 const router: VueRouter = new VueRouter(routes);
+Vue.prototype.$api = api;
 
 document.addEventListener('DOMContentLoaded', () => {
   const vue: Vue = new Vue({router, store, render: (h: Function): typeof Vue.prototype.$createElement => h(App)});
