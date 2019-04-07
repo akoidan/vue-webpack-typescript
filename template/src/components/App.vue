@@ -22,6 +22,8 @@
     private i: number = 0;
     private a: number[] = [];
 
+    private id: string = 'App';
+
     private created(): void {
        this.$logger.log('Variable in Js example {}', variablesJson.bodyHeight)();
     }

@@ -14,6 +14,9 @@
    */
   @Component
   export default class UserComp extends Vue {
+
+    private id: string = 'UserComp';
+
     @Prop()
     private readonly user!: User;
 

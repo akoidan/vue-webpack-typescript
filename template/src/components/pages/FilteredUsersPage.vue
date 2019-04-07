@@ -17,6 +17,8 @@
   @Component
   export default class FilteredUsersPage extends Vue {
 
+    private id: string = 'FilteredUsersPage';
+
     @Getter
     private readonly filteredUsers!: User[];
 

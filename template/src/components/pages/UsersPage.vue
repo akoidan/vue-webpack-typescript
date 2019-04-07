@@ -15,6 +15,8 @@
   @Component({components: {UserComp}})
   export default class UsersPage extends Vue {
 
+    private id: string = 'UserPage';
+
     @State
     private readonly users!: User[];
 

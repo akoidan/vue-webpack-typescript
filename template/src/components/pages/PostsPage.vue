@@ -16,6 +16,8 @@
   @Component
   export default class PostsPage extends Vue {
 
+    private id: string = 'PostsPage';
+
     private posts: Post[] = [];
 
     private async created(): Promise<void> {
