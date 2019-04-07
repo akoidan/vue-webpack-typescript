@@ -7,7 +7,7 @@
     "interface-name": false,
     "export-name": [true, { "ignore-case": true, "allow": ["LoggerMixin"] }],
     "import-name": [ true, true, { "vue-router": "VueRouter", "vuex": "Vuex", "vue": "Vue" }],
-    "no-import-side-effect": [true, {"ignore-module": "@/utils/classComponentHooks"}],
+    "no-import-side-effect": [true, {"ignore-module": "(@/utils/classComponentHooks|@/utils/mixins)"}],
     "no-plusplus": false,
     "no-default-export": false,
     "vue-no-default-export": true,

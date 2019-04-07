@@ -1,22 +1,24 @@
 <template>
     <div>
-        <user-comp class="user-post" :user="user" v-for="user in users" :key="user.id"/>
+        <div class="user-post" v-for="user in filteredUsers" :key="user.id">
+            <div>{{user.name}}</div>
+            <div>{{user.email}}</div>
+        </div>
     </div>
 </template>
 <script lang="ts">
-  import UserComp from '@/components/partials/UserComp';
   import { User} from '@/types/dto';
   import {Component, Prop, Vue} from 'vue-property-decorator';
-  import {Mutation, State} from 'vuex-class';
+  import {Getter, Mutation, State} from 'vuex-class';
 
   /**
    * List of posts
    */
-  @Component({components: {UserComp}})
-  export default class UsersPage extends Vue {
+  @Component
+  export default class FilteredUsersPage extends Vue {
 
-    @State
-    private readonly users!: User[];
+    @Getter
+    private readonly filteredUsers!: User[];
 
     @Mutation
     private readonly setUsers!: Function;

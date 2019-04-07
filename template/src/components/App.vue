@@ -4,6 +4,7 @@
             <img src="@/assets/images/logo.png"/>
             <router-link to="/posts">Posts</router-link>
             <router-link to="/users">Users</router-link>
+            <router-link to="/filtered-users">Filtered Users</router-link>
         </div>
         <router-view/>
     </div>

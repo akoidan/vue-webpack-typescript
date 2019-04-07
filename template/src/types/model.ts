@@ -1,5 +1,7 @@
+import {User} from "@/types/dto";
+
 export interface RootState {
-  version: number;
+  users: User[];
 }
 
 export interface SessionHolder {

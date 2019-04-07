@@ -32,3 +32,5 @@ export class LoggerMixin extends Vue {
     }
   }
 }
+
+Vue.mixin(LoggerMixin);
