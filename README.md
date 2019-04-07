@@ -17,3 +17,5 @@
 ```bash
 npx vue-cli init deathangel908/vue-webpack-minimal
 ```
+multiple spaces
+ignore default export for vue files

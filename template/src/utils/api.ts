@@ -13,6 +13,6 @@ export class Api {
   }
 
   async test(a: string): Promise<TestResponse> {
-    return await this.xhr.post<TestResponse>('/test/', {a});
+    return await this.xhr.post<TestResponse>('http://dummy.restapiexample.com/api/v1/employees', {a});
   }
 }
