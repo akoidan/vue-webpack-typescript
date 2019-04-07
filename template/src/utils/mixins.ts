@@ -1,39 +1,34 @@
-import {Component, Vue} from "vue-property-decorator";
-import {Logger} from "lines-logger";
-import {globalLogger} from "@/utils/singletons";
-import {loggerFactory} from "@/utils/loggerFactory";
+import {loggerFactory} from '@/utils/loggerFactory';
+import {Logger} from 'lines-logger';
+import Vue from 'vue';
+import {Component} from 'vue-property-decorator';
 
+/**
+ * Injects $logger to every component
+ */
 @Component
 export class LoggerMixin extends Vue {
-  _logger: Logger|null = null;
+  private privateLogger: Logger|null = loggerFactory.getLogger('tasd', 'black');
 
-  id = '';
+  private id: string = '';
 
-  get logger(): Logger {
-    interface CompTag {
-      _componentTag: string;
+  public get $logger(): Logger {
+    let res: Logger | null = this.privateLogger;
+    if (!this.privateLogger) {
+      res = loggerFactory.getLoggerColor(this.id, '#35495e');
     }
-    const $option = (this.$options as CompTag)._componentTag;
-    if (!this._logger && $option !== 'router-link') {
-      let name = $option || 'vue-comp';
-      if (!$option) {
-        globalLogger.warn('Can\'t detect tag of {}', this)();
-      }
-      if (this.id) {
-        name += `:${this.id}`;
-      }
-      this._logger = loggerFactory.getLoggerColor(name, '#35495e');
-    }
-    return this._logger as Logger;  // failsfale for component
+
+    return <Logger>res;  // safe for component
   }
-  updated() {
-    if (this.logger) {
-      this.logger.trace('Updated')();
+  public updated(): void {
+    if (this.$logger) {
+      this.$logger.trace('Updated')();
     }
   }
-  created() {
-    if (this.logger) {
-      this.logger.trace('Created')();
+
+  public created(): void {
+    if (this.$logger) {
+      this.$logger.trace('Created')();
     }
   }
 }

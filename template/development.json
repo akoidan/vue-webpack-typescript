@@ -1,4 +1,5 @@
 {
   "IS_DEBUG": true,
-  "PUBLIC_PATH": null
+  "PUBLIC_PATH": null,
+  "API_URL": "http://dummy.restapiexample.com"
 }

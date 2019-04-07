@@ -1,14 +1,9 @@
 import {loggerFactory} from '@/utils/loggerFactory';
 import {Logger} from 'lines-logger';
 
-
 /**
- * @param params : object dict of params or DOM form
- * @param callback : function calls on response
- * @param url : string url to post
- * @param formData : form in canse form is used
+ * Low level XmlHttpRequest api, something like Axios
  */
-
 export class Xhr {
   protected httpLogger: Logger;
 
@@ -16,37 +11,41 @@ export class Xhr {
     this.httpLogger = loggerFactory.getLoggerColor('http', '#680061');
   }
 
-  async get<T>(url: string): Promise<T> {
-    return this.sendXhr<T>('GET', url, null);
+  public async doGet<T>(url: string): Promise<T> {
+    return this.sendXhr<T>('GET', url, undefined);
   }
 
-  async post<T>(url: string, body: object): Promise<T> {
+  public async doPost<T>(url: string, body: object): Promise<T> {
     return this.sendXhr<T>('POST', url, JSON.stringify(body));
   }
 
-  async postFormData<T>(url: string, params: {[index: string]: string|Blob}):
+  public async postFormData<T>(url: string, params: {[index: string]: string|Blob}):
       Promise<T> {
-    const formData = new FormData();
-    for (const i in params) {
-      if (params.hasOwnProperty(i)) {
-        formData.append(i, params[i]);
-      }
-    }
+    const formData: FormData = new FormData();
+    Object.keys(params)
+        .forEach((i: string) => {
+              if (params.hasOwnProperty(i)) {
+                formData.append(i, params[i]);
+              }
+            }
+        );
+
     return this.sendXhr<T>('POST', url, formData);
   }
 
-  async sendXhr<T>(method: string, url: string, body: Document|BodyInit|null):
+  private async sendXhr<T>(method: string, url: string, body: Document|BodyInit|undefined):
       Promise<T> {
     const r: XMLHttpRequest = new XMLHttpRequest();
-    return new Promise<T>((resolve, reject) => {
-      r.onerror = () => {
+
+    return new Promise<T>((resolve: Function, reject: Function): void => {
+      r.onerror = (): void => {
         this.httpLogger.error(
             '{} out: {} ::: {}, status: {}', method, url, r.response,
             r.status)();
         reject();
       };
-      r.onload = () => {
-        const success = [200, 201].indexOf(r.status) >= 0;
+      r.onload = (): void => {
+        const success: boolean = [200, 201].indexOf(r.status) >= 0;
         if (success) {
           this.httpLogger.log('{} in {} ::: {};', method, url, r.response)();
         } else {
@@ -54,8 +53,8 @@ export class Xhr {
               '{} out: {} ::: {}, status: {}', method, url, r.response,
               r.status)();
         }
-        let error;
-        let data;
+        let error: string| undefined;
+        let data: string| undefined;
         if (r.status === 0) {
           reject();
         } else if (success) {
@@ -80,7 +79,6 @@ export class Xhr {
       this.httpLogger.log('{} out {} ::: {}', method, url, body)();
 
       r.send(body);
-      return r;
     });
   }
 }

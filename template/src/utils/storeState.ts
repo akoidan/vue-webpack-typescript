@@ -5,8 +5,8 @@ import Vuex, {Store, StoreOptions} from 'vuex';
 export const storeState: StoreOptions<RootState> = {
   state: {version: 1},
   mutations: {
-    incVersion(state) {
+    incVersion(state: RootState): void {
       state.version += 1;
-    },
+    }
   }
 };

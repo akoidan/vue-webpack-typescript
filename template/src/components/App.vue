@@ -1,28 +1,23 @@
 <template>
     <div class="box" @click="add">
         click me
-        <num v-for="aa in a" :i="aa" :key="aa" :a="[]"></num>
     </div>
 </template>
 
 <script lang="ts">
-  import Num from '../components/pages/Num';
-  import variables from '@/variables.json';
-  import vue from 'vue';
-  import {Component} from 'vue-property-decorator';
+  import variablesJson from '@/variables.json';
+  import {Component, Vue} from 'vue-property-decorator';
 
   /**
    * App comp
    */
-  @Component({
-    components: {Num}
-  })
-  export default class App extends vue {
+  @Component
+  export default class App extends Vue {
     private i: number = 0;
     private a: number[] = [];
 
     private created(): void {
-      // this.logger.log("Variable in Js example {}", variables.bodyHeight)();
+       this.$logger.log('Variable in Js example {}', variablesJson.bodyHeight)();
     }
 
     private add(): void {

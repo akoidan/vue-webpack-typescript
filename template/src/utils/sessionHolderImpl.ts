@@ -1,14 +1,17 @@
 import {SessionHolder} from '@/types/model';
 
-export class SessionHolderImpl {
-  set session(value: string|null) {
+/**
+ * Permanent storage for session
+ */
+export class SessionHolderImpl implements SessionHolder {
+  public set session(value: string | null) {
     if (value) {
       localStorage.setItem('session_id', value);
     } else {
       localStorage.removeItem('session_id');
     }
   }
-  get session(): string|null {
+  public get session(): string|null {
     return localStorage.getItem('session_id');
   }
 }
