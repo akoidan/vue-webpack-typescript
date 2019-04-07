@@ -1,5 +1,5 @@
 {
-  "name": "sd",
+  "name": "{{name}}",
   "author": "{{author}}",
   "scripts": {
     "build": "webpack --progress --mode production ",

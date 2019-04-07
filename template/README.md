@@ -14,6 +14,7 @@ The technologies stack used in project:
 - Vuex-class, Vue-property-decorator
 - Webpack and loaders
 - Sass
+
 It's highly recommended to get familiar with each of this technologies before starting working on this project.
 
 ### Development setup
@@ -25,7 +26,7 @@ To build project for production take a look at [production.json](production.json
 ### Build configuration
 [webpack.config.js](webpack.config.js) is used to build project. Take a look at it to understand how source files are being processed. Its start point is `entry: ['./src/main.ts']`. Everything is imported in this files are being processed by section `loaders`.
 development.json and production.json have the following format:
-```json
+```javascript
 {
   "IS_DEBUG": true, // turns off logs for production
   "PUBLIC_PATH": null // specifies public url for images/js/css/fonts instead of relative path like './main.js'
@@ -39,7 +40,7 @@ Every vue component has injected `.logger` object, to log something to console u
 Stick to [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) rules.
 
 ### Built version
-If you're using git as your version control tool window.GIT_VERSION will be exported to global scope
+If you're using git as your version control tool `window.GIT_VERSION` will be exported to global scope
 
 ### Components style
 This project uses [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) (that's has a dependency [vue-class-component](https://github.com/vuejs/vue-class-component)) [vuex-class](https://github.com/ktsn/vuex-class). You should write your component as the following:
