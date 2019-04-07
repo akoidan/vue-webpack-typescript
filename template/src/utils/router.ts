@@ -1,10 +1,6 @@
-import Version from '@/components/pages/Version.vue';
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Version from '@/components/pages/Version';
 
-Vue.use(VueRouter);
-
-export const router: VueRouter = new VueRouter({
+export const routes = {
   routes: [
     {
       path: '/version',
@@ -12,4 +8,4 @@ export const router: VueRouter = new VueRouter({
       name: 'auth',
     },
   ],
-});
+}

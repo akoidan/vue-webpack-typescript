@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts">
-  import NumVue from '@/components/pages/Num.vue';
-  import variablesJson from '@/variables.json';
+  import Num from '../components/pages/Num';
+  import variables from '@/variables.json';
   import vue from 'vue';
   import {Component} from 'vue-property-decorator';
 
@@ -15,14 +15,14 @@
    * App comp
    */
   @Component({
-    components: {NumVue}
+    components: {Num}
   })
   export default class App extends vue {
     private i: number = 0;
     private a: number[] = [];
 
     private created(): void {
-      this.logger.log("Variable in Js example {}", variablesJson.bodyHeight)();
+      // this.logger.log("Variable in Js example {}", variables.bodyHeight)();
     }
 
     private add(): void {
