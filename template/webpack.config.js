@@ -76,7 +76,7 @@ module.exports = (env, argv) => {
   let options = require(`./${argv.mode}.json`);
   let gitHash;
   try {
-    gitHash = child_process.execSync('git rev-parse --short=10 HEAD', { encoding: 'utf8' });
+    gitHash = child_process.execSync('git rev-parse --short=10 HEAD', {encoding: 'utf8'});
     gitHash = gitHash.trim();
     options.GIT_HASH = gitHash;
     console.log(`Git hash = ${gitHash}`)
@@ -142,7 +142,7 @@ module.exports = (env, argv) => {
       crossOriginLoading: 'anonymous',
     },
     performance: {
-      hints: isProd ? 'warning': false,
+      hints: isProd ? 'warning' : false,
       maxEntrypointSize: 512000,
       maxAssetSize: 2048000
     },
@@ -152,27 +152,22 @@ module.exports = (env, argv) => {
       rules: [
         {
           test: /\.ts$/,
-          loader: 'ts-loader',
           exclude: /node_modules/,
-          options: {
-            appendTsSuffixTo: [/\.vue$/]
-          }
-        },
-        {
-          test: /\.vue.ts$/,
-          exclude: /node_modules/,
-          enforce: 'pre',
           use: [
             {
-              loader: 'vue-tslint-loader',
-              options: { /* Loader options go here */ }
+              loader: 'ts-loader',
+              options: {
+                appendTsSuffixTo: [/\.vue$/]
+              }
+            },
+            {
+              loader: 'tslint-loader'
             }
-          ]
+          ],
         },
         {
           exclude: /node_modules/,
-          test: /\.vue$/,
-          loader: 'vue-loader',
+          test: /\.vue$/, loader: 'vue-loader',
         },
         {
           test: /\.sass$/,
@@ -184,7 +179,7 @@ module.exports = (env, argv) => {
           options: {
             outputPath: 'font',  // put fonts into separate folder, so we don't have millions of files in root of dist
             name,
-            publicPath: options.PUBLIC_PATH ? options.PUBLIC_PATH +'/font' : null
+            publicPath: options.PUBLIC_PATH ? options.PUBLIC_PATH + '/font' : null
           }
         },
         {

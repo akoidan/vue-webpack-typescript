@@ -1,55 +1,31 @@
-import '@/utils/classComponentHooks.ts';
-
-import App from '@/components/App.vue';
-import {GIT_HASH} from '@/utils/consts';
-import {loggerFactory} from '@/utils/loggerFactory';
-import {router} from '@/utils/router';
-import {globalLogger} from '@/utils/singletons';
-import {store} from '@/utils/store';
-import {Logger} from 'lines-logger';
-import {Component, Vue} from 'vue-property-decorator';
+import App from '@/components/App';
+import {RootState} from '@/types/model';
+import '@/utils/classComponentHooks';
+import {GIT_HASH, IS_DEBUG} from '@/utils/consts';
+import {LoggerMixin} from '@/utils/mixins';
+import {routes} from '@/utils/routes';
+import {api} from '@/utils/singletons';
+import {storeState} from '@/utils/storeState';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Vuex, {Store} from 'vuex';
 
 window.GIT_VERSION = GIT_HASH;
 
-@Component
-export class LoggerMixin extends Vue {
-  _logger: Logger|null = null;
+Vue.mixin(LoggerMixin);
+Vue.use(VueRouter);
+Vue.use(Vuex);
 
-  id = '';
-
-
-  get logger(): Logger {
-    interface CompTag {
-      _componentTag: string;
-    }
-    const $option = (this.$options as CompTag)._componentTag;
-    if (!this._logger && $option !== 'router-link') {
-      let name = $option || 'vue-comp';
-      if (!$option) {
-        globalLogger.warn('Can\'t detect tag of {}', this)();
-      }
-      if (this.id) {
-        name += `:${this.id}`;
-      }
-      this._logger = loggerFactory.getLoggerColor(name, '#35495e');
-    }
-    return this._logger as Logger;  // failsfale for component
-  }
-  updated() {
-    if (this.logger) {
-      this.logger.trace('Updated')();
-    }
-  }
-  created() {
-    if (this.logger) {
-      this.logger.trace('Created')();
-    }
-  }
-}
-
-
-Vue.mixin(new LoggerMixin());
+const store: Store<RootState> = new Store<RootState>(storeState);
+const router: VueRouter = new VueRouter(routes);
 
 document.addEventListener('DOMContentLoaded', () => {
-  new Vue({router, store, render: h => h(App)}).$mount('#app');
+  const vue: Vue = new Vue({router, store, render: (h: Function): typeof Vue.prototype.$createElement => h(App)});
+  if (IS_DEBUG) {
+    window.vue = vue;
+    window.store = store;
+    window.router = router;
+    window.api = api;
+  }
+  vue.$mount('#app');
 });

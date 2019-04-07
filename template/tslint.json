@@ -1,9 +1,16 @@
 {
   "extends": ["./node_modules/tslint-microsoft-contrib/tslint.json"],
-  "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
+  "rulesDirectory": ["node_modules/tslint-microsoft-contrib", "./tslint-rules"],
   "rules": {
+    "no-consecutive-blank-lines": false,
+    "vue-no-consecutive-blank-lines": true,
+    "interface-name": false,
+    "export-name": [true, { "ignore-case": true, "allow": ["LoggerMixin"] }],
+    "import-name": [ true, true, { "vue-router": "VueRouter", "vuex": "Vuex", "vue": "Vue" }],
+    "no-import-side-effect": [true, {"ignore-module": "@/utils/classComponentHooks"}],
     "no-plusplus": false,
-    "no-default-export": false, // https://github.com/vuejs/vue-loader/issues/1234
+    "no-default-export": false,
+    "vue-no-default-export": true,
     "no-implicit-dependencies": [true, ["@"]],
     "no-submodule-imports": [true, "@"],
     "indent": [
