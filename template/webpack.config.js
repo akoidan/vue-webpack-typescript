@@ -178,6 +178,12 @@ module.exports = (env, argv) => {
           test: /\.vue$/, loader: 'vue-loader',
         },
         {
+            enforce: 'pre',
+            test: /\.vue$/,
+            loader: 'eslint-loader',
+            exclude: /node_modules/
+        },
+        {
           test: /\.sass$/,
           use: sasscPlugins,
         },
