@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :class="{mobile}">
         <div class="top">
             <img src="@/assets/images/logo.png"/>
             <router-link to="/posts">Posts</router-link>
@@ -11,6 +11,7 @@
 </template>
 
 <script lang="ts">
+  import {mobile} from '@/utils/singletons';
   import variablesJson from '@/variables.json';
   import {Component, Vue} from 'vue-property-decorator';
 
@@ -23,6 +24,8 @@
     private a: number[] = [];
 
     private id: string = 'App';
+
+    private readonly mobile: boolean = mobile;
 
     private created(): void {
        this.$logger.log('Variable in Js example {}', variablesJson.bodyHeight)();
