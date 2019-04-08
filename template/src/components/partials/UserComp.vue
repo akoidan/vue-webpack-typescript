@@ -1,8 +1,12 @@
 <template>
+  <div>
     <div>
-        <div>{{user.name}}</div>
-        <div>{{user.email}}</div>
+      {{ user.name }}
     </div>
+    <div>
+      {{ user.email }}
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

@@ -1,10 +1,17 @@
 <template>
-    <div>
-        <div v-for="post in posts" :key="post.id">
-            <h4>{{post.title}}</h4>
-            <pre>{{post.body}}</pre>
-        </div>
+  <div>
+    <div
+      v-for="post in posts"
+      :key="post.id"
+    >
+      <h4>
+        {{ post.title }}
+      </h4>
+      <pre>
+        {{ post.body }}
+      </pre>
     </div>
+  </div>
 </template>
 <script lang="ts">
   import {Post} from '@/types/dto';

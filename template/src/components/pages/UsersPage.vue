@@ -1,7 +1,11 @@
 <template>
   <div>
-    <user-comp class="user-post" :user="user" v-for="user in users"
-               :key="user.id"/>
+    <user-comp
+      v-for="user in users"
+      :key="user.id"
+      class="user-post"
+      :user="user"
+    />
   </div>
 </template>
 <script lang="ts">

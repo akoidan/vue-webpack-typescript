@@ -1,8 +1,16 @@
 <template>
   <div>
-    <div class="user-post" v-for="user in filteredUsers" :key="user.id">
-      <div>{{user.name}}</div>
-      <div>{{user.email}}</div>
+    <div
+      v-for="user in filteredUsers"
+      :key="user.id"
+      class="user-post"
+    >
+      <div>
+        {{ user.name }}
+      </div>
+      <div>
+        {{ user.email }}
+      </div>
     </div>
   </div>
 </template>
