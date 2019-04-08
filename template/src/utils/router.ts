@@ -1,6 +1,6 @@
-import FilteredUsersPage from '@/components/pages/FilteredUsersPage.vue';
-import PostsPage from '@/components/pages/PostsPage.vue';
-import UsersPage from '@/components/pages/UsersPage.vue';
+import FilteredUsersPage from '@/components/pages/FilteredUsersPage';
+import PostsPage from '@/components/pages/PostsPage';
+import UsersPage from '@/components/pages/UsersPage';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 

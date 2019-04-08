@@ -1,13 +1,13 @@
 <template>
-    <div>
-        <div class="user-post" v-for="user in filteredUsers" :key="user.id">
-            <div>{{user.name}}</div>
-            <div>{{user.email}}</div>
-        </div>
+  <div>
+    <div class="user-post" v-for="user in filteredUsers" :key="user.id">
+      <div>{{user.name}}</div>
+      <div>{{user.email}}</div>
     </div>
+  </div>
 </template>
 <script lang="ts">
-  import { User} from '@/types/dto';
+  import {User} from '@/types/dto';
   import {Component, Prop, Vue} from 'vue-property-decorator';
   import {Getter, Mutation, State} from 'vuex-class';
 
@@ -32,9 +32,10 @@
 </script>
 
 <style lang="sass" scoped>
-   .user-post
-    padding: 10px
-    border: 1px solid grey
+  .user-post
+    border: 1px solid #3c3c3c
     margin: 5px
+    padding: 10px
+
 
 </style>

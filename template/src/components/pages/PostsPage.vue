@@ -27,19 +27,20 @@
 </script>
 
 <style lang="sass" scoped>
-    pre, code
-        direction: ltr
-        text-align: left
-    pre
-        border: solid 1px blue
-        font-size: 1.3em
-        color: blue
-        margin: 10px
-        padding: 10px;
-        background: #FFFFB3
+  pre,
+  code
+    direction: ltr
+    text-align: left
 
-    code
-        font-size: 1.2em
-        color: #008099
+  pre
+    background: #ffffb3
+    border: solid 1px #00f
+    font-size: 1.3em
+    margin: 10px
+    padding: 10px
+
+  code
+    color: #008099
+    font-size: 1.2em
 
 </style>

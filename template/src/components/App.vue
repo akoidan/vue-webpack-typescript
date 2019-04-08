@@ -38,13 +38,12 @@
   }
 </script>
 <style lang="sass" scoped>
-    // variable in css example
-    $height: get("bodyHeight")
+  // variable in css example
+  $height: get('bodyHeight')
 
-    img
-        height: 20px
-    .top *
-        margin-right: 10px
+  img
+    height: 20px
 
-
+  .top *
+    margin-right: 10px
 </style>

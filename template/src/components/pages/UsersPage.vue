@@ -1,11 +1,12 @@
 <template>
-    <div>
-        <user-comp class="user-post" :user="user" v-for="user in users" :key="user.id"/>
-    </div>
+  <div>
+    <user-comp class="user-post" :user="user" v-for="user in users"
+               :key="user.id"/>
+  </div>
 </template>
 <script lang="ts">
   import UserComp from '@/components/partials/UserComp';
-  import { User} from '@/types/dto';
+  import {User} from '@/types/dto';
   import {Component, Prop, Vue} from 'vue-property-decorator';
   import {Mutation, State} from 'vuex-class';
 
@@ -30,9 +31,9 @@
 </script>
 
 <style lang="sass" scoped>
-   .user-post
-    padding: 10px
-    border: 1px solid grey
+  .user-post
+    border: 1px solid #3c3c3c
     margin: 5px
+    padding: 10px
 
 </style>
