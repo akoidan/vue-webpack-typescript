@@ -42,7 +42,7 @@ var Rule = /** @class */ (function (_super) {
         typescriptOnly: false,
     };
     /* tslint:enable:object-literal-sort-keys */
-    Rule.FAILURE_STRING = "Use of default exports is forbidden1";
+    Rule.FAILURE_STRING = "Use of default exports is forbidden";
     return Rule;
 }(Lint.Rules.AbstractRule));
 exports.Rule = Rule;
