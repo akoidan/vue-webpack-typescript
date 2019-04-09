@@ -33,11 +33,14 @@ development.json and production.json have the following format:
 }
 ```
 
-### Logging
-Every vue component has injected `.logger` object, to log something to console use `this.logger.log('Hello {}', {1:'world'})();` Note calling function again in the end. Logger is disabled for production. For more info visit [lines-logger](https://github.com/akoidan/lines-logger)
+### Global variables
+ - Every vue component has injected `.$logger` object, to log something to console use `this.logger.log('Hello {}', {1:'world'})();` Note calling function again in the end. Logger is disabled for production. For more info visit [lines-logger](https://github.com/akoidan/lines-logger)
+ - Every component has an injected `$.api` object. You should do http calls with `$this.$api`. If you prefer redux style you can call http in vuex actions.
 
 ### Linting
-Stick to [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) rules.
+ - Typescript is linted with [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib)
+ - Sass is linted with [stylelint](https://github.com/stylelint/stylelint)
+ - Vue files are linted with [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)
 
 ### Built version
 If you're using git as your version control tool `window.GIT_VERSION` will be exported to global scope
