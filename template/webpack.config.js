@@ -8,7 +8,6 @@ const sassUtils = require("node-sass-utils")(sass);
 const sassVars = require('./src/variables')
 const child_process = require('child_process');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const sasFunctions = {
   "get($keys)": function (keys) {
@@ -86,10 +85,6 @@ module.exports = (env, argv) => {
   plugins = [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({template: 'src/index.ejs', inject: false}),
-    new StyleLintPlugin({
-      files: ['**/*.vue', '**/*.sass'],
-      emitErrors: false,
-    }),
   ];
   const sassLoader = {
     loader: "sass-loader",
@@ -130,6 +125,7 @@ module.exports = (env, argv) => {
   } else if (isDev) {
     sasscPlugins = ["style-loader", 'css-loader?sourceMap', sassLoader];
   }
+  sasscPlugins.push('@sdvg/stylelint-loader');
   plugins.push(new webpack.DefinePlugin({
     CONSTS: JSON.stringify(options),
   }));

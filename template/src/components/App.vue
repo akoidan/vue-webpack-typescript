@@ -44,12 +44,16 @@
   }
 </script>
 <style lang="sass" scoped>
+
+  @import "@/assets/sass/variables"
+
   // variable in css example
   $height: get('bodyHeight')
 
+  div
+    color: $main-color
   img
     height: 20px
-
   .top *
     margin-right: 10px
 </style>
