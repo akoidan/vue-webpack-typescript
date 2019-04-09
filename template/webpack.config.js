@@ -1,6 +1,5 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const name = '[name].[ext]?[sha512:hash:base64:6]';
 const webpack = require('webpack');
@@ -175,7 +174,8 @@ module.exports = (env, argv) => {
         },
         {
           exclude: /node_modules/,
-          test: /\.vue$/, loader: 'vue-loader',
+          test: /\.vue$/,
+          loader: 'vue-loader',
         },
         {
             enforce: 'pre',

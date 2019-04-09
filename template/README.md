@@ -9,11 +9,12 @@ yarn install
 
 ### Stack
 The technologies stack used in project:
-- Typescript, tslint-microsoft-contrib
+- Typescript
 - Vue, Vuex, VueRouter, lines-logger
 - Vuex-class, Vue-property-decorator
 - Webpack and loaders
 - Sass
+- tslint-microsoft-contrib, stylelint, eslint-plugin-vue
 
 It's highly recommended to get familiar with each of this technologies before starting working on this project.
 
@@ -30,6 +31,7 @@ development.json and production.json have the following format:
 {
   "IS_DEBUG": true, // turns off logs for production
   "PUBLIC_PATH": null // specifies public url for images/js/css/fonts instead of relative path like './main.js'
+  "API_URL": "https://jsonplaceholder.typicode.com" // public http api url
 }
 ```
 
