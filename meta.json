@@ -1,3 +1,3 @@
 {
-  "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  yarn install\n  yarn run dev"
+  "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  yarn install\n  yarn start"
 }
