@@ -15,5 +15,5 @@
 ## To get started:
 
 ```bash
-npx vue-cli init deathangel908/vue-webpack-minimal
+npx vue-cli init deathangel908/vue-webpack-minimal project-directory
 ```

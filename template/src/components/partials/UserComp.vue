@@ -1,10 +1,10 @@
 <template>
   <div>
     <div>
-      {{ user.name }}
+      \{{ user.name }}
     </div>
     <div>
-      {{ user.email }}
+      \{{ user.email }}
     </div>
   </div>
 </template>

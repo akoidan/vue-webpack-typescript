@@ -6,10 +6,10 @@
       class="user-post"
     >
       <div>
-        {{ user.name }}
+        \{{ user.name }}
       </div>
       <div>
-        {{ user.email }}
+        \{{ user.email }}
       </div>
     </div>
   </div>
