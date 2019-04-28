@@ -91,6 +91,7 @@ module.exports = (env, argv) => {
       emitErrors: false,
     }),
   ];
+  const entry = ['./src/main.ts'];
   const sassLoader = {
     loader: "sass-loader",
     options: {
@@ -100,6 +101,7 @@ module.exports = (env, argv) => {
     }
   };
   if (isProd) {
+    entry.unshift(  'ts-polyfill'); // ie 11 support and es5 syntaxt
     const CleanWebpackPlugin = require('clean-webpack-plugin');
     plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["./dist"]}));
     const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -134,7 +136,7 @@ module.exports = (env, argv) => {
     CONSTS: JSON.stringify(options),
   }));
   const conf = {
-    entry: ['./src/main.ts'],
+    entry,
     plugins,
     resolve: {
       extensions: ['.ts', '.vue', '.json', ".js", '.png', ".sass"],
