@@ -15,9 +15,10 @@
   </div>
 </template>
 <script lang="ts">
+  import {userModule} from '@/store/users';
   import {User} from '@/types/dto';
-  import {Component, Prop, Vue} from 'vue-property-decorator';
-  import {Getter, Mutation, State} from 'vuex-class';
+  import {Component, Vue} from 'vue-property-decorator';
+  // This is a store module class defined using vuex-module-decorators
 
   /**
    * List of posts
@@ -27,14 +28,12 @@
 
     private id: string = 'FilteredUsersPage';
 
-    @Getter
-    private readonly filteredUsers!: User[];
-
-    @Mutation
-    private readonly setUsers!: Function;
+    private get filteredUsers(): User[] {
+      return userModule.filteredUsers;
+    }
 
     private async created(): Promise<void> {
-      this.setUsers(await this.$api.getUsers());
+      userModule.setUsers(await this.$api.getUsers());
     }
   }
 </script>

@@ -9,10 +9,13 @@
   </div>
 </template>
 <script lang="ts">
+
+
   import UserComp from '@/components/partials/UserComp';
+  import {userModule} from '@/store/users';
   import {User} from '@/types/dto';
-  import {Component, Prop, Vue} from 'vue-property-decorator';
-  import {Mutation, State} from 'vuex-class';
+  import {Component, Vue} from 'vue-property-decorator';
+  // This is a store module class defined using vuex-module-decorators
 
   /**
    * List of posts
@@ -22,14 +25,12 @@
 
     private id: string = 'UserPage';
 
-    @State
-    private readonly users!: User[];
-
-    @Mutation
-    private readonly setUsers!: Function;
+    private get users(): User[] {
+      return userModule.users;
+    }
 
     private async created(): Promise<void> {
-      this.setUsers(await this.$api.getUsers());
+      userModule.setUsers(await this.$api.getUsers());
     }
   }
 </script>
