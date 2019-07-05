@@ -9,12 +9,12 @@ yarn install
 
 ### Stack
 The technologies stack used in project:
-- Typescript
-- Vue, Vuex, VueRouter, lines-logger
-- Vuex-class, Vue-property-decorator
-- Webpack and loaders
-- Sass
-- tslint-microsoft-contrib, stylelint, eslint-plugin-vue
+- [typescript](https://github.com/microsoft/TypeScript)
+- [vue](https://github.com/vuejs/vue), [vuex](https://github.com/vuejs/vuex), [vueRouter](https://github.com/vuejs/vue-router), [lines-logger](https://github.com/akoidan/lines-logger)
+- [vuex-module-decorators](https://github.com/championswimmer/vuex-module-decorators), [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator)
+- [webpack](https://github.com/webpack) and its loaders
+- [sass](https://github.com/sass/sass)
+- [tslint-microsoft-contrib](https://github.com/microsoft/tslint-microsoft-contrib), [stylelint](https://github.com/stylelint/stylelint), [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)
 
 It's highly recommended to get familiar with each of this technologies before starting working on this project.
 
@@ -25,7 +25,7 @@ Webpack-dev-server is used for development purposes with hot reloading, every ti
 To build project for production take a look at [production.json](production.json) and run `npm run prod`. This generates static files in `./dist` directory.
 
 ### Build configuration
-[webpack.config.js](webpack.config.js) is used to build project. Take a look at it to understand how source files are being processed. Its start point is `entry: ['./src/main.ts']`. Everything is imported in this files are being processed by section `loaders`.
+[webpack.config.js](webpack.config.js) is used to build project. Take a look at it to understand how source files are being processed. Its start point is `entry: ['./src/user.ts']`. Everything is imported in this files are being processed by section `loaders`.
 development.json and production.json have the following format:
 ```javascript
 {
@@ -50,31 +50,14 @@ If you're using git as your version control tool `window.GIT_VERSION` will be ex
 ### Components style
 This project uses [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) (that's has a dependency [vue-class-component](https://github.com/vuejs/vue-class-component)) [vuex-class](https://github.com/ktsn/vuex-class). You should write your component as the following:
 
-```javascript
+```typescript
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator'
 import Component from 'vue-class-component'
-import {
-  State,
-  Getter,
-  Action,
-  Mutation,
-  namespace
-} from 'vuex-class'
+import {userModule} from '@/store/users'; // vuex module example
 
 @Component
 export class MyComp extends Vue {
 
-  @State
-  private foo!: number;
-
-  @Getter
-  private readonly bar!: number;
-
-  @Action
-  private readonly baz!: Function;
-
-  @Mutation
-  private readonly qux!: Function;
 
   @Prop(Number) readonly propA!: number;
 
@@ -84,13 +67,14 @@ export class MyComp extends Vue {
   @Emit()
   changedProps() {}
 
-  created () {
-    this.stateFoo // -> store.state.foo
-    this.stateBar // -> store.state.bar
-    this.getterFoo // -> store.getters.foo
-    this.actionFoo({ value: true }) // -> store.dispatch('foo', { value: true })
-    this.mutationFoo({ value: true }) // -> store.commit('foo', { value: true })
-    this.moduleGetterFoo // -> store.getters['path/to/module/foo']
+  get users() {
+    // example mounting state from vuex store module
+    return userModule.users;
+  }
+
+  created() {
+    // example of settings store from ajax
+    userModule.setUsers(await this.$api.getUsers());
   }
 }
 ```

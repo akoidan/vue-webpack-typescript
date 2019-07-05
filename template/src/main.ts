@@ -1,10 +1,10 @@
 import App from '@/components/App';
+import {store} from '@/store/store';
 import '@/utils/classComponentHooks';
 import {GIT_HASH, IS_DEBUG} from '@/utils/consts';
 import '@/utils/mixins';
 import {router} from '@/utils/router';
 import {api} from '@/utils/singletons';
-import {store} from '@/utils/store';
 import Vue from 'vue';
 
 window.GIT_VERSION = GIT_HASH;

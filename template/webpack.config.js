@@ -9,6 +9,7 @@ const sassVars = require('./src/variables')
 const child_process = require('child_process');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const sasFunctions = {
   "get($keys)": function (keys) {
@@ -131,6 +132,7 @@ module.exports = (env, argv) => {
     ];
   } else if (isDev) {
     sasscPlugins = ["style-loader", 'css-loader?sourceMap', sassLoader];
+    plugins.push(new HardSourceWebpackPlugin())
   }
   plugins.push(new webpack.DefinePlugin({
     CONSTS: JSON.stringify(options),
