@@ -7,9 +7,7 @@ const sass = require("node-sass");
 const sassUtils = require("node-sass-utils")(sass);
 const sassVars = require('./src/variables')
 const child_process = require('child_process');
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const sasFunctions = {
   "get($keys)": function (keys) {
@@ -132,12 +130,13 @@ module.exports = (env, argv) => {
     ];
   } else if (isDev) {
     sasscPlugins = ["style-loader", 'css-loader?sourceMap', sassLoader];
+    const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
     plugins.push(new HardSourceWebpackPlugin())
   }
   plugins.push(new webpack.DefinePlugin({
     CONSTS: JSON.stringify(options),
   }));
-  const conf = {
+  let conf = {
     entry,
     plugins,
     resolve: {
@@ -212,8 +211,12 @@ module.exports = (env, argv) => {
       ],
     },
   };
+  if (isProd) {
+    const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+    const smp = new SpeedMeasurePlugin();
+    conf = smp.wrap(conf);
+  }
 
-  const smp = new SpeedMeasurePlugin();
-  return smp.wrap(conf);
+  return conf;
 };
 
