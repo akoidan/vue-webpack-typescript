@@ -130,6 +130,7 @@ module.exports = (env, argv) => {
     ];
   } else if (isDev) {
     sasscPlugins = ["style-loader", 'css-loader?sourceMap', sassLoader];
+    //conflicts with speedmeasure
     const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
     plugins.push(new HardSourceWebpackPlugin())
   }
