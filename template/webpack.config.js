@@ -105,12 +105,14 @@ module.exports = (env, argv) => {
     plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["./dist"]}));
     const MiniCssExtractPlugin = require("mini-css-extract-plugin");
     const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+    const CompressionPlugin = require('compression-webpack-plugin');
     const SriPlugin = require('webpack-subresource-integrity');
     plugins.push(new MiniCssExtractPlugin());
     plugins.push(new SriPlugin({
       hashFuncNames: ['sha256', 'sha384'],
       enabled: true,
     }))
+    plugins.push(new CompressionPlugin())
     plugins.push(new OptimizeCSSAssetsPlugin({
       cssProcessorOptions: {
         map: {
