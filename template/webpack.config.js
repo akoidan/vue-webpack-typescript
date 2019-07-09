@@ -134,7 +134,13 @@ module.exports = (env, argv) => {
     sasscPlugins = ["style-loader", 'css-loader?sourceMap', sassLoader];
     //conflicts with speedmeasure
     const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-    plugins.push(new HardSourceWebpackPlugin())
+    plugins.push(new HardSourceWebpackPlugin({
+      environmentHash: {
+        root: process.cwd(),
+        directories: [],
+        files: ['package.json', `${argv.mode}.json`],
+      }
+    }))
   }
   plugins.push(new webpack.DefinePlugin({
     CONSTS: JSON.stringify(options),
