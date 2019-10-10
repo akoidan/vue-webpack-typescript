@@ -72,12 +72,10 @@ This project uses [vue-property-decorator](https://github.com/kaorun343/vue-prop
 
 ```typescript
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator'
-import Component from 'vue-class-component'
 import {userModule} from '@/store/users'; // vuex module example
 
 @Component
 export class MyComp extends Vue {
-
 
   @Prop(Number) readonly propA!: number;
 

@@ -90,7 +90,7 @@ module.exports = (env, argv) => {
       emitErrors: false,
     }),
   ];
-  const entry = ['./src/main.ts'];
+  const entry = ['reflect-metadata', './src/main.ts'];
   const sassLoader = {
     loader: "sass-loader",
     options: {
@@ -133,14 +133,14 @@ module.exports = (env, argv) => {
   } else if (isDev) {
     sasscPlugins = ["style-loader", 'css-loader?sourceMap', sassLoader];
     //conflicts with speedmeasure
-    const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-    plugins.push(new HardSourceWebpackPlugin({
-      environmentHash: {
-        root: process.cwd(),
-        directories: [],
-        files: ['package.json', `${argv.mode}.json`],
-      }
-    }))
+    // const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+    // plugins.push(new HardSourceWebpackPlugin({
+    //   environmentHash: {
+    //     root: process.cwd(),
+    //     directories: [],
+    //     files: ['package.json', `${argv.mode}.json`],
+    //   }
+    // }))
   }
   plugins.push(new webpack.DefinePlugin({
     CONSTS: JSON.stringify(options),

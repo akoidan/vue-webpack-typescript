@@ -13,10 +13,12 @@
       </router-link>
     </div>
     <router-view />
+    <app-checkbox value="asd" />
   </div>
 </template>
 
 <script lang="ts">
+  import AppCheckbox from '@/components/ui/AppCheckbox';
   import {mobile} from '@/utils/singletons';
   import variablesJson from '@/variables.json';
   import {Component, Vue} from 'vue-property-decorator';
@@ -24,7 +26,9 @@
   /**
    * App comp
    */
-  @Component
+  @Component({
+    components: {AppCheckbox}
+  })
   export default class App extends Vue {
     private i: number = 0;
     private a: number[] = [];

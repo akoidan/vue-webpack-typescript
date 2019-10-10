@@ -1,38 +1,47 @@
 <template>
   <div>
-    <input v-bind:checked="value" @change='onchange' ref="checkbox"
-           type="checkbox" :id="uniqueId">
-    <label :for="uniqueId"></label>
+    <input
+      :id="uniqueId"
+      ref="checkbox"
+      type="checkbox"
+      :checked="value"
+      @change="onchange"
+    >
+    <label :for="uniqueId" />
   </div>
 </template>
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
-  import {getUniqueId} from "../../utils/utils";
+  import {getUniqueId} from '@/utils/getUniqueId';
+  import {Component, Prop, Vue} from 'vue-property-decorator';
 
+  /**
+   * Custom checkbox element
+   */
   @Component
   export default class AppCheckbox extends Vue {
 
-    $refs: {
+    @Prop()
+    public readonly value!: boolean;
+
+    public $refs!: {
       checkbox: HTMLInputElement;
     };
 
-    @Prop() value: boolean;
+    private uniqueId!: string;
 
-    onchange(e: Event) {
+    private onchange(e: Event): void {
       this.$emit('input', this.$refs.checkbox.checked);
     }
 
-    uniqueId: string;
-
-    created() {
+    private created(): void {
       this.uniqueId = `checkboxN${getUniqueId()}`;
     }
   }
 </script>
 
 <style lang="sass" scoped>
-  @import "@/assets/sass/mixins"
-  @import "@/assets/sass/variables"
+  @import "~@/assets/sass/mixins"
+  @import "~@/assets/sass/variables"
 
   input
     display: none

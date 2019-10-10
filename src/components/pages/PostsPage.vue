@@ -5,10 +5,10 @@
       :key="post.id"
     >
       <h4>
-        \{{ post.title }}
+        {{ post.title }}
       </h4>
       <pre>
-        \{{ post.body }}
+        {{ post.body }}
       </pre>
     </div>
   </div>
