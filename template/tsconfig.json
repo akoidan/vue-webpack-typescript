@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "plugins": [{"name": "typescript-tslint-plugin"}], // webstorm/vscode highlight vue files with tslint
     "resolveJsonModule": true,
     "paths": {
       "@/*": ["src/*"]

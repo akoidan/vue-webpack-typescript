@@ -58,6 +58,7 @@
     "is-mobile": "^2.0.0",
     "lines-logger": "^1.0.6",
     "ts-polyfill": "^3.3.3",
+    "typescript-tslint-plugin": "^0.5.4",
     "vue": "^2.6.10",
     "vue-property-decorator": "^8.0.0",
     "vue-router": "^3.0.2",
