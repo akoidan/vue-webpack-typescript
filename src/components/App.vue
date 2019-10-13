@@ -13,7 +13,6 @@
       </router-link>
     </div>
     <router-view />
-    <app-checkbox value="asd" />
   </div>
 </template>
 

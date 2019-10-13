@@ -94,14 +94,16 @@ module.exports = (env, argv) => {
   const sassLoader = {
     loader: "sass-loader",
     options: {
-      functions: sasFunctions,
-      indentedSyntax: true,
-      includePaths: [path.resolve(__dirname, 'src/assets/sass')]
+      sassOptions: {
+        functions: sasFunctions,
+        indentedSyntax: true,
+        includePaths: [path.resolve(__dirname, 'src/assets/sass')]
+      },
     }
   };
   if (isProd) {
     entry.unshift(  'ts-polyfill'); // ie 11 support and es5 syntaxt
-    const CleanWebpackPlugin = require('clean-webpack-plugin');
+    const {CleanWebpackPlugin} = require('clean-webpack-plugin');
     plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["./dist"]}));
     const MiniCssExtractPlugin = require("mini-css-extract-plugin");
     const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -205,7 +207,7 @@ module.exports = (env, argv) => {
           options: {
             outputPath: 'font',  // put fonts into separate folder, so we don't have millions of files in root of dist
             name,
-            publicPath: options.PUBLIC_PATH ? options.PUBLIC_PATH + '/font' : null
+            publicPath: options.PUBLIC_PATH ? options.PUBLIC_PATH + '/font' : options.PUBLIC_PATH
           }
         },
         {

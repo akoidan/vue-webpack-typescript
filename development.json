@@ -1,5 +1,5 @@
 {
   "IS_DEBUG": true,
-  "PUBLIC_PATH": null,
+  "PUBLIC_PATH": "",
   "API_URL": "https://jsonplaceholder.typicode.com"
 }

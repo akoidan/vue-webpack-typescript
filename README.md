@@ -1,3 +1,6 @@
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/akoidan/vue-webpack-typescript)[![HitCount](http://hits.dwyl.io/akoidan/vue-webpack-typescript.svg)](http://hits.dwyl.io/akoidan/vue-webpack-typescript)
+
+
 This project is generated via [vue-webpack-minimal](https://github.com/akoidan/vue-webpack-minimal)
 
 ## Why would I use this?:
