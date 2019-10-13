@@ -10,10 +10,10 @@
     "clean": "rm -r ./node_modules/.cache"
   },
   "devDependencies": {
-    "@types/reflect-metadata": "^0.1.0",
     "@types/chai": "^4.1.7",
     "@types/chai-as-promised": "^7.1.0",
     "@types/mocha": "^5.2.6",
+    "@types/reflect-metadata": "^0.1.0",
     "@typescript-eslint/parser": "^1.6.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
@@ -58,6 +58,7 @@
     "is-mobile": "^2.0.0",
     "lines-logger": "^1.0.6",
     "reflect-metadata": "^0.1.13",
+    "ts-optchain": "^0.1.8",
     "ts-polyfill": "^3.3.3",
     "typescript-tslint-plugin": "^0.5.4",
     "vue": "^2.6.10",
