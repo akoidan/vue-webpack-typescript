@@ -71,27 +71,28 @@ If you're using git as your version control tool `window.GIT_VERSION` will be ex
 This project uses [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) (that's has a dependency [vue-class-component](https://github.com/vuejs/vue-class-component)) [vuex-class](https://github.com/ktsn/vuex-class). You should write your component as the following:
 
 ```typescript
-import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator'
-import {userModule} from '@/store/users'; // vuex module example
+import { Vue, Component, Prop, Watch, Emit, Ref } from 'vue-property-decorator'
+import {userModule, UserState} from '@/store/users'; // vuex module example
+
 
 @Component
 export class MyComp extends Vue {
+  
+  @Ref
+  button: HTMLInputElement;
 
-  @Prop(Number) readonly propA!: number;
+  @Prop readonly propA!: number;
+  
+  @UserState
+  public readonly users!: User[];
 
   @Watch('child')
   onChildChanged(val: string, oldVal: string) { }
 
-  @Emit()
+  @Emit() 
   changedProps() {}
 
-  get users() {
-    // example mounting state from vuex store module
-    return userModule.users;
-  }
-
-  created() {
-    // example of settings store from ajax
+  async created() {
     userModule.setUsers(await this.$api.getUsers());
   }
 }
@@ -110,7 +111,7 @@ export class MyComp extends Vue {
 </template>
 
 <script lang="ts">
-  import {State} from '@/utils/storeHolder';
+  import {State} from '@/store/users';
   import {Component, Prop, Vue, Watch, Ref} from 'vue-property-decorator';
 
   @Component
