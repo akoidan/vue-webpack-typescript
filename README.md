@@ -17,20 +17,6 @@ This project is generated via [vue-webpack-minimal](https://github.com/akoidan/v
 # Typescript Vue project starter.
 
 ## Stack
-
-
-## To get started:
-
-```bash
-npx vue-cli init deathangel908/vue-webpack-minimal project-directory
-```
-### To get started install dependencies first:
-```bash
-yarn install
-# npm install # if you don't have yarn
-```
-
-### Stack
 The technologies stack used in project:
 - [typescript](https://github.com/microsoft/TypeScript)
 - [vue](https://github.com/vuejs/vue), [vuex](https://github.com/vuejs/vuex), [vueRouter](https://github.com/vuejs/vue-router), [lines-logger](https://github.com/akoidan/lines-logger)
@@ -41,13 +27,19 @@ The technologies stack used in project:
 
 It's highly recommended to get familiar with each of this technologies before starting working on this project.
 
-### Development setup
+## To get started install dependencies first:
+```bash
+yarn install
+# npm install # if you don't have yarn
+```
+
+## Development setup
 Webpack-dev-server is used for development purposes with hot reloading, every time you save the file it will automatically apply. This doesn't affect node running files, only watching files. So files like webpack.config.js or development.json aren't affected. Take a look at [development.json](development.json). To run dev-server use `npm run dev`. You can navigate to http://localhost:9084
 
-### Production setup
+## Production setup
 To build project for production take a look at [production.json](production.json) and run `npm run prod`. This generates static files in `./dist` directory.
 
-### Build configuration
+## Build configuration
 [webpack.config.js](webpack.config.js) is used to build project. Take a look at it to understand how source files are being processed. Its start point is `entry: ['./src/user.ts']`. Everything is imported in this files are being processed by section `loaders`.
 development.json and production.json have the following format:
 ```json
@@ -58,19 +50,19 @@ development.json and production.json have the following format:
 }
 ```
 
-### Global variables
+## Global variables
  - Every vue component has injected `.$logger` object, to log something to console use `this.logger.log('Hello {}', {1:'world'})();` Note calling function again in the end. Logger is disabled for production. For more info visit [lines-logger](https://github.com/akoidan/lines-logger)
  - Every component has an injected `$.api` object. You should do http calls with `$this.$api`. If you prefer redux style you can call http in vuex actions.
 
-### Linting
+## Linting
  - Typescript is linted with [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib)
  - Sass is linted with [stylelint](https://github.com/stylelint/stylelint)
  - Vue files are linted with [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)
 
-### Built version
+## Built version
 If you're using git as your version control tool `window.GIT_VERSION` will be exported to global scope
 
-### Components style
+## Components style
 This project uses [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) (that's has a dependency [vue-class-component](https://github.com/vuejs/vue-class-component)) [vuex-class](https://github.com/ktsn/vuex-class). You should write your component as the following:
 
 ```typescript
@@ -101,7 +93,7 @@ export class MyComp extends Vue {
 }
 ```
 
-## Webstorm
+## WebStorm
 
 ### Set template
  1. New
