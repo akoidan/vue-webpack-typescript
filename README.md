@@ -52,9 +52,9 @@ To build project for production take a look at [production.json](production.json
 development.json and production.json have the following format:
 ```json
 {
-  "IS_DEBUG": true, // turns off logs for production
-  "PUBLIC_PATH": null, // specifies public url for images/js/css/fonts instead of relative path like './main.js'
-  "API_URL": "https://jsonplaceholder.typicode.com" // public http api url
+  "IS_DEBUG": "true/false: turns off logs for production",
+  "PUBLIC_PATH": "specifies public url for images/js/css/fonts instead of relative path like './main.js",
+  "API_URL": "public http api url e.g. https://jsonplaceholder.typicode.com"
 }
 ```
 
