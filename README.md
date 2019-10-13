@@ -96,3 +96,37 @@ export class MyComp extends Vue {
   }
 }
 ```
+
+## Webstorm
+
+### Set template
+ 1. New
+ 2. Edit files templates...
+ 3. Vue single file component
+
+```vue
+<template>
+    <div>#[[$END$]]#</div>
+</template>
+
+<script lang="ts">
+  import {State} from '@/utils/storeHolder';
+  import {Component, Prop, Vue, Watch, Ref} from 'vue-property-decorator';
+
+  @Component
+  export default class ${COMPONENT_NAME} extends Vue {
+   
+  }
+</script>
+<style lang="sass" scoped>
+
+</style>
+```
+
+### Disable tslint
+Tslint is already included to tsconfig so IDEs like webstorm would support linting
+
+ 1. Settings
+ 2. Typescript
+ 3. Tslint
+ 4. Disable tslint

@@ -12,7 +12,7 @@
 
 
   import UserComp from '@/components/partials/UserComp';
-  import {userModule} from '@/store/users';
+  import {userModule, UserState} from '@/store/users';
   import {User} from '@/types/dto';
   import {Component, Vue} from 'vue-property-decorator';
   // This is a store module class defined using vuex-module-decorators
@@ -23,11 +23,10 @@
   @Component({components: {UserComp}})
   export default class UsersPage extends Vue {
 
-    private id: string = 'UserPage';
+    @UserState
+    public users!: User[];
 
-    private get users(): User[] {
-      return userModule.users;
-    }
+    private id: string = 'UserPage';
 
     private async created(): Promise<void> {
       userModule.setUsers(await this.$api.getUsers());

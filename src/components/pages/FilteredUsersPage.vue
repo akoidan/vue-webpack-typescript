@@ -15,7 +15,7 @@
   </div>
 </template>
 <script lang="ts">
-  import {userModule} from '@/store/users';
+  import {userModule, UserState} from '@/store/users';
   import {User} from '@/types/dto';
   import {Component, Vue} from 'vue-property-decorator';
   // This is a store module class defined using vuex-module-decorators
@@ -26,11 +26,10 @@
   @Component
   export default class FilteredUsersPage extends Vue {
 
-    private id: string = 'FilteredUsersPage';
+    @UserState
+    public readonly filteredUsers!: User[];
 
-    private get filteredUsers(): User[] {
-      return userModule.filteredUsers;
-    }
+    private id: string = 'FilteredUsersPage';
 
     private async created(): Promise<void> {
       userModule.setUsers(await this.$api.getUsers());
