@@ -10,8 +10,37 @@
     <meta property="og:site_name" content="MyAwesomeSite"/>
     <meta property="og:description" content="MyAwesomeSite descr"/>
     <meta http-equiv="Pragma" content="no-cache">
-    <% if (htmlWebpackPlugin.files.jsIntegrity) { %><script crossorigin="<%= webpackConfig.output.crossOriginLoading %>" integrity="<%= htmlWebpackPlugin.files.jsIntegrity[0] %>" type="text/javascript" src="<%= htmlWebpackPlugin.files.js[0] %>"></script><% } else{ %><script crossorigin="<%= webpackConfig.output.crossOriginLoading %>" type="text/javascript" src="<%= htmlWebpackPlugin.files.js[0] %>"></script><% } %>
-    <% for (key in htmlWebpackPlugin.files.css) { %><link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.files.css[key] %>"><% } %>
+    <% for (var index in htmlWebpackPlugin.files.js) { %>
+        <% if (htmlWebpackPlugin.files.jsIntegrity) { %><
+        <script
+                async
+                src="<%= htmlWebpackPlugin.files.js[index] %>"
+                integrity="<%= htmlWebpackPlugin.files.jsIntegrity[index] %>"
+                crossorigin="<%= webpackConfig.output.crossOriginLoading %>"
+        ></script>
+        <% }  else { %>
+            <script async
+                    crossorigin="<%= webpackConfig.output.crossOriginLoading %>"
+                    type="text/javascript"
+                    src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
+        <% } %>
+    <% } %>
+    <% for (var index in htmlWebpackPlugin.files.css) { %>
+        <% if (htmlWebpackPlugin.files.cssIntegrity) { %><
+        <link
+                rel="stylesheet"
+                href="<%= htmlWebpackPlugin.files.css[index] %>"
+                integrity="<%= htmlWebpackPlugin.files.cssIntegrity[index] %>"
+                crossorigin="<%= webpackConfig.output.crossOriginLoading %>"
+        />
+        <% }  else { %>
+            <link
+                    rel="stylesheet"
+                    href="<%= htmlWebpackPlugin.files.css[index] %>"
+                    crossorigin="<%= webpackConfig.output.crossOriginLoading %>"
+            />
+        <% } %>
+    <% } %>
 </head>
 <body><div id="app"></div></body>
 </html>

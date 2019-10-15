@@ -84,12 +84,28 @@ module.exports = (env, argv) => {
   }
   plugins = [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({template: 'src/index.ejs', inject: false}),
     new StyleLintPlugin({
       files: ['**/*.vue', '**/*.sass'],
       emitErrors: false,
     }),
   ];
+  if (options.IS_DEBUG) {
+    plugins.push(new HtmlWebpackPlugin({
+      template: 'src/index.ejs',
+      inject: false
+    }))
+  } else {
+    plugins.push(new HtmlWebpackPlugin({
+      template: 'src/index.ejs', inject: false, minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      }
+    }));
+  }
   const entry = ['reflect-metadata', './src/main.ts'];
   const sassLoader = {
     loader: "sass-loader",
@@ -108,12 +124,12 @@ module.exports = (env, argv) => {
     const MiniCssExtractPlugin = require("mini-css-extract-plugin");
     const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
     const CompressionPlugin = require('compression-webpack-plugin');
-    const SriPlugin = require('webpack-subresource-integrity');
     plugins.push(new MiniCssExtractPlugin());
+    const SriPlugin = require('webpack-subresource-integrity');
     plugins.push(new SriPlugin({
       hashFuncNames: ['sha256', 'sha384'],
       enabled: true,
-    }))
+    }));
     plugins.push(new CompressionPlugin())
     plugins.push(new OptimizeCSSAssetsPlugin({
       cssProcessorOptions: {
