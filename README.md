@@ -126,3 +126,7 @@ Tslint is already included to tsconfig so IDEs like webstorm would support linti
  2. Typescript
  3. Tslint
  4. Disable tslint
+
+
+### TODO
+css integrity doesn't work
