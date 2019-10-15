@@ -119,6 +119,7 @@ module.exports = (env, argv) => {
   };
   if (isProd) {
     entry.unshift(  'ts-polyfill'); // ie 11 support and es5 syntaxt
+    entry.unshift('./src/polyfills/inputEvent.ts'); // edge 15 reflect-emtadata
     const {CleanWebpackPlugin} = require('clean-webpack-plugin');
     plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["./dist"]}));
     const MiniCssExtractPlugin = require("mini-css-extract-plugin");
