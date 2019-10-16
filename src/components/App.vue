@@ -40,10 +40,6 @@
        this.$logger.log('Variable in Js example {}', variablesJson.bodyHeight)();
     }
 
-    private test(e: InputEvent) {
-
-    }
-
     private add(): void {
       const items: number = this.i++;
       this.a.splice(1, 0, items);
