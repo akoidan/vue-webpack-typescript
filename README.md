@@ -129,4 +129,5 @@ Tslint is already included to tsconfig so IDEs like webstorm would support linti
 
 
 ### TODO
-css integrity doesn't work
+ - css integrity doesn't work
+ - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
