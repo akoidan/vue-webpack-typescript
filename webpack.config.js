@@ -195,6 +195,7 @@ module.exports = (env, argv) => {
             {
               loader: 'ts-loader',
               options: {
+                configFile: options.IS_DEBUG ? 'tsconfig.esnext.json' : 'tsconfig.json',
                 appendTsSuffixTo: [/\.vue$/]
               }
             },
