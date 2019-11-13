@@ -4,4 +4,6 @@ yarn.lock
 .idea
 yarn-error.log
 dist
+cypress/screenshots
+cypress/videos
 package-lock.json

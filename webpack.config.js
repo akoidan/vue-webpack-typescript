@@ -240,11 +240,11 @@ module.exports = (env, argv) => {
       ],
     },
   };
-  if (isProd) {
-    const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-    const smp = new SpeedMeasurePlugin();
-    conf = smp.wrap(conf);
-  }
+  // if (isProd) {
+  //   const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+  //   const smp = new SpeedMeasurePlugin();
+  //   conf = smp.wrap(conf);
+  // }
 
   return conf;
 };

@@ -236,6 +236,11 @@ development.json and production.json have the following format:
   }
   ```
 
+## Ignore errors:
+ - Exclude from coverage: `/* istanbul ignore if */` [guide](https://github.com/gotwarlost/istanbul/blob/master/ignoring-code-for-coverage.md)
+ - ignore tslint error: `// tslint:disable-next-line:variable-name` [guide](https://palantir.github.io/tslint/usage/rule-flags/)
+ - ignore typescript error: `// @ts-ignore: next-line` [guide](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments)
+ - ignore stylelint error: `/* stylelint-disable-line */` [guide](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md) 
 # TODO
- - css integrity doesn't work
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
+ - https://github.com/bahmutov/cypress-vue-unit-test

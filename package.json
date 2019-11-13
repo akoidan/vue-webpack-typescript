@@ -3,15 +3,12 @@
   "scripts": {
     "build": "webpack --progress --mode production ",
     "start": "webpack-dev-server --host 0.0.0.0 --mode development --hot --port 9084",
-    "test": "mocha",
-    "report": "nyc mocha",
-    "lcov": "nyc report --reporter=text-lcov > coverage.lcov",
-    "codecov": "codecov",
+    "test": "CYPRESS_baseUrl=http://localhost:9084 ./node_modules/.bin/webpack --mode production && \"start-server-and-test './node_modules/.bin/http-server -p 9084 ./dist' 9084 './node_modules/.bin/cypress run --record'\"",
     "clean": "rm -r ./node_modules/.cache"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "4.1.0",
-    "cypress": "3.6.1",
+    "@istanbuljs/nyc-config-typescript": "^0.1.3",
     "@types/chai": "4.2.5",
     "@types/chai-as-promised": "7.1.2",
     "@types/mocha": "5.2.7",
@@ -20,15 +17,16 @@
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
     "clean-webpack-plugin": "3.0.0",
-    "codecov": "3.6.1",
     "compression-webpack-plugin": "3.0.0",
     "css-loader": "3.2.0",
+    "cypress": "3.6.1",
     "eslint": "6.6.0",
     "eslint-loader": "3.0.2",
     "eslint-plugin-vue": "6.0.1",
     "file-loader": "4.2.0",
     "hard-source-webpack-plugin": "0.13.1",
     "html-webpack-plugin": "3.2.0",
+    "http-server": "^0.11.1",
     "mini-css-extract-plugin": "0.8.0",
     "mocha": "6.2.2",
     "node-sass": "4.13.0",
@@ -36,7 +34,9 @@
     "nyc": "14.1.1",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "sass-loader": "8.0.0",
+    "source-map-support": "^0.5.16",
     "speed-measure-webpack-plugin": "1.3.1",
+    "start-server-and-test": "^1.10.6",
     "style-loader": "1.0.0",
     "stylelint": "11.1.1",
     "stylelint-order": "3.1.1",
@@ -59,6 +59,8 @@
     "webpack-subresource-integrity": "1.3.4"
   },
   "dependencies": {
+    "@cypress/code-coverage": "^1.10.1",
+    "@testing-library/cypress": "^5.0.2",
     "is-mobile": "2.1.0",
     "lines-logger": "^1.3.0",
     "reflect-metadata": "0.1.13",
@@ -70,6 +72,8 @@
     "vuex-module-decorators": "0.11.0"
   },
   "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
     "extension": [
       ".ts"
     ],
@@ -78,7 +82,6 @@
     ],
     "reporter": [
       "html"
-    ],
-    "all": true
+    ]
   }
 }
