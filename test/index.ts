@@ -1,10 +1,13 @@
 import {assert, expect} from 'chai';
+import {getUniqueId} from "../src/utils/getUniqueId";
 
 /* tslint:disable:no-unused-expression */
 const test = async () => {
-  await describe('test', async () => {
-    it('1=1', async () => {
-      expect(1).to.be.equal(1);
+  await describe('getUniqueId', async () => {
+    it('should inc', async () => {
+      let res = getUniqueId();
+      let res2 = getUniqueId();
+      expect(res2).to.be.equal(res + 1);
     });
   });
   run();

@@ -21,7 +21,6 @@
     "pretty": true,
     "sourceMap": true,
     "strict": true,
-    "module": "es2015",
     "moduleResolution": "node"
   },
   "include": ["./src/", "**/*.vue"],
