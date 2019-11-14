@@ -18,8 +18,9 @@ This project is generated via [vue-webpack-minimal](https://github.com/akoidan/v
 ## Run project
 ```bash
 yarn install
-yarn start
-# open http://localhost:9084
+yarn start # this will serve project on http://localhost:9084
+yarn test # this will run e2e test
+./node_modules/.bin/mocha # this will run unit test
 ```
 
 ## WebStorm IDE

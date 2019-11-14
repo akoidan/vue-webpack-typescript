@@ -3,7 +3,9 @@
   "scripts": {
     "build": "webpack --progress --mode production ",
     "start": "webpack-dev-server --host 0.0.0.0 --mode development --hot --port 9084",
-    "test": "CYPRESS_baseUrl=http://localhost:9084 ./node_modules/.bin/webpack --mode production && \"start-server-and-test './node_modules/.bin/http-server -p 9084 ./dist' 9084 './node_modules/.bin/cypress run --record'\"",
+    "start-server": "npm start",
+    "test": "CYPRESS_baseUrl=http://localhost:9084 start-server-and-test 'http-server -p 9084 ./dist' 9084 'cypress run'",
+    "ci": "start-server-and-test start-server http://localhost:8080 test",
     "clean": "rm -r ./node_modules/.cache"
   },
   "devDependencies": {
