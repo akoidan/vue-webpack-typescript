@@ -19,7 +19,7 @@ This project is generated via [vue-webpack-minimal](https://github.com/akoidan/v
 ```bash
 yarn install
 yarn start # this will serve project on http://localhost:9084
-yarn test # this will run e2e test
+yarn run e2e # this will run e2e test
 ./node_modules/.bin/mocha # this will run unit test
 ```
 
@@ -66,9 +66,9 @@ Tslint is already included to tsconfig so IDEs like webstorm would support linti
 ```typescript
 const a: number = 3;
 ```
-  - To get started with ts I would recommend watching [this](https://www.youtube.com/watch?v=ahCwqrYpIuM) 10 minute video  
-  - To get started with decorators I recommend [this video](https://www.youtube.com/watch?v=O6A-u_FoEX8) 
-  - For advanced learning I recommend checking [what's new](https://www.typescriptlang.org/docs/handbook/release-notes/overview.html) in every version of typescript. You may find a lot of interesting things.
+   - To get started with ts I would recommend watching [this](https://www.youtube.com/watch?v=ahCwqrYpIuM) 10 minute video  
+   - To get started with decorators I recommend [this video](https://www.youtube.com/watch?v=O6A-u_FoEX8) 
+   - For advanced learning I recommend checking [what's new](https://www.typescriptlang.org/docs/handbook/release-notes/overview.html) in every version of typescript. You may find a lot of interesting things.
 - [vue](https://vuejs.org/v2/guide/) allows to write [SFC](https://vuejs.org/v2/guide/single-file-components.html) that would generate html to the page. Vue is only responsible for UI layer, this is not an MVC framework. The only thing that it does is creates `<div></div` codeblocks. Everything else is handled by libraries below .
 - [vuex](https://vuex.vuejs.org/) - state management pattern. It allows multiple vue components to have single model/data (source of truth). So if you have a user object like `{age: 3, name: 'eric'}` it can be accessible in multiple places. This is redux/mobx analogue for React.
 - [vueRouter](https://router.vuejs.org/guide/#html) - allows navigation across pages in vue, w/o sending get request to the server. And produces access to URL parameters. The examples of routes is [here](src/utils/router.ts):
