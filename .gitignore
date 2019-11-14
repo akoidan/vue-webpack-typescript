@@ -6,4 +6,7 @@ yarn-error.log
 dist
 cypress/screenshots
 cypress/videos
+cypress-coverage
 package-lock.json
+.nyc_output
+coverage
