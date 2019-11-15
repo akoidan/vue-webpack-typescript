@@ -5,5 +5,17 @@
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "sourceType": "module"
+  },
+  "rules": {
+    "vue/html-self-closing": [
+      "warn",
+      {
+        "html": {
+          "void": "always",
+          "normal": "always",
+          "component": "always"
+        }
+      }
+    ]
   }
 }
