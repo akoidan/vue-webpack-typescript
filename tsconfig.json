@@ -23,9 +23,12 @@
     "strict": true,
     "moduleResolution": "node"
   },
-  "include": ["./src/", "**/*.vue"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.vue"
+  ],
   "exclude": [
-    "./node_modules"
+    "node_modules"
   ]
 }
 

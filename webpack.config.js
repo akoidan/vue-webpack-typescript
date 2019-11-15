@@ -5,7 +5,8 @@ const name = '[name].[ext]?[sha512:hash:base64:6]';
 const webpack = require('webpack');
 const sass = require("node-sass");
 const sassUtils = require("node-sass-utils")(sass);
-const sassVars = require('./src/variables')
+const sassVars = require('./src/variables');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const child_process = require('child_process');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
@@ -67,6 +68,7 @@ const sasFunctions = {
 module.exports = (env, argv) => {
   let isProd = argv.mode === 'production';
   let isDev = argv.mode === 'development';
+  let isCoverage = argv.coverage === 'true';
   if (!isProd && !isDev) {
     throw `Pass --mode production/development, current ${argv.mode} is invalid`
   }
@@ -84,6 +86,11 @@ module.exports = (env, argv) => {
   }
   plugins = [
     new VueLoaderPlugin(),
+    // new ForkTsCheckerWebpackPlugin({
+    //   tslint: true,
+    //   tsconfig: options.IS_DEBUG ? 'tsconfig.esnext.json' : 'tsconfig.json',
+    //   vue: true
+    // }),
     new StyleLintPlugin({
       files: ['**/*.vue', '**/*.sass'],
       emitErrors: false,
@@ -118,7 +125,6 @@ module.exports = (env, argv) => {
     }
   };
   if (isProd) {
-    entry.unshift(  'ts-polyfill'); // ie 11 support and es5 syntaxt
     entry.unshift('./src/polyfills/inputEvent.ts'); // edge 15 reflect-emtadata
     const {CleanWebpackPlugin} = require('clean-webpack-plugin');
     plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["./dist"]}));
@@ -131,7 +137,7 @@ module.exports = (env, argv) => {
       hashFuncNames: ['sha256', 'sha384'],
       enabled: true,
     }));
-    plugins.push(new CompressionPlugin())
+    plugins.push(new CompressionPlugin());
     plugins.push(new OptimizeCSSAssetsPlugin({
       cssProcessorOptions: {
         map: {
@@ -189,19 +195,23 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.ts$/,
-          exclude: /node_modules/,
+          test: /(\.ts|\.js)$/,
           use: [
             {
-              loader: 'ts-loader',
+              loader: 'babel-loader',
               options: {
-                configFile: options.IS_DEBUG ? 'tsconfig.esnext.json' : 'tsconfig.json',
-                appendTsSuffixTo: [/\.vue$/]
-              }
+                presets: [
+                  '@babel/preset-env',
+                  'babel-preset-typescript-vue',
+                ],
+                plugins: [
+                  ["@babel/plugin-proposal-decorators", {"legacy": true}],
+                  ["@babel/plugin-proposal-class-properties", {"loose": true}]
+                ],
+                ...(isCoverage ? ['istanbul'] : []),
+                babelrc: false,
+              },
             },
-            {
-              loader: 'tslint-loader'
-            }
           ],
         },
         {
@@ -210,10 +220,10 @@ module.exports = (env, argv) => {
           loader: 'vue-loader',
         },
         {
-            enforce: 'pre',
-            test: /\.vue$/,
-            loader: 'eslint-loader',
-            exclude: /node_modules/
+          enforce: 'pre',
+          test: /\.vue$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules/
         },
         {
           test: /\.sass$/,

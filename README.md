@@ -201,7 +201,7 @@ logger.log('Hello world')(); // pay attention to () in the end.
 - [instanbul](https://istanbul.js.org/) - code coverage with cli interface, generates html cov report
 - [nyc](https://github.com/istanbuljs/nyc) - cli interface to instanbul
 - webpack-cli allows to run webpack from the command line
-- Loaders: css-loader, ts-loader, sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader
+- Loaders: css-loader, sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader
 - eslint-loader and eslint are used only for SFC templates. 
 - [ts-lint](https://palantir.github.io/tslint/rules/) stricts the rules for code (eslint/pylint) analogue
 - [tslint-microsoft-contrib](https://github.com/microsoft/tslint-microsoft-contrib#supported-rules) more awesome rules to ts-lint
@@ -222,6 +222,7 @@ logger.log('Hello world')(); // pay attention to () in the end.
 - [webpack-subresource-integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) ( generates integrity attribute on scripts tag)
 - stylelint-webpack-plugin (during webpack build find all the css and lints it via stylelint)
 - speed-measure-webpack-plugin shows information about compilation speed. Helps to find out why compilation goes slow.
+- babel, babel transpiles code into compatible with any browser, making instabul (code coverage) work and adding any additional features babel preset introduce [here's why you need babel with ts](https://iamturns.com/typescript-babel/)
 
 ## Configuration
  - Every vue component has injected `.$logger` object, to log something to console use `this.logger.log('Hello {}', {1:'world'})();` Note calling function again in the end. Logger is disabled for production. For more info visit [lines-logger](https://github.com/akoidan/lines-logger)

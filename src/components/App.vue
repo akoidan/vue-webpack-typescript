@@ -30,9 +30,9 @@
   })
   export default class App extends Vue {
     private i: number = 0;
-    private a: number[] = [];
+    private readonly a: number[] = [];
 
-    private id: string = 'App';
+    private readonly id: string = 'App';
 
     private readonly mobile: boolean = mobile;
 
