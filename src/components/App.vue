@@ -1,7 +1,7 @@
 <template>
   <div :class="{mobile}">
     <div class="top">
-      <img src="@/assets/images/logo.png">
+      <img src="@/assets/images/logo.png"/>
       <router-link to="/posts">
         Posts
       </router-link>
