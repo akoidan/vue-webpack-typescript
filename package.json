@@ -20,6 +20,7 @@
     "@types/mocha": "5.2.7",
     "@types/reflect-metadata": "0.1.0",
     "@typescript-eslint/parser": "2.7.0",
+    "babel-plugin-transform-typescript-metadata": "^0.2.2",
     "babel-preset-typescript-vue": "^1.0.2",
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",

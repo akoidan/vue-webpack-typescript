@@ -246,3 +246,4 @@ development.json and production.json have the following format:
 # TODO
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
  - https://github.com/bahmutov/cypress-vue-unit-test
+ - vue-property-decorator doesn't work with babel loader https://github.com/kaorun343/vue-property-decorator/issues/26 check why babel-plugin-transform-typescript-metadata doesn't
