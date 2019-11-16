@@ -3,9 +3,10 @@
   "scripts": {
     "build:prod": "webpack --progress --mode production ",
     "build:test": "webpack --progress --mode production --coverage true",
-    "start": "webpack-dev-server --host 0.0.0.0 --mode development --hot --port 9084",
-    "e2e": "CYPRESS_baseUrl=http://localhost:9084 start-server-and-test 'http-server -p 9084 ./dist' 9084 'cypress open'",
-    "unit": "mocha",
+    "start": "webpack-dev-server --host 0.0.0.0 --mode development --hot --port 9084 --coverage true",
+    "test:e2e": "CYPRESS_baseUrl=http://localhost:9084 start-server-and-test 'http-server -p 9084 ./dist' 9084 'cypress run'",
+    "test:debug": "CYPRESS_baseUrl=http://localhost:9084 cypress open",
+    "test:unit": "mocha",
     "lint:css": "stylelint 'src/**/*.vue' 'src/**/*.sass'",
     "lint:ts": "eslint --ext .ts,.vue src test cypress/integration",
     "fix": "eslint --fix --ext .ts,.vue src",

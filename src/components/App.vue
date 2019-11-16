@@ -18,21 +18,16 @@
 
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator";
-import AppCheckbox from "@/components/ui/AppCheckbox.vue";
-import {mobile} from "@/utils/singletons";
+import {mobile, sessionHolder} from "@/utils/singletons";
 import variablesJson from "@/variables.json";
-
-const start = 0;
 
 /**
  * App comp
  */
 @Component({
-  components: {AppCheckbox},
+  components: {},
 })
 export default class App extends Vue {
-  private i = start;
-
   private readonly a: number[] = [];
 
   private readonly id: string = "App";
@@ -40,14 +35,11 @@ export default class App extends Vue {
   private readonly mobile: boolean = mobile;
 
   private created(): void {
+    if (!sessionHolder.session) {
+      sessionHolder.session = "test";
+    }
     this.$logger.log("Variable in Js example {}", variablesJson.bodyHeight)();
-  }
-
-  private add(): void {
-    const items: number = this.i++;
-    const starI = 1;
-    const end = 0;
-    this.a.splice(starI, end, items);
+    sessionHolder.session = null;
   }
 }
 </script>

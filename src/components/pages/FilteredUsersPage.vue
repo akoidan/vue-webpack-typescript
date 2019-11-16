@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-cy="filtered-users-container">
     <div
       v-for="user in filteredUsers"
       :key="user.id"

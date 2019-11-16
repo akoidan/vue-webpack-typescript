@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-cy="users-container">
     <user-comp
       v-for="user in users"
       :key="user.id"

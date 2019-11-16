@@ -19,20 +19,9 @@ export class Xhr {
     return this.sendXhr<T>("GET", url);
   }
 
+  // istanbul ignore next
   public doPost<T>(url: string, body: object): Promise<T> {
     return this.sendXhr<T>("POST", url, JSON.stringify(body));
-  }
-
-  public postFormData<T>(url: string, params: {[index: string]: string|Blob}):
-      Promise<T> {
-    const formData: FormData = new FormData();
-    Object.keys(params).forEach((element: string) => {
-      if (params.hasOwnProperty(element)) { // eslint-disable-line no-prototype-builtins
-        formData.append(element, params[element]);
-      }
-    });
-
-    return this.sendXhr<T>("POST", url, formData);
   }
 
   private sendXhr<T>(method: string, url: string, body?: Document|BodyInit):
@@ -40,6 +29,7 @@ export class Xhr {
     const req: XMLHttpRequest = new XMLHttpRequest();
 
     return new Promise<T>((resolve: Function, reject: Function): void => {
+      // istanbul ignore next
       req.onerror = (): void => {
         this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
         reject(Error("Unable to fetch req"));
@@ -49,13 +39,16 @@ export class Xhr {
         if (success) {
           this.httpLogger.log("{} in {} ::: {};", method, url, req.response)();
         } else {
+          // istanbul ignore next
           this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
         }
         if (req.status === HTTP_ERR) {
+          // istanbul ignore next
           reject(Error("Unable to fetch req"));
         } else if (success) {
           Xhr.parseData(req, resolve, reject);
         } else {
+          // istanbul ignore next
           reject(req.response);
         }
       };
@@ -73,8 +66,10 @@ export class Xhr {
     try {
       data = JSON.parse(req.response);
     } catch (err) {
+      // istanbul ignore next
       error = `Unable to parse response ${err}`;
     }
+    // istanbul ignore else
     if (data) {
       resolve(data);
     } else if (error) {

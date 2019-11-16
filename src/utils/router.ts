@@ -7,7 +7,6 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 export const router: VueRouter = new VueRouter({
-  mode: "history",
   routes: [
     {
       component: PostsPage,
