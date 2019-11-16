@@ -1,4 +1,4 @@
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/akoidan/vue-webpack-typescript)[![HitCount](http://hits.dwyl.io/akoidan/vue-webpack-typescript.svg)](http://hits.dwyl.io/akoidan/vue-webpack-typescript)[![Build Status](https://api.travis-ci.org/akoidan/vue-webpack-typescript.svg?branch=master)](https://travis-ci.org/akoidan/vue-webpack-typescript)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/akoidan/vue-webpack-typescript) [![HitCount](http://hits.dwyl.io/akoidan/vue-webpack-typescript.svg)](http://hits.dwyl.io/akoidan/vue-webpack-typescript) [![Build Status](https://api.travis-ci.org/akoidan/vue-webpack-typescript.svg?branch=master)](https://travis-ci.org/akoidan/vue-webpack-typescript) [![codecov](https://codecov.io/gh/akoidan/vue-webpack-typescript/branch/master/graph/badge.svg)](https://codecov.io/gh/akoidan/vue-webpack-typescript)
 
 This project is generated via [vue-webpack-minimal](https://github.com/akoidan/vue-webpack-minimal)
 
