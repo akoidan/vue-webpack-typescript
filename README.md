@@ -184,7 +184,7 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
  - typescript compiler ts into js, we use babel instead of this, it just runs in a separate thread
  - @babel/plugin-proposal-class-properties - allows class properties like class A { a: number }
  - @babel/plugin-proposal-decorators - adds es6 decorators, e.g. @Component
- - babel-plugin-transform-typescript-metadata - allows decorator to handle ts specific ways
+ - babel-plugin-transform-typescript-metadata - allows babel decorator to work the same way as ts, this is required for libs like vue-property-decorator with @Prop annotation
  - @babel/preset-env - transpiles code into browser compatible one, TODO this breaks decorators
  - babel-preset-typescript-vue vue files are not supported by typescript loader (only via ts-loader), we need to mangle the output of vue to be able for babel to handle them
  - ts-node doesn't do anything but allows IDEs like Webstorm to run ts unit test via m2 -> run 
