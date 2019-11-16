@@ -17,7 +17,7 @@ yarn start # this will serve project on http://localhost:9084
 
 ## Test
 ```
-yarn run buildTest
+yarn run build:test
 yarn run e2e # this will run e2e test
 # ./node_modules/.bin/mocha # this will run unit test
 ```
@@ -172,7 +172,7 @@ logger.log('Hello world')(); // pay attention to () in the end.
 - stylelint-webpack-plugin (during webpack build find all the css and lints it via stylelint)
 - speed-measure-webpack-plugin shows information about compilation speed. Helps to find out why compilation goes slow.
 - html-webpack-plugin ( compiles html from index.ejs)
-- webpack-dev-server is used for development purposes with hot reloading, every time you save the file it will automatically apply. This doesn't affect node running files, only watching files. So files like webpack.config.js or development.json aren't affected. Take a look at [development.json](development.json). To build project for production take a look at [production.json](production.json) and run `npm run prod`. This generates static files in `./dist` directory.
+- webpack-dev-server is used for development purposes with hot reloading, every time you save the file it will automatically apply. This doesn't affect node running files, only watching files. So files like webpack.config.js or development.json aren't affected. Take a look at [development.json](development.json). To build project for production take a look at [production.json](production.json) and run `yarn run buiild:prod`. This generates static files in `./dist` directory.
 - webpack-cli allows to run webpack from the command line
 - Loaders: css-loader, sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader 
 - fork-ts-checker-webpack-plugin - runs typescript compiler into a separate thread
