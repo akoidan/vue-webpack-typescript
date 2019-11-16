@@ -15,26 +15,29 @@
   </div>
 </template>
 <script lang="ts">
-  import {userModule, UserState} from '@/store/users';
-  import {User} from '@/types/dto';
-  import {Component, Vue} from 'vue-property-decorator';
-  // This is a store module class defined using vuex-module-decorators
+import {UserState, userModule} from "@/store/users";
+import {User} from "@/types/dto";
+import {Component, Vue} from "vue-property-decorator";
+// This is a store module class defined using vuex-module-decorators
 
   /**
    * List of posts
    */
   @Component
-  export default class FilteredUsersPage extends Vue {
+export default class FilteredUsersPage extends Vue {
 
     @UserState
     public readonly filteredUsers!: User[];
 
-    private id: string = 'FilteredUsersPage';
+    private id: string = "FilteredUsersPage";
 
-    private async created(): Promise<void> {
+    private async created (): Promise<void> {
+
       userModule.setUsers(await this.$api.getUsers());
+
     }
-  }
+
+}
 </script>
 
 <style lang="sass" scoped>

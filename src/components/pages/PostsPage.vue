@@ -14,23 +14,26 @@
   </div>
 </template>
 <script lang="ts">
-  import {Post} from '@/types/dto';
-  import {Component, Prop, Vue} from 'vue-property-decorator';
+import {Post} from "@/types/dto";
+import {Component, Prop, Vue} from "vue-property-decorator";
 
   /**
    * List of posts
    */
   @Component
-  export default class PostsPage extends Vue {
+export default class PostsPage extends Vue {
 
-    private id: string = 'PostsPage';
+    private id: string = "PostsPage";
 
     private posts: Post[] = [];
 
-    private async created(): Promise<void> {
+    private async created (): Promise<void> {
+
       this.posts = await this.$api.getPosts();
+
     }
-  }
+
+}
 </script>
 
 <style lang="sass" scoped>
