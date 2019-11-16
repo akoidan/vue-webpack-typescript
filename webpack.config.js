@@ -220,8 +220,7 @@ module.exports = (env, argv) => {
           loader: 'vue-loader',
         },
         {
-          enforce: 'pre',
-          test: /\.vue$/,
+          test: /\.ts$/,
           loader: 'eslint-loader',
           exclude: /node_modules/
         },

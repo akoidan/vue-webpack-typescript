@@ -1,7 +1,6 @@
-let uniqueId: number = 1;
+let uniqueId = 1;
 
-export function getUniqueId (): number {
-
+export const getUniqueId = function getUniqueId(): number {
   return uniqueId++;
+};
 
-}

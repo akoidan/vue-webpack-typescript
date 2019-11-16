@@ -1,31 +1,28 @@
+import {Module, Mutation, VuexModule, getModule} from "vuex-module-decorators";
+import {User} from "@/types/dto";
 import {stateDecoratorFactory} from "@/store/stateDecoratorFactory";
 import {store} from "@/store/store";
-import {User} from "@/types/dto";
-import {Module, Mutation, VuexModule, getModule} from "vuex-module-decorators";
 
 /**
  * User vuex module
  */
-@Module({"dynamic": true,
+@Module({
+  dynamic: true,
+  name: "user",
   store,
-  "name": "user"})
+})
 export class Users extends VuexModule {
-
   public users: User[] = [];
 
-  public get filteredUsers (): User[] {
-
-    return this.users.filter((e: User) => e.id > 5);
-
+  public get filteredUsers(): User[] {
+    const USER_LIMIT = 5;
+    return this.users.filter((el: User) => el.id > USER_LIMIT);
   }
 
   @Mutation
-  public setUsers (payload: User[]): void {
-
+  public setUsers(payload: User[]): void {
     this.users = payload;
-
   }
-
 }
 
 export const userModule: Users = getModule(Users);

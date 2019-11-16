@@ -7,19 +7,19 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 export const router: VueRouter = new VueRouter({
-  "mode": "history",
-  "routes": [
+  mode: "history",
+  routes: [
     {
-      "path": "/posts",
-      "component": PostsPage
+      component: PostsPage,
+      path: "/posts",
     },
     {
-      "path": "/users",
-      "component": UsersPage
+      component: UsersPage,
+      path: "/users",
     },
     {
-      "path": "/filtered-users",
-      "component": FilteredUsersPage
-    }
-  ]
+      component: FilteredUsersPage,
+      path: "/filtered-users",
+    },
+  ],
 });

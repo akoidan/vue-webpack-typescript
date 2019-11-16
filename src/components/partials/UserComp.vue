@@ -18,12 +18,10 @@ import {Component, Prop, Vue} from "vue-property-decorator";
    */
   @Component
 export default class UserComp extends Vue {
-
-    private id: string = "UserComp";
+    private id = "UserComp";
 
     @Prop()
     private readonly user!: User;
-
 }
 </script>
 <style lang="sass" scoped>

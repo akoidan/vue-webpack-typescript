@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "plugins": [{"name": "typescript-tslint-plugin"}, { "transform": "ts-optchain/transform" }], // webstorm/vscode highlight vue files with tslint
     "resolveJsonModule": true,
     "paths": {
       "@/*": ["src/*"]
@@ -24,8 +23,7 @@
     "moduleResolution": "node"
   },
   "include": [
-    "./src/**/*.ts",
-    "./src/**/*.vue"
+    "./src/**/*.ts"
   ],
   "exclude": [
     "node_modules"

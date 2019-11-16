@@ -17,47 +17,38 @@
 </template>
 
 <script lang="ts">
-import AppCheckbox from "@/components/ui/AppCheckbox";
-import variablesJson from "@/variables.json";
-import {mobile} from "@/utils/singletons";
 import {Component, Vue} from "vue-property-decorator";
+import AppCheckbox from "@/components/ui/AppCheckbox";
+import {mobile} from "@/utils/singletons";
+import variablesJson from "@/variables.json";
 
-  /**
-   * App comp
-   */
-  @Component({
-    "components": {AppCheckbox}
-  })
+const start = 0;
+
+/**
+ * App comp
+ */
+@Component({
+  components: {AppCheckbox},
+})
 export default class App extends Vue {
+  private i = start;
 
-    private i: number = 0;
+  private readonly a: number[] = [];
 
-    private readonly a: number[] = [];
+  private readonly id: string = "App";
 
-    private readonly id: string = "App";
+  private readonly mobile: boolean = mobile;
 
-    private readonly mobile: boolean = mobile;
+  private created(): void {
+    this.$logger.log("Variable in Js example {}", variablesJson.bodyHeight)();
+  }
 
-    private created (): void {
-
-      this.$logger.log(
-        "Variable in Js example {}",
-        variablesJson.bodyHeight
-      )();
-
-    }
-
-    private add (): void {
-
-      const items: number = this.i++;
-      this.a.splice(
-        1,
-        0,
-        items
-      );
-
-    }
-
+  private add(): void {
+    const items: number = this.i++;
+    const starI = 1;
+    const end = 0;
+    this.a.splice(starI, end, items);
+  }
 }
 </script>
 <style lang="sass" scoped>

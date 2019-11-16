@@ -1,41 +1,32 @@
-import App from "@/components/App";
-import {store} from "@/store/store";
 import "@/utils/classComponentHooks";
-import {GIT_HASH, IS_DEBUG} from "@/utils/consts";
 import "@/utils/mixins";
-import {router} from "@/utils/router";
-import {api} from "@/utils/singletons";
+import {GIT_HASH, IS_DEBUG} from "@/utils/consts";
+import App from "@/components/App";
 import Vue from "vue";
+import {api} from "@/utils/singletons";
+import {router} from "@/utils/router";
+import {store} from "@/store/store";
 
 window.GIT_VERSION = GIT_HASH;
 Vue.prototype.$api = api;
 
 const init: () => void = (): void => {
-
-  const vue: Vue = new Vue({router,
+  const vue: Vue = new Vue({
+    render: (hhh: Function): typeof Vue.prototype.$createElement => hhh(App),
+    router,
     store,
-    "render": (h: Function): typeof Vue.prototype.$createElement => h(App)});
+  });
   if (IS_DEBUG) {
-
     window.vue = vue;
     window.store = store;
     window.router = router;
     window.api = api;
-
   }
   vue.$mount("#app");
-
 };
 
-if (document.readyState !== "loading") {
-
-  init();
-
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
 } else {
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    init
-  );
-
+  init();
 }

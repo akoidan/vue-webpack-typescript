@@ -22,17 +22,13 @@ import {Component, Prop, Vue} from "vue-property-decorator";
    */
   @Component
 export default class PostsPage extends Vue {
-
-    private id: string = "PostsPage";
+    private id = "PostsPage";
 
     private posts: Post[] = [];
 
-    private async created (): Promise<void> {
-
+    private async created(): Promise<void> {
       this.posts = await this.$api.getPosts();
-
     }
-
 }
 </script>
 

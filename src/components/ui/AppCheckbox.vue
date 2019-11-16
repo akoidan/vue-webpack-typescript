@@ -5,45 +5,36 @@
       ref="checkbox"
       type="checkbox"
       :checked="value"
-      @change="onchange"
+      @change="input"
     />
     <label :for="uniqueId" />
   </div>
 </template>
 <script lang="ts">
+import {Component, Emit, Prop, Ref, Vue} from "vue-property-decorator";
 import {getUniqueId} from "@/utils/getUniqueId";
-import {Component, Prop, Vue} from "vue-property-decorator";
 
-  /**
-   * Custom checkbox element
-   */
-  @Component
+/**
+ * Custom checkbox element
+ */
+@Component
 export default class AppCheckbox extends Vue {
+  @Prop()
+  public readonly value!: boolean;
 
-    @Prop()
-    public readonly value!: boolean;
+  @Ref
+  checkbox: HTMLInputElement;
 
-    public $refs!: {
-      checkbox: HTMLInputElement;
-    };
+  private uniqueId!: string;
 
-    private uniqueId!: string;
+  @Emit
+  private input(event: Event): boolean {
+    return this.checkbox.checked;
+  }
 
-    private onchange (e: Event): void {
-
-      this.$emit(
-        "input",
-        this.$refs.checkbox.checked
-      );
-
-    }
-
-    private created (): void {
-
-      this.uniqueId = `checkboxN${getUniqueId()}`;
-
-    }
-
+  private created(): void {
+    this.uniqueId = `checkboxN${getUniqueId()}`;
+  }
 }
 </script>
 

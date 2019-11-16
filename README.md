@@ -23,41 +23,6 @@ yarn run e2e # this will run e2e test
 ./node_modules/.bin/mocha # this will run unit test
 ```
 
-## WebStorm IDE
-
-### Set template
- 1. New
- 2. Edit files templates...
- 3. Vue single file component
-
-```vue
-<template>
-    <div>#[[$END$]]#</div>
-</template>
-
-<script lang="ts">
-  import {State} from '@/store/users';
-  import {Component, Prop, Vue, Watch, Ref} from 'vue-property-decorator';
-
-  @Component
-  export default class ${COMPONENT_NAME} extends Vue {
-   
-  }
-</script>
-<style lang="sass" scoped>
-
-</style>
-```
-
-### Disable tslint
-Tslint is already included to tsconfig so IDEs like webstorm would support linting
-
- 1. Settings
- 2. Typescript
- 3. Tslint
- 4. Disable tslint
-
-
 # How to get started.
 
 ## Libraries
@@ -223,6 +188,9 @@ logger.log('Hello world')(); // pay attention to () in the end.
 - stylelint-webpack-plugin (during webpack build find all the css and lints it via stylelint)
 - speed-measure-webpack-plugin shows information about compilation speed. Helps to find out why compilation goes slow.
 - babel, babel transpiles code into compatible with any browser, making instabul (code coverage) work and adding any additional features babel preset introduce [here's why you need babel with ts](https://iamturns.com/typescript-babel/)
+- @typescript-eslint/eslint-plugin, @typescript-eslint/parser are required to run eslint on ts files
+- eslint parser check [.eslintrc.json](.eslintrc.json) for set of rules 
+- @typescript-eslint/eslint-plugin-tslint tslint are required to run tslint-microsoft-contrib rules
 
 ## Configuration
  - Every vue component has injected `.$logger` object, to log something to console use `this.logger.log('Hello {}', {1:'world'})();` Note calling function again in the end. Logger is disabled for production. For more info visit [lines-logger](https://github.com/akoidan/lines-logger)
@@ -241,8 +209,49 @@ development.json and production.json have the following format:
 ## Ignore errors:
  - Exclude from coverage: `/* istanbul ignore if */` [guide](https://github.com/gotwarlost/istanbul/blob/master/ignoring-code-for-coverage.md)
  - ignore tslint error: `// tslint:disable-next-line:variable-name` [guide](https://palantir.github.io/tslint/usage/rule-flags/)
+ - ignore eslint error:  `// eslint-disable-line no-prototype-builtins` [guide](https://eslint.org/docs/user-guide/configuring)
  - ignore typescript error: `// @ts-ignore: next-line` [guide](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments)
- - ignore stylelint error: `/* stylelint-disable-line */` [guide](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md) 
+ - ignore stylelint error: `/* stylelint-disable-line */` [guide](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md)
+ 
+## WebStorm IDE
+
+### Set template
+1. New
+2. Edit files templates...
+3. Vue single file component
+
+```vue
+<template>
+ <div>#[[$END$]]#</div>
+</template>
+
+<script lang="ts">
+import {State} from '@/store/users';
+import {Component, Prop, Vue, Watch, Ref} from 'vue-property-decorator';
+
+@Component
+export default class ${COMPONENT_NAME} extends Vue {
+
+}
+</script>
+<style lang="sass" scoped>
+
+</style>
+```
+
+### Disable tslint
+Tslint is not used for files, since it's deprecated. Use eslint instead and disable tslint 
+
+1. Settings
+2. Typescript
+3. Tslint
+4. Disable tslint
+
+### Max line length
+1. Editor
+2. Code style
+3. Hard wrap at 120
+ 
 # TODO
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
  - https://github.com/bahmutov/cypress-vue-unit-test

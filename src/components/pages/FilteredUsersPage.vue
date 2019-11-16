@@ -25,18 +25,14 @@ import {Component, Vue} from "vue-property-decorator";
    */
   @Component
 export default class FilteredUsersPage extends Vue {
-
     @UserState
     public readonly filteredUsers!: User[];
 
-    private id: string = "FilteredUsersPage";
+    private id = "FilteredUsersPage";
 
-    private async created (): Promise<void> {
-
+    private async created(): Promise<void> {
       userModule.setUsers(await this.$api.getUsers());
-
     }
-
 }
 </script>
 

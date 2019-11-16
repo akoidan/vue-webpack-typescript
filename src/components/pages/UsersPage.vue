@@ -20,20 +20,16 @@ import {Component, Vue} from "vue-property-decorator";
   /**
    * List of posts
    */
-  @Component({"components": {UserComp}})
+  @Component({components: {UserComp}})
 export default class UsersPage extends Vue {
-
     @UserState
     public users!: User[];
 
-    private id: string = "UserPage";
+    private id = "UserPage";
 
-    private async created (): Promise<void> {
-
+    private async created(): Promise<void> {
       userModule.setUsers(await this.$api.getUsers());
-
     }
-
 }
 </script>
 
