@@ -192,6 +192,7 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
  - babel - global loader and transpiler that allows ts compilation into es and allowing additional babel plugins for use. [here's why you need babel with ts](https://iamturns.com/typescript-babel/)
  
 ### Test libraries
+- ts-loader - load test with typescript
 - start-server-and-test - allows to simultaneously start 2 processes during testing: cypress and frotnend
 - http-server allows to serve static files for cypress test. 
 - cypress - testing framework that allows running test-cases directly in chrome instead of Selenium way

@@ -17,6 +17,7 @@
     ],
     "init-declarations": "off",
     "one-var": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
     "no-plusplus": "off",
     "vue/script-indent": ["error", 2, { "baseIndent": 0 }],
     "quote-props": ["error", "as-needed"],

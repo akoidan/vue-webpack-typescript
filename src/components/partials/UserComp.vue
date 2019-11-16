@@ -18,11 +18,10 @@ import {User} from "@/types/dto";
  */
 @Component
 export default class UserComp extends Vue {
-  // TODO indents are so messed
-                    private id = "UserComp";
+  private id = "UserComp";
 
   @Prop()
-private readonly user!: User;
+  private readonly user!: User;
 }
 </script>
 <style lang="sass" scoped>
