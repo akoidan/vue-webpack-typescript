@@ -257,6 +257,7 @@ export default class ${COMPONENT_NAME} extends Vue {
 
 }
 </script>
+<!-- eslint-disable -->
 <style lang="sass" scoped>
 
 </style>
@@ -274,6 +275,9 @@ Tslint is not used for files, since it's deprecated. Use eslint instead and disa
 1. Editor
 2. Code style
 3. Hard wrap at 120
+
+### Indentation
+ - set indentation to 2 2 4 for html ,css, js, ts in settings -> editor -> code style
  
 # TODO
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53

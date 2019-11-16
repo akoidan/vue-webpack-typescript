@@ -10,18 +10,19 @@
 </template>
 
 <script lang="ts">
-import {User} from "@/types/dto";
 import {Component, Prop, Vue} from "vue-property-decorator";
+import {User} from "@/types/dto";
 
-  /**
-   *  Renders single user
-   */
-  @Component
+/**
+ *  Renders single user
+ */
+@Component
 export default class UserComp extends Vue {
-    private id = "UserComp";
+  // TODO indents are so messed
+                    private id = "UserComp";
 
-    @Prop()
-    private readonly user!: User;
+  @Prop()
+private readonly user!: User;
 }
 </script>
 <style lang="sass" scoped>

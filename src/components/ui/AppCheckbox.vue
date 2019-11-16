@@ -28,7 +28,7 @@ export default class AppCheckbox extends Vue {
   private uniqueId!: string;
 
   @Emit()
-  private input(event: Event): boolean {
+  private input(): boolean {
     return this.checkbox.checked;
   }
 
@@ -38,6 +38,7 @@ export default class AppCheckbox extends Vue {
 }
 </script>
 
+<!-- eslint-disable -->
 <style lang="sass" scoped>
   @import "~@/assets/sass/mixins"
   @import "~@/assets/sass/variables"

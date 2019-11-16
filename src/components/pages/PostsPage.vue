@@ -14,13 +14,13 @@
   </div>
 </template>
 <script lang="ts">
+import {Component, Vue} from "vue-property-decorator";
 import {Post} from "@/types/dto";
-import {Component, Prop, Vue} from "vue-property-decorator";
 
-  /**
-   * List of posts
-   */
-  @Component
+/**
+ * List of posts
+ */
+@Component
 export default class PostsPage extends Vue {
     private id = "PostsPage";
 

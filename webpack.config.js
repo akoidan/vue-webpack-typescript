@@ -195,7 +195,7 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /(\.ts|\.js)$/,
+          test: /\.ts$/,
           use: [
             {
               loader: 'babel-loader',
@@ -219,7 +219,7 @@ module.exports = (env, argv) => {
           loader: 'vue-loader',
         },
         {
-          test: /\.ts$/,
+          test: /\.(ts|vue)$/,
           loader: 'eslint-loader',
           exclude: /node_modules/
         },

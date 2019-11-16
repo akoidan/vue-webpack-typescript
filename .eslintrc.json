@@ -18,6 +18,7 @@
     "init-declarations": "off",
     "one-var": "off",
     "no-plusplus": "off",
+    "vue/script-indent": ["error", 2, { "baseIndent": 0 }],
     "quote-props": ["error", "as-needed"],
     "no-ternary": "off",
     "multiline-ternary": "off",
@@ -36,6 +37,16 @@
           "void": "always",
           "normal": "always",
           "component": "always"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "overrides": [
+      {
+        "files": ["*.vue"],
+        "rules": {
+          "indent": "off"
         }
       }
     ]

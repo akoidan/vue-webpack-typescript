@@ -1,7 +1,6 @@
 import {assert, expect} from 'chai';
 import {getUniqueId} from "../src/utils/getUniqueId";
 
-/* tslint:disable:no-unused-expression */
 const test = async () => {
   await describe('getUniqueId', async () => {
     it('should inc', async () => {
