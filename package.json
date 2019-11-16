@@ -14,6 +14,7 @@
     "clean": "rm -rf ./.nyc_output && rm -rf ./coverage && rm -r ./node_modules/.cache ",
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
+  "license": "MIT",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "7.7.0",
     "@babel/plugin-proposal-decorators": "7.7.0",
