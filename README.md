@@ -282,4 +282,4 @@ Tslint is not used for files, since it's deprecated. Use eslint instead and disa
 # TODO
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
  - https://github.com/bahmutov/cypress-vue-unit-test
- - vue-property-decorator doesn't work with babel loader https://github.com/kaorun343/vue-property-decorator/issues/26 check why babel-plugin-transform-typescript-metadata doesn't
+ - https://github.com/vuejs/eslint-plugin-vue/issues/987
