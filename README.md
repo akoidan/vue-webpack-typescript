@@ -3,15 +3,9 @@
 This project is generated via [vue-webpack-minimal](https://github.com/akoidan/vue-webpack-minimal)
 
 # Why would I use this?:
- - Predefined architecture 
- - Hot reloading
- - Production build for static files with hash files, git hash, minimizing css/js files
- - Compile time measurement
- - Typescript, everything included vue component, vuex state/mutations is type safe
- - TravisCi config with codecov and mocha typescript tests
- - Configured sass and variables extracting from json files which you can use in vue/ts.
- - Lints for all files including vue single file component. Vue single file lints: style, template, typescript
- - Polyfills for backwards compatibility including ie9
+ - Vue + Sass + Typescript
+ - cypress with test coverage
+ - eslint with typescript + vue integration, stylelint for sass
 
 # Development setup:
 
@@ -19,8 +13,13 @@ This project is generated via [vue-webpack-minimal](https://github.com/akoidan/v
 ```bash
 yarn install
 yarn start # this will serve project on http://localhost:9084
+```
+
+## Test
+```
+yarn run buildTest
 yarn run e2e # this will run e2e test
-./node_modules/.bin/mocha # this will run unit test
+# ./node_modules/.bin/mocha # this will run unit test
 ```
 
 # Get started
