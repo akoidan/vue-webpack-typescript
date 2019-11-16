@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator";
-import AppCheckbox from "@/components/ui/AppCheckbox";
+import AppCheckbox from "@/components/ui/AppCheckbox.vue";
 import {mobile} from "@/utils/singletons";
 import variablesJson from "@/variables.json";
 

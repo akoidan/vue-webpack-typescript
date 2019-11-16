@@ -1,7 +1,7 @@
 import "@/utils/classComponentHooks";
 import "@/utils/mixins";
 import {GIT_HASH, IS_DEBUG} from "@/utils/consts";
-import App from "@/components/App";
+import App from "@/components/App.vue";
 import Vue from "vue";
 import {api} from "@/utils/singletons";
 import {router} from "@/utils/router";

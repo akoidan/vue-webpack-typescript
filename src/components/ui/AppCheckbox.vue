@@ -22,12 +22,12 @@ export default class AppCheckbox extends Vue {
   @Prop()
   public readonly value!: boolean;
 
-  @Ref
-  checkbox: HTMLInputElement;
+  @Ref()
+  checkbox!: HTMLInputElement;
 
   private uniqueId!: string;
 
-  @Emit
+  @Emit()
   private input(event: Event): boolean {
     return this.checkbox.checked;
   }

@@ -10,17 +10,16 @@
 </template>
 <script lang="ts">
 
-
-import UserComp from "@/components/partials/UserComp";
+import {Component, Vue} from "vue-property-decorator";
 import {UserState, userModule} from "@/store/users";
 import {User} from "@/types/dto";
-import {Component, Vue} from "vue-property-decorator";
+import UserComp from "@/components/partials/UserComp.vue";
 // This is a store module class defined using vuex-module-decorators
 
-  /**
-   * List of posts
-   */
-  @Component({components: {UserComp}})
+/**
+ * List of posts
+ */
+@Component({components: {UserComp}})
 export default class UsersPage extends Vue {
     @UserState
     public users!: User[];
