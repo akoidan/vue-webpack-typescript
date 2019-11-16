@@ -86,11 +86,10 @@ module.exports = (env, argv) => {
   }
   plugins = [
     new VueLoaderPlugin(),
-    // new ForkTsCheckerWebpackPlugin({
-    //   tslint: true,
-    //   tsconfig: options.IS_DEBUG ? 'tsconfig.esnext.json' : 'tsconfig.json',
-    //   vue: true
-    // }),
+    new ForkTsCheckerWebpackPlugin({
+      vue: true,
+      tslint: false,
+    }),
     new StyleLintPlugin({
       files: ['**/*.vue', '**/*.sass'],
       emitErrors: false,
@@ -171,6 +170,7 @@ module.exports = (env, argv) => {
     CONSTS: JSON.stringify(options),
   }));
   let conf = {
+    context: __dirname,
     entry,
     plugins,
     resolve: {
