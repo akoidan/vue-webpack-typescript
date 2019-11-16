@@ -42,5 +42,10 @@ export default class FilteredUsersPage extends Vue {
     margin: 5px
     padding: 10px
 
+  $base-color: #036
+
+  @for $i from 1 through 3
+    ul:nth-child(3n + #{$i})
+      background-color: lighten($base-color, $i * 5%)
 
 </style>
