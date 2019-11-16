@@ -23,9 +23,9 @@ yarn run e2e # this will run e2e test
 ./node_modules/.bin/mocha # this will run unit test
 ```
 
-# How to get started.
+# Get started
 
-## Libraries
+# Brief libraries and code overview
 
 - [typescript](http://www.typescriptlang.org/docs/home.html) (or ts shortly) allows to write typesafe code:
 ```typescript
@@ -159,40 +159,70 @@ expect(mySpy).to.have.been.calledWith("foo");
 ```typescript
 logger.log('Hello world')(); // pay attention to () in the end.
 ```
-## Project compilation libs:
+
+### Build process libraries
 - [webpack](https://webpack.js.org/) allows to combine (bundle) multiple input javascript files into a single output file. Provides plugins and loaders api that allows transformation like typescript or sass. [webpack.config.js](webpack.config.js) is used to build project. Take a look at it to understand how source files are being processed. Its start point is `entry: ['./src/user.ts']`. Since webpack can only handle `.js` files, to let webpack know about everything else we should pass the code through a corresponding loader. Everything is imported in this files are being processed by section `loaders`. 
-- @types/XXX is types declaration for liraries. Ts only knows about specific types like dom and etc. Everything custom should be installed separately.
+- node-sass allows to compile sass into css, it doesn't know anything about webpack and loaders
 - node-sass-utils - allow to access json via css, thus sharing variables across js and css
-- [instanbul](https://istanbul.js.org/) - code coverage with cli interface, generates html cov report
-- [nyc](https://github.com/istanbuljs/nyc) - cli interface to instanbul
-- webpack-cli allows to run webpack from the command line
-- Loaders: css-loader, sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader
-- eslint-loader and eslint are used only for SFC templates. 
-- [ts-lint](https://palantir.github.io/tslint/rules/) stricts the rules for code (eslint/pylint) analogue
-- [tslint-microsoft-contrib](https://github.com/microsoft/tslint-microsoft-contrib#supported-rules) more awesome rules to ts-lint
-- [stylelint](https://github.com/stylelint/stylelint) linter for css files.
-- [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) lints your `<template` in vue SFC.
-- ts-node allows to compile typescript to memory instead of files and run it
-- [ts-polyfill](https://github.com/ryanelian/ts-polyfill) typescript compiles into es5 compatible code, but it doesn't provides objects and functions that are es6 compatible, like Promises or include method on an array.
-- typescript-tslint-plugin (allows to run tslint from tsc instead of a separate process. So typescript output would be appended by ts-lint. Thus IDE would show lint output as well (ts-lint doesn't work in some IDEs with custom rules)
-- webpack-dev-server is used for development purposes with hot reloading, every time you save the file it will automatically apply. This doesn't affect node running files, only watching files. So files like webpack.config.js or development.json aren't affected. Take a look at [development.json](development.json). To build project for production take a look at [production.json](production.json) and run `npm run prod`. This generates static files in `./dist` directory.
-- [stylelint-scss](https://github.com/kristerkari/stylelint-scss#list-of-rules) - linter rules specific to sass
-- [stylelint-order](https://github.com/hudochenkov/stylelint-order) appends stylelint with order rules. This forces css attributes/imports to have specific order. 
-- optimize-css-assets-webpack-plugin (minimizes css)
-- html-webpack-plugin ( compiles html from index.ejs)
 - hard-source-webpack-plugin (increases dev server speed compilation by caching)
+- optimize-css-assets-webpack-plugin (minimizes css)
 - clean-webpack-plugin (deletes the dist before build)
 - compression-webpack-plugin (generates .tar.gz files in dist directories)
 - mini-css-extract-plugin (gets all css files from .vue components and creates a single .css file in production build)
 - [webpack-subresource-integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) ( generates integrity attribute on scripts tag)
 - stylelint-webpack-plugin (during webpack build find all the css and lints it via stylelint)
 - speed-measure-webpack-plugin shows information about compilation speed. Helps to find out why compilation goes slow.
-- babel, babel transpiles code into compatible with any browser, making instabul (code coverage) work and adding any additional features babel preset introduce [here's why you need babel with ts](https://iamturns.com/typescript-babel/)
-- @typescript-eslint/eslint-plugin, @typescript-eslint/parser are required to run eslint on ts files
-- eslint parser check [.eslintrc.json](.eslintrc.json) for set of rules 
-- @typescript-eslint/eslint-plugin-tslint tslint are required to run tslint-microsoft-contrib rules
+- html-webpack-plugin ( compiles html from index.ejs)
+- webpack-dev-server is used for development purposes with hot reloading, every time you save the file it will automatically apply. This doesn't affect node running files, only watching files. So files like webpack.config.js or development.json aren't affected. Take a look at [development.json](development.json). To build project for production take a look at [production.json](production.json) and run `npm run prod`. This generates static files in `./dist` directory.
+- webpack-cli allows to run webpack from the command line
+- Loaders: css-loader, sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader 
+- fork-ts-checker-webpack-plugin - runs typescript compiler into a separate thread
+- source-map-support - adds support for source map (show source file in browser instead of transpiled one)
 
-## Configuration
+### Typescript compilation libraries
+Typescript is compiled via babel, this means that it doesn't have typechecks, this speeds up build a lot! But since we still want to take advantages of typechecks we run typescript compiler runs in a separate process, giving errors to stdout.
+ - typescript compiler ts into js, we use babel instead of this, it just runs in a separate thread
+ - @babel/plugin-proposal-class-properties - allows class properties like class A { a: number }
+ - @babel/plugin-proposal-decorators - adds es6 decorators, e.g. @Component
+ - babel-plugin-transform-typescript-metadata - allows decorator to handle ts specific ways
+ - @babel/preset-env - transpiles code into browser compatible one, TODO this breaks decorators
+ - babel-preset-typescript-vue vue files are not supported by typescript loader (only via ts-loader), we need to mangle the output of vue to be able for babel to handle them
+ - ts-node doesn't do anything but allows IDEs like Webstorm to run ts unit test via m2 -> run 
+ - @types/XXX are types declaration for 3rd party libraries. Ts only knows about specific types like dom and etc. Everything custom should be installed separately.
+ - babel - global loader and transpiler that allows ts compilation into es and allowing additional babel plugins for use. [here's why you need babel with ts](https://iamturns.com/typescript-babel/)
+ 
+### Test libraries
+- start-server-and-test - allows to simultaneously start 2 processes during testing: cypress and frotnend
+- http-server allows to serve static files for cypress test. 
+- cypress - testing framework that allows running test-cases directly in chrome instead of Selenium way
+- [istanbul](https://istanbul.js.org/) - code coverage with cli interface, generates html cov report
+- [nyc](https://github.com/istanbuljs/nyc) - cli interface to instanbul
+ - @cypress/code-coverage - allows to add istanbul coverage to cypress
+ - @cypress/webpack-preprocessor allows to transpile cypress test via typescript
+ - @istanbuljs/nyc-config-typescript - allows to coverage .ts files during test
+ - @testing-library/cypress - adds cypress test
+ - istanbul-lib-coverage the source code that allow direct cypress coverage integration
+
+### Linting  libraries
+ - [eslint](https://eslint.org/) javascript set of linting rules. 
+ - eslint-loader - allows webpack to pass js via eslint
+ - [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) lints your `<template` in vue SFC.
+ - @vue/eslint-config-typescript - adds config to eslint for vue typescript specific rules
+ - eslint parser check [.eslintrc.json](.eslintrc.json) for set of rules 
+ - @typescript-eslint/eslint-plugin - adds ts specific rules to eslint
+ - @typescript-eslint/parser - allows eslint to parse ts files 
+ - [stylelint-scss](https://github.com/kristerkari/stylelint-scss#list-of-rules) - linter rules specific to sass
+ - [stylelint-order](https://github.com/hudochenkov/stylelint-order) appends stylelint with order rules. This forces css attributes/imports to have specific order.
+ - [stylelint](https://github.com/stylelint/stylelint) linter for css files.
+
+### How to ignore linting errors
+ - Exclude from coverage: `/* istanbul ignore if */` [guide](https://github.com/gotwarlost/istanbul/blob/master/ignoring-code-for-coverage.md)
+ - ignore tslint error: `// tslint:disable-next-line:variable-name` [guide](https://palantir.github.io/tslint/usage/rule-flags/)
+ - ignore eslint error:  `// eslint-disable-line no-prototype-builtins` [guide](https://eslint.org/docs/user-guide/configuring)
+ - ignore typescript error: `// @ts-ignore: next-line` [guide](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments)
+ - ignore stylelint error: `/* stylelint-disable-line */` [guide](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md)
+
+### Configuration
  - Every vue component has injected `.$logger` object, to log something to console use `this.logger.log('Hello {}', {1:'world'})();` Note calling function again in the end. Logger is disabled for production. For more info visit [lines-logger](https://github.com/akoidan/lines-logger)
  - Every component has an injected `$.api` object. You should do http calls with `$this.$api`. If you prefer redux style you can call http in vuex actions.
  - If you're using git as your version control tool `window.GIT_VERSION` will be exported to global scope
@@ -205,13 +235,6 @@ development.json and production.json have the following format:
     "API_URL": "public http api url e.g. https://jsonplaceholder.typicode.com"
   }
   ```
-
-## Ignore errors:
- - Exclude from coverage: `/* istanbul ignore if */` [guide](https://github.com/gotwarlost/istanbul/blob/master/ignoring-code-for-coverage.md)
- - ignore tslint error: `// tslint:disable-next-line:variable-name` [guide](https://palantir.github.io/tslint/usage/rule-flags/)
- - ignore eslint error:  `// eslint-disable-line no-prototype-builtins` [guide](https://eslint.org/docs/user-guide/configuring)
- - ignore typescript error: `// @ts-ignore: next-line` [guide](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments)
- - ignore stylelint error: `/* stylelint-disable-line */` [guide](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md)
  
 ## WebStorm IDE
 
@@ -239,7 +262,7 @@ export default class ${COMPONENT_NAME} extends Vue {
 </style>
 ```
 
-### Disable tslint
+### Disable tslint 
 Tslint is not used for files, since it's deprecated. Use eslint instead and disable tslint 
 
 1. Settings
