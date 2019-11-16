@@ -7,7 +7,7 @@
     "e2e": "CYPRESS_baseUrl=http://localhost:9084 start-server-and-test 'http-server -p 9084 ./dist' 9084 'cypress open'",
     "unit": "mocha",
     "fix": "eslint --fix --ext .ts,.vue src",
-    "clean": "rm -r ./node_modules/.cache"
+    "clean": "rm -rf ./.nyc_output && rm -rf ./coverage && rm -r ./node_modules/.cache "
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "7.7.0",
@@ -82,9 +82,11 @@
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",
     "all": true,
+    "extension": [
+      ".ts",
+      ".vue"
+    ],
     "reporter": [
-      "text",
-      "json",
       "html"
     ]
   }
