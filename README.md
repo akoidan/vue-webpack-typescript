@@ -283,3 +283,4 @@ Tslint is not used for files, since it's deprecated. Use eslint instead and disa
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
  - https://github.com/bahmutov/cypress-vue-unit-test
  - https://github.com/vuejs/eslint-plugin-vue/issues/987
+ - https://github.com/istanbuljs/nyc/issues/1148

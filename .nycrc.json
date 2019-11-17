@@ -1,0 +1,14 @@
+{
+  "cache": false,
+  "all": true,
+  "include": [
+     "src"
+  ],
+  "extension": [
+    ".ts",
+    ".vue"
+  ],
+  "reporter": [
+    "html"
+  ]
+}

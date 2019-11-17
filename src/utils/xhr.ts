@@ -19,12 +19,11 @@ export class Xhr {
     return this.sendXhr<T>("GET", url);
   }
 
-  // istanbul ignore next
   public doPost<T>(url: string, body: object): Promise<T> {
     return this.sendXhr<T>("POST", url, JSON.stringify(body));
   }
 
-  private sendXhr<T>(method: string, url: string, body?: Document|BodyInit):
+  public sendXhr<T>(method: string, url: string, body?: Document|BodyInit):
       Promise<T> {
     const req: XMLHttpRequest = new XMLHttpRequest();
 
