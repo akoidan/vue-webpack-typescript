@@ -1,9 +1,9 @@
 import * as chaiAsPromised from "chai-as-promised";
 import * as sinonChai from "sinon-chai";
 import {expect, use} from "chai";
-import {spy, stub} from "sinon";
 import {Xhr} from "../src/utils/xhr";
 import {getUniqueId} from "../src/utils/getUniqueId";
+import {stub} from "sinon";
 
 use(sinonChai);
 use(chaiAsPromised);

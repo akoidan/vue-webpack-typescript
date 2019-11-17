@@ -1,5 +1,4 @@
 describe("Filtered Users", (): void => {
-
   const usersCount = 5;
 
   before(() => {
