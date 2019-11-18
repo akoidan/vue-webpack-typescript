@@ -23,6 +23,7 @@
     "@typescript-eslint/require-await": "off", //https://github.com/typescript-eslint/typescript-eslint/issues/1077
     "init-declarations": "off",
     "one-var": "off",
+    "@typescript-eslint/no-untyped-public-signature": "off", // this breaks a lot: constructions public, ES6 setter should have return type etc
     "@typescript-eslint/ban-ts-ignore": "off",
     "no-plusplus": "off",
     "quote-props": ["error", "as-needed"],
