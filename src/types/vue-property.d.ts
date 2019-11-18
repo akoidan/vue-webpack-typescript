@@ -17,6 +17,7 @@ declare global {
     interface Window {
         GIT_VERSION: string|undefined;
         vue: Vue;
+        InputEvent: () => void;
         store: Store<RootState>;
         router: VueRouter;
         api: Api;
