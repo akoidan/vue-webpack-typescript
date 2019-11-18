@@ -48,6 +48,7 @@
     "cypress": "3.6.1",
     "eslint": "6.6.0",
     "eslint-loader": "3.0.2",
+    "eslint-plugin-import": "2.18.2",
     "eslint-plugin-only-warn": "1.0.1",
     "eslint-plugin-vue": "6.0.1",
     "file-loader": "4.2.0",

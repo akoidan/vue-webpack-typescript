@@ -3,7 +3,10 @@
     "plugin:vue/recommended",
     "eslint:all",
     "@vue/typescript",
-    "plugin:@typescript-eslint/all"
+    "plugin:@typescript-eslint/all",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
   ],
   "plugins": [
     "only-warn"
@@ -34,6 +37,7 @@
     "max-len": ["error", { "code": 120 }],
     "import/no-unresolved": "off",
     "padded-blocks": ["error", "never"],
+    "import/no-relative-parent-imports": "error",
     "vue/html-self-closing": [
       "error",
       {

@@ -1,8 +1,8 @@
 import * as chaiAsPromised from "chai-as-promised";
 import * as sinonChai from "sinon-chai";
 import {expect, use} from "chai";
-import {Xhr} from "../src/utils/xhr";
-import {getUniqueId} from "../src/utils/getUniqueId";
+import {Xhr} from "@/utils/xhr";
+import {getUniqueId} from "@/utils/getUniqueId";
 import {stub} from "sinon";
 
 use(sinonChai);
