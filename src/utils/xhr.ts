@@ -23,7 +23,7 @@ export class Xhr {
       data = JSON.parse(req.response);
     } catch (err) {
       // istanbul ignore next
-      error = `Unable to parse response ${err}`;
+      error = `Unable to parse response ${String(err)}`;
     }
     // istanbul ignore else
     if (data) {

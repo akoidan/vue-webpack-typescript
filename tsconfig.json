@@ -5,7 +5,6 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["cypress"],
     "lib": ["es2017", "dom"],
     "declaration": false,
     "target": "esnext",
@@ -26,8 +25,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.vue",
-    "test/*.ts",
-    "cypress/integration/*.ts"
+    "test/*.ts"
   ],
   "exclude": [
     "node_modules"
