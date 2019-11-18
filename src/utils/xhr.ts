@@ -23,8 +23,7 @@ export class Xhr {
     return this.sendXhr<T>("POST", url, JSON.stringify(body));
   }
 
-  public sendXhr<T>(method: string, url: string, body?: Document|BodyInit):
-      Promise<T> {
+  public sendXhr<T>(method: string, url: string, body?: Document|BodyInit): Promise<T> {
     const req: XMLHttpRequest = new XMLHttpRequest();
 
     return new Promise<T>((resolve: Function, reject: Function): void => {

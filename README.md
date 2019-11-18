@@ -201,9 +201,10 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
  - @cypress/webpack-preprocessor allows to transpile cypress test via typescript
  - @istanbuljs/nyc-config-typescript - allows to coverage .ts files during test
  - @testing-library/cypress - adds cypress test
- - istanbul-lib-coverage the source code that allow direct cypress coverage integration
+ - istanbul-lib-coverage the source code that allow direct cypress coverage integration - alpha version fixes mocha ts-node cannot read start
 
 ### Linting  libraries
+ - @typescript-eslint/eslint-plugin": "2.7.1-alpha.17", - https://github.com/typescript-eslint/typescript-eslint/pull/1189
  - [eslint](https://eslint.org/) javascript set of linting rules. 
  - eslint-loader - allows webpack to pass js via eslint
  - [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) lints your `<template` in vue SFC.

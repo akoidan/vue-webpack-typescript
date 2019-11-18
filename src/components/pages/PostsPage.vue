@@ -17,18 +17,16 @@
 import {Component, Vue} from "vue-property-decorator";
 import {Post} from "@/types/dto";
 
-/**
- * List of posts
- */
+
 @Component
 export default class PostsPage extends Vue {
-    private id = "PostsPage";
+  private id = "PostsPage";
 
-    private posts: Post[] = [];
+  private posts: Post[] = [];
 
-    private async created(): Promise<void> {
-      this.posts = await this.$api.getPosts();
-    }
+  private async created(): Promise<void> {
+    this.posts = await this.$api.getPosts();
+  }
 }
 </script>
 

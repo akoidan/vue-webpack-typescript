@@ -21,14 +21,14 @@ import UserComp from "@/components/partials/UserComp.vue";
  */
 @Component({components: {UserComp}})
 export default class UsersPage extends Vue {
-    @UserState
-    public users!: User[];
+  @UserState
+  public users!: User[];
 
-    private id = "UserPage";
+  private id = "UserPage";
 
-    private async created(): Promise<void> {
-      userModule.setUsers(await this.$api.getUsers());
-    }
+  private async created(): Promise<void> {
+    userModule.setUsers(await this.$api.getUsers());
+  }
 }
 </script>
 

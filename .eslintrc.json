@@ -14,10 +14,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
+    "indent": "off",
+    "@typescript-eslint/indent": ["error", 2],
     "init-declarations": "off",
     "one-var": "off",
     "@typescript-eslint/ban-ts-ignore": "off",

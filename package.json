@@ -32,7 +32,7 @@
     "@types/sinon": "7.5.0",
     "@types/sinon-chai": "3.2.3",
     "@types/vfile-message": "2.0.0",
-    "@typescript-eslint/eslint-plugin": "2.7.0",
+    "@typescript-eslint/eslint-plugin": "2.7.1-alpha.17",
     "@typescript-eslint/parser": "2.7.0",
     "@vue/eslint-config-typescript": "5.0.0",
     "babel-loader": "8.0.6",

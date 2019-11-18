@@ -7,19 +7,19 @@ import VueRouter from "vue-router";
 
 declare module "vue/types/vue" {
 
-    interface Vue {
-        $logger: Logger;
-        $api: Api;
-    }
+  interface Vue {
+    $logger: Logger;
+    $api: Api;
+  }
 }
 
 declare global {
-    interface Window {
-        GIT_VERSION: string|undefined;
-        vue: Vue;
-        InputEvent: () => void;
-        store: Store<RootState>;
-        router: VueRouter;
-        api: Api;
-    }
+  interface Window {
+    GIT_VERSION: string|undefined;
+    vue: Vue;
+    InputEvent: () => void;
+    store: Store<RootState>;
+    router: VueRouter;
+    api: Api;
+  }
 }
