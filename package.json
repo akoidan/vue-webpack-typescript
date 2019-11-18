@@ -8,7 +8,7 @@
     "test:cypress:debug": "CYPRESS_baseUrl=http://localhost:9084 CYPRESS_coveragereport=true cypress open",
     "test:unit": "rm -rf ./nyc/.nyc_output_unit && rm -rf ./nyc/coverage_unit && nyc --temp-dir ./nyc/.nyc_output_unit --report-dir ./nyc/coverage_unit mocha",
     "test:cypress:build:run": "yarn run build:test && yarn run test:cypress:run",
-    "test": "yarn run test:unit; yarn run test:cypress:build:run; yarn run test:combine",
+    "test": "yarn run clean; yarn run test:unit; yarn run test:cypress:build:run; yarn run test:combine",
     "lint:css": "stylelint 'src/**/*.vue' 'src/**/*.sass'",
     "lint:ts": "eslint --ext .ts,.vue --max-warnings=0 src test cypress/integration",
     "fix": "eslint --fix --ext .ts,.vue src",
