@@ -1,0 +1,2552 @@
+{
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/polyfills/inputEvent.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/polyfills/inputEvent.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 7,
+          "column": 37
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 22
+          },
+          "end": {
+            "line": 7,
+            "column": 23
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 34
+          },
+          "end": {
+            "line": 7,
+            "column": 36
+          }
+        },
+        "line": 7
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "line": 8,
+            "column": 1
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 1
+            }
+          },
+          {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 1
+            }
+          }
+        ],
+        "line": 5
+      }
+    },
+    "s": {
+      "0": 7,
+      "1": 0
+    },
+    "f": {
+      "0": 0
+    },
+    "b": {
+      "0": [
+        0,
+        7
+      ]
+    },
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "493976c28140dd466fa69c45f18c36d048a9a973"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/classComponentHooks.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/classComponentHooks.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 3
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 7
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "949aac04373f4177e068e0cc7bdbc7247d9ac443"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/consts.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/consts.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 8,
+          "column": 4
+        },
+        "end": {
+          "line": 8,
+          "column": 10
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 7
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "5fd643d22810dd1bad32d2ce6df8ac4691c3a1d3"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/loggerFactory.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/loggerFactory.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 4,
+          "column": 44
+        },
+        "end": {
+          "line": 4,
+          "column": 117
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 62
+          },
+          "end": {
+            "line": 4,
+            "column": 116
+          }
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 4,
+              "column": 73
+            },
+            "end": {
+              "line": 4,
+              "column": 98
+            }
+          },
+          {
+            "start": {
+              "line": 4,
+              "column": 101
+            },
+            "end": {
+              "line": 4,
+              "column": 116
+            }
+          }
+        ],
+        "line": 4
+      }
+    },
+    "s": {
+      "0": 7
+    },
+    "f": {},
+    "b": {
+      "0": [
+        0,
+        7
+      ]
+    },
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "32d89c71024258a4f6701706949b05a9c2d8e13d"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/xhr.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/xhr.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 4,
+          "column": 21
+        },
+        "end": {
+          "line": 4,
+          "column": 24
+        }
+      },
+      "1": {
+        "start": {
+          "line": 5,
+          "column": 21
+        },
+        "end": {
+          "line": 5,
+          "column": 24
+        }
+      },
+      "2": {
+        "start": {
+          "line": 6,
+          "column": 17
+        },
+        "end": {
+          "line": 6,
+          "column": 18
+        }
+      },
+      "3": {
+        "start": {
+          "line": 15,
+          "column": 4
+        },
+        "end": {
+          "line": 15,
+          "column": 70
+        }
+      },
+      "4": {
+        "start": {
+          "line": 19,
+          "column": 4
+        },
+        "end": {
+          "line": 19,
+          "column": 39
+        }
+      },
+      "5": {
+        "start": {
+          "line": 23,
+          "column": 4
+        },
+        "end": {
+          "line": 23,
+          "column": 62
+        }
+      },
+      "6": {
+        "start": {
+          "line": 27,
+          "column": 32
+        },
+        "end": {
+          "line": 27,
+          "column": 52
+        }
+      },
+      "7": {
+        "start": {
+          "line": 29,
+          "column": 4
+        },
+        "end": {
+          "line": 58,
+          "column": 7
+        }
+      },
+      "8": {
+        "start": {
+          "line": 35,
+          "column": 6
+        },
+        "end": {
+          "line": 52,
+          "column": 8
+        }
+      },
+      "9": {
+        "start": {
+          "line": 36,
+          "column": 33
+        },
+        "end": {
+          "line": 36,
+          "column": 93
+        }
+      },
+      "10": {
+        "start": {
+          "line": 37,
+          "column": 8
+        },
+        "end": {
+          "line": 42,
+          "column": 9
+        }
+      },
+      "11": {
+        "start": {
+          "line": 38,
+          "column": 10
+        },
+        "end": {
+          "line": 38,
+          "column": 79
+        }
+      },
+      "12": {
+        "start": {
+          "line": 43,
+          "column": 8
+        },
+        "end": {
+          "line": 51,
+          "column": 9
+        }
+      },
+      "13": {
+        "start": {
+          "line": 46,
+          "column": 15
+        },
+        "end": {
+          "line": 51,
+          "column": 9
+        }
+      },
+      "14": {
+        "start": {
+          "line": 47,
+          "column": 10
+        },
+        "end": {
+          "line": 47,
+          "column": 46
+        }
+      },
+      "15": {
+        "start": {
+          "line": 54,
+          "column": 6
+        },
+        "end": {
+          "line": 54,
+          "column": 34
+        }
+      },
+      "16": {
+        "start": {
+          "line": 56,
+          "column": 6
+        },
+        "end": {
+          "line": 56,
+          "column": 67
+        }
+      },
+      "17": {
+        "start": {
+          "line": 57,
+          "column": 6
+        },
+        "end": {
+          "line": 57,
+          "column": 21
+        }
+      },
+      "18": {
+        "start": {
+          "line": 62,
+          "column": 29
+        },
+        "end": {
+          "line": 62,
+          "column": 33
+        }
+      },
+      "19": {
+        "start": {
+          "line": 63,
+          "column": 30
+        },
+        "end": {
+          "line": 63,
+          "column": 34
+        }
+      },
+      "20": {
+        "start": {
+          "line": 64,
+          "column": 4
+        },
+        "end": {
+          "line": 69,
+          "column": 5
+        }
+      },
+      "21": {
+        "start": {
+          "line": 65,
+          "column": 6
+        },
+        "end": {
+          "line": 65,
+          "column": 38
+        }
+      },
+      "22": {
+        "start": {
+          "line": 71,
+          "column": 4
+        },
+        "end": {
+          "line": 75,
+          "column": 5
+        }
+      },
+      "23": {
+        "start": {
+          "line": 72,
+          "column": 6
+        },
+        "end": {
+          "line": 72,
+          "column": 20
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 14,
+            "column": 2
+          },
+          "end": {
+            "line": 14,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 16
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        },
+        "line": 14
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 18,
+            "column": 2
+          },
+          "end": {
+            "line": 18,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 43
+          },
+          "end": {
+            "line": 20,
+            "column": 3
+          }
+        },
+        "line": 18
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 22,
+            "column": 2
+          },
+          "end": {
+            "line": 22,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 22,
+            "column": 58
+          },
+          "end": {
+            "line": 24,
+            "column": 3
+          }
+        },
+        "line": 22
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {
+            "line": 26,
+            "column": 2
+          },
+          "end": {
+            "line": 26,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 26,
+            "column": 87
+          },
+          "end": {
+            "line": 59,
+            "column": 3
+          }
+        },
+        "line": 26
+      },
+      "4": {
+        "name": "(anonymous_4)",
+        "decl": {
+          "start": {
+            "line": 29,
+            "column": 26
+          },
+          "end": {
+            "line": 29,
+            "column": 27
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 29,
+            "column": 73
+          },
+          "end": {
+            "line": 58,
+            "column": 5
+          }
+        },
+        "line": 29
+      },
+      "5": {
+        "name": "(anonymous_5)",
+        "decl": {
+          "start": {
+            "line": 35,
+            "column": 19
+          },
+          "end": {
+            "line": 35,
+            "column": 20
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 35,
+            "column": 31
+          },
+          "end": {
+            "line": 52,
+            "column": 7
+          }
+        },
+        "line": 35
+      },
+      "6": {
+        "name": "(anonymous_6)",
+        "decl": {
+          "start": {
+            "line": 61,
+            "column": 2
+          },
+          "end": {
+            "line": 61,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 61,
+            "column": 91
+          },
+          "end": {
+            "line": 76,
+            "column": 3
+          }
+        },
+        "line": 61
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 37,
+            "column": 8
+          },
+          "end": {
+            "line": 42,
+            "column": 9
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 37,
+              "column": 8
+            },
+            "end": {
+              "line": 42,
+              "column": 9
+            }
+          },
+          {
+            "start": {
+              "line": 37,
+              "column": 8
+            },
+            "end": {
+              "line": 42,
+              "column": 9
+            }
+          }
+        ],
+        "line": 37
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 43,
+            "column": 8
+          },
+          "end": {
+            "line": 51,
+            "column": 9
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 43,
+              "column": 8
+            },
+            "end": {
+              "line": 51,
+              "column": 9
+            }
+          },
+          {
+            "start": {
+              "line": 43,
+              "column": 8
+            },
+            "end": {
+              "line": 51,
+              "column": 9
+            }
+          }
+        ],
+        "line": 43
+      },
+      "2": {
+        "loc": {
+          "start": {
+            "line": 46,
+            "column": 15
+          },
+          "end": {
+            "line": 51,
+            "column": 9
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 46,
+              "column": 15
+            },
+            "end": {
+              "line": 51,
+              "column": 9
+            }
+          },
+          {
+            "start": {
+              "line": 46,
+              "column": 15
+            },
+            "end": {
+              "line": 51,
+              "column": 9
+            }
+          }
+        ],
+        "line": 46
+      },
+      "3": {
+        "loc": {
+          "start": {
+            "line": 71,
+            "column": 4
+          },
+          "end": {
+            "line": 75,
+            "column": 5
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 71,
+              "column": 4
+            },
+            "end": {
+              "line": 75,
+              "column": 5
+            }
+          }
+        ],
+        "line": 71
+      }
+    },
+    "s": {
+      "0": 7,
+      "1": 7,
+      "2": 7,
+      "3": 7,
+      "4": 6,
+      "5": 0,
+      "6": 6,
+      "7": 6,
+      "8": 6,
+      "9": 6,
+      "10": 6,
+      "11": 6,
+      "12": 6,
+      "13": 6,
+      "14": 6,
+      "15": 6,
+      "16": 6,
+      "17": 6,
+      "18": 6,
+      "19": 6,
+      "20": 6,
+      "21": 6,
+      "22": 6,
+      "23": 6
+    },
+    "f": {
+      "0": 7,
+      "1": 6,
+      "2": 0,
+      "3": 6,
+      "4": 6,
+      "5": 6,
+      "6": 6
+    },
+    "b": {
+      "0": [
+        6,
+        0
+      ],
+      "1": [
+        0,
+        6
+      ],
+      "2": [
+        6,
+        0
+      ],
+      "3": [
+        6
+      ]
+    },
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "fac3bb6d9c79926d0bfee0c633784a38766af7d1"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/singletons.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/singletons.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 9,
+          "column": 36
+        },
+        "end": {
+          "line": 9,
+          "column": 85
+        }
+      },
+      "1": {
+        "start": {
+          "line": 10,
+          "column": 44
+        },
+        "end": {
+          "line": 10,
+          "column": 67
+        }
+      },
+      "2": {
+        "start": {
+          "line": 11,
+          "column": 17
+        },
+        "end": {
+          "line": 11,
+          "column": 26
+        }
+      },
+      "3": {
+        "start": {
+          "line": 12,
+          "column": 24
+        },
+        "end": {
+          "line": 12,
+          "column": 36
+        }
+      },
+      "4": {
+        "start": {
+          "line": 13,
+          "column": 31
+        },
+        "end": {
+          "line": 13,
+          "column": 50
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 7,
+      "1": 7,
+      "2": 7,
+      "3": 7,
+      "4": 7
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "ce815d4be35894f041f5e9f748ca78ff668e6a43"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/api.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/api.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 17,
+          "column": 4
+        },
+        "end": {
+          "line": 20,
+          "column": 6
+        }
+      },
+      "1": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 19
+        }
+      },
+      "2": {
+        "start": {
+          "line": 25,
+          "column": 4
+        },
+        "end": {
+          "line": 25,
+          "column": 54
+        }
+      },
+      "3": {
+        "start": {
+          "line": 29,
+          "column": 4
+        },
+        "end": {
+          "line": 29,
+          "column": 54
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 16,
+            "column": 2
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 24
+          },
+          "end": {
+            "line": 22,
+            "column": 3
+          }
+        },
+        "line": 16
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 24,
+            "column": 2
+          },
+          "end": {
+            "line": 24,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 24,
+            "column": 37
+          },
+          "end": {
+            "line": 26,
+            "column": 3
+          }
+        },
+        "line": 24
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 28,
+            "column": 2
+          },
+          "end": {
+            "line": 28,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 28,
+            "column": 37
+          },
+          "end": {
+            "line": 30,
+            "column": 3
+          }
+        },
+        "line": 28
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 7,
+      "1": 7,
+      "2": 2,
+      "3": 4
+    },
+    "f": {
+      "0": 7,
+      "1": 2,
+      "2": 4
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "5f76d3d0d85cc4f7fba5cb5c7f83b7a27a315c60"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/mixins.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/mixins.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 14,
+          "column": 15
+        },
+        "end": {
+          "line": 14,
+          "column": 17
+        }
+      },
+      "1": {
+        "start": {
+          "line": 17,
+          "column": 29
+        },
+        "end": {
+          "line": 17,
+          "column": 47
+        }
+      },
+      "2": {
+        "start": {
+          "line": 18,
+          "column": 4
+        },
+        "end": {
+          "line": 24,
+          "column": 5
+        }
+      },
+      "3": {
+        "start": {
+          "line": 19,
+          "column": 6
+        },
+        "end": {
+          "line": 22,
+          "column": 7
+        }
+      },
+      "4": {
+        "start": {
+          "line": 20,
+          "column": 8
+        },
+        "end": {
+          "line": 20,
+          "column": 61
+        }
+      },
+      "5": {
+        "start": {
+          "line": 21,
+          "column": 8
+        },
+        "end": {
+          "line": 21,
+          "column": 29
+        }
+      },
+      "6": {
+        "start": {
+          "line": 23,
+          "column": 6
+        },
+        "end": {
+          "line": 23,
+          "column": 61
+        }
+      },
+      "7": {
+        "start": {
+          "line": 26,
+          "column": 4
+        },
+        "end": {
+          "line": 26,
+          "column": 25
+        }
+      },
+      "8": {
+        "start": {
+          "line": 30,
+          "column": 4
+        },
+        "end": {
+          "line": 32,
+          "column": 5
+        }
+      },
+      "9": {
+        "start": {
+          "line": 31,
+          "column": 6
+        },
+        "end": {
+          "line": 31,
+          "column": 38
+        }
+      },
+      "10": {
+        "start": {
+          "line": 36,
+          "column": 4
+        },
+        "end": {
+          "line": 38,
+          "column": 5
+        }
+      },
+      "11": {
+        "start": {
+          "line": 37,
+          "column": 6
+        },
+        "end": {
+          "line": 37,
+          "column": 38
+        }
+      },
+      "12": {
+        "start": {
+          "line": 42,
+          "column": 0
+        },
+        "end": {
+          "line": 42,
+          "column": 23
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 16,
+            "column": 2
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 31
+          },
+          "end": {
+            "line": 27,
+            "column": 3
+          }
+        },
+        "line": 16
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 29,
+            "column": 2
+          },
+          "end": {
+            "line": 29,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 29,
+            "column": 25
+          },
+          "end": {
+            "line": 33,
+            "column": 3
+          }
+        },
+        "line": 29
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 35,
+            "column": 2
+          },
+          "end": {
+            "line": 35,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 35,
+            "column": 25
+          },
+          "end": {
+            "line": 39,
+            "column": 3
+          }
+        },
+        "line": 35
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 4
+          },
+          "end": {
+            "line": 24,
+            "column": 5
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 18,
+              "column": 4
+            },
+            "end": {
+              "line": 24,
+              "column": 5
+            }
+          },
+          {
+            "start": {
+              "line": 18,
+              "column": 4
+            },
+            "end": {
+              "line": 24,
+              "column": 5
+            }
+          }
+        ],
+        "line": 18
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 6
+          },
+          "end": {
+            "line": 22,
+            "column": 7
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 19,
+              "column": 6
+            },
+            "end": {
+              "line": 22,
+              "column": 7
+            }
+          },
+          {
+            "start": {
+              "line": 19,
+              "column": 6
+            },
+            "end": {
+              "line": 22,
+              "column": 7
+            }
+          }
+        ],
+        "line": 19
+      },
+      "2": {
+        "loc": {
+          "start": {
+            "line": 30,
+            "column": 4
+          },
+          "end": {
+            "line": 32,
+            "column": 5
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 30,
+              "column": 4
+            },
+            "end": {
+              "line": 32,
+              "column": 5
+            }
+          },
+          {
+            "start": {
+              "line": 30,
+              "column": 4
+            },
+            "end": {
+              "line": 32,
+              "column": 5
+            }
+          }
+        ],
+        "line": 30
+      },
+      "3": {
+        "loc": {
+          "start": {
+            "line": 36,
+            "column": 4
+          },
+          "end": {
+            "line": 38,
+            "column": 5
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 36,
+              "column": 4
+            },
+            "end": {
+              "line": 38,
+              "column": 5
+            }
+          },
+          {
+            "start": {
+              "line": 36,
+              "column": 4
+            },
+            "end": {
+              "line": 38,
+              "column": 5
+            }
+          }
+        ],
+        "line": 36
+      }
+    },
+    "s": {
+      "0": 82,
+      "1": 82,
+      "2": 82,
+      "3": 82,
+      "4": 49,
+      "5": 49,
+      "6": 82,
+      "7": 82,
+      "8": 6,
+      "9": 6,
+      "10": 82,
+      "11": 82,
+      "12": 7
+    },
+    "f": {
+      "0": 82,
+      "1": 6,
+      "2": 82
+    },
+    "b": {
+      "0": [
+        82,
+        0
+      ],
+      "1": [
+        49,
+        33
+      ],
+      "2": [
+        6,
+        0
+      ],
+      "3": [
+        82,
+        0
+      ]
+    },
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "6ac4e146448cd3f958b0b3f15aba92ff40a1707a"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/store/stateDecoratorFactory.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/store/stateDecoratorFactory.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 4,
+          "column": 4
+        },
+        "end": {
+          "line": 22,
+          "column": 5
+        }
+      },
+      "1": {
+        "start": {
+          "line": 9,
+          "column": 6
+        },
+        "end": {
+          "line": 21,
+          "column": 8
+        }
+      },
+      "2": {
+        "start": {
+          "line": 13,
+          "column": 8
+        },
+        "end": {
+          "line": 20,
+          "column": 10
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "stateDecoratorFactory",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 13
+          },
+          "end": {
+            "line": 4,
+            "column": 34
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 34
+          },
+          "end": {
+            "line": 22,
+            "column": 5
+          }
+        },
+        "line": 8
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 9,
+            "column": 13
+          },
+          "end": {
+            "line": 9,
+            "column": 14
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 37
+          },
+          "end": {
+            "line": 21,
+            "column": 7
+          }
+        },
+        "line": 12
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 7,
+      "1": 7,
+      "2": 14
+    },
+    "f": {
+      "0": 7,
+      "1": 14
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "c7789e376e5353480d836b98c37575019118894c"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/store/store.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/store/store.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 14
+        }
+      },
+      "1": {
+        "start": {
+          "line": 7,
+          "column": 39
+        },
+        "end": {
+          "line": 7,
+          "column": 63
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 7,
+      "1": 7
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "949ba8640fdc481b315a11886c10e4a7eb501061"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/store/users.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/store/users.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 12,
+          "column": 25
+        },
+        "end": {
+          "line": 12,
+          "column": 27
+        }
+      },
+      "1": {
+        "start": {
+          "line": 15,
+          "column": 23
+        },
+        "end": {
+          "line": 15,
+          "column": 24
+        }
+      },
+      "2": {
+        "start": {
+          "line": 16,
+          "column": 4
+        },
+        "end": {
+          "line": 16,
+          "column": 63
+        }
+      },
+      "3": {
+        "start": {
+          "line": 16,
+          "column": 43
+        },
+        "end": {
+          "line": 16,
+          "column": 61
+        }
+      },
+      "4": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 25
+        }
+      },
+      "5": {
+        "start": {
+          "line": 25,
+          "column": 33
+        },
+        "end": {
+          "line": 25,
+          "column": 49
+        }
+      },
+      "6": {
+        "start": {
+          "line": 29,
+          "column": 4
+        },
+        "end": {
+          "line": 29,
+          "column": 37
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 14,
+            "column": 2
+          },
+          "end": {
+            "line": 14,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 37
+          },
+          "end": {
+            "line": 17,
+            "column": 3
+          }
+        },
+        "line": 14
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 16,
+            "column": 29
+          },
+          "end": {
+            "line": 16,
+            "column": 30
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 43
+          },
+          "end": {
+            "line": 16,
+            "column": 61
+          }
+        },
+        "line": 16
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 19,
+            "column": 2
+          },
+          "end": {
+            "line": 19,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 20,
+            "column": 41
+          },
+          "end": {
+            "line": 22,
+            "column": 3
+          }
+        },
+        "line": 20
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 7,
+      "1": 4,
+      "2": 4,
+      "3": 20,
+      "4": 4,
+      "5": 7,
+      "6": 7
+    },
+    "f": {
+      "0": 4,
+      "1": 20,
+      "2": 4
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "f1b87e6a9cb2b3867109d6f3c8841da12df347b0"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/router.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/router.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 19
+        }
+      },
+      "1": {
+        "start": {
+          "line": 9,
+          "column": 33
+        },
+        "end": {
+          "line": 24,
+          "column": 2
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 7,
+      "1": 7
+    },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "e8c95ca1bc79642eacb69ff124bf2c4dc3fe1920"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/main.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/main.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 30
+        }
+      },
+      "1": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 25
+        }
+      },
+      "2": {
+        "start": {
+          "line": 13,
+          "column": 25
+        },
+        "end": {
+          "line": 26,
+          "column": 1
+        }
+      },
+      "3": {
+        "start": {
+          "line": 14,
+          "column": 19
+        },
+        "end": {
+          "line": 18,
+          "column": 4
+        }
+      },
+      "4": {
+        "start": {
+          "line": 15,
+          "column": 68
+        },
+        "end": {
+          "line": 15,
+          "column": 76
+        }
+      },
+      "5": {
+        "start": {
+          "line": 19,
+          "column": 2
+        },
+        "end": {
+          "line": 24,
+          "column": 3
+        }
+      },
+      "6": {
+        "start": {
+          "line": 20,
+          "column": 4
+        },
+        "end": {
+          "line": 20,
+          "column": 21
+        }
+      },
+      "7": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 25
+        }
+      },
+      "8": {
+        "start": {
+          "line": 22,
+          "column": 4
+        },
+        "end": {
+          "line": 22,
+          "column": 27
+        }
+      },
+      "9": {
+        "start": {
+          "line": 23,
+          "column": 4
+        },
+        "end": {
+          "line": 23,
+          "column": 21
+        }
+      },
+      "10": {
+        "start": {
+          "line": 25,
+          "column": 2
+        },
+        "end": {
+          "line": 25,
+          "column": 21
+        }
+      },
+      "11": {
+        "start": {
+          "line": 29,
+          "column": 0
+        },
+        "end": {
+          "line": 33,
+          "column": 1
+        }
+      },
+      "12": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 32,
+          "column": 9
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 13,
+            "column": 25
+          },
+          "end": {
+            "line": 13,
+            "column": 26
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 37
+          },
+          "end": {
+            "line": 26,
+            "column": 1
+          }
+        },
+        "line": 13
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 15,
+            "column": 12
+          },
+          "end": {
+            "line": 15,
+            "column": 13
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 15,
+            "column": 68
+          },
+          "end": {
+            "line": 15,
+            "column": 76
+          }
+        },
+        "line": 15
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 2
+          },
+          "end": {
+            "line": 24,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 19,
+              "column": 2
+            },
+            "end": {
+              "line": 24,
+              "column": 3
+            }
+          },
+          {
+            "start": {
+              "line": 19,
+              "column": 2
+            },
+            "end": {
+              "line": 24,
+              "column": 3
+            }
+          }
+        ],
+        "line": 19
+      },
+      "1": {
+        "loc": {
+          "start": {
+            "line": 29,
+            "column": 0
+          },
+          "end": {
+            "line": 33,
+            "column": 1
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 29,
+              "column": 0
+            },
+            "end": {
+              "line": 33,
+              "column": 1
+            }
+          }
+        ],
+        "line": 29
+      }
+    },
+    "s": {
+      "0": 7,
+      "1": 7,
+      "2": 7,
+      "3": 7,
+      "4": 7,
+      "5": 7,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 7,
+      "11": 7,
+      "12": 7
+    },
+    "f": {
+      "0": 7,
+      "1": 7
+    },
+    "b": {
+      "0": [
+        0,
+        7
+      ],
+      "1": [
+        7
+      ]
+    },
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "9cac0231ebed844f3814f8f74539d3df636f8123"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/App.vue": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/App.vue",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 31,
+          "column": 0
+        },
+        "end": {
+          "line": 31,
+          "column": null
+        }
+      },
+      "1": {
+        "start": {
+          "line": 33,
+          "column": 0
+        },
+        "end": {
+          "line": 33,
+          "column": null
+        }
+      },
+      "2": {
+        "start": {
+          "line": 35,
+          "column": 0
+        },
+        "end": {
+          "line": 35,
+          "column": null
+        }
+      },
+      "3": {
+        "start": {
+          "line": 38,
+          "column": 0
+        },
+        "end": {
+          "line": 40,
+          "column": null
+        }
+      },
+      "4": {
+        "start": {
+          "line": 39,
+          "column": 0
+        },
+        "end": {
+          "line": 39,
+          "column": null
+        }
+      },
+      "5": {
+        "start": {
+          "line": 41,
+          "column": 0
+        },
+        "end": {
+          "line": 41,
+          "column": null
+        }
+      },
+      "6": {
+        "start": {
+          "line": 42,
+          "column": 0
+        },
+        "end": {
+          "line": 42,
+          "column": null
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 37,
+            "column": 0
+          },
+          "end": {
+            "line": 37,
+            "column": null
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 37,
+            "column": 0
+          },
+          "end": {
+            "line": 43,
+            "column": null
+          }
+        }
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 38,
+            "column": 0
+          },
+          "end": {
+            "line": 40,
+            "column": null
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 38,
+              "column": 0
+            },
+            "end": {
+              "line": 40,
+              "column": null
+            }
+          },
+          {
+            "start": {
+              "line": 38,
+              "column": 0
+            },
+            "end": {
+              "line": 40,
+              "column": null
+            }
+          }
+        ]
+      }
+    },
+    "s": {
+      "0": 7,
+      "1": 7,
+      "2": 7,
+      "3": 7,
+      "4": 7,
+      "5": 7,
+      "6": 7
+    },
+    "f": {
+      "0": 7
+    },
+    "b": {
+      "0": [
+        7,
+        0
+      ]
+    }
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/sessionHolderImpl.ts": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/utils/sessionHolderImpl.ts",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 8,
+          "column": 4
+        },
+        "end": {
+          "line": 15,
+          "column": 5
+        }
+      },
+      "1": {
+        "start": {
+          "line": 9,
+          "column": 6
+        },
+        "end": {
+          "line": 12,
+          "column": 8
+        }
+      },
+      "2": {
+        "start": {
+          "line": 14,
+          "column": 6
+        },
+        "end": {
+          "line": 14,
+          "column": 44
+        }
+      },
+      "3": {
+        "start": {
+          "line": 19,
+          "column": 4
+        },
+        "end": {
+          "line": 19,
+          "column": 46
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 2
+          },
+          "end": {
+            "line": 7,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 43
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        },
+        "line": 7
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 18,
+            "column": 2
+          },
+          "end": {
+            "line": 18,
+            "column": 3
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 36
+          },
+          "end": {
+            "line": 20,
+            "column": 3
+          }
+        },
+        "line": 18
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 4
+          },
+          "end": {
+            "line": 15,
+            "column": 5
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 8,
+              "column": 4
+            },
+            "end": {
+              "line": 15,
+              "column": 5
+            }
+          },
+          {
+            "start": {
+              "line": 8,
+              "column": 4
+            },
+            "end": {
+              "line": 15,
+              "column": 5
+            }
+          }
+        ],
+        "line": 8
+      }
+    },
+    "s": {
+      "0": 14,
+      "1": 7,
+      "2": 7,
+      "3": 7
+    },
+    "f": {
+      "0": 14,
+      "1": 7
+    },
+    "b": {
+      "0": [
+        7,
+        7
+      ]
+    },
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "17ecf3fe3d234f052adc032606ad7ddf7d733bb8"
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/pages/FilteredUsersPage.vue": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/pages/FilteredUsersPage.vue",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 31,
+          "column": 0
+        },
+        "end": {
+          "line": 31,
+          "column": null
+        }
+      },
+      "1": {
+        "start": {
+          "line": 34,
+          "column": 0
+        },
+        "end": {
+          "line": 34,
+          "column": null
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 33,
+            "column": 0
+          },
+          "end": {
+            "line": 33,
+            "column": null
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 33,
+            "column": 0
+          },
+          "end": {
+            "line": 35,
+            "column": null
+          }
+        }
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 2,
+      "1": 2
+    },
+    "f": {
+      "0": 2
+    },
+    "b": {}
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/pages/PostsPage.vue": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/pages/PostsPage.vue",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 23,
+          "column": null
+        }
+      },
+      "1": {
+        "start": {
+          "line": 25,
+          "column": 0
+        },
+        "end": {
+          "line": 25,
+          "column": null
+        }
+      },
+      "2": {
+        "start": {
+          "line": 28,
+          "column": 0
+        },
+        "end": {
+          "line": 28,
+          "column": null
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 27,
+            "column": 0
+          },
+          "end": {
+            "line": 27,
+            "column": null
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 27,
+            "column": 0
+          },
+          "end": {
+            "line": 29,
+            "column": null
+          }
+        }
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 2,
+      "1": 2,
+      "2": 2
+    },
+    "f": {
+      "0": 2
+    },
+    "b": {}
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/pages/UsersPage.vue": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/pages/UsersPage.vue",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 27,
+          "column": 0
+        },
+        "end": {
+          "line": 27,
+          "column": null
+        }
+      },
+      "1": {
+        "start": {
+          "line": 30,
+          "column": 0
+        },
+        "end": {
+          "line": 30,
+          "column": null
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 29,
+            "column": 0
+          },
+          "end": {
+            "line": 29,
+            "column": null
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 29,
+            "column": 0
+          },
+          "end": {
+            "line": 31,
+            "column": null
+          }
+        }
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 2,
+      "1": 2
+    },
+    "f": {
+      "0": 2
+    },
+    "b": {}
+  },
+  "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/partials/UserComp.vue": {
+    "path": "/home/andrew/WebstormProjects/vue-webpack-typescript/src/components/partials/UserComp.vue",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 21,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": null
+        }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": {
+      "0": 20
+    },
+    "f": {},
+    "b": {}
+  }
+}
