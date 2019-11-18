@@ -11,6 +11,7 @@
     "test": "yarn run clean; yarn run test:unit; yarn run test:cypress:build:run; yarn run test:combine",
     "lint:css": "stylelint 'src/**/*.vue' 'src/**/*.sass'",
     "lint:ts": "eslint --ext .ts,.vue --max-warnings=0 src test cypress/integration",
+    "lint": "concurrently 'yarn run lint:css' 'yarn run lint:ts'",
     "fix": "eslint --fix --ext .ts,.vue src",
     "clean": "rm -rf ./dist && rm -rf ./nyc && rm -rf ./node_modules/.cache",
     "codecov": "nyc report --temp-dir ./nyc/.nyc_output --reporter=text-lcov > coverage.lcov && codecov",

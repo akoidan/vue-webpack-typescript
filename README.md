@@ -286,3 +286,5 @@ Tslint is not used for files, since it's deprecated. Use eslint instead and disa
  - https://github.com/vuejs/eslint-plugin-vue/issues/987
  - https://github.com/istanbuljs/nyc/issues/1148
  - https://github.com/eslint/eslint/pull/12571
+ - https://github.com/benmosher/eslint-plugin-import/issues/1543
+ - https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908

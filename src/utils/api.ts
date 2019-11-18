@@ -13,7 +13,8 @@ export class Api {
 
   private readonly xhr: Xhr;
 
-  constructor(xhr: Xhr) {
+  // https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908
+  public constructor(xhr: Xhr) { // eslint-disable-line @typescript-eslint/no-untyped-public-signature
     this.logger = loggerFactory.getLoggerColor(
       "api",
       "red",

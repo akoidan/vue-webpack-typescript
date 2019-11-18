@@ -11,7 +11,8 @@ const HTTP_ERR = 0;
 export class Xhr {
   protected httpLogger: Logger;
 
-  constructor() {
+  // https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908
+  public constructor() { // eslint-disable-line @typescript-eslint/no-untyped-public-signature
     this.httpLogger = loggerFactory.getLoggerColor("http", "#680061");
   }
 
