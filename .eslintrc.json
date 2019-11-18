@@ -3,7 +3,7 @@
     "plugin:vue/recommended",
     "eslint:all",
     "@vue/typescript",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/all"
   ],
   "plugins": [
     "only-warn"
@@ -11,21 +11,23 @@
   "parser": "vue-eslint-parser",
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
   "rules": {
-    "indent": "off",
     "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-inferrable-types": "off", // @typescript-eslint/typedef
+    "@typescript-eslint/require-await": "off", //https://github.com/typescript-eslint/typescript-eslint/issues/1077
     "init-declarations": "off",
     "one-var": "off",
     "@typescript-eslint/ban-ts-ignore": "off",
     "no-plusplus": "off",
-    "vue/script-indent": ["error", 2, { "baseIndent": 0 }],
     "quote-props": ["error", "as-needed"],
     "no-ternary": "off",
     "multiline-ternary": "off",
     "new-cap": ["error", {"capIsNewExceptions":  ["Module", "Component", "Prop", "Ref", "Emit"]}],
-    "space-before-function-paren": ["error", "never"],
+    "@typescript-eslint/space-before-function-paren": ["error", "never"],
+    "@typescript-eslint/strict-boolean-expressions": "off",
     "array-element-newline": ["error", "consistent"],
     "comma-dangle": ["error", "always-multiline"],
     "function-call-argument-newline": ["error", "consistent"],
@@ -39,16 +41,6 @@
           "void": "always",
           "normal": "always",
           "component": "always"
-        }
-      }
-    ]
-  },
-  "settings": {
-    "overrides": [
-      {
-        "files": ["*.vue"],
-        "rules": {
-          "indent": "off"
         }
       }
     ]

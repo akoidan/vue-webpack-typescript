@@ -24,6 +24,6 @@ export class Users extends VuexModule {
 
 export const userModule: Users = getModule(Users);
 
-export const UserState: <ConsumerType extends (ConsumerType[PropName] extends Users[PropName] ? unknown : never),
-  PropName extends (keyof ConsumerType & keyof Users)>(vueComponent: ConsumerType, fileName: PropName) => void =
+export const UserState: <TCT extends (TCT[TPN] extends Users[TPN] ? unknown : never),
+  TPN extends (keyof TCT & keyof Users)>(vueComponent: TCT, fileName: TPN) => void =
     stateDecoratorFactory(userModule);

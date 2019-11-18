@@ -4,7 +4,7 @@ import {SessionHolder} from "@/types/model";
  * Permanent storage for session
  */
 export class SessionHolderImpl implements SessionHolder {
-  public set session(value: string | null) { // eslint-disable-line class-methods-use-this
+  public set session(value: string | null): void { // eslint-disable-line class-methods-use-this
     if (value) {
       localStorage.setItem(
         "session_id",

@@ -21,11 +21,11 @@ export class Api {
     this.xhr = xhr;
   }
 
-  public getPosts(): Promise<Post[]> {
+  public async getPosts(): Promise<Post[]> {
     return this.xhr.doGet<Post[]>(`${API_URL}/posts`);
   }
 
-  public getUsers(): Promise<User[]> {
+  public async getUsers(): Promise<User[]> {
     return this.xhr.doGet<User[]>(`${API_URL}/users`);
   }
 }

@@ -15,15 +15,32 @@ export class Xhr {
     this.httpLogger = loggerFactory.getLoggerColor("http", "#680061");
   }
 
-  public doGet<T>(url: string): Promise<T> {
+  private static parseData(req: XMLHttpRequest, resolve: Function, reject: Function): void {
+    let data: unknown|null = null;
+    let error: unknown|null = null;
+    try {
+      data = JSON.parse(req.response);
+    } catch (err) {
+      // istanbul ignore next
+      error = `Unable to parse response ${err}`;
+    }
+    // istanbul ignore else
+    if (data) {
+      resolve(data);
+    } else if (error) {
+      reject(error);
+    }
+  }
+
+  public async doGet<T>(url: string): Promise<T> {
     return this.sendXhr<T>("GET", url);
   }
 
-  public doPost<T>(url: string, body: object): Promise<T> {
+  public async doPost<T>(url: string, body: object): Promise<T> {
     return this.sendXhr<T>("POST", url, JSON.stringify(body));
   }
 
-  public sendXhr<T>(method: string, url: string, body?: Document|BodyInit): Promise<T> {
+  public async sendXhr<T>(method: string, url: string, body?: Document|BodyInit): Promise<T> {
     const req: XMLHttpRequest = new XMLHttpRequest();
 
     return new Promise<T>((resolve: Function, reject: Function): void => {
@@ -33,7 +50,7 @@ export class Xhr {
         reject(Error("Unable to fetch req"));
       };
       req.onload = (): void => {
-        const success: boolean = [HTTP_SUCCESS, HTTP_CREATED].indexOf(req.status) >= HTTP_ERR;
+        const success: boolean = [HTTP_SUCCESS, HTTP_CREATED].includes(req.status);
         if (success) {
           this.httpLogger.log("{} in {} ::: {};", method, url, req.response)();
         } else {
@@ -56,22 +73,5 @@ export class Xhr {
       this.httpLogger.log("{} out {} ::: {}", method, url, body)();
       req.send(body);
     });
-  }
-
-  private static parseData(req: XMLHttpRequest, resolve: Function, reject: Function): void {
-    let data: unknown|null = null;
-    let error: unknown|null = null;
-    try {
-      data = JSON.parse(req.response);
-    } catch (err) {
-      // istanbul ignore next
-      error = `Unable to parse response ${err}`;
-    }
-    // istanbul ignore else
-    if (data) {
-      resolve(data);
-    } else if (error) {
-      reject(error);
-    }
   }
 }

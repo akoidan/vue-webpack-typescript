@@ -30,8 +30,6 @@ import variablesJson from "@/variables.json";
 export default class App extends Vue {
   private readonly a: number[] = [];
 
-  private readonly id: string = "App";
-
   private readonly mobile: boolean = mobile;
 
   private created(): void {

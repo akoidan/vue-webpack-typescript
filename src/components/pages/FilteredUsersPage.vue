@@ -28,8 +28,6 @@ export default class FilteredUsersPage extends Vue {
   @UserState
   public readonly filteredUsers!: User[];
 
-  private id = "FilteredUsersPage";
-
   private async created(): Promise<void> {
     userModule.setUsers(await this.$api.getUsers());
   }

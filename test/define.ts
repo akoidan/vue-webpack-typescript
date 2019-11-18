@@ -1,2 +1,2 @@
 // @ts-ignore
-global.CONSTS = require("../production.json");
+global.CONSTS = import("../production.json");

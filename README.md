@@ -285,3 +285,4 @@ Tslint is not used for files, since it's deprecated. Use eslint instead and disa
  - https://github.com/bahmutov/cypress-vue-unit-test
  - https://github.com/vuejs/eslint-plugin-vue/issues/987
  - https://github.com/istanbuljs/nyc/issues/1148
+ - https://github.com/eslint/eslint/pull/12571

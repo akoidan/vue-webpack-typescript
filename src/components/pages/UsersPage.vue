@@ -24,8 +24,6 @@ export default class UsersPage extends Vue {
   @UserState
   public users!: User[];
 
-  private id = "UserPage";
-
   private async created(): Promise<void> {
     userModule.setUsers(await this.$api.getUsers());
   }
