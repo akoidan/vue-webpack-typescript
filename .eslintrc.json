@@ -19,6 +19,7 @@
   },
   "rules": {
     "@typescript-eslint/indent": ["error", 2],
+    "import/no-named-as-default": "error",
     "@typescript-eslint/no-inferrable-types": "off", // @typescript-eslint/typedef
     "@typescript-eslint/require-await": "off", //https://github.com/typescript-eslint/typescript-eslint/issues/1077
     "init-declarations": "off",
