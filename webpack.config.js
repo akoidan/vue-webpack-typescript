@@ -69,6 +69,7 @@ module.exports = (env, argv) => {
   let isProd = argv.mode === 'production';
   let isDev = argv.mode === 'development';
   let isCoverage = argv.coverage === 'true';
+  let isLint = argv.lint === 'true';
   if (!isProd && !isDev) {
     throw `Pass --mode production/development, current ${argv.mode} is invalid`
   }
@@ -90,10 +91,10 @@ module.exports = (env, argv) => {
       vue: true,
       tslint: false,
     }),
-    new StyleLintPlugin({
+    ...(isLint ? [ new StyleLintPlugin({
       files: ['**/*.vue', '**/*.sass'],
       emitErrors: false,
-    }),
+    }),] : []),
   ];
   if (options.IS_DEBUG) {
     plugins.push(new HtmlWebpackPlugin({
@@ -218,11 +219,11 @@ module.exports = (env, argv) => {
           test: /\.vue$/,
           loader: 'vue-loader',
         },
-        {
+        ...(isLint ? [{
           test: /\.(ts|vue)$/,
           loader: 'eslint-loader',
           exclude: /node_modules/
-        },
+        },] : []),
         {
           test: /\.sass$/,
           use: sasscPlugins,
