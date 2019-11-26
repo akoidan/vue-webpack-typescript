@@ -234,6 +234,7 @@ module.exports = (env, argv) => {
           options: {
             outputPath: 'font',  // put fonts into a separate folder, so we don't have millions of files in root of dist
             name,
+            esModule: false, // vue doesn't support esmodule in things like images yet
             publicPath: options.PUBLIC_PATH ? options.PUBLIC_PATH + '/font' : options.PUBLIC_PATH
           }
         },
@@ -242,6 +243,7 @@ module.exports = (env, argv) => {
           loader: 'url-loader',
           options: {
             limit: 1024,
+            esModule: false, // vue doesn't support esmodule in things like images yet
             outputPath: 'img', // put image into separate folder, so we don't have millions of files in root of dist
             name
           }
