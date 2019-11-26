@@ -232,7 +232,7 @@ module.exports = (env, argv) => {
           test: /(\.woff2?|\.eot|\.ttf|\.otf|\/fonts(.*)\.svg)(\?.*)?$/,
           loader: 'file-loader',
           options: {
-            outputPath: 'font',  // put fonts into separate folder, so we don't have millions of files in root of dist
+            outputPath: 'font',  // put fonts into a separate folder, so we don't have millions of files in root of dist
             name,
             publicPath: options.PUBLIC_PATH ? options.PUBLIC_PATH + '/font' : options.PUBLIC_PATH
           }
@@ -241,7 +241,7 @@ module.exports = (env, argv) => {
           test: /(images\/\w+\.svg|images\/\w+\.jpg|images\/\w+\.gif|images\/\w+\.png)$/, //pack image to base64 when its size is less than 16k, otherwise leave it as a file
           loader: 'url-loader',
           options: {
-            limit: 16384,
+            limit: 1024,
             outputPath: 'img', // put image into separate folder, so we don't have millions of files in root of dist
             name
           }
