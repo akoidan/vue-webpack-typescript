@@ -7,6 +7,7 @@ import {loggerFactory} from "@/utils/loggerFactory";
 /**
  * Injects $logger to every component
  */
+// istanbul ignore next
 @Component
 class LoggerMixin extends Vue {
   private readonly privateLogger!: Logger|null;

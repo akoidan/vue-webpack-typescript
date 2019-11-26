@@ -37,6 +37,7 @@ export class Xhr {
     return this.sendXhr<T>("GET", url);
   }
 
+  // istanbul ignore next
   public async doPost<T>(url: string, body: object): Promise<T> {
     return this.sendXhr<T>("POST", url, JSON.stringify(body));
   }
@@ -50,21 +51,19 @@ export class Xhr {
         this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
         reject(Error("Unable to fetch req"));
       };
+      // istanbul ignore next
       req.onload = (): void => {
         const success: boolean = [HTTP_SUCCESS, HTTP_CREATED].includes(req.status);
         if (success) {
           this.httpLogger.log("{} in {} ::: {};", method, url, req.response)();
         } else {
-          // istanbul ignore next
           this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
         }
         if (req.status === HTTP_ERR) {
-          // istanbul ignore next
           reject(Error("Unable to fetch req"));
         } else if (success) {
           Xhr.parseData(req, resolve, reject);
         } else {
-          // istanbul ignore next
           reject(req.response);
         }
       };

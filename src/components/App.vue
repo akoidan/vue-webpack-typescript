@@ -31,6 +31,7 @@ export default class App extends Vue {
   private readonly mobile: boolean = mobile;
 
   private created(): void {
+    // istanbul ignore else
     if (!sessionHolder.session) {
       sessionHolder.session = "test";
     }
