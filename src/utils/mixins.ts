@@ -8,7 +8,7 @@ import {loggerFactory} from "@/utils/loggerFactory";
  * Injects $logger to every component
  */
 @Component
-export class LoggerMixin extends Vue {
+class LoggerMixin extends Vue {
   private readonly privateLogger!: Logger|null;
 
   private id: string= "";
@@ -40,3 +40,5 @@ export class LoggerMixin extends Vue {
 }
 
 Vue.mixin(LoggerMixin);
+
+export {LoggerMixin};

@@ -1,5 +1,6 @@
-import "@/utils/classComponentHooks";
-import "@/utils/mixins";
+// ClassComponentHooks and mixins should be imported b4 others
+import "@/utils/classComponentHooks"; // eslint-disable-line import/no-unassigned-import
+import "@/utils/mixins"; // eslint-disable-line import/no-unassigned-import
 import {GIT_HASH, IS_DEBUG} from "@/utils/consts";
 import App from "@/components/App.vue";
 import Vue from "vue";

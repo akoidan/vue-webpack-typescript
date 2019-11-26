@@ -1,5 +1,5 @@
-import * as chaiAsPromised from "chai-as-promised";
-import * as sinonChai from "sinon-chai";
+import * as chaiAsPromised from "chai-as-promised"; // eslint-disable-line import/no-namespace
+import * as sinonChai from "sinon-chai"; // eslint-disable-line import/no-namespace
 import {expect, use} from "chai";
 import {Xhr} from "@/utils/xhr";
 import {getUniqueId} from "@/utils/getUniqueId";

@@ -8,7 +8,7 @@ import {store} from "@/store/store";
   name: "user",
   store,
 })
-export class Users extends VuexModule {
+class Users extends VuexModule {
   public users: User[] = [];
 
   public get filteredUsers(): User[] {
@@ -22,8 +22,10 @@ export class Users extends VuexModule {
   }
 }
 
-export const userModule: Users = getModule(Users);
+const userModule: Users = getModule(Users);
 
-export const UserState: <TCT extends (TCT[TPN] extends Users[TPN] ? unknown : never),
+const UserState: <TCT extends (TCT[TPN] extends Users[TPN] ? unknown : never),
   TPN extends (keyof TCT & keyof Users)>(vueComponent: TCT, fileName: TPN) => void =
     stateDecoratorFactory(userModule);
+
+export {userModule, UserState, User};
