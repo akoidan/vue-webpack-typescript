@@ -94,8 +94,16 @@
     "vue/space-infix-ops": "error",
     "vue/space-unary-ops":"error",
     "vue/v-on-function-call": "error",
+    "vue/html-closing-bracket-spacing": ["error", {"endTag": "never", "selfClosingTag":  "never", "startTag": "never"}],
     "vue/v-slot-style":"error",
     "vue/valid-v-slot": "error",
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": 3, // don't spawn multiline content of elements, template will grow huge very soon. 3 element is easy to grasp
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": false
+      }
+    }],
     "vue/html-self-closing": [
       "error",
       {

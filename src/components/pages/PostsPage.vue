@@ -1,9 +1,6 @@
 <template>
   <div data-cy="posts-container">
-    <div
-      v-for="post in posts"
-      :key="post.id"
-    >
+    <div v-for="post in posts" :key="post.id">
       <h4>
         {{ post.title }}
       </h4>

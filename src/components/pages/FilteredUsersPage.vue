@@ -1,10 +1,6 @@
 <template>
   <div data-cy="filtered-users-container">
-    <div
-      v-for="user in filteredUsers"
-      :key="user.id"
-      class="user-post"
-    >
+    <div v-for="user in filteredUsers" :key="user.id" class="user-post">
       <div>
         {{ user.name }}
       </div>
