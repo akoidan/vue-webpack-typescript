@@ -28,8 +28,6 @@ import variablesJson from "@/variables.json";
   components: {},
 })
 export default class App extends Vue {
-  private readonly a: number[] = [];
-
   private readonly mobile: boolean = mobile;
 
   private created(): void {

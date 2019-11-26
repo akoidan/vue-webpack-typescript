@@ -16,6 +16,7 @@ const init: () => void = (): void => {
     router,
     store,
   });
+  /* istanbul ignore if */
   if (IS_DEBUG) {
     window.vue = vue;
     window.store = store;

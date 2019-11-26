@@ -196,7 +196,7 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
 - http-server allows to serve static files for cypress test. 
 - cypress - testing framework that allows running test-cases directly in chrome instead of Selenium way
 - [istanbul](https://istanbul.js.org/) - code coverage with cli interface, generates html cov report
-- [nyc](https://github.com/istanbuljs/nyc) - cli interface to instanbul
+- [nyc](https://github.com/istanbuljs/nyc) - cli interface to istanbul
  - @cypress/code-coverage - allows to add istanbul coverage to cypress
  - @cypress/webpack-preprocessor allows to transpile cypress test via typescript
  - @istanbuljs/nyc-config-typescript - allows to coverage .ts files during test
