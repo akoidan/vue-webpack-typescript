@@ -8,7 +8,7 @@
     "test:cypress:run": "CYPRESS_baseUrl=http://localhost:9084 CYPRESS_coveragereport=true start-server-and-test 'http-server -p 9084 ./dist' 9084 'cypress run'",
     "test:cypress:debug": "CYPRESS_baseUrl=http://localhost:9084 CYPRESS_coveragereport=true cypress open",
     "test:unit": "rm -rf ./nyc/.nyc_output_unit &&  rm -rf ./nyc/coverage_unit && yarn nyc --temp-dir ./nyc/.nyc_output_unit --report-dir ./nyc/coverage_unit mocha",
-    "test:codecov": "nyc report --temp-dir ./nyc/.nyc_output_cypress --reporter=text-lcov | yarn run codecov --pipe",
+    "test:codecov": "nyc report --temp-dir ./nyc/.nyc_output_cypress --reporter=text-lcov | codecov --pipe",
     "test:coverage": "nyc --temp-dir ./nyc/.nyc_output_cypress check-coverage",
     "test": "run-s build:test test:cypress:run",
     "lint:style": "stylelint 'src/**/*.vue' 'src/**/*.sass'",

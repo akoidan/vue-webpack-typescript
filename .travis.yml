@@ -3,7 +3,7 @@ node_js:
   - "node"
 script:
   - npm run test
-  - npm run codecov
+  - npm run test:codecov
 cache:
   yarn: true
   directories:
