@@ -65,7 +65,7 @@
     "import/no-anonymous-default-export":1,
     "import/no-commonjs": 1,
     "import/no-cycle":1,
-    "import/no-default-export": 0, // doesn't work with .vue
+    "import/no-default-export": 1,
     "import/no-deprecated":1,
     "import/no-dynamic-require": 1,
     "import/no-extraneous-dependencies":1,
@@ -126,5 +126,13 @@
         }
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.vue", "*.d.ts"],
+      "rules": {
+        "import/no-default-export": 0
+      }
+    }
+  ]
 }
