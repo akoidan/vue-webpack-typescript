@@ -1,5 +1,4 @@
 describe("Posts", (): void => {
-
   const usersCount = 10;
 
   before(() => {

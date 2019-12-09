@@ -1,10 +1,6 @@
 <template>
   <div data-cy="filtered-users-container">
-    <div
-      v-for="user in filteredUsers"
-      :key="user.id"
-      class="user-post"
-    >
+    <div v-for="user in filteredUsers" :key="user.id" class="user-post">
       <div>
         {{ user.name }}
       </div>
@@ -27,8 +23,6 @@ import {User} from "@/types/dto";
 export default class FilteredUsersPage extends Vue {
   @UserState
   public readonly filteredUsers!: User[];
-
-  private id = "FilteredUsersPage";
 
   private async created(): Promise<void> {
     userModule.setUsers(await this.$api.getUsers());

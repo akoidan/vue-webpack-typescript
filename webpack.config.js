@@ -69,6 +69,7 @@ module.exports = (env, argv) => {
   let isProd = argv.mode === 'production';
   let isDev = argv.mode === 'development';
   let isCoverage = argv.coverage === 'true';
+  let isLint = argv.lint === 'true';
   if (!isProd && !isDev) {
     throw `Pass --mode production/development, current ${argv.mode} is invalid`
   }
@@ -90,10 +91,10 @@ module.exports = (env, argv) => {
       vue: true,
       tslint: false,
     }),
-    new StyleLintPlugin({
+    ...(isLint ? [ new StyleLintPlugin({
       files: ['**/*.vue', '**/*.sass'],
       emitErrors: false,
-    }),
+    }),] : []),
   ];
   if (options.IS_DEBUG) {
     plugins.push(new HtmlWebpackPlugin({
@@ -218,11 +219,11 @@ module.exports = (env, argv) => {
           test: /\.vue$/,
           loader: 'vue-loader',
         },
-        {
+        ...(isLint ? [{
           test: /\.(ts|vue)$/,
           loader: 'eslint-loader',
           exclude: /node_modules/
-        },
+        },] : []),
         {
           test: /\.sass$/,
           use: sasscPlugins,
@@ -231,8 +232,9 @@ module.exports = (env, argv) => {
           test: /(\.woff2?|\.eot|\.ttf|\.otf|\/fonts(.*)\.svg)(\?.*)?$/,
           loader: 'file-loader',
           options: {
-            outputPath: 'font',  // put fonts into separate folder, so we don't have millions of files in root of dist
+            outputPath: 'font',  // put fonts into a separate folder, so we don't have millions of files in root of dist
             name,
+            esModule: false, // vue doesn't support esmodule in things like images yet
             publicPath: options.PUBLIC_PATH ? options.PUBLIC_PATH + '/font' : options.PUBLIC_PATH
           }
         },
@@ -240,7 +242,8 @@ module.exports = (env, argv) => {
           test: /(images\/\w+\.svg|images\/\w+\.jpg|images\/\w+\.gif|images\/\w+\.png)$/, //pack image to base64 when its size is less than 16k, otherwise leave it as a file
           loader: 'url-loader',
           options: {
-            limit: 16384,
+            limit: 1024,
+            esModule: false, // vue doesn't support esmodule in things like images yet
             outputPath: 'img', // put image into separate folder, so we don't have millions of files in root of dist
             name
           }

@@ -1,18 +1,27 @@
-import {expect} from "chai";
-import {getUniqueId} from "../src/utils/getUniqueId";
+import * as chaiAsPromised from "chai-as-promised"; // eslint-disable-line import/no-namespace
+import * as sinonChai from "sinon-chai"; // eslint-disable-line import/no-namespace
+import {expect, use} from "chai";
+import {Xhr} from "@/utils/xhr";
+import {getUniqueId} from "@/utils/getUniqueId";
+import {stub} from "sinon";
 
-const test = async(): Promise<void> => {
-  await describe("getUniqueId", (): void => {
-    it("should inc", () => {
-      const res = getUniqueId();
-      const res2 = getUniqueId();
-      expect(res2).to.be.equal(res + 1); // eslint-disable-line
-    });
+use(sinonChai);
+use(chaiAsPromised);
+
+
+describe("getUniqueId", (): void => {
+  it("should inc", () => {
+    const res = getUniqueId();
+    const res2 = getUniqueId();
+    expect(res2).to.be.equal(res + 1); // eslint-disable-line
   });
-  run();
-};
+});
 
-test().catch((err) => {
-  console.error(`error during setting up test${err}`); // eslint-disable-line no-console
-  process.exit(1); // eslint-disable-line
+describe("Xhr", (): void => {
+  it("should cover post", async() => {
+    const xhr = new Xhr();
+    const xhrSpy = stub(xhr, "sendXhr");
+    await xhr.doPost("/test/url", {ad: "a"});
+    expect(xhrSpy).to.have.been.calledOnceWithExactly("POST", "/test/url", "{\"ad\":\"a\"}");
+  });
 });

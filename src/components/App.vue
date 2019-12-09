@@ -1,7 +1,7 @@
 <template>
   <div :class="{mobile}">
     <div class="top">
-      <img src="@/assets/images/logo.png" />
+      <img src="@/assets/images/logo.png" data-cy="logo"/>
       <router-link to="/posts">
         Posts
       </router-link>
@@ -12,7 +12,7 @@
         Filtered Users
       </router-link>
     </div>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -28,13 +28,10 @@ import variablesJson from "@/variables.json";
   components: {},
 })
 export default class App extends Vue {
-  private readonly a: number[] = [];
-
-  private readonly id: string = "App";
-
   private readonly mobile: boolean = mobile;
 
   private created(): void {
+    // istanbul ignore else
     if (!sessionHolder.session) {
       sessionHolder.session = "test";
     }

@@ -1,4 +1,6 @@
+--require tsconfig-paths/register
 --require ts-node/register
+--require tsconfig-paths/register
+--require ./test/define.ts
 --ui bdd
---delay
 test/index.ts

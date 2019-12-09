@@ -11,53 +11,9 @@ const HTTP_ERR = 0;
 export class Xhr {
   protected httpLogger: Logger;
 
-  constructor() {
+  // https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908
+  public constructor() { // eslint-disable-line @typescript-eslint/no-untyped-public-signature
     this.httpLogger = loggerFactory.getLoggerColor("http", "#680061");
-  }
-
-  public doGet<T>(url: string): Promise<T> {
-    return this.sendXhr<T>("GET", url);
-  }
-
-  // istanbul ignore next
-  public doPost<T>(url: string, body: object): Promise<T> {
-    return this.sendXhr<T>("POST", url, JSON.stringify(body));
-  }
-
-  private sendXhr<T>(method: string, url: string, body?: Document|BodyInit):
-      Promise<T> {
-    const req: XMLHttpRequest = new XMLHttpRequest();
-
-    return new Promise<T>((resolve: Function, reject: Function): void => {
-      // istanbul ignore next
-      req.onerror = (): void => {
-        this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
-        reject(Error("Unable to fetch req"));
-      };
-      req.onload = (): void => {
-        const success: boolean = [HTTP_SUCCESS, HTTP_CREATED].indexOf(req.status) >= HTTP_ERR;
-        if (success) {
-          this.httpLogger.log("{} in {} ::: {};", method, url, req.response)();
-        } else {
-          // istanbul ignore next
-          this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
-        }
-        if (req.status === HTTP_ERR) {
-          // istanbul ignore next
-          reject(Error("Unable to fetch req"));
-        } else if (success) {
-          Xhr.parseData(req, resolve, reject);
-        } else {
-          // istanbul ignore next
-          reject(req.response);
-        }
-      };
-
-      req.open(method, url, true);
-
-      this.httpLogger.log("{} out {} ::: {}", method, url, body)();
-      req.send(body);
-    });
   }
 
   private static parseData(req: XMLHttpRequest, resolve: Function, reject: Function): void {
@@ -67,7 +23,7 @@ export class Xhr {
       data = JSON.parse(req.response);
     } catch (err) {
       // istanbul ignore next
-      error = `Unable to parse response ${err}`;
+      error = `Unable to parse response ${String(err)}`;
     }
     // istanbul ignore else
     if (data) {
@@ -75,5 +31,47 @@ export class Xhr {
     } else if (error) {
       reject(error);
     }
+  }
+
+  public async doGet<T>(url: string): Promise<T> {
+    return this.sendXhr<T>("GET", url);
+  }
+
+  // istanbul ignore next
+  public async doPost<T>(url: string, body: object): Promise<T> {
+    return this.sendXhr<T>("POST", url, JSON.stringify(body));
+  }
+
+  public async sendXhr<T>(method: string, url: string, body?: Document|BodyInit): Promise<T> {
+    const req: XMLHttpRequest = new XMLHttpRequest();
+
+    return new Promise<T>((resolve: Function, reject: Function): void => {
+      // istanbul ignore next
+      req.onerror = (): void => {
+        this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
+        reject(Error("Unable to fetch req"));
+      };
+      // istanbul ignore next
+      req.onload = (): void => {
+        const success: boolean = [HTTP_SUCCESS, HTTP_CREATED].includes(req.status);
+        if (success) {
+          this.httpLogger.log("{} in {} ::: {};", method, url, req.response)();
+        } else {
+          this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
+        }
+        if (req.status === HTTP_ERR) {
+          reject(Error("Unable to fetch req"));
+        } else if (success) {
+          Xhr.parseData(req, resolve, reject);
+        } else {
+          reject(req.response);
+        }
+      };
+
+      req.open(method, url, true);
+
+      this.httpLogger.log("{} out {} ::: {}", method, url, body)();
+      req.send(body);
+    });
   }
 }

@@ -1,9 +1,11 @@
 import {User} from "@/types/dto";
 
-export interface RootState {
+interface RootState {
   users: User[];
 }
 
-export interface SessionHolder {
+interface SessionHolder {
   session: string|null;
 }
+
+export {RootState, SessionHolder};

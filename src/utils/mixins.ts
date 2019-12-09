@@ -7,11 +7,12 @@ import {loggerFactory} from "@/utils/loggerFactory";
 /**
  * Injects $logger to every component
  */
+// istanbul ignore next
 @Component
-export class LoggerMixin extends Vue {
-  private privateLogger!: Logger|null;
+class LoggerMixin extends Vue {
+  private readonly privateLogger!: Logger|null;
 
-  private id = "";
+  private id: string= "";
 
   public get $logger(): Logger {
     let res: Logger | null = this.privateLogger;
@@ -27,16 +28,18 @@ export class LoggerMixin extends Vue {
   }
 
   public updated(): void {
-    if (this.$logger) {
+    if (this.$logger) { // eslint-disable-line @typescript-eslint/no-unnecessary-condition
       this.$logger.trace("Updated")();
     }
   }
 
   public created(): void {
-    if (this.$logger) {
+    if (this.$logger) { // eslint-disable-line @typescript-eslint/no-unnecessary-condition
       this.$logger.trace("Created")();
     }
   }
 }
 
 Vue.mixin(LoggerMixin);
+
+export {LoggerMixin};

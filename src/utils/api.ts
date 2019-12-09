@@ -13,7 +13,8 @@ export class Api {
 
   private readonly xhr: Xhr;
 
-  constructor(xhr: Xhr) {
+  // https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908
+  public constructor(xhr: Xhr) { // eslint-disable-line @typescript-eslint/no-untyped-public-signature
     this.logger = loggerFactory.getLoggerColor(
       "api",
       "red",
@@ -21,11 +22,11 @@ export class Api {
     this.xhr = xhr;
   }
 
-  public getPosts(): Promise<Post[]> {
+  public async getPosts(): Promise<Post[]> {
     return this.xhr.doGet<Post[]>(`${API_URL}/posts`);
   }
 
-  public getUsers(): Promise<User[]> {
+  public async getUsers(): Promise<User[]> {
     return this.xhr.doGet<User[]>(`${API_URL}/users`);
   }
 }

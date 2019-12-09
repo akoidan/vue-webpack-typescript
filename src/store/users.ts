@@ -3,15 +3,12 @@ import {User} from "@/types/dto";
 import {stateDecoratorFactory} from "@/store/stateDecoratorFactory";
 import {store} from "@/store/store";
 
-/**
- * User vuex module
- */
 @Module({
   dynamic: true,
   name: "user",
   store,
 })
-export class Users extends VuexModule {
+class Users extends VuexModule {
   public users: User[] = [];
 
   public get filteredUsers(): User[] {
@@ -25,8 +22,10 @@ export class Users extends VuexModule {
   }
 }
 
-export const userModule: Users = getModule(Users);
+const userModule: Users = getModule(Users);
 
-export const UserState: <ConsumerType extends (ConsumerType[PropName] extends Users[PropName] ? unknown : never),
-    PropName extends (keyof ConsumerType & keyof Users), >(vueComponent: ConsumerType, fileName: PropName) => void =
+const UserState: <TCT extends (TCT[TPN] extends Users[TPN] ? unknown : never),
+  TPN extends (keyof TCT & keyof Users)>(vueComponent: TCT, fileName: TPN) => void =
     stateDecoratorFactory(userModule);
+
+export {userModule, UserState, User};

@@ -7,20 +7,50 @@ This project is generated via [vue-webpack-minimal](https://github.com/akoidan/v
  - cypress with test coverage
  - eslint with typescript + vue integration, stylelint for sass
 
-# Development setup:
+# Commands
 
-## Run project
+## Install dependencies
 ```bash
 yarn install
-yarn start # this will serve project on http://localhost:9084
 ```
 
+## Run development server
+ - The commands below runs the development server w/o a linter. Use this commands if you take advantages from IDE plugins for eslint. This would not spam stdout and won't slow down your build
+```bash 
+yarn start # this will serve project on http://localhost:9084
+```
+ - If you don't wanna use or have issues with integrated eslint into your IDE. you can always produce warnings to stdout
+ 
+ ```bash 
+yarn run start:lint # this will serve project on http://localhost:9084
+ ```
+
 ## Test
+To run the test simply type. This command with build static files and run unit and cypress test against started static files server
 ```
-yarn run build:test
-yarn run e2e # this will run e2e test
-# ./node_modules/.bin/mocha # this will run unit test
+yarn test
 ```
+During development you may also find useful the command bellow. It would start cypress against running webpack-dev-server from `yarn start`
+```
+yarn run test:cypress:debug
+```
+
+## Lint
+To check the styleguide use:
+```
+yarn run lint
+```
+If you're configuring or updating libs you may also want to check if all the rules are included into `.eslintrc.json` with
+```
+yarn run lint:new 
+```
+
+## Build into static files
+For production build you can use
+```
+yarn run build:prod
+```
+The [production.json](production.json) will be used as DefineWebpackPlugin into [const.ts](src/utils/consts.ts)
 
 # Get started
 
@@ -196,14 +226,15 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
 - http-server allows to serve static files for cypress test. 
 - cypress - testing framework that allows running test-cases directly in chrome instead of Selenium way
 - [istanbul](https://istanbul.js.org/) - code coverage with cli interface, generates html cov report
-- [nyc](https://github.com/istanbuljs/nyc) - cli interface to instanbul
+- [nyc](https://github.com/istanbuljs/nyc) - cli interface to istanbul
  - @cypress/code-coverage - allows to add istanbul coverage to cypress
  - @cypress/webpack-preprocessor allows to transpile cypress test via typescript
  - @istanbuljs/nyc-config-typescript - allows to coverage .ts files during test
  - @testing-library/cypress - adds cypress test
- - istanbul-lib-coverage the source code that allow direct cypress coverage integration
+ - istanbul-lib-coverage the source code that allow direct cypress coverage integration - alpha version fixes mocha ts-node cannot read start
 
 ### Linting  libraries
+ - @typescript-eslint/eslint-plugin": "2.7.1-alpha.17", - https://github.com/typescript-eslint/typescript-eslint/pull/1189
  - [eslint](https://eslint.org/) javascript set of linting rules. 
  - eslint-loader - allows webpack to pass js via eslint
  - [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) lints your `<template` in vue SFC.
@@ -283,3 +314,7 @@ Tslint is not used for files, since it's deprecated. Use eslint instead and disa
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
  - https://github.com/bahmutov/cypress-vue-unit-test
  - https://github.com/vuejs/eslint-plugin-vue/issues/987
+ - https://github.com/istanbuljs/nyc/issues/1148
+ - https://github.com/benmosher/eslint-plugin-import/issues/1543
+ - https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908
+ - https://github.com/mysticatea/eslint-plugin-node
