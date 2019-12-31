@@ -173,6 +173,7 @@ module.exports = (env, argv) => {
   let conf = {
     context: __dirname,
     entry,
+    stats: isDev? 'errors-only' : 'normal',
     plugins,
     resolve: {
       extensions: ['.ts', '.vue', '.json', ".js", '.png', ".sass"],
@@ -205,6 +206,7 @@ module.exports = (env, argv) => {
                   'babel-preset-typescript-vue',
                 ],
                 plugins: [
+                  "@babel/plugin-proposal-numeric-separator",
                   ["@babel/plugin-proposal-decorators", {"legacy": true}],
                   ["@babel/plugin-proposal-class-properties", {"loose": true}],
                   ...(isCoverage ? ['istanbul'] : []),

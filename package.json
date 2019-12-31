@@ -22,6 +22,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "7.7.4",
     "@babel/plugin-proposal-decorators": "7.7.4",
+    "@babel/plugin-proposal-numeric-separator": "7.7.4",
     "@babel/preset-env": "7.7.7",
     "@cypress/code-coverage": "1.10.4",
     "@cypress/webpack-preprocessor": "4.1.1",
