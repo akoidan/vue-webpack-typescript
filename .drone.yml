@@ -1,0 +1,10 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: greeting
+    image: alpine:3.9.4
+    commands:
+      - echo r2d2
