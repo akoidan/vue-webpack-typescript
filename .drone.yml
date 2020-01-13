@@ -20,6 +20,16 @@ steps:
     commands:
       - yarn install
 
+  - name: test
+    image: mhart/alpine-node:13.6.0
+    commands:
+      - yarn run test
+
+  - name: lint
+    image: mhart/alpine-node:13.6.0
+    commands:
+      - yarn run lint
+
   - name: rebuild-cache
     image: drillster/drone-volume-cache
     volumes:
@@ -36,4 +46,3 @@ volumes:
   - name: cache
     host:
       path: /tmp/cache
-
