@@ -4,7 +4,12 @@ type: docker
 name: default
 
 steps:
-  - name: greeting
-    image: alpine:3.9.4
+  - name: test
+    image: mhart/alpine-node:13.6.0
     commands:
-      - echo r2d2
+      - yarn run test
+      - yarn run lint
+  - name: lint
+    image: mhart/alpine-node:13.6.0
+    commands:
+      - yarn run lint
