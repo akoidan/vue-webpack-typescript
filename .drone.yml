@@ -4,23 +4,43 @@ type: docker
 name: default
 
 steps:
+  - name: restore-cypress-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /
+    settings:
+      restore: true
+      mount:
+        - ~/.cache/Cypress
+
   - name: install-deps
+    volumes:
+      - name: cache
+        path: ~/.cache/Cypress
     image: mhart/alpine-node:13.6.0
     commands:
       - yarn install
 
   - name: test
+    volumes:
+      - name: cache
+        path: ~/.cache/Cypress
     image: mhart/alpine-node:13.6.0
     commands:
       - yarn run test
 
-  - name: lint
-    image: mhart/alpine-node:13.6.0
-    commands:
-      - yarn run lint
-
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /
+    settings:
+      rebuild: true
+      mount:
+        - ~/.cache/Cypress
 
 volumes:
   - name: cache
     host:
-      path: /tmp/cache
+      path: /tmp/r2d2-132
