@@ -12,8 +12,7 @@ steps:
     settings:
       restore: true
       mount:
-        - ./node_modules
-        - ~/.cache
+        - ~/.cache/Cypress
 
   - name: install-deps
     image: mhart/alpine-node:13.6.0
@@ -38,8 +37,7 @@ steps:
     settings:
       rebuild: true
       mount:
-        - ./node_modules
-        - ~/.cache
+        - ~/.cache/Cypress
 
 
 volumes:
