@@ -17,7 +17,7 @@ steps:
   - name: install-deps
     volumes:
       - name: cache
-        path: ~/.cache/Cypress
+        path: /root/.cache/Cypress
     image: mhart/alpine-node:13.6.0
     commands:
       - yarn install
@@ -25,7 +25,7 @@ steps:
   - name: test
     volumes:
       - name: cache
-        path: ~/.cache/Cypress
+        path: /root/.cache/Cypress
     image: mhart/alpine-node:13.6.0
     commands:
       - yarn run test
