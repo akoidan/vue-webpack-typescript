@@ -24,3 +24,4 @@ volumes:
   - name: cypress-cache
     host:
       path: /tmp/cypress-cache
+
