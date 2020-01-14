@@ -30,7 +30,7 @@ steps:
         path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
     depends_on:
-      - build
+      - test
     commands:
       - yarn run lint
 
@@ -68,9 +68,7 @@ steps:
   - name: save-node-modules-cache
     image: drillster/drone-volume-cache
     depends_on:
-      - coverage
-      - test
-      - lint
+      - install-node-modules
     volumes:
       - name: node-modules
         path: /cache
