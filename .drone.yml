@@ -24,15 +24,17 @@ steps:
     commands:
       - yarn install
 
-  - name: lint
-    volumes:
-      - name: yarn
-        path: /usr/local/share/.cache/yarn/v4
-    image: cypress/included:3.8.1
+  - name: save-node-modules-cache
+    image: drillster/drone-volume-cache
     depends_on:
-      - build
-    commands:
-      - yarn run lint
+      - install-node-modules
+    volumes:
+      - name: node-modules
+        path: /cache
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
 
   - name: build
     volumes:
@@ -43,6 +45,16 @@ steps:
       - install-node-modules
     commands:
       - yarn run build:test
+
+  - name: lint
+    volumes:
+      - name: yarn
+        path: /usr/local/share/.cache/yarn/v4
+    image: cypress/included:3.8.1
+    depends_on:
+      - build
+    commands:
+      - yarn run lint
 
   - name: test
     volumes:
@@ -64,18 +76,6 @@ steps:
       - test
     commands:
       - yarn run test:coverage
-
-  - name: save-node-modules-cache
-    image: drillster/drone-volume-cache
-    depends_on:
-      - install-node-modules
-    volumes:
-      - name: node-modules
-        path: /cache
-    settings:
-      rebuild: true
-      mount:
-        - ./node_modules
 
 volumes:
   - name: yarn
