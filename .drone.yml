@@ -21,7 +21,7 @@ steps:
         path: /root/.cache/yarn/v6
     commands:
       - yarn install
-      - ls ~/.cache -lad
+      - ls ~/.cache -la
       - ls /root/.cache/yarn/v6
 
   - name: test
