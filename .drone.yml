@@ -30,7 +30,7 @@ steps:
         path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
     depends_on:
-      - install-node-modules
+      - build
     commands:
       - yarn run lint
 
