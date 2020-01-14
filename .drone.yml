@@ -4,7 +4,17 @@ type: docker
 name: default
 
 steps:
-  - name: install-deps
+  - name: restore-node-modules-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: node-modules
+        path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+
+  - name: install-node-modules
     image: cypress/included:3.8.1
     volumes:
       - name: yarn
@@ -12,19 +22,53 @@ steps:
     commands:
       - yarn install
 
+  - name: build
+    volumes:
+      - name: yarn
+        path: /usr/local/share/.cache/yarn/v4
+    image: cypress/included:3.8.1
+    commands:
+      - yarn run build:test
+
   - name: test
     volumes:
       - name: yarn
         path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
     commands:
-      - yarn run test
+      - yarn run test:cypress:run
+
+  - name: coverage
+    volumes:
+      - name: yarn
+        path: /usr/local/share/.cache/yarn/v4
+    image: cypress/included:3.8.1
+    commands:
+      - yarn run test:coverage
+
+  - name: lint
+    volumes:
+      - name: yarn
+        path: /usr/local/share/.cache/yarn/v4
+    image: cypress/included:3.8.1
+    commands:
+      - yarn run lint
+
+  - name: save-node-modules-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: node-modules
+        path: /cache
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
 
 volumes:
   - name: yarn
     host:
       path: /tmp/vue-webpack-typescript-drone-v1-yarn
 
-  - name: cache
+  - name: node-modules
     host:
       path: /tmp/vue-webpack-typescript-drone-v1-cache
