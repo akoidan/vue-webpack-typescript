@@ -16,12 +16,16 @@ steps:
 
   - name: install-deps
     image: cypress/included:3.8.1
+    volumes:
+      - name: yarn
+        path: /root/.cache/yarn/v6
     commands:
-      - ls ~/ -la
-      - ls ~/.cache/Cypress
       - yarn install
 
   - name: test
+    volumes:
+      - name: yarn
+        path: /root/.cache/yarn/v6
     image: cypress/included:3.8.1
     commands:
       - yarn run test
@@ -37,6 +41,10 @@ steps:
         - ./node_modules
 
 volumes:
+  - name: yarn
+    host:
+      path: /tmp/vue-webpack-typescript-drone-v1-yarn
+
   - name: cache
     host:
-      path: /tmp/cache
+      path: /tmp/vue-webpack-typescript-drone-v1-cache
