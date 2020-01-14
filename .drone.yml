@@ -4,11 +4,21 @@ type: docker
 name: default
 
 steps:
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+
   - name: install-deps
     volumes:
       - name: cypress-cache
         path: /root/.cache/Cypress
-    image: cypress/base:13.3.0
+    image: cypress/included:3.8.1
     commands:
       - yarn install
 
@@ -16,12 +26,21 @@ steps:
     volumes:
       - name: cypress-cache
         path: /root/.cache/Cypress
-    image: cypress/base:13.3.0
+    image: cypress/included:3.8.1
     commands:
       - yarn run test
 
-volumes:
-  - name: cypress-cache
-    host:
-      path: /tmp/cypress-cache
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
 
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
