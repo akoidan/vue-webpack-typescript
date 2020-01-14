@@ -17,7 +17,7 @@ const init: () => void = (): void => {
     router,
     store,
   });
-  // istanbul ignore next
+
   if (IS_DEBUG) {
     window.vue = vue;
     window.store = store;
@@ -27,10 +27,6 @@ const init: () => void = (): void => {
   vue.$mount("#app");
 };
 
-
-function asd() {
-  console.log('asd');
-}
 
 // istanbul ignore if
 if (document.readyState === "loading") {
