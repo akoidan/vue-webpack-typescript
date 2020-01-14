@@ -18,17 +18,14 @@ steps:
     image: cypress/included:3.8.1
     volumes:
       - name: yarn
-        path: /root/.cache/yarn/v6
+        path: /usr/local/share/.cache/yarn/v4
     commands:
       - yarn install
-      - ls ~/.cache/yarn -la
-      - yarn cache dir
-      - ls /root/.cache/yarn/v6
 
   - name: test
     volumes:
       - name: yarn
-        path: /root/.cache/yarn/v6
+        path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
     commands:
       - yarn run test
