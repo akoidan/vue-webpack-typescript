@@ -27,6 +27,11 @@ const init: () => void = (): void => {
   vue.$mount("#app");
 };
 
+
+function asd() {
+  console.log('asd');
+}
+
 // istanbul ignore if
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
