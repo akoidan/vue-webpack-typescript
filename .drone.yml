@@ -22,6 +22,15 @@ steps:
     commands:
       - yarn install
 
+  - name: lint
+    volumes:
+      - name: yarn
+        path: /usr/local/share/.cache/yarn/v4
+    image: cypress/included:3.8.1
+    failure: ignore
+    commands:
+      - yarn run lint
+
   - name: build
     volumes:
       - name: yarn
@@ -35,6 +44,7 @@ steps:
       - name: yarn
         path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
+    failure: ignore
     commands:
       - yarn run test:cypress:run
 
@@ -43,16 +53,9 @@ steps:
       - name: yarn
         path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
+    failure: ignore
     commands:
       - yarn run test:coverage
-
-  - name: lint
-    volumes:
-      - name: yarn
-        path: /usr/local/share/.cache/yarn/v4
-    image: cypress/included:3.8.1
-    commands:
-      - yarn run lint
 
   - name: save-node-modules-cache
     image: drillster/drone-volume-cache
