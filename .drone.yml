@@ -15,17 +15,13 @@ steps:
         - ./node_modules
 
   - name: install-deps
-    volumes:
-      - name: cypress-cache
-        path: /root/.cache/Cypress
     image: cypress/included:3.8.1
     commands:
+      - ls ~/ -la
+      - ls ~/.cache/Cypress
       - yarn install
 
   - name: test
-    volumes:
-      - name: cypress-cache
-        path: /root/.cache/Cypress
     image: cypress/included:3.8.1
     commands:
       - yarn run test
