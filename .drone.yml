@@ -48,4 +48,3 @@ volumes:
   - name: cache
     host:
       path: /tmp/vue-webpack-typescript-drone-v1-cache
-
