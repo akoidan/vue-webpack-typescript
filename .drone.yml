@@ -19,6 +19,8 @@ steps:
     volumes:
       - name: yarn
         path: /usr/local/share/.cache/yarn/v4
+    depends_on:
+      - restore-node-modules-cache
     commands:
       - yarn install
 
@@ -27,7 +29,8 @@ steps:
       - name: yarn
         path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
-    failure: ignore
+    depends_on:
+      - install-node-modules
     commands:
       - yarn run lint
 
@@ -36,6 +39,8 @@ steps:
       - name: yarn
         path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
+    depends_on:
+      - install-node-modules
     commands:
       - yarn run build:test
 
@@ -45,6 +50,8 @@ steps:
         path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
     failure: ignore
+    depends_on:
+      - build
     commands:
       - yarn run test:cypress:run
 
@@ -53,12 +60,17 @@ steps:
       - name: yarn
         path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
-    failure: ignore
+    depends_on:
+      - test
     commands:
       - yarn run test:coverage
 
   - name: save-node-modules-cache
     image: drillster/drone-volume-cache
+    depends_on:
+      - coverage
+      - test
+      - lint
     volumes:
       - name: node-modules
         path: /cache
