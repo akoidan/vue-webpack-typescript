@@ -87,3 +87,8 @@ volumes:
   - name: node-modules
     host:
       path: /tmp/vue-webpack-typescript-drone-v1-cache
+
+trigger:
+  event:
+    exclude:
+      - pull_request
