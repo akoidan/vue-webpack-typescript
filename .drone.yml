@@ -22,6 +22,7 @@ steps:
     commands:
       - ls ./ -lad
       - yarn config set cache-folder /root/yarn-cache
+      - yarn config get cache-folder /root/yarn-cache
       - yarn install
 
   - name: save-node-modules-cache
