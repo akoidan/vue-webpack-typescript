@@ -10,7 +10,7 @@
     "test:unit": "rm -rf ./nyc/coverage-unit &&  rm -rf ./nyc/coverage-unit-output && yarn nyc --temp-dir ./nyc/coverage-unit-output --report-dir ./nyc/coverage-unit mocha",
     "test:codecov": "nyc report --reporter=text-lcov | codecov --pipe",
     "test:coverage": "nyc check-coverage",
-    "test": "run-s build:test test:cypress:run",
+    "test": "run-s clean build:test test:cypress:run",
     "lint:style": "stylelint 'src/**/*.vue' 'src/**/*.sass'",
     "lint:es": "eslint --ext .ts,.vue --max-warnings=0 src test",
     "lint": "run-s -c lint:style lint:es",

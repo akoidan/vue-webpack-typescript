@@ -113,8 +113,8 @@ module.exports = (on) => {
 
       fixSourcePathes(coverage);
       const previous = existsSync(nycFilename)
-        ? JSON.parse(readFileSync(nycFilename))
-        : istanbul.createCoverageMap({});
+          ? JSON.parse(readFileSync(nycFilename))
+          : istanbul.createCoverageMap({});
       const coverageMap = istanbul.createCoverageMap(previous);
       coverageMap.merge(coverage);
       saveCoverage(coverageMap);
@@ -138,8 +138,8 @@ module.exports = (on) => {
       const reportDir = nycrc['report-dir'];
       const reporter = nycrc.reporter;
       const reporters = Array.isArray(reporter)
-        ? reporter.map((name) => `--reporter=${name}`)
-        : `--reporter=${reporter}`;
+          ? reporter.map((name) => `--reporter=${name}`)
+          : `--reporter=${reporter}`;
 
       // Should we generate report via NYC module API?
       const command = "nyc";
@@ -151,9 +151,9 @@ module.exports = (on) => {
         coverageFolder,
       ].concat(reporters);
       debug(
-        "saving coverage report using command: \"%s %s\"",
-        command,
-        args.join(" "),
+          "saving coverage report using command: \"%s %s\"",
+          command,
+          args.join(" "),
       );
       debug("current working directory is %s", process.cwd());
       return execa(command, args, {stdio: "inherit"});
