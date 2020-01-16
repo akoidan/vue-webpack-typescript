@@ -20,7 +20,7 @@ steps:
     depends_on:
       - restore-node-modules-cache
     commands:
-      - ls ./ -lad
+      - pwd
       - yarn config set cache-folder /root/yarn-cache
       - yarn config get cache-folder
       - ls -la /usr/local/share/.cache/yarn/v4
