@@ -22,8 +22,10 @@ steps:
     commands:
       - ls ./ -lad
       - yarn config set cache-folder /root/yarn-cache
-      - yarn config get cache-folder /root/yarn-cache
+      - yarn config get cache-folder
+      - ls -la /usr/local/share/.cache/yarn/v4
       - yarn install
+      - ls -la /usr/local/share/.cache/yarn/v4
 
   - name: save-node-modules-cache
     image: drillster/drone-volume-cache
