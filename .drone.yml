@@ -7,21 +7,20 @@ steps:
   - name: restore-node-modules-cache
     image: drillster/drone-volume-cache
     volumes:
-      - name: node-modules
+      - name: cache
         path: /cache
     settings:
       restore: true
       mount:
         - ./node_modules
+        - ./yarn-cache
 
   - name: install-node-modules
     image: cypress/included:3.8.1
-    volumes:
-      - name: yarn
-        path: /usr/local/share/.cache/yarn/v4
     depends_on:
       - restore-node-modules-cache
     commands:
+      - yarn config set cache-folder ./yarn-cache
       - yarn install
 
   - name: save-node-modules-cache
@@ -29,17 +28,15 @@ steps:
     depends_on:
       - install-node-modules
     volumes:
-      - name: node-modules
+      - name: cache
         path: /cache
     settings:
       rebuild: true
       mount:
+        - ./yarn-cache
         - ./node_modules
 
   - name: build
-    volumes:
-      - name: yarn
-        path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
     depends_on:
       - install-node-modules
@@ -47,9 +44,6 @@ steps:
       - yarn run build:test
 
   - name: lint
-    volumes:
-      - name: yarn
-        path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
     depends_on:
       - build
@@ -57,9 +51,6 @@ steps:
       - yarn run lint
 
   - name: test
-    volumes:
-      - name: yarn
-        path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
     failure: ignore
     depends_on:
@@ -68,9 +59,6 @@ steps:
       - yarn run test:cypress:run
 
   - name: coverage
-    volumes:
-      - name: yarn
-        path: /usr/local/share/.cache/yarn/v4
     image: cypress/included:3.8.1
     depends_on:
       - test
@@ -78,13 +66,9 @@ steps:
       - yarn run test:coverage
 
 volumes:
-  - name: yarn
+  - name: cache
     host:
-      path: /tmp/vue-webpack-typescript-drone-v1-yarn
-
-  - name: node-modules
-    host:
-      path: /tmp/vue-webpack-typescript-drone-v1-cache
+      path: /var/lib/cache
 
 trigger:
   event:
