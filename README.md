@@ -137,7 +137,7 @@ export class MyComp extends Vue {
 }
 ```
 - [vuex-module-decorators](https://github.com/championswimmer/vuex-module-decorators). Check [store/users](src/store/users.ts) instead of writing vuex modules as a dict, we can say:
- ```javascript
+ ```typescript
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 
 @Module
@@ -188,6 +188,13 @@ expect(mySpy).to.have.been.calledWith("foo");
 ```typescript
 logger.log('Hello world')(); // pay attention to () in the end.
 ```
+- [cypress](https://docs.cypress.io/guides/getting-started/writing-your-first-test.html#Add-a-test-file) - testing framework that allows running test-cases directly in chrome (alternative to Selenium, that runs it on server)
+ That part you've already seen on mocha above can be appended with cypress assertions and helpers:
+```typescript
+it("should contain 5 elements", (): void => {
+  cy.get("[data-cy=filtered-users-container]").children().should("have.length", 1);
+});
+```
 
 ### Build process libraries
 - [webpack](https://webpack.js.org/) allows to combine (bundle) multiple input javascript files into a single output file. Provides plugins and loaders api that allows transformation like typescript or sass. [webpack.config.js](webpack.config.js) is used to build project. Take a look at it to understand how source files are being processed. Its start point is `entry: ['./src/user.ts']`. Since webpack can only handle `.js` files, to let webpack know about everything else we should pass the code through a corresponding loader. Everything is imported in this files are being processed by section `loaders`. 
@@ -224,7 +231,6 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
 - ts-loader - load test with typescript
 - start-server-and-test - allows to simultaneously start 2 processes during testing: cypress and frotnend
 - http-server allows to serve static files for cypress test. 
-- cypress - testing framework that allows running test-cases directly in chrome instead of Selenium way
 - [istanbul](https://istanbul.js.org/) - code coverage with cli interface, generates html cov report
 - [nyc](https://github.com/istanbuljs/nyc) - cli interface to istanbul
  - @cypress/code-coverage - allows to add istanbul coverage to cypress
@@ -266,6 +272,8 @@ development.json and production.json have the following format:
     "API_URL": "public http api url e.g. https://jsonplaceholder.typicode.com"
   }
   ```
+ 
+[.nycrc.json](.nycrc.json) is a [configuration](https://github.com/istanbuljs/nyc#configuration-files) for istanbul code coverage. It can customize reports formats, coverage percentage and other build related things. 
  
 ## WebStorm IDE
 

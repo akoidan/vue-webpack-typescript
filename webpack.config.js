@@ -1,81 +1,57 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const name = '[name].[ext]?[sha512:hash:base64:6]';
 const webpack = require('webpack');
-const sass = require("node-sass");
-const sassUtils = require("node-sass-utils")(sass);
-const sassVars = require('./src/variables');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const child_process = require('child_process');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const sass = require("node-sass");
+const sassUtils = require("node-sass-utils")(sass);
+const sassVars = require('./src/variables');
 
-const sasFunctions = {
-  "get($keys)": function (keys) {
-    const convertStringToSassDimension = (result) => {
-      // Only attempt to convert strings
-      if (typeof result !== "string") {
-        return result;
-      }
-
-      const cssUnits = [
-        "rem",
-        "em",
-        "vh",
-        "vw",
-        "vmin",
-        "vmax",
-        "ex",
-        "%",
-        "px",
-        "cm",
-        "mm",
-        "in",
-        "pt",
-        "pc",
-        "ch"
-      ];
-      const parts = result.match(/[a-zA-Z]+|[0-9]+/g);
-      const value = parts[0];
-      const unit = parts[parts.length - 1];
-      if (cssUnits.indexOf(unit) !== -1) {
-        result = new sassUtils.SassDimension(parseInt(value, 10), unit);
-      }
-
+/**
+ * Extracts values withing measure from sass
+ **/
+function sassGet(keys) {
+  const convertStringToSassDimension = (result) => {
+    // Only attempt to convert strings
+    if (typeof result !== "string") {
       return result;
-    };
-    keys = keys.getValue().split(".");
-    var result = sassVars;
-    var i;
-    for (i = 0; i < keys.length; i++) {
-      result = result[keys[i]];
-      // Convert to SassDimension if dimenssion
-      if (typeof result === "string") {
-        result = convertStringToSassDimension(result);
-      } else if (typeof result === "object") {
-        Object.keys(result).forEach(function (key) {
-          var value = result[key];
-          result[key] = convertStringToSassDimension(value);
-        });
-      }
     }
-    result = sassUtils.castToSass(result);
+
+    const cssUnits = ["rem", "em", "vh", "vw", "vmin", "vmax", "ex", "%", "px", "cm", "mm", "in", "pt", "pc", "ch"];
+    const parts = result.match(/[a-zA-Z]+|[0-9]+/g);
+    const value = parts[0];
+    const unit = parts[parts.length - 1];
+    if (cssUnits.indexOf(unit) !== -1) {
+      result = new sassUtils.SassDimension(parseInt(value, 10), unit);
+    }
     return result;
+  };
+  keys = keys.getValue().split(".");
+  var result = sassVars;
+  var i;
+  for (i = 0; i < keys.length; i++) {
+    result = result[keys[i]];
+    // Convert to SassDimension if dimenssion
+    if (typeof result === "string") {
+      result = convertStringToSassDimension(result);
+    } else if (typeof result === "object") {
+      Object.keys(result).forEach(function (key) {
+        var value = result[key];
+        result[key] = convertStringToSassDimension(value);
+      });
+    }
   }
-};
+  result = sassUtils.castToSass(result);
+  return result;
+}
 
-
-module.exports = (env, argv) => {
-  let isProd = argv.mode === 'production';
-  let isDev = argv.mode === 'development';
-  let isCoverage = argv.coverage === 'true';
-  let isLint = argv.lint === 'true';
-  if (!isProd && !isDev) {
-    throw `Pass --mode production/development, current ${argv.mode} is invalid`
-  }
-  let plugins;
-  let sasscPlugins;
-  let options = require(`./${argv.mode}.json`);
+/**
+ *  Adds GIT_HASH to constants if git is available
+ **/
+function addGitHash(options) {
   let gitHash;
   try {
     gitHash = child_process.execSync('git rev-parse --short=10 HEAD', {encoding: 'utf8'});
@@ -85,13 +61,20 @@ module.exports = (env, argv) => {
   } catch (e) {
     console.error("Git hash is unavailable");
   }
+}
+
+/**
+ * Builds chain of plugins for webpack
+ **/
+function buildPlugins(options, isLint, isProd) {
+  let plugins;
   plugins = [
     new VueLoaderPlugin(),
     new ForkTsCheckerWebpackPlugin({
       vue: true,
       tslint: false,
     }),
-    ...(isLint ? [ new StyleLintPlugin({
+    ...(isLint ? [new StyleLintPlugin({
       files: ['**/*.vue', '**/*.sass'],
       emitErrors: false,
     }),] : []),
@@ -113,22 +96,10 @@ module.exports = (env, argv) => {
       }
     }));
   }
-  const entry = ['reflect-metadata', './src/main.ts'];
-  const sassLoader = {
-    loader: "sass-loader",
-    options: {
-      sassOptions: {
-        functions: sasFunctions,
-        indentedSyntax: true,
-        includePaths: [path.resolve(__dirname, 'src/assets/sass')]
-      },
-    }
-  };
+
   if (isProd) {
-    entry.unshift('./src/polyfills/inputEvent.ts'); // edge 15 reflect-emtadata
     const {CleanWebpackPlugin} = require('clean-webpack-plugin');
     plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["./dist"]}));
-    const MiniCssExtractPlugin = require("mini-css-extract-plugin");
     const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
     const CompressionPlugin = require('compression-webpack-plugin');
     plugins.push(new MiniCssExtractPlugin());
@@ -145,18 +116,7 @@ module.exports = (env, argv) => {
         }
       }
     }));
-    sasscPlugins = [
-      {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-          publicPath: options.PUBLIC_PATH,
-        }
-      },
-      'css-loader',
-      sassLoader,
-    ];
-  } else if (isDev) {
-    sasscPlugins = ["style-loader", 'css-loader?sourceMap', sassLoader];
+  } else {
     //conflicts with speedmeasure
     // const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
     // plugins.push(new HardSourceWebpackPlugin({
@@ -167,14 +127,82 @@ module.exports = (env, argv) => {
     //   }
     // }))
   }
+
   plugins.push(new webpack.DefinePlugin({
     CONSTS: JSON.stringify(options),
   }));
-  let conf = {
+  return plugins;
+}
+
+/**
+ *  Builds loaders for css processing
+ **/
+function getSassPLugins(isProd, publicPath) {
+  const sassLoader = {
+    loader: "sass-loader",
+    options: {
+      sassOptions: {
+        functions: {"get($keys)": sassGet},
+        indentedSyntax: true,
+        includePaths: [path.resolve(__dirname, 'src/assets/sass')]
+      },
+    }
+  };
+  if (isProd) {
+    return [
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          publicPath,
+        }
+      },
+      'css-loader',
+      sassLoader,
+    ]
+  } else {
+    return [
+      "style-loader",
+      'css-loader?sourceMap',
+      sassLoader
+    ];
+  }
+}
+
+
+/**
+ * Creates fileloader config for specified file regex, and puts it in outputPath
+ **/
+function getDirFileLoader(test, outputPath, options) {
+  return {
+    test,
+    loader: 'file-loader',
+    options: {
+      esModule: false, // vue doesn't support esmodule in things like images yet
+      outputPath, // put image into separate folder, so we don't have millions of files in root of dist
+      publicPath: options.PUBLIC_PATH ? `${options.PUBLIC_PATH}/${outputPath}` : options.PUBLIC_PATH,
+      name: '[name].[ext]?[sha512:hash:base64:6]'
+    }
+  };
+}
+
+module.exports = (env, argv) => {
+
+  if (['development', 'production'].indexOf(argv.mode) < 0) {
+    throw `Pass --mode production/development, current ${argv.mode} is invalid`
+  }
+
+  let isProd = argv.mode === 'production';
+  let isCoverage = argv.coverage === 'true';
+  let isLint = argv.lint === 'true';
+  let options = require(`./${argv.mode}.json`);
+
+  addGitHash(options);
+
+  return {
     context: __dirname,
-    entry,
-    stats: isDev? 'errors-only' : 'normal',
-    plugins,
+    entry: ['reflect-metadata', './src/main.ts', './src/polyfills/inputEvent.ts'],
+    stats: isProd ? 'normal' : 'errors-only',
+    plugins: buildPlugins(options, isLint, isProd),
     resolve: {
       extensions: ['.ts', '.vue', '.json', ".js", '.png', ".sass"],
       alias: {
@@ -228,28 +256,17 @@ module.exports = (env, argv) => {
         },] : []),
         {
           test: /\.sass$/,
-          use: sasscPlugins,
+          use: getSassPLugins(isProd, options.PUBLIC_PATH),
         },
-        { // always save fonts as files, so in case of multiple urls for same font browser only downloads the required one
-          test: /(\.woff2?|\.eot|\.ttf|\.otf|\/fonts(.*)\.svg)(\?.*)?$/,
-          loader: 'file-loader',
-          options: {
-            outputPath: 'font',  // put fonts into a separate folder, so we don't have millions of files in root of dist
-            name,
-            esModule: false, // vue doesn't support esmodule in things like images yet
-            publicPath: options.PUBLIC_PATH ? options.PUBLIC_PATH + '/font' : options.PUBLIC_PATH
-          }
-        },
-        {
-          test: /(images\/\w+\.svg|images\/\w+\.jpg|images\/\w+\.gif|images\/\w+\.png)$/, //pack image to base64 when its size is less than 16k, otherwise leave it as a file
-          loader: 'url-loader',
-          options: {
-            limit: 1024,
-            esModule: false, // vue doesn't support esmodule in things like images yet
-            outputPath: 'img', // put image into separate folder, so we don't have millions of files in root of dist
-            name
-          }
-        },
+        getDirFileLoader(
+            /(images\/\w+\.svg|images\/\w+\.jpg|images\/\w+\.gif|images\/\w+\.png)$/,
+            'images',
+            options
+        ),
+        getDirFileLoader(
+            /(\.woff2?|\.eot|\.ttf|\.otf|\/fonts(.*)\.svg)(\?.*)?$/,
+            'fonts',
+            options),
       ],
     },
   };
@@ -258,7 +275,4 @@ module.exports = (env, argv) => {
   //   const smp = new SpeedMeasurePlugin();
   //   conf = smp.wrap(conf);
   // }
-
-  return conf;
 };
-

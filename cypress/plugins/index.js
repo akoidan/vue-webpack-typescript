@@ -7,7 +7,6 @@ const fs = require("fs");
 
 const debug = require("debug")("code-coverage");
 
-
 const webpackConfig = {
   webpackOptions: {
     mode: "development",
@@ -16,22 +15,10 @@ const webpackConfig = {
         {
           exclude: [/node_modules/u],
           test: /\.ts$/u,
-          use: [
-            {
-              loader: "ts-loader",
-
-              /*
-               * Options: {
-               *     // skip typechecking for speed
-               *     TranspileOnly: true
-               * }
-               */
-            },
-          ],
+          use: [{loader: "ts-loader",}],
         },
       ],
     },
-    // Webpack will transpile TS and JS files
     resolve: {
       extensions: [".ts", ".js"],
     },
@@ -39,6 +26,11 @@ const webpackConfig = {
 };
 
 
+/**
+ * Replace source-map's path by the corresponding absolute file path
+ * (coverage report wouldn't work with source-map path being relative
+ * or containing Webpack loaders and query parameters)
+ */
 function fixSourcePathes(coverage) {
   Object.values(coverage).forEach((file) => {
     const {path: absolutePath, inputSourceMap} = file;
@@ -72,6 +64,11 @@ function saveCoverage(coverage) {
 
 
 module.exports = (on) => {
+
+  /**
+   * This is how you can create tasks in cypress. Please check
+   * https://docs.cypress.io/api/commands/task.html#Syntax
+   **/
   on("task", {
 
     /**
