@@ -13,6 +13,6 @@
     ".vue"
   ],
   "reporter": [
-    "html"
+    "text"
   ]
 }
