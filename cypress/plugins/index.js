@@ -56,7 +56,7 @@ function fixSourcePathes(coverage) {
 
 // These are standard folder and file names used by NYC tools
 const processWorkingDirectory = process.cwd();
-const outputFolder = "nyc/.nyc_output_cypress";
+const outputFolder =require('./../../.nycrc.json')['temp-dir'];
 const coverageFolder = join(processWorkingDirectory, outputFolder);
 const nycFilename = join(coverageFolder, "out.json");
 
@@ -134,8 +134,9 @@ module.exports = (on) => {
         return null;
       }
 
-      const reportDir = './nyc/coverage_cypress';
-      const reporter = ['html'];
+      const nycrc =require('./../../.nycrc.json');
+      const reportDir = nycrc['report-dir'];
+      const reporter = nycrc.reporter;
       const reporters = Array.isArray(reporter)
         ? reporter.map((name) => `--reporter=${name}`)
         : `--reporter=${reporter}`;

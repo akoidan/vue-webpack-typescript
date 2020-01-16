@@ -12,7 +12,9 @@
     ".ts",
     ".vue"
   ],
+  "report-dir": "nyc/coverage-cypress",
+  "temp-dir": "nyc/coverage-cypress-output",
   "reporter": [
-    "text"
+    "html"
   ]
 }
