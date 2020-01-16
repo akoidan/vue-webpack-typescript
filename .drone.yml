@@ -20,7 +20,8 @@ steps:
     depends_on:
       - restore-node-modules-cache
     commands:
-      - yarn config set cache-folder ./yarn-cache
+      - ls ./ -lad
+      - yarn config set cache-folder /root/yarn-cache
       - yarn install
 
   - name: save-node-modules-cache
