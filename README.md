@@ -264,7 +264,7 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
  - Every component has an injected `$.api` object. You should do http calls with `$this.$api`. If you prefer redux style you can call http in vuex actions.
  - If you're using git as your version control tool `window.GIT_VERSION` will be exported to global scope
 
-development.json and production.json have the following format:
+- [development.json](development.json) and [production.json](production.json) have the following format:
   ```json
   {
     "IS_DEBUG": "true/false: turns off logs for production",
@@ -273,7 +273,15 @@ development.json and production.json have the following format:
   }
   ```
  
-[.nycrc.json](.nycrc.json) is a [configuration](https://github.com/istanbuljs/nyc#configuration-files) for istanbul code coverage. It can customize reports formats, coverage percentage and other build related things. 
+ - [.nycrc.json](.nycrc.json) is a [configuration](https://github.com/istanbuljs/nyc#configuration-files) for istanbul code coverage. It can customize reports formats, coverage percentage and other build related things. 
+ - [.stylelintrc](.stylelintrc) is a [configuration](https://stylelint.io/user-guide/rules) for css linting
+ - [.drone.yml](.drone.yml) is a [configuration](https://docker-runner.docs.drone.io/configuration/overview/) file for Drone CI.
+ - [.eslintrc.json](.eslintrc.json) is a [configuration](https://eslint.org/docs/user-guide/configuring) for ts linting
+ - [cypress.json](cypress.json) is a [configuration](https://docs.cypress.io/guides/references/configuration.html#Global) for cypress e2e testing
+ - [package.json](package.json) is a [configuration](https://docs.npmjs.com/files/package.json) for yarn (npm), since it doesn't have versions of sublibs they are stored in [yarn.lock](yarn.lock) 
+ - [tsconfig.json](tsconfig.json) is a [configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) for typescript. While this files is used to build static files for FE, [cypress/tsconfig](cypress/tsconfig.json) is used to build files that would run test in cypress.
+ - [webpack.config.js](webpack.config.js) is a [configuration](https://webpack.js.org/configuration/) for webpack.
+ - [mocha.opts](test/mocha.opts) is a [configuration](https://mochajs.org/api/mocha) for unit test (mocha).
  
 ## WebStorm IDE
 

@@ -99,7 +99,7 @@ function buildPlugins(options, isLint, isProd) {
 
   if (isProd) {
     const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-    plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["./dist"]}));
+    plugins.push(new CleanWebpackPlugin());
     const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
     const CompressionPlugin = require('compression-webpack-plugin');
     plugins.push(new MiniCssExtractPlugin());
@@ -137,14 +137,14 @@ function buildPlugins(options, isLint, isProd) {
 /**
  *  Builds loaders for css processing
  **/
-function getSassPLugins(isProd, publicPath) {
+function getSassPlugins(isProd, publicPath) {
   const sassLoader = {
     loader: "sass-loader",
     options: {
+      prependData: '@import "~@/assets/sass/global.sass"',
       sassOptions: {
         functions: {"get($keys)": sassGet},
-        indentedSyntax: true,
-        includePaths: [path.resolve(__dirname, 'src/assets/sass')]
+        indentedSyntax: true
       },
     }
   };
@@ -168,22 +168,6 @@ function getSassPLugins(isProd, publicPath) {
   }
 }
 
-
-/**
- * Creates fileloader config for specified file regex, and puts it in outputPath
- **/
-function getDirFileLoader(test, outputPath, options) {
-  return {
-    test,
-    loader: 'file-loader',
-    options: {
-      esModule: false, // vue doesn't support esmodule in things like images yet
-      outputPath, // put image into separate folder, so we don't have millions of files in root of dist
-      publicPath: options.PUBLIC_PATH ? `${options.PUBLIC_PATH}/${outputPath}` : options.PUBLIC_PATH,
-      name: '[name].[ext]?[sha512:hash:base64:6]'
-    }
-  };
-}
 
 module.exports = (env, argv) => {
 
@@ -234,6 +218,7 @@ module.exports = (env, argv) => {
                   'babel-preset-typescript-vue',
                 ],
                 plugins: [
+                  "@babel/plugin-proposal-optional-chaining",
                   "@babel/plugin-proposal-numeric-separator",
                   ["@babel/plugin-proposal-decorators", {"legacy": true}],
                   ["@babel/plugin-proposal-class-properties", {"loose": true}],
@@ -256,17 +241,20 @@ module.exports = (env, argv) => {
         },] : []),
         {
           test: /\.sass$/,
-          use: getSassPLugins(isProd, options.PUBLIC_PATH),
+          use: getSassPlugins(isProd, options.PUBLIC_PATH),
         },
-        getDirFileLoader(
-            /(images\/\w+\.svg|images\/\w+\.jpg|images\/\w+\.gif|images\/\w+\.png)$/,
-            'images',
-            options
-        ),
-        getDirFileLoader(
-            /(\.woff2?|\.eot|\.ttf|\.otf|\/fonts(.*)\.svg)(\?.*)?$/,
-            'fonts',
-            options),
+        {
+          test: /(\.svg|\.jpg|\.gif|\.png|\.woff2?|\.eot|\.ttf|\.otf)$/,
+          loader: 'file-loader',
+          options: {
+            esModule: false, // vue doesn't support esmodule in things like images yet
+            publicPath: options.PUBLIC_PATH,
+            name: f => {
+              let dirNameInsideAssets = path.relative(path.join(__dirname, 'src', 'assets'), path.dirname(f));
+              return `${dirNameInsideAssets}/[name].[ext]?[sha512:hash:base64:6]`;
+            }
+          }
+        },
       ],
     },
   };

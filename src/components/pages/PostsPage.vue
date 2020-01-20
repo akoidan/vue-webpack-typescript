@@ -31,14 +31,14 @@ export default class PostsPage extends Vue {
     text-align: left
 
   pre
-    background: #ffffb3
-    border: solid 1px #00f
+    background: $color-yellow
+    border: solid 1px $color-blue
     font-size: 1.3em
     margin: 10px
     padding: 10px
 
   code
-    color: #008099
+    color: $color-green
     font-size: 1.2em
 
 </style>

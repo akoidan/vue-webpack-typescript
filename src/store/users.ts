@@ -24,6 +24,10 @@ class Users extends VuexModule {
 
 const userModule: Users = getModule(Users);
 
+/*
+ * TPN - TypePropertyName
+ * TCT - TypeConsumerType
+ */
 const UserState: <TCT extends (TCT[TPN] extends Users[TPN] ? unknown : never),
   TPN extends (keyof TCT & keyof Users)>(vueComponent: TCT, fileName: TPN) => void =
     stateDecoratorFactory(userModule);

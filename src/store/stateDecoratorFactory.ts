@@ -1,8 +1,11 @@
 import {VuexModule} from "vuex-module-decorators";
 
-/*
+/**
  * Allows injecting state directory to component by decorator
  * https://github.com/championswimmer/vuex-module-decorators/issues/191
+ * TPT - TypeProviderType
+ * TPN - TypePropertyName
+ * TCT - TypeConsumerType
  */
 export const stateDecoratorFactory =
     function stateDecoratorFactory<TPT extends VuexModule>(vuexModule: TPT):

@@ -32,7 +32,7 @@ export default class UsersPage extends Vue {
 
 <style lang="sass" scoped>
   .user-post
-    border: 1px solid #3c3c3c
+    border: 1px solid $color-grey
     margin: 5px
     padding: 10px
 

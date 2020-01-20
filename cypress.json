@@ -1,4 +1,5 @@
 {
   "videosFolder" : "nyc/video",
-  "screenshotsFolder" : "nyc/screenshots"
+  "screenshotsFolder" : "nyc/screenshots",
+  "fixturesFolder": "cypress/fixtures"
 }

@@ -1,6 +1,14 @@
 {
+  "extends": [
+    "stylelint-8-point-grid"
+  ],
   "plugins": ["stylelint-order", "stylelint-scss"],
   "rules": {
+    "plugin/8-point-grid": {
+      "base": 4,
+      "whitelist": ["2px", "1px"],
+      "ignore": ["width", "height"]
+    },
     "at-rule-blacklist": ["debug"],
     "at-rule-no-unknown": null,
     "at-rule-no-vendor-prefix": true,
@@ -9,6 +17,7 @@
     "color-hex-length": "short",
     "color-named": "never",
     "color-no-invalid-hex": true,
+    "color-no-hex": true,
     "declaration-bang-space-after": "never",
     "declaration-bang-space-before": "always",
     "declaration-block-semicolon-newline-after": "always",
@@ -103,7 +112,7 @@
     "selector-pseudo-element-colon-notation": "double",
     "selector-pseudo-element-no-unknown": true,
     "shorthand-property-no-redundant-values": true,
-    "string-quotes": "single",
+    "string-quotes": "double",
     "value-no-vendor-prefix": true
   }
 }
