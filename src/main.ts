@@ -7,6 +7,7 @@ import Vue from "vue";
 import {api} from "@/utils/singletons";
 import {router} from "@/utils/router";
 import {store} from "@/store/store";
+import {vuetify} from "@/utils/vuetify";
 
 window.GIT_VERSION = GIT_HASH;
 Vue.prototype.$api = api;
@@ -16,6 +17,7 @@ const init: () => void = (): void => {
     render: (hhh: Function): typeof Vue.prototype.$createElement => hhh(App),
     router,
     store,
+      vuetify,
   });
   // istanbul ignore next
   if (IS_DEBUG) {

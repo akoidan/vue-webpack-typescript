@@ -1,19 +1,13 @@
 <template>
-  <div :class="{mobile}">
-    <div class="top">
-      <img src="@/assets/images/logo.png" data-cy="logo"/>
-      <router-link to="/posts">
-        Posts
-      </router-link>
-      <router-link to="/users">
-        Users
-      </router-link>
-      <router-link to="/filtered-users">
-        Filtered Users
-      </router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-content>
+    <v-btn>asda asdf as fasdf asdf sd fsdf sasd</v-btn>
+
+      <v-alert type="info">
+        I'm an info alert.
+      </v-alert>
+    </v-content>
+  </v-app>
 </template>
 
 <script lang="ts">
