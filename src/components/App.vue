@@ -35,8 +35,6 @@ export default class App extends Vue {
 }
 </script>
 <style lang="sass" scoped>
-  // variable in css example
-  $height: get('bodyHeight')
 
   img
     height: 20px

@@ -240,8 +240,23 @@ module.exports = (env, argv) => {
           exclude: /node_modules/
         },] : []),
         {
-          test: /\.sass$/,
-          use: getSassPlugins(isProd, options.PUBLIC_PATH),
+          test: /\.sa(s|c)s$/,
+          use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+              loader: 'sass-loader',
+              // Requires sass-loader@^7.0.0
+              options: {
+                  sassOptions: {
+                      fiber: require('fibers'),
+                      indentedSyntax: true
+                  },
+                  implementation: require('sass'),
+                  prependData: '@import "~@/assets/sass/global.sass"',
+              },
+          },
+      ],
         },
         {
           test: /(\.svg|\.jpg|\.gif|\.png|\.woff2?|\.eot|\.ttf|\.otf)$/,
