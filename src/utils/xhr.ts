@@ -1,77 +1,88 @@
+import {ApiConsts} from "@/utils/consts";
 import {Logger} from "lines-logger";
-import {loggerFactory} from "@/utils/loggerFactory";
-
-const HTTP_SUCCESS = 200;
-const HTTP_CREATED = 201;
-const HTTP_ERR = 0;
+import {RequestOptions} from "@/types/model";
 
 /**
- * Low level XmlHttpRequest api, something like Axios
+ * Low level fetch api, something like Axios
  */
 export class Xhr {
-  protected httpLogger: Logger;
+  protected readonly httpLogger: Logger;
+
+  protected readonly fetchApi: (input: RequestInfo, init?: RequestInit) => Promise<Response>;
+
+  private readonly APP_VERSION_HEADER_KEY: string = "app-version";
 
   // https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908
-  public constructor() { // eslint-disable-line @typescript-eslint/no-untyped-public-signature
-    this.httpLogger = loggerFactory.getLoggerColor("http", "#680061");
+  public constructor(
+    httpLogger: Logger,
+    fetchApi: (input: RequestInfo, init?: RequestInit) => Promise<Response>,
+  ) {
+    this.fetchApi = fetchApi;
+    this.httpLogger = httpLogger;
   }
 
-  private static parseData(req: XMLHttpRequest, resolve: Function, reject: Function): void {
-    let data: unknown|null = null;
-    let error: unknown|null = null;
+  public async parseResponse<R>(response: Response): Promise<R> {
     try {
-      data = JSON.parse(req.response);
+      return await response.json();
     } catch (err) {
-      // istanbul ignore next
-      error = `Unable to parse response ${String(err)}`;
+      this.httpLogger.error("Unable to parse server response from {} {}", response, err)();
+      throw Error(response.ok ? "Malformed json" : "Http not 200");
     }
+  }
+
+  private get requestHeaders(): HeadersInit {
+    const headers: HeadersInit = {"Content-Type": "application/json"};
     // istanbul ignore else
-    if (data) {
-      resolve(data);
-    } else if (error) {
-      reject(error);
+    if (ApiConsts.APP_VERSION) {
+      headers[this.APP_VERSION_HEADER_KEY] = ApiConsts.APP_VERSION;
     }
+    return headers;
   }
 
-  public async doGet<T>(url: string): Promise<T> {
-    return this.sendXhr<T>("GET", url);
+  public async doRequest<TREQ, TRESP>({
+    url,
+    body = null,
+    method,
+    parseResponseAsJson = true,
+  }: RequestOptions<TREQ>): Promise<TRESP> {
+    const fullUrl = `${ApiConsts.API_URL}${url}`;
+    this.httpLogger.debug("Fetching {} {}", method, fullUrl)();
+    const request: RequestInit = {
+      headers: this.requestHeaders,
+      method,
+    };
+    if (body) {
+      request.body = JSON.stringify(body);
+    }
+    return this.makeHttpCall<TRESP>(request, fullUrl, parseResponseAsJson);
   }
 
-  // istanbul ignore next
-  public async doPost<T>(url: string, body: object): Promise<T> {
-    return this.sendXhr<T>("POST", url, JSON.stringify(body));
-  }
+  /**
+   * /**
+   * Extracts http response of fetch to api required Type (js object).
+   * If http response is not 2xx / not parsable, throws a user-friendly error
+   */
+  private async makeHttpCall<TRESP>(
+    request: RequestInit,
+    fullUrl: string,
+    parseResponseAsJson: boolean | undefined,
+  ): Promise<TRESP> {
+    let response: Response;
+    try {
+      response = await this.fetchApi.call(null, fullUrl, request);
+    } catch (error) {
+      this.httpLogger.error("Failed to {}; error {}", request, error)();
+      throw Error(`Communication error ${error?.message || error}`);
+    }
 
-  public async sendXhr<T>(method: string, url: string, body?: Document|BodyInit): Promise<T> {
-    const req: XMLHttpRequest = new XMLHttpRequest();
-
-    return new Promise<T>((resolve: Function, reject: Function): void => {
-      // istanbul ignore next
-      req.onerror = (): void => {
-        this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
-        reject(Error("Unable to fetch req"));
-      };
-      // istanbul ignore next
-      req.onload = (): void => {
-        const success: boolean = [HTTP_SUCCESS, HTTP_CREATED].includes(req.status);
-        if (success) {
-          this.httpLogger.log("{} in {} ::: {};", method, url, req.response)();
-        } else {
-          this.httpLogger.error("{} out: {} ::: {}, status: {}", method, url, req.response, req.status)();
-        }
-        if (req.status === HTTP_ERR) {
-          reject(Error("Unable to fetch req"));
-        } else if (success) {
-          Xhr.parseData(req, resolve, reject);
-        } else {
-          reject(req.response);
-        }
-      };
-
-      req.open(method, url, true);
-
-      this.httpLogger.log("{} out {} ::: {}", method, url, body)();
-      req.send(body);
-    });
+    if (response.ok && !parseResponseAsJson) {
+      return null as unknown as TRESP;
+    }
+    const parsedResponse: TRESP = await this.parseResponse<TRESP>(response);
+    this.httpLogger.trace("{} response code {}, data: {}", fullUrl, response.status, parsedResponse)();
+    if (!response.ok) {
+      throw Error("Server error");
+    }
+    return parsedResponse;
   }
 }

@@ -1,78 +1,69 @@
-// This part of code is copied and modified from cypress source which is under MIT license https://github.com/cypress-io/cypress/blob/develop/LICENSE
+import '@cypress/code-coverage/support'
+import { register } from 'cypress-match-screenshot';
+import accessTokenResponse from "../fixtures/accessTokenResponse.json"
+
+register();
+
+Cypress.Commands.add('signIn', () => {
+  window.localStorage.setItem("session_access", accessTokenResponse.access);
+  window.localStorage.setItem("session_refresh", accessTokenResponse.refresh);
+  window.localStorage.setItem("session_access_exp", '1896143279'); // 2030 year
+  window.localStorage.setItem("session_refresh_exp", '1896143279');
+ })
+
+Cypress.Commands.add('vType', (label, text) => {
+  cy.get('.v-input').contains(label).parent().within(form => cy.get('input').clear().type(text))
+})
+
+Cypress.Commands.add('vSelect', (label, option) => {
+  cy.contains(label).closest('.v-select').click();
+  cy.get('.v-menu__content').contains(option).click();
+})
+
+Cypress.Commands.add('vClick', (label) => {
+  cy.get('.v-btn').contains(label).click()
+})
+
+Cypress.Commands.add('vCheck', (text) => {
+  cy
+    .get('.v-input--checkbox')
+    .contains(text)
+    .closest('.v-input--checkbox')
+    .get('.v-input--selection-controls__ripple')
+    .click()
+})
+
+// cypress doesn't support fetch api, so stub it with polyfill and force polyfill here
+Cypress.on('window:before:load', win => {
+  win.fetch = null;
+});
+
+// this adds general response structure to support contract request mocking, moved it here, to avoid duplication in tests
+Cypress.Commands.add('pactAddInteraction', ({state, uponReceiving, withRequest, status, responseBody}) => {
+  cy.task('pactAddInteraction', {
+    state,
+    uponReceiving,
+    withRequest,
+    willRespondWith: {
+      status,
+      body: responseBody,
+    },
+  });
+})
 
 before(() => {
-  // we need to reset the coverage when running
-  // in the interactive mode, otherwise the counters will
-  // keep increasing every time we rerun the tests
-  cy.task('resetCoverage', { isInteractive: Cypress.config('isInteractive') })
-});
+  // create and destroy pact server onces, even if test doesn't need it
+  // this is the only way to ensure that the resulting output file is created onces
+  // and we don't spend time on recreating the server all over again
+  cy.task('pactCreateServer')
+})
 
-afterEach(() => {
-  // save coverage after each test
-  // because the entire "window" object is about
-  // to be recycled by Cypress before next test
-  cy.window().then(win => {
-    // if application code has been instrumented, the app iframe "window" has an object
-    const applicationSourceCoverage = win.__coverage__
+after(() =>  {
+  // save result to json after tests finish
+  cy.task('pactFinalize')
+})
 
-    if (applicationSourceCoverage) {
-      cy.task('combineCoverage', JSON.stringify(applicationSourceCoverage))
-    }
-  })
-});
-
-after(() => {
-  // there might be server-side code coverage information
-  // we should grab it once after all tests finish
-  const baseUrl = Cypress.config('baseUrl') || cy.state('window').origin
-  const runningEndToEndTests = baseUrl !== Cypress.config('proxyUrl')
-  if (runningEndToEndTests) {
-    // we can only request server-side code coverage
-    // if we are running end-to-end tests,
-    // otherwise where do we send the request?
-    const url = Cypress._.get(
-        Cypress.env('codeCoverage'),
-        'url',
-        '/__coverage__'
-    );
-    cy.request({
-      url,
-      log: false,
-      failOnStatusCode: false
-    })
-        .then(r => Cypress._.get(r, 'body.coverage', null), { log: false })
-        .then(coverage => {
-          if (!coverage) {
-            // we did not get code coverage - this is the
-            // original failed request
-            return
-          }
-          cy.task('combineCoverage', JSON.stringify(coverage))
-        })
-  }
-
-  // collect and merge frontend coverage
-  const specFolder = Cypress.config('integrationFolder')
-  const supportFolder = Cypress.config('supportFolder')
-
-  // if spec bundle has been instrumented (using Cypress preprocessor)
-  // then we will have unit test coverage
-  // NOTE: spec iframe is NOT reset between the tests, so we can grab
-  // the coverage information only once after all tests have finished
-  const unitTestCoverage = window.__coverage__
-  if (unitTestCoverage) {
-    // remove coverage for the spec files themselves,
-    // only keep "external" application source file coverage
-    const coverage = Cypress._.omitBy(
-        window.__coverage__,
-        (fileCoverage, filename) =>
-            filename.startsWith(specFolder) || filename.startsWith(supportFolder)
-    );
-    cy.task('combineCoverage', JSON.stringify(coverage))
-  }
-
-  // when all tests finish, lets generate the coverage report
-  if (Cypress.env('coveragereport')) {
-    cy.task('coverageReport')
-  }
-});
+afterEach(() =>  {
+  // if one test failed, we should remove interactions so it won't affect other tests.
+  cy.task('pactRemoveInteractions');
+})

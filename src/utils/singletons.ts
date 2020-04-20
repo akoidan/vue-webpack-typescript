@@ -1,16 +1,18 @@
+import {LogStrict, Logger, LoggerFactory} from "lines-logger";
 import {Api} from "@/utils/api";
-import {Logger} from "lines-logger";
-import {SessionHolder} from "@/types/model";
-import {SessionHolderImpl} from "@/utils/sessionHolderImpl";
+import {ApiConsts} from "@/utils/consts";
 import {Xhr} from "@/utils/xhr";
-import isMobile from "is-mobile";
-import {loggerFactory} from "@/utils/loggerFactory";
 
-const xhr: Xhr = new Xhr();
+// istanbul ignore next-line ignore IS_DEBUG on next line
+const loggerFactory: LoggerFactory = new LoggerFactory(
+  ApiConsts.IS_DEBUG ? LogStrict.LOG_RAISE_ERROR : LogStrict.ERROR,
+);
 
+const xhr: Xhr = new Xhr(
+  loggerFactory.getLoggerColor("http", "#680061"),
+  fetch,
+);
 const globalLogger: Logger = loggerFactory.getLoggerColor("global", "#007a70");
-const sessionHolder: SessionHolder = new SessionHolderImpl();
-const api: Api = new Api(xhr);
-const mobile: boolean = isMobile.isMobile();
+const api: Api = new Api(xhr, loggerFactory.getLoggerColor("api", "red"));
 
-export {globalLogger, sessionHolder, api, mobile};
+export {globalLogger, api, loggerFactory, xhr};

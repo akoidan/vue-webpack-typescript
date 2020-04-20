@@ -1,37 +1,19 @@
+// the script allows us to support typescript in cypress test
 const wp = require("@cypress/webpack-preprocessor");
 const istanbul = require("istanbul-lib-coverage");
 const {join} = require("path");
+const url = require('url');
+const webpackOptions = require('../../build/cypress.config');
 const {existsSync, mkdirSync, readFileSync, writeFileSync} = require("fs");
 const execa = require("execa");
-const fs = require("fs");
-
+const {Pact} = require("@pact-foundation/pact")
 const debug = require("debug")("code-coverage");
 
-const webpackConfig = {
-  webpackOptions: {
-    mode: "development",
-    module: {
-      rules: [
-        {
-          exclude: [/node_modules/u],
-          test: /\.ts$/u,
-          use: [{loader: "ts-loader",}],
-        },
-      ],
-    },
-    resolve: {
-      extensions: [".ts", ".js"],
-    },
-  },
-};
-
-
 /**
- * Replace source-map's path by the corresponding absolute file path
- * (coverage report wouldn't work with source-map path being relative
- * or containing Webpack loaders and query parameters)
+ * Replace source-map's path by the corresponding absolute file path (coverage report wouldn't work
+ * with source-map path being relative or containing Webpack loaders and query parameters)
  */
-function fixSourcePathes(coverage) {
+function fixToAbsoluteSourcePaths(coverage) {
   Object.values(coverage).forEach((file) => {
     const {path: absolutePath, inputSourceMap} = file;
     const fileName = (/([^\/\\]+)$/).exec(absolutePath)[1];
@@ -62,15 +44,15 @@ function saveCoverage(coverage) {
   writeFileSync(nycFilename, JSON.stringify(coverage, null, 2));
 }
 
-
-module.exports = (on) => {
-
+let pact;
+module.exports = (on, config) => {
   /**
-   * This is how you can create tasks in cypress. Please check
-   * https://docs.cypress.io/api/commands/task.html#Syntax
+   * on("task") method allows to create tasks in cypress.
+   * Please check https://docs.cypress.io/api/commands/task.html#Syntax
+   * the code is copied from require('@cypress/code-coverage/task'))
+   * in order to remove hardcoded configurations like outputFolder, reportDirectory, reporter,
    **/
   on("task", {
-
     /**
      * Clears accumulated code coverage information.
      *
@@ -88,18 +70,14 @@ module.exports = (on) => {
       }
 
       /*
-       * Else:
-       * in headless mode, assume the coverage file was deleted
-       * before the `cypress run` command was called
+       * Else in headless mode, assume the coverage file was deleted before the `cypress run` command was called
        * example: rm -rf .nyc_output || true
        */
-
       return null;
     },
 
     /**
-     * Combines coverage information from single test
-     * with previously collected coverage.
+     * Combines coverage information from single test with previously collected coverage.
      *
      * @param {string} sentCoverage Stringified coverage object sent by the test runner
      * @returns {null} Nothing is returned from this task
@@ -108,10 +86,10 @@ module.exports = (on) => {
       const coverage = JSON.parse(sentCoverage);
       debug("parsed sent coverage");
 
-      fixSourcePathes(coverage);
+      fixToAbsoluteSourcePaths(coverage);
       const previous = existsSync(nycFilename)
-          ? JSON.parse(readFileSync(nycFilename))
-          : istanbul.createCoverageMap({});
+        ? JSON.parse(readFileSync(nycFilename))
+        : istanbul.createCoverageMap({});
       const coverageMap = istanbul.createCoverageMap(previous);
       coverageMap.merge(coverage);
       saveCoverage(coverageMap);
@@ -121,8 +99,7 @@ module.exports = (on) => {
     },
 
     /**
-     * Saves coverage information as a JSON file and calls
-     * NPM script to generate HTML report
+     * Saves coverage information as a JSON file and calls NPM script to generate HTML report
      */
     coverageReport() {
       if (!existsSync(nycFilename)) {
@@ -135,8 +112,8 @@ module.exports = (on) => {
       const reportDir = nycrc['report-dir'];
       const reporter = nycrc.reporter;
       const reporters = Array.isArray(reporter)
-          ? reporter.map((name) => `--reporter=${name}`)
-          : `--reporter=${reporter}`;
+        ? reporter.map((name) => `--reporter=${name}`)
+        : `--reporter=${reporter}`;
 
       // Should we generate report via NYC module API?
       const command = "nyc";
@@ -148,13 +125,14 @@ module.exports = (on) => {
         coverageFolder,
       ].concat(reporters);
       debug(
-          "saving coverage report using command: \"%s %s\"",
-          command,
-          args.join(" "),
+        "saving coverage report using command: \"%s %s\"",
+        command,
+        args.join(" "),
       );
       debug("current working directory is %s", process.cwd());
       return execa(command, args, {stdio: "inherit"});
     },
   });
-  on("file:preprocessor", wp(webpackConfig));
+
+  on("file:preprocessor", wp({webpackOptions}));
 };

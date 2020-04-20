@@ -1,14 +1,6 @@
 {
-  "extends": [
-    "stylelint-8-point-grid"
-  ],
   "plugins": ["stylelint-order", "stylelint-scss"],
   "rules": {
-    "plugin/8-point-grid": {
-      "base": 4,
-      "whitelist": ["2px", "1px"],
-      "ignore": ["width", "height"]
-    },
     "at-rule-blacklist": ["debug"],
     "at-rule-no-unknown": null,
     "at-rule-no-vendor-prefix": true,
@@ -39,10 +31,11 @@
     "indentation": 2,
     "length-zero-no-unit": true,
     "max-nesting-depth": [
-      1,
+      2,
       {
         "ignoreAtRules": [
           "each",
+          "pseudo-classes",
           "media",
           "supports",
           "include"
@@ -98,7 +91,7 @@
     "scss/percent-placeholder-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
     "scss/selector-no-redundant-nesting-selector": true,
     "selector-class-pattern": [
-      "^[a-z0-9\\-]+$",
+      "^([a-z0-9\\-]+)|(v-.*)$",
       {
         "message":
         "Selector should be written in lowercase with hyphens (selector-class-pattern)"
@@ -110,7 +103,14 @@
     "selector-no-qualifying-type": true,
     "selector-no-vendor-prefix": true,
     "selector-pseudo-element-colon-notation": "double",
-    "selector-pseudo-element-no-unknown": true,
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": [
+          "v-deep"
+        ]
+      }
+    ],
     "shorthand-property-no-redundant-values": true,
     "string-quotes": "double",
     "value-no-vendor-prefix": true

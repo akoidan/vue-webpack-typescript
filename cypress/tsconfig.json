@@ -1,12 +1,33 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "resolveJsonModule": true,
     "baseUrl": "../node_modules",
-    "target": "es5",
-    "lib": ["es5", "dom"],
-    "types": ["cypress"]
+    "lib": ["es6", "dom"],
+    "types": ["cypress", "cypress-match-screenshot"],
+    "paths": {
+      "@/*": ["../src/*"]
+    },
+    "declaration": false,
+    "target": "ES2019",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": false, // without it, webpack wouldn't resolve vue files without extension
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "pretty": true,
+    "sourceMap": true,
+    "strict": true,
+    "moduleResolution": "node"
   },
   "include": [
+    "../src/types/*",
     "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

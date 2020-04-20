@@ -1,44 +1,38 @@
 <template>
-  <v-app>
-    <v-content>
-    <v-btn>asda asdf as fasdf asdf sd fsdf sasd</v-btn>
-
-      <v-alert type="info">
-        I'm an info alert.
-      </v-alert>
-    </v-content>
+  <v-app id="inspire">
+    <app-alert
+      v-for="alert in alerts"
+      :key="alert.id"
+      :alert="alert"
+      dismissible
+      @close="close(alert)"
+    />
+   <router-view/>
   </v-app>
 </template>
-
 <script lang="ts">
+import {AlertsState, alertsModule} from "@/store/modules/alerts";
 import {Component, Vue} from "vue-property-decorator";
-import {mobile, sessionHolder} from "@/utils/singletons";
-import variablesJson from "@/variables.json";
-
-/**
- * App comp
- */
+import {AlertModel} from "@/types/model";
+import AppAlert from "@/components/ui/AppAlert.vue";
 @Component({
-  components: {},
+  components: {AppAlert},
 })
 export default class App extends Vue {
-  private readonly mobile: boolean = mobile;
+  @AlertsState
+  public alerts!: AlertModel[];
 
-  private created(): void {
-    // istanbul ignore else
-    if (!sessionHolder.session) {
-      sessionHolder.session = "test";
-    }
-    this.$logger.log("Variable in Js example {}", variablesJson.bodyHeight)();
-    sessionHolder.session = null;
+  private close(alert: AlertModel): void {
+    alertsModule.removeAlert(alert);
   }
 }
 </script>
 <style lang="sass" scoped>
-
-  img
-    height: 20px
-
-  .top *
-    margin-right: 10px
+  .alerts
+    left: 50%
+    padding: 5px
+    position: fixed
+    top: 50%
+    transform: translate(-50%, -50%)
+    z-index: 2
 </style>

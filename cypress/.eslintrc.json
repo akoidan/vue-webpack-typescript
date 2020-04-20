@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "../.eslintrc.json"
+  ],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module",
+    "project": "./cypress/tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/no-magic-numbers": 0,
+    "@typescript-eslint/no-namespace": 0,
+    "import/no-namespace": 0,
+    "max-statements": 0,
+    "import/no-internal-modules": 0,
+    "import/no-relative-imports": 0,
+    "import/no-relative-parent-imports": 0,
+    "import/unambiguous": 0,
+    "max-lines-per-function": 0,
+    "sonarjs/no-duplicate-string": 0
+  }
+}

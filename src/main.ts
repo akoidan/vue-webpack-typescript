@@ -1,38 +1,30 @@
-// ClassComponentHooks and mixins should be imported b4 others
+// ClassComponentHooks and mixins should be imported before others
+import "@/assets/sass/globals.sass";
 import "@/utils/classComponentHooks"; // eslint-disable-line import/no-unassigned-import
 import "@/utils/mixins"; // eslint-disable-line import/no-unassigned-import
-import {GIT_HASH, IS_DEBUG} from "@/utils/consts";
+import {api, xhr} from "@/utils/singletons";
+import {ApiConsts} from "@/utils/consts"; // eslint-disable-line import/no-namespace
 import App from "@/components/App.vue";
 import Vue from "vue";
-import {api} from "@/utils/singletons";
 import {router} from "@/utils/router";
 import {store} from "@/store/store";
-import {vuetify} from "@/utils/vuetify";
+import {vuetify} from "@/utils/vuetify"; // eslint-disable-line import/max-dependencies
 
-window.GIT_VERSION = GIT_HASH;
 Vue.prototype.$api = api;
 
-const init: () => void = (): void => {
-  const vue: Vue = new Vue({
-    render: (hhh: Function): typeof Vue.prototype.$createElement => hhh(App),
-    router,
-    store,
-      vuetify,
-  });
-  // istanbul ignore next
-  if (IS_DEBUG) {
-    window.vue = vue;
-    window.store = store;
-    window.router = router;
-    window.api = api;
-  }
-  vue.$mount("#app");
-};
+window.consts = ApiConsts;
+window.router = router;
+window.store = store;
+window.api = api;
+window.xhr = xhr;
 
+const vue: Vue = new Vue({
+  render: (createElement: Function): typeof Vue.prototype.$createElement => createElement(App),
+  router,
+  store,
+  vuetify,
+});
 
-// istanbul ignore if
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
-} else {
-  init();
-}
+window.vue = vue;
+
+vue.$mount("#app");
