@@ -1,29 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-    >
-      <v-list dense>
-        <v-list-item link to="/">
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link to="/users">
-          <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Users</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
+    <navigation-drawer v-model="drawer"/>
     <v-app-bar
       app
       color="#35495d"
@@ -43,9 +20,11 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue, Watch, Ref} from "vue-property-decorator";
-
-@Component
+import {Component, Vue} from "vue-property-decorator";
+import NavigationDrawer from "@/components/ui/NavigationDrawer.vue";
+@Component({
+  components: {NavigationDrawer}
+})
 export default class BasePage extends Vue {
   private drawer: boolean = false;
 }

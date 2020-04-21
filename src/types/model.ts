@@ -1,5 +1,10 @@
-interface User {
-  id: number;
+interface Branch {
+  "name": string;
+  "commit": {
+    "sha": string;
+    "url": string;
+  };
+  "protected": boolean;
 }
 
 type AlertType = "success" | "info" | "error";
@@ -32,5 +37,5 @@ export {
   AlertType,
   Consts,
   RequestOptions,
-  User,
+  Branch,
 };

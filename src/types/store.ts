@@ -1,7 +1,7 @@
-import {AlertModel, User} from "@/types/model";
+import {AlertModel, Branch} from "@/types/model";
 
-interface IUserState {
-  users: User[];
+interface IGithubState {
+  branches: Branch[]|null;
 }
 
 interface IAlertsState {
@@ -9,8 +9,8 @@ interface IAlertsState {
 }
 
 interface IRootState {
-  users: IUserState;
+  github: IGithubState;
   alerts: IAlertsState;
 }
 
-export {IUserState, IAlertsState, IRootState};
+export {IGithubState, IAlertsState, IRootState};

@@ -31,7 +31,7 @@ export class Xhr {
   }
 
   private get requestHeaders(): HeadersInit {
-    const headers: HeadersInit = {"Content-Type": "application/json"};
+    const headers: HeadersInit = {"Content-Type": "application/json", "Accept": "application/json"};
     // istanbul ignore else
     if (ApiConsts.APP_VERSION) {
       headers[this.APP_VERSION_HEADER_KEY] = ApiConsts.APP_VERSION;

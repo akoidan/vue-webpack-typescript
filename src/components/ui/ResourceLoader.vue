@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="resource-loader">
     <div v-if="loading" class="loading-wrapper">
       <v-progress-circular
         indeterminate
@@ -74,6 +74,8 @@ export default class ResourceLoader extends Vue {
 </script>
 <!-- eslint-disable -->
 <style lang="sass" scoped>
+  .resource-loader
+    padding: 10px
   .loading-wrapper
     text-align: center
 </style>

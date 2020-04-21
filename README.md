@@ -429,6 +429,8 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
 - ignore typescript error: `// @ts-ignore: next-line` [guide](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments)
 - ignore stylelint error: `/* stylelint-disable-line */` [guide](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md)
 
+#### Where I find icons?
+Repo uses material desing icons (mdi). Check [materialdesignicons.com](https://materialdesignicons.com/). And `node_modules/@mdi/font/scss/_variables.scss` directory, this vars are prefixed with `mdi-`, like `mdi-home`.
 
 #### What's the import order in typescript:
  1. Multiple imports go before singular

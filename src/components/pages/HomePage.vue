@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home-page">
     <img src="@/assets/images/vue.png"/>
     <h1>Welcome to vue-webpack-typescript!</h1>
     <p>
@@ -9,10 +9,7 @@
 </template>
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator";
-import {UserState, userModule} from "@/store/modules/user";
 import ResourceLoader from "@/components/ui/ResourceLoader.vue";
-import {ResolveHandler} from "@/utils/decorators";
-import {User} from "@/types/model";
 
 // This is a store module class defined using vuex-module-decorators
 
@@ -21,18 +18,10 @@ import {User} from "@/types/model";
  */
 @Component({components: {ResourceLoader}})
 export default class HomePage extends Vue {
-  @UserState
-  public readonly users!: User[];
-
-  @ResolveHandler
-  private async load(): Promise<void> {
-    userModule.setUsers(await this.$api.getUsers());
-  }
 }
 </script>
-
-<style lang="sass" scoped>
-  div
+<style lang="sass">
+  .home-page
     margin: auto
     text-align: center
   img

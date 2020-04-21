@@ -1,6 +1,7 @@
 import {Logger} from "lines-logger";
 import {Xhr} from "@/utils/xhr";
-import {User} from "@/types/model";
+import {Branch} from "@/types/model";
+import {CommitResponse} from "@/types/gitCommit";
 
 
 export class Api {
@@ -16,7 +17,17 @@ export class Api {
     this.xhr = xhr;
   }
 
-  public async getUsers(): Promise<User[]> {
-    return this.xhr.doRequest({url: "/users", method: "GET"});
+  public async getBranches(): Promise<Branch[]> {
+    return this.xhr.doRequest({
+      method: "GET",
+      url: "/branches",
+    });
+  }
+
+  public async getCommit(sha: string): Promise<CommitResponse> {
+    return this.xhr.doRequest({
+      method: "GET",
+      url: `/commits/${sha}`,
+    });
   }
 }
