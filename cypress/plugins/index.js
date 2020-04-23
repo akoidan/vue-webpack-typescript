@@ -6,7 +6,6 @@ const url = require('url');
 const webpackOptions = require('../../build/cypress.config');
 const {existsSync, mkdirSync, readFileSync, writeFileSync} = require("fs");
 const execa = require("execa");
-const {Pact} = require("@pact-foundation/pact")
 const debug = require("debug")("code-coverage");
 
 /**

@@ -6,7 +6,7 @@
       color="#35495d"
       dark
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
+      <v-app-bar-nav-icon data-cy="hamburger-icon" @click.stop="drawer = !drawer"/>
       <v-toolbar-title>Vue-webpack-typescript boilerplate</v-toolbar-title>
     </v-app-bar>
 
