@@ -3,7 +3,7 @@ import chai from "chai";
 
 chai.use(chaiAsPromised);
 
-const url = `${String(Cypress.env("APP_API_URL"))}/v1/test`;
+const url = `${String(Cypress.env("APP_API_URL"))}/test`;
 
 describe("Xhr", (): void => {
   it("throws an error when response is not json", () => {
@@ -19,9 +19,9 @@ describe("Xhr", (): void => {
         await chai.assert.isRejected(
           win.xhr.doRequest({
             method: "GET",
-            url: "test",
+            url: "/test",
           }),
-          "Error #1",
+          "Malformed json",
         );
       });
   });
@@ -42,7 +42,7 @@ describe("Xhr", (): void => {
             method: "GET",
             url: "/test",
           }),
-          "Error #2",
+          "Http not 200",
         );
       });
   });
@@ -63,7 +63,7 @@ describe("Xhr", (): void => {
             method: "GET",
             url: "/test",
           }),
-          "Error #3",
+          "Server error",
         );
       });
   });
@@ -77,75 +77,9 @@ describe("Xhr", (): void => {
           method: "GET",
           url: "/test",
         }),
-        "Error #6",
+        "Communication error",
       );
     });
-  });
-
-  it("sends auth header when it's specified", () => {
-    cy.server();
-    cy.route({
-      method: "GET",
-      response: [],
-      status: 200,
-      url,
-    }).as("test-get");
-    cy.visit("/");
-    cy.window().
-      then(async(win: Window) => {
-        await win.xhr.doRequest({
-          authToken: "test",
-          method: "GET",
-          url: "/test",
-        });
-        cy.get("@test-get").should((req: JQuery) => {
-          // @ts-ignore next-line
-          expect(req.request.headers).to.include({authorization: "Bearer test"});
-        });
-      });
-  });
-
-  it("doesn't send auth header if it's not passed", () => {
-    cy.server();
-    cy.route({
-      method: "GET",
-      response: [],
-      status: 200,
-      url,
-    }).as("test-get");
-    cy.visit("/");
-    cy.window().
-      then(async(win: Window) => {
-        await win.xhr.doRequest({
-          method: "GET",
-          url: "/test",
-        });
-        cy.get("@test-get").should((req: JQuery) => {
-          // @ts-ignore next-line
-          expect(req.request.headers).to.not.have.key("Authorization");
-        });
-      });
-  });
-
-  it("proxies error details from server", () => {
-    cy.server();
-    cy.route({
-      method: "GET",
-      response: {error: {detail: "Incorrect password"}},
-      status: 405,
-      url,
-    });
-    cy.visit("/");
-    cy.window().
-      then(async(win: Window) => {
-        await chai.assert.isRejected(
-          win.xhr.doRequest({
-            method: "GET",
-            url: "/test",
-          }),
-          "Incorrect password",
-        );
-      });
   });
 
   it("sends api version header", () => {
@@ -153,7 +87,7 @@ describe("Xhr", (): void => {
     cy.route({
       method: "GET",
       response: [],
-        url,
+      url,
     }).as("test-get");
     cy.visit("/");
     cy.window().

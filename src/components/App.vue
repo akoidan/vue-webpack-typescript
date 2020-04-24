@@ -1,12 +1,14 @@
 <template>
   <v-app id="inspire">
-    <app-alert
-      v-for="alert in alerts"
-      :key="alert.id"
-      :alert="alert"
-      dismissible
-      @close="close(alert)"
-    />
+    <div class="alerts">
+      <app-alert
+        v-for="alert in alerts"
+        :key="alert.id"
+        :alert="alert"
+        dismissible
+        @close="close(alert)"
+      />
+    </div>
     <router-view/>
   </v-app>
 </template>
@@ -29,10 +31,9 @@ export default class App extends Vue {
 </script>
 <style lang="sass" scoped>
   .alerts
-    left: 50%
+    right: 5px
+    top: 5px
     padding: 5px
     position: fixed
-    top: 50%
-    transform: translate(-50%, -50%)
-    z-index: 2
+    z-index: 10
 </style>

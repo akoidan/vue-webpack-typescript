@@ -1,0 +1,110 @@
+{
+  "sha": "82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef",
+  "node_id": "MDY6Q29tbWl0MTM2NzYyODE5OjgyYzBlNzZlNWRjMWQ4ZDU3Zjg4YWJhMmNiYzg4ZTFmODM3M2ZlZWY=",
+  "commit": {
+    "author": {
+      "name": "Andrew Koidan",
+      "email": "deathangel908@gmail.com",
+      "date": "2019-11-15T22:13:55Z"
+    },
+    "committer": {
+      "name": "Andrew Koidan",
+      "email": "deathangel908@gmail.com",
+      "date": "2019-11-15T22:13:55Z"
+    },
+    "message": "Fixed style",
+    "tree": {
+      "sha": "8a4f16b584e5bdfdaf7b6a530dc29733a8d963fe",
+      "url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/git/trees/8a4f16b584e5bdfdaf7b6a530dc29733a8d963fe"
+    },
+    "url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/git/commits/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null
+    }
+  },
+  "url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/commits/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef",
+  "html_url": "https://github.com/akoidan/vue-webpack-typescript/commit/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef",
+  "comments_url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/commits/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef/comments",
+  "author": {
+    "login": "akoidan",
+    "id": 1336703,
+    "node_id": "MDQ6VXNlcjEzMzY3MDM=",
+    "avatar_url": "https://avatars0.githubusercontent.com/u/1336703?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/akoidan",
+    "html_url": "https://github.com/akoidan",
+    "followers_url": "https://api.github.com/users/akoidan/followers",
+    "following_url": "https://api.github.com/users/akoidan/following{/other_user}",
+    "gists_url": "https://api.github.com/users/akoidan/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/akoidan/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/akoidan/subscriptions",
+    "organizations_url": "https://api.github.com/users/akoidan/orgs",
+    "repos_url": "https://api.github.com/users/akoidan/repos",
+    "events_url": "https://api.github.com/users/akoidan/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/akoidan/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "akoidan",
+    "id": 1336703,
+    "node_id": "MDQ6VXNlcjEzMzY3MDM=",
+    "avatar_url": "https://avatars0.githubusercontent.com/u/1336703?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/akoidan",
+    "html_url": "https://github.com/akoidan",
+    "followers_url": "https://api.github.com/users/akoidan/followers",
+    "following_url": "https://api.github.com/users/akoidan/following{/other_user}",
+    "gists_url": "https://api.github.com/users/akoidan/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/akoidan/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/akoidan/subscriptions",
+    "organizations_url": "https://api.github.com/users/akoidan/orgs",
+    "repos_url": "https://api.github.com/users/akoidan/repos",
+    "events_url": "https://api.github.com/users/akoidan/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/akoidan/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "7b9f2d9887b2b1da5da2efeed18eed3b1d321c67",
+      "url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/commits/7b9f2d9887b2b1da5da2efeed18eed3b1d321c67",
+      "html_url": "https://github.com/akoidan/vue-webpack-typescript/commit/7b9f2d9887b2b1da5da2efeed18eed3b1d321c67"
+    }
+  ],
+  "stats": {
+    "total": 14,
+    "additions": 13,
+    "deletions": 1
+  },
+  "files": [
+    {
+      "sha": "b9157f4a4cb7566ed3720b26e3738559c61252ce",
+      "filename": ".eslintrc.json",
+      "status": "modified",
+      "additions": 12,
+      "deletions": 0,
+      "changes": 12,
+      "blob_url": "https://github.com/akoidan/vue-webpack-typescript/blob/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef/.eslintrc.json",
+      "raw_url": "https://github.com/akoidan/vue-webpack-typescript/raw/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef/.eslintrc.json",
+      "contents_url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/contents/.eslintrc.json?ref=82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef",
+      "patch": "@@ -5,5 +5,17 @@\n   \"parserOptions\": {\n     \"parser\": \"@typescript-eslint/parser\",\n     \"sourceType\": \"module\"\n+  },\n+  \"rules\": {\n+    \"vue/html-self-closing\": [\n+      \"warn\",\n+      {\n+        \"html\": {\n+          \"void\": \"always\",\n+          \"normal\": \"always\",\n+          \"component\": \"always\"\n+        }\n+      }\n+    ]\n   }\n }"
+    },
+    {
+      "sha": "a9cf1c61e75c743ea6e7f0d3027128caf23acbe9",
+      "filename": "src/components/App.vue",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1,
+      "changes": 2,
+      "blob_url": "https://github.com/akoidan/vue-webpack-typescript/blob/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef/src/components/App.vue",
+      "raw_url": "https://github.com/akoidan/vue-webpack-typescript/raw/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef/src/components/App.vue",
+      "contents_url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/contents/src/components/App.vue?ref=82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef",
+      "patch": "@@ -1,7 +1,7 @@\n <template>\n   <div :class=\"{mobile}\">\n     <div class=\"top\">\n-      <img src=\"@/assets/images/logo.png\"/>\n+      <img src=\"@/assets/images/logo.png\" />\n       <router-link to=\"/posts\">\n         Posts\n       </router-link>"
+    }
+  ]
+}

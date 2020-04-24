@@ -3,16 +3,16 @@
     <v-simple-table>
       <template v-slot:default>
         <thead>
-        <tr>
-          <th class="text-left">Name</th>
-          <th class="text-left">Value</th>
-        </tr>
+          <tr>
+            <th class="text-left">Name</th>
+            <th class="text-left">Value</th>
+          </tr>
         </thead>
         <tbody>
-        <tr v-for="(v,k) in commit" :key="k">
-          <td>{{ k }}</td>
-          <td>{{ v }}</td>
-        </tr>
+          <tr v-for="(v,k) in commit" :key="k">
+            <td>{{ k }}</td>
+            <td>{{ v }}</td>
+          </tr>
         </tbody>
       </template>
     </v-simple-table>

@@ -53,8 +53,7 @@ describe("Store", (): void => {
         });
     });
 
-
-    it("alert is closable", (): void => {
+    it("allows to close the alert by clicking on it", (): void => {
       cy.visit("/");
       cy.window().
         then((win: Window) => {

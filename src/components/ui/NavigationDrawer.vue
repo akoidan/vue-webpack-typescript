@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app :value="value">
+  <v-navigation-drawer app :value="value" @input="input">
     <v-list dense>
       <v-list-item link to="/">
         <v-list-item-action>
@@ -31,7 +31,7 @@ export default class NavigationDrawer extends Vue {
 
   @Emit()
   public input(value: boolean): boolean {
-    return false;
+    return value;
   }
 }
 </script>

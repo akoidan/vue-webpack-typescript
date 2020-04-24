@@ -1,5 +1,6 @@
 import '@cypress/code-coverage/support'
 import { register } from 'cypress-match-screenshot';
+import options from "../../build/options.json";
 
 register();
 
@@ -24,6 +25,8 @@ Cypress.Commands.add('vCheck', (text) => {
     .get('.v-input--selection-controls__ripple')
     .click()
 });
+
+Cypress.env('APP_API_URL', options.API_URL);
 
 // cypress doesn't support fetch api, so stub it with polyfill and force polyfill here
 Cypress.on('window:before:load', win => {

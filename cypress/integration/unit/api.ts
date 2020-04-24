@@ -16,7 +16,8 @@ describe("Api", (): void => {
     cy.visit("/");
     cy.window().
       then(async(win: Window) => {
-        await win.api.getBranches();
+        const branches = await win.api.getBranches();
+        expect(branches).have.length.greaterThan(0);
       });
   });
 });

@@ -10,7 +10,5 @@ describe("Home page", (): void => {
     cy.contains("Home");
     cy.contains("Branches");
     cy.matchScreenshot("opened menu");
-    cy.get("body").click();
-    cy.matchScreenshot("closed menu");
   });
 });
