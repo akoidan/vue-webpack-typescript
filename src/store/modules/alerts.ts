@@ -29,11 +29,6 @@ class DefaultStore extends VuexModule implements IAlertsState {
     this.alerts.splice(index, 1);
   }
 
-  @Mutation
-  public cleanAlerts(): void {
-    this.alerts = [];
-  }
-
   @Action({rawError: true})
   public async showAlert({text, type}: { text: string; type: AlertType}): Promise<void> {
     const alert: AlertModel = {

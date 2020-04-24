@@ -24,12 +24,26 @@ describe("Branches page", (): void => {
     cy.contains("check");
     cy.matchScreenshot("content");
   });
+  it("doesn't load branches twice", (): void => {
+    cy.visit("/#/branches");
+    cy.contains("babel");
+    cy.visit("/");
+    cy.route({
+      method: "GET",
+      onResponse() {
+        expect("Unexpected Https call").to.be.false;
+      },
+      status: 200,
+      url: `${String(Cypress.env("APP_API_URL"))}/branches`,
+    });
+    cy.visit("/#/branches");
+  });
   it("navigates to a specific commit", (): void => {
     cy.route({
       method: "GET",
       response: getCommitResponse,
       status: 200,
-      url: `${String(Cypress.env("APP_API_URL"))}/commit/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef`,
+      url: `${String(Cypress.env("APP_API_URL"))}/commits/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef`,
     });
     cy.visit("/#/branches");
     cy.contains("babel").click();

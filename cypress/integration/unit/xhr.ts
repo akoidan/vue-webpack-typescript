@@ -102,4 +102,45 @@ describe("Xhr", (): void => {
         });
       });
   });
+
+  it("adds post body", () => {
+    cy.server();
+    cy.route({
+      method: "POST",
+      response: [],
+      url,
+    }).as("test-get");
+    cy.visit("/")
+    cy.window().then(async(win: Window) => {
+      await win.xhr.doRequest({
+        body: {
+          aa: 1,
+        },
+        method: "POST",
+        url: "/test",
+      });
+      cy.get("@test-get").should((req: JQuery) => {
+        // @ts-ignore next-line
+        expect(req.request.body).to.be.deep.eq({aa: 1});
+      });
+    });
+  });
+  it("ignores response if it's stated so", () => {
+    cy.server();
+    cy.route({
+      method: "POST",
+      response: [],
+      url,
+    }).as("test-get");
+    cy.visit("/");
+    cy.window().then(async(win: Window) => {
+      const response = await win.xhr.doRequest({
+        body: "error json",
+        method: "POST",
+        parseResponseAsJson: false,
+        url: "/test",
+      });
+      expect(response).to.be.eq(null)
+    });
+  });
 });
