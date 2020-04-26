@@ -50,7 +50,7 @@ module.exports.getDefinitions =(function() {
       API_URL: module.exports.getConfig('API_URL', true),
       APP_VERSION: module.exports.getConfig('APP_VERSION', true) || getCvsVersion(),
       IS_DEBUG,
-      ROUTER_HISTORY_MODE: module.exports.getConfig("APP_FILE_MODE")
+      ROUTER_HISTORY_MODE: module.exports.getConfig("APP_FILE_MODE") ? "'hash'" : "'history'"
     },
   });
 })();

@@ -18,14 +18,14 @@ describe("Branches page", (): void => {
     cy.contains("Repository Branches:");
   });
   it("displays branches", (): void => {
-    cy.visit("/#/branches");
+    cy.visit("/branches");
     cy.contains("Repository Branches:");
     cy.contains("babel");
     cy.contains("check");
     cy.matchScreenshot("content");
   });
   it("doesn't load branches twice", (): void => {
-    cy.visit("/#/branches");
+    cy.visit("/branches");
     cy.contains("babel");
     cy.visit("/");
     cy.route({
@@ -36,7 +36,7 @@ describe("Branches page", (): void => {
       status: 200,
       url: `${String(Cypress.env("APP_API_URL"))}/branches`,
     });
-    cy.visit("/#/branches");
+    cy.visit("/branches");
   });
   it("navigates to a specific commit", (): void => {
     cy.route({
@@ -45,7 +45,7 @@ describe("Branches page", (): void => {
       status: 200,
       url: `${String(Cypress.env("APP_API_URL"))}/commits/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef`,
     });
-    cy.visit("/#/branches");
+    cy.visit("/branches");
     cy.contains("babel").click();
     cy.contains("82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef");
   });
