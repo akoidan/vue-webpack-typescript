@@ -1,32 +1,33 @@
-import {Post, User} from "@/types/dto";
-import {API_URL} from "@/utils/consts";
+import {Branch} from "@/types/model";
+import {CommitResponse} from "@/types/gitCommit";
 import {Logger} from "lines-logger";
 import {Xhr} from "@/utils/xhr";
-import {loggerFactory} from "@/utils/loggerFactory";
 
 
-/**
- * Http rest api
- */
 export class Api {
   protected readonly logger: Logger;
 
   private readonly xhr: Xhr;
 
   // https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908
-  public constructor(xhr: Xhr) { // eslint-disable-line @typescript-eslint/no-untyped-public-signature
-    this.logger = loggerFactory.getLoggerColor(
-      "api",
-      "red",
-    );
+  public constructor(
+    xhr: Xhr, logger: Logger,
+  ) {
+    this.logger = logger;
     this.xhr = xhr;
   }
 
-  public async getPosts(): Promise<Post[]> {
-    return this.xhr.doGet<Post[]>(`${API_URL}/posts`);
+  public async getBranches(): Promise<Branch[]> {
+    return this.xhr.doRequest({
+      method: "GET",
+      url: "/branches",
+    });
   }
 
-  public async getUsers(): Promise<User[]> {
-    return this.xhr.doGet<User[]>(`${API_URL}/users`);
+  public async getCommit(sha: string): Promise<CommitResponse> {
+    return this.xhr.doRequest({
+      method: "GET",
+      url: `/commits/${sha}`,
+    });
   }
 }

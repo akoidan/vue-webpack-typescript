@@ -1,5 +1,0 @@
---require tsconfig-paths/register
---require ts-node/register
---require ./test/define.ts
---ui bdd
-test/index.ts

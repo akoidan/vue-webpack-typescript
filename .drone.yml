@@ -3,20 +3,25 @@ kind: pipeline
 type: docker
 name: default
 
+platform:
+  os: linux
+  arch: amd64
+
 steps:
   - name: restore-node-modules-cache
-    image: drillster/drone-volume-cache
-    volumes:
-      - name: cache
-        path: /cache
+    image: plugins/volume-cache
     settings:
+      file: frontend-cache.tar
       restore: true
       mount:
         - ./node_modules
         - ./yarn-cache
+    volumes:
+      - name: cache
+        path: /cache
 
   - name: install-node-modules
-    image: cypress/included:3.8.1
+    image: cypress/included:4.0.2
     depends_on:
       - restore-node-modules-cache
     commands:
@@ -24,42 +29,42 @@ steps:
       - yarn install
 
   - name: save-node-modules-cache
-    image: drillster/drone-volume-cache
+    image: plugins/volume-cache
     depends_on:
       - install-node-modules
-    volumes:
-      - name: cache
-        path: /cache
     settings:
+      file: frontend-cache.tar
       rebuild: true
       mount:
         - ./yarn-cache
         - ./node_modules
+    volumes:
+      - name: cache
+        path: /cache
 
   - name: build
-    image: cypress/included:3.8.1
+    image: cypress/included:4.0.2
     depends_on:
       - install-node-modules
     commands:
       - yarn run build:test
 
-  - name: lint
-    image: cypress/included:3.8.1
+  - name: eslint
+    image: cypress/included:4.0.2
     depends_on:
       - build
     commands:
       - yarn run lint
 
   - name: test
-    image: cypress/included:3.8.1
-    failure: ignore
+    image: cypress/included:4.0.2
     depends_on:
       - build
     commands:
-      - yarn run test:cypress:run
+      - yarn run test:cypress:run:report
 
   - name: coverage
-    image: cypress/included:3.8.1
+    image: cypress/included:4.0.2
     depends_on:
       - test
     commands:

@@ -5,4 +5,5 @@ yarn-error.log
 cypress/screenshots
 cypress/videos
 nyc
-package-lock.json
+cypress/match-screenshots/diff
+cypress/match-screenshots/new

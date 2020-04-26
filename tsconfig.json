@@ -5,16 +5,17 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    "typeRoots": ["./node_modules/@types", "./node_modules/vuetify/types"],
     "lib": ["es2017", "dom"],
     "declaration": false,
-    "target": "esnext",
+    "target": "es6",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmitOnError": false, // without it, webpack wouldn't resolve vue files without exxtension
+    "noEmitOnError": false, // without it, webpack wouldn't resolve vue files without extension
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "pretty": true,
@@ -24,8 +25,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.vue",
-    "test/*.ts"
+    "src/**/*.vue"
   ],
   "exclude": [
     "node_modules"

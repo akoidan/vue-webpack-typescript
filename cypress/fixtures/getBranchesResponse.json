@@ -1,0 +1,26 @@
+[
+  {
+    "name": "babel",
+    "commit": {
+      "sha": "82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef",
+      "url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/commits/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef"
+    },
+    "protected": false
+  },
+  {
+    "name": "check",
+    "commit": {
+      "sha": "4179a5f7698a3fc4fbf307c2ab67e1c151b13841",
+      "url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/commits/4179a5f7698a3fc4fbf307c2ab67e1c151b13841"
+    },
+    "protected": false
+  },
+  {
+    "name": "crash",
+    "commit": {
+      "sha": "dbe6f4295a65d6f4ff14722f6458c3c864325418",
+      "url": "https://api.github.com/repos/akoidan/vue-webpack-typescript/commits/dbe6f4295a65d6f4ff14722f6458c3c864325418"
+    },
+    "protected": false
+  }
+]

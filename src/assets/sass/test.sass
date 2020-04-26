@@ -1,0 +1,8 @@
+// disable all vuetify transactions so animations like after press effects for 1s would not make test non-deterministic
+// TODO However vuetify still has some mystical hover effects after the btn clicks which are set with setTimeout
+// Therefore matchScreenshot should use cy.clock() before the event, and cy.tick(2000) after
+html body *
+  transition: none !important
+
+  &::before
+    transition: none !important

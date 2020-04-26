@@ -1,24 +1,41 @@
-import FilteredUsersPage from "@/components/pages/FilteredUsersPage.vue";
-import PostsPage from "@/components/pages/PostsPage.vue";
-import UsersPage from "@/components/pages/UsersPage.vue";
+import {ApiConsts} from "@/utils/consts";
+import BasePage from "@/components/pages/BasePage.vue";
+import HomePage from "@/components/pages/HomePage.vue";
+import NotFoundPage from "@/components/pages/NotFoundPage.vue";
+import RepoBranchesPage from "@/components/pages/RepoBranchesPage.vue";
+import RepoCommitPage from "@/components/pages/RepoCommitPage.vue"; // eslint-disable-line import/max-dependencies
 import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
 export const router: VueRouter = new VueRouter({
+  // https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode
+  mode: ApiConsts.ROUTER_HISTORY_MODE,
   routes: [
+
     {
-      component: PostsPage,
-      path: "/posts",
+      children: [
+        {
+          component: HomePage,
+          path: "/",
+        },
+        {
+          component: RepoBranchesPage,
+          path: "/branches",
+        },
+        {
+          component: RepoCommitPage,
+          path: "/commit/:id",
+          props: true,
+        },
+      ],
+      component: BasePage,
+      path: "",
     },
     {
-      component: UsersPage,
-      path: "/users",
-    },
-    {
-      component: FilteredUsersPage,
-      path: "/filtered-users",
+      component: NotFoundPage,
+      path: "*",
     },
   ],
 });

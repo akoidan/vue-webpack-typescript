@@ -1,52 +1,40 @@
 <template>
-  <div :class="{mobile}">
-    <div class="top">
-      <img src="@/assets/images/logo.png" data-cy="logo"/>
-      <router-link to="/posts">
-        Posts
-      </router-link>
-      <router-link to="/users">
-        Users
-      </router-link>
-      <router-link to="/filtered-users">
-        Filtered Users
-      </router-link>
+  <v-app id="inspire">
+    <div class="alerts">
+      <app-alert
+        v-for="alert in alerts"
+        :key="alert.id"
+        :alert="alert"
+        dismissible
+        @close="close(alert)"
+      />
     </div>
     <router-view/>
-  </div>
+  </v-app>
 </template>
-
 <script lang="ts">
+import {AlertsState, alertsModule} from "@/store/modules/alerts";
 import {Component, Vue} from "vue-property-decorator";
-import {mobile, sessionHolder} from "@/utils/singletons";
-import variablesJson from "@/variables.json";
+import {AlertModel} from "@/types/model";
+import AppAlert from "@/components/ui/AppAlert.vue";
 
-/**
- * App comp
- */
 @Component({
-  components: {},
+  components: {AppAlert},
 })
 export default class App extends Vue {
-  private readonly mobile: boolean = mobile;
+  @AlertsState
+  public alerts!: AlertModel[];
 
-  private created(): void {
-    // istanbul ignore else
-    if (!sessionHolder.session) {
-      sessionHolder.session = "test";
-    }
-    this.$logger.log("Variable in Js example {}", variablesJson.bodyHeight)();
-    sessionHolder.session = null;
+  private close(alert: AlertModel): void {
+    alertsModule.removeAlert(alert);
   }
 }
 </script>
 <style lang="sass" scoped>
-  // variable in css example
-  $height: get('bodyHeight')
-
-  img
-    height: 20px
-
-  .top *
-    margin-right: 10px
+  .alerts
+    padding: 5px
+    position: fixed
+    right: 5px
+    top: 5px
+    z-index: 10
 </style>
