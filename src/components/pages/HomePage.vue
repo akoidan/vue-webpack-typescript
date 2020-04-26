@@ -24,6 +24,7 @@ export default class HomePage extends Vue {
   .home-page
     margin: auto
     text-align: center
+
   img
     height: 100px
 

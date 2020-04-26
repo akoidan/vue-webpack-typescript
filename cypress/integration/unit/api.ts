@@ -1,6 +1,6 @@
 import * as chaiAsPromised from "chai-as-promised";
-import getBranchesResponse from "../../fixtures/getBranchesResponse.json";
 import chai from "chai";
+import getBranchesResponse from "../../fixtures/getBranchesResponse.json";
 
 chai.use(chaiAsPromised);
 

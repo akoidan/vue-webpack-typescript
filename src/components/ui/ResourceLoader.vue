@@ -14,8 +14,8 @@
 <script lang="ts">
 import {Component, Prop, Vue} from "vue-property-decorator";
 import {AlertModel} from "@/types/model";
-import {HandleLoading} from "@/utils/decorators";
 import AppAlert from "@/components/ui/AppAlert.vue";
+import {HandleLoading} from "@/utils/decorators";
 
 /**
  * Helper async operation handler that provides html form, button and handlers for doing async operation
@@ -76,6 +76,7 @@ export default class ResourceLoader extends Vue {
 <style lang="sass" scoped>
   .resource-loader
     padding: 10px
+
   .loading-wrapper
     text-align: center
 </style>

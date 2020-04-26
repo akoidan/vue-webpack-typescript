@@ -49,6 +49,6 @@ export default class RepoBranches extends Vue {
 
 <style lang="sass" scoped>
   h1
-    text-align: center
     padding: 10px
+    text-align: center
 </style>

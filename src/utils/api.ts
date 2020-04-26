@@ -1,7 +1,7 @@
-import {Logger} from "lines-logger";
-import {Xhr} from "@/utils/xhr";
 import {Branch} from "@/types/model";
 import {CommitResponse} from "@/types/gitCommit";
+import {Logger} from "lines-logger";
+import {Xhr} from "@/utils/xhr";
 
 
 export class Api {

@@ -110,7 +110,7 @@ describe("Xhr", (): void => {
       response: [],
       url,
     }).as("test-get");
-    cy.visit("/")
+    cy.visit("/");
     cy.window().then(async(win: Window) => {
       await win.xhr.doRequest({
         body: {
@@ -140,7 +140,7 @@ describe("Xhr", (): void => {
         parseResponseAsJson: false,
         url: "/test",
       });
-      expect(response).to.be.eq(null)
+      expect(response).to.be.eq(null);
     });
   });
 });

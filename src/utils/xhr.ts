@@ -31,7 +31,10 @@ export class Xhr {
   }
 
   private get requestHeaders(): HeadersInit {
-    const headers: HeadersInit = {"Content-Type": "application/json", "Accept": "application/json"};
+    const headers: HeadersInit = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
     // istanbul ignore else
     if (ApiConsts.APP_VERSION) {
       headers[this.APP_VERSION_HEADER_KEY] = ApiConsts.APP_VERSION;
@@ -72,7 +75,7 @@ export class Xhr {
       response = await this.fetchApi.call(null, fullUrl, request);
     } catch (error) {
       this.httpLogger.error("Failed to {}; error {}", request, error)();
-      throw Error(`Communication error ${error?.message || error}`);
+      throw Error(`Communication error ${String(error?.message || error)}`);
     }
 
     if (response.ok && !parseResponseAsJson) {

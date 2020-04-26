@@ -31,7 +31,7 @@ describe("Branches page", (): void => {
     cy.route({
       method: "GET",
       onResponse() {
-        expect("Unexpected Https call").to.be.false;
+        expect("Unexpected Https call").to.be.false; // eslint-disable-line
       },
       status: 200,
       url: `${String(Cypress.env("APP_API_URL"))}/branches`,

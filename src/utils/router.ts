@@ -3,9 +3,9 @@ import BasePage from "@/components/pages/BasePage.vue";
 import HomePage from "@/components/pages/HomePage.vue";
 import NotFoundPage from "@/components/pages/NotFoundPage.vue";
 import RepoBranchesPage from "@/components/pages/RepoBranchesPage.vue";
+import RepoCommitPage from "@/components/pages/RepoCommitPage.vue"; // eslint-disable-line import/max-dependencies
 import Vue from "vue";
 import VueRouter from "vue-router";
-import RepoCommitPage from "@/components/pages/RepoCommitPage.vue"; // eslint-disable-line import/max-dependencies
 
 Vue.use(VueRouter);
 

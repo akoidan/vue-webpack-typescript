@@ -1,5 +1,5 @@
-import {Consts} from "@/types/model";
 import {Api} from "@/utils/api";
+import {Consts} from "@/types/model";
 import {IRootState} from "@/types/store";
 import {Logger} from "lines-logger";
 import {Store} from "vuex";

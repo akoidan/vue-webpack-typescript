@@ -26,7 +26,6 @@ function processError<T>(
   globalLogger.error("Action error {}", error)();
   const text: string = String(error ? error.message : error);
   if (vueProperty) {
-
     const alert: AlertModel = {
       id: getUniqueId(),
       text,

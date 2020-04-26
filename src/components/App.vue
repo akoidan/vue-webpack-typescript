@@ -17,6 +17,7 @@ import {AlertsState, alertsModule} from "@/store/modules/alerts";
 import {Component, Vue} from "vue-property-decorator";
 import {AlertModel} from "@/types/model";
 import AppAlert from "@/components/ui/AppAlert.vue";
+
 @Component({
   components: {AppAlert},
 })
@@ -31,9 +32,9 @@ export default class App extends Vue {
 </script>
 <style lang="sass" scoped>
   .alerts
-    right: 5px
-    top: 5px
     padding: 5px
     position: fixed
+    right: 5px
+    top: 5px
     z-index: 10
 </style>

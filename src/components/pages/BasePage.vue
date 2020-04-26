@@ -22,8 +22,9 @@
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator";
 import NavigationDrawer from "@/components/ui/NavigationDrawer.vue";
+
 @Component({
-  components: {NavigationDrawer}
+  components: {NavigationDrawer},
 })
 export default class BasePage extends Vue {
   private drawer: boolean = false;

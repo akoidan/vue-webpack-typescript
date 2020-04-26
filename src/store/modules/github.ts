@@ -1,6 +1,6 @@
 import {Module, Mutation, VuexModule, getModule} from "vuex-module-decorators";
-import {IGithubState} from "@/types/store";
 import {Branch} from "@/types/model";
+import {IGithubState} from "@/types/store";
 import {stateDecoratorFactory} from "@/store/stateDecoratorFactory";
 import {store} from "@/store/store";
 

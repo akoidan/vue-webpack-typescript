@@ -20,8 +20,8 @@ interface Tree {
 interface Verification {
   verified: boolean;
   reason: string;
-  signature?: any;
-  payload?: any;
+  signature?: unknown;
+  payload?: unknown;
 }
 
 interface Commit {
