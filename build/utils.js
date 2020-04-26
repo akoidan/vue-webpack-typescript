@@ -47,8 +47,8 @@ module.exports.getDefinitions =(function() {
   const webpack = require('webpack');
   return (IS_DEBUG) => new webpack.DefinePlugin({
     CONSTS: {
-      API_URL: module.exports.getConfig('API_URL'),
-      APP_VERSION: module.exports.getConfig('APP_VERSION') || getCvsVersion(),
+      API_URL: module.exports.getConfig('API_URL', true),
+      APP_VERSION: module.exports.getConfig('APP_VERSION', true) || getCvsVersion(),
       IS_DEBUG,
       ROUTER_HISTORY_MODE: module.exports.getConfig("APP_FILE_MODE")
     },
@@ -65,15 +65,15 @@ module.exports.getConfig = (function () {
     }
   }
   console.log(`Loaded config ${JSON.stringify(variables)})`)
-  return function (key) {
+  return function (key, encode=false) {
     if (keys.indexOf(key) <0){
       throw Error(`Environment variable '${key}' is not set`);
     }
-    if (typeof variables[key] === "string") {
-      return `"${variables[key]}"`;
-    } else {
-      return variables[key];
+    let value = variables[key];
+    if (encode && typeof value === "string") {
+      value = `"${value}"`;
     }
+    return value;
   }
 })();
 
