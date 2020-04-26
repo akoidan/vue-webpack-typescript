@@ -1,4 +1,4 @@
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/akoidan/vue-webpack-typescript) [![HitCount](http://hits.dwyl.io/akoidan/vue-webpack-typescript.svg)](http://hits.dwyl.io/akoidan/vue-webpack-typescript) [![Build Status](https://api.travis-ci.org/akoidan/vue-webpack-typescript.svg?branch=master)](https://travis-ci.org/akoidan/vue-webpack-typescript) [![codecov](https://codecov.io/gh/akoidan/vue-webpack-typescript/branch/master/graph/badge.svg)](https://codecov.io/gh/akoidan/vue-webpack-typescript)
+[![HitCount](http://hits.dwyl.io/akoidan/vue-webpack-typescript.svg)](http://hits.dwyl.io/akoidan/vue-webpack-typescript) [![Build Status](https://api.travis-ci.org/akoidan/vue-webpack-typescript.svg?branch=master)](https://travis-ci.org/akoidan/vue-webpack-typescript) [![codecov](https://codecov.io/gh/akoidan/vue-webpack-typescript/branch/master/graph/badge.svg)](https://codecov.io/gh/akoidan/vue-webpack-typescript)
 
 # Vue-webpack-typescript project starter
 
@@ -143,7 +143,7 @@ To avoid mixing warnings from eslint and jetbrains, you can turn them off by def
 1. editor
 1. inspection
 1. javascript
- - turn off everything, but leave: Code quality tools -> eslint
+1. turn off everything, but leave: Code quality tools -> eslint
 
 #### Max line length
 
@@ -455,6 +455,7 @@ import {defaultModule} from "@/store/default"; // this is a single import with a
  - cypress test is run on different browser when you run it locally, the source of truth is drone/ci here. Thing like screenshot could also be different. So this things should be aligned in the future if any issues occur.
 
 ## TODO
+ - ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/akoidan/vue-webpack-typescript) 
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
  - https://github.com/bahmutov/cypress-vue-unit-test
  - https://github.com/vuejs/eslint-plugin-vue/issues/987
