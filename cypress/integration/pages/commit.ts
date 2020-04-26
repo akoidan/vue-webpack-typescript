@@ -11,7 +11,6 @@ describe("Commit page", (): void => {
     });
     cy.visit("/commit/82c0e76e5dc1d8d57f88aba2cbc88e1f8373feef");
     cy.contains("MDY6Q29tbWl0MTM2NzYyODE5OjgyYzBlNzZlNWRjMWQ4ZDU3Zjg4YWJhMmNiYzg4ZTFmODM3M2ZlZWY");
-    cy.matchScreenshot("content");
   });
   it("processes error", (): void => {
     cy.server();
