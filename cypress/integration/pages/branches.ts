@@ -9,7 +9,7 @@ describe("Branches page", (): void => {
       response: getBranchesResponse,
       status: 200,
       url: `${String(Cypress.env("APP_API_URL"))}/branches`,
-    });
+    }).as("get-branches");
   });
   it("navigates to branches", (): void => {
     cy.visit("/");
@@ -26,17 +26,12 @@ describe("Branches page", (): void => {
   });
   it("doesn't load branches twice", (): void => {
     cy.visit("/branches");
-    cy.contains("babel");
-    cy.visit("/");
-    cy.route({
-      method: "GET",
-      onResponse() {
-        expect("Unexpected Https call").to.be.false; // eslint-disable-line
-      },
-      status: 200,
-      url: `${String(Cypress.env("APP_API_URL"))}/branches`,
-    });
-    cy.visit("/branches");
+    cy.get("[data-cy=hamburger-icon]").click();
+    cy.contains("Home").click();
+    cy.url().should("eq", `${Cypress.config().baseUrl}/`);
+    cy.get("[data-cy=hamburger-icon]").click();
+    cy.contains("Branches").click();
+    cy.assertCalledTimes("get-branches", 1);
   });
   it("navigates to a specific commit", (): void => {
     cy.route({

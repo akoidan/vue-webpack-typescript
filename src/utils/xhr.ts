@@ -75,6 +75,7 @@ export class Xhr {
       response = await this.fetchApi.call(null, fullUrl, request);
     } catch (error) {
       this.httpLogger.error("Failed to {}; error {}", request, error)();
+      // istanbul ignore next
       throw Error(`Communication error ${String(error?.message || error)}`);
     }
 

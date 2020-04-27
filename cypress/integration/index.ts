@@ -20,5 +20,11 @@ declare namespace Cypress {
      * Finds <v-checkbox>/> with a specified content and clicks on it
      */
     vCheck(text: string): Chainable<null>;
+
+    /**
+     * Verifies that http cypress stub has been called #N times
+     * use route(...}.as('alias') to give request a name
+     */
+    assertCalledTimes(alias: string, timeCalled: number): Chainable<null>;
   }
 }
