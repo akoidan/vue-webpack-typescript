@@ -2,9 +2,9 @@
 
 # Vue-webpack-typescript project starter
 
-This project is generated via [vue-webpack-minimal](https://github.com/akoidan/vue-webpack-typescript) and features:
+This project is generated via [vue-webpack-typescript](https://github.com/akoidan/vue-webpack-typescript) and features:
  - typescript loading with babel with typechecking in a parallel thread. Everything (vuex, cypress, vue-data) is type safe!
- - vue with vuetify, vuex, router, sass, vuex-module-decorators, vue-property-decorator support typescript
+ - vue with vuetify, vuex, router, sass, vuex-module-decorators, vue-property-decorator
  - cypress with code-coverage support, unit test support, screenshot assert and typescript support.
  - lint: a compilation of very strict lint rules for everything: vue, styles (sass), typescript that don't conflict with each other.
  - base example of CRUD pages with written api classes, tests and predefined structure
@@ -12,8 +12,8 @@ This project is generated via [vue-webpack-minimal](https://github.com/akoidan/v
 ## Get started
 
 ### Install dependencies:
- - [OPTIONAL] `nvm use 13.6.1` # if compilation doesn't work out of the box, the issue might be with node
- - `yarn install --frozen-lockfile` # please use frozen-lock, otherwise you will get errors
+ - `nvm use 13.6.1` # [THIS IS OPTIONAL], if compilation doesn't work out of the box, the issue might be with node
+ - `yarn install --frozen-lockfile`
 
 ### Run development server
 
@@ -23,7 +23,7 @@ This runs the development server w/o a linter on.
 yarn start
 ```
 
-##№ Tests
+### Tests
 
 There're multiple things you can do with test:
  - Build into static files and run headless cypress against it
@@ -38,11 +38,11 @@ The command bellow builds static files with coverage babel plugin information, c
 yarn test
 ```
 
-You can check reports in `.nyc` directory, including coverage information.
+You can check reports in `nyc` directory, including coverage information.
 
 #### Headful cypress upon webpack-dev-server
 
-This command is useful during development. You can click and inspect in live mode in cypress, and just develop while you're tests are ran automatically on file save somewhere. I usually have cypress test on one display, IDE on another one, and browser on 3rd one. So I instantly see what changes my code introduces.
+The commands below are useful during development. You can click and inspect in live mode in cypress, and just develop while you're tests are run automatically on file save somewhere. I usually have cypress test on one display, IDE on another one, and browser on 3rd one. So I instantly see what changes my code introduces.
 
 1. Start dev-server in test mode. `yarn start` won't work, cause of missing coverage info and some other polyfills and tweaks required.
 
@@ -66,7 +66,7 @@ yarn lint
 
 ### Build for productions to static files:
 
-
+Use command bellow to build into files. Check configuration section bellow for 
 ```bash
 yarn run build:prod
 ```
@@ -75,12 +75,12 @@ yarn run build:prod
 
 ### Environment variables
 
-- `APP_TEST` - adds required code for testing to output files when set to True (istanbul coverage, XHR polyfill for cypress)
+- `APP_TEST` - true or empty. Adds required code for testing to output files when set to True (istanbul coverage, XHR polyfill for cypress)
 - `APP_API_URL` - public http api url e.g. <https://jsonplaceholder.typicode.com>
-- `APP_PUBLIC_PATH` - specifies public url for images/js/css/fonts instead of relative path like './main.js
-- `APP_VERSION` - git version
+- `APP_PUBLIC_PATH` - specifies public url for images/js/css/fonts instead of relative path like './main.js'. Could be used to specify cdn url.
+- `APP_VERSION` - project version that will be added to each XHR header. Falls back to git version by default.
 - `APP_FILE_MODE` - sets, whether static files should be built for file mode (dragging index.html to browser) or not.
- That turns off history mode in browser and removes crossOriginLoading links
+ That turns off history mode in browser and removes crossOriginLoading links.
 
 ### Configuration files
 
@@ -152,11 +152,9 @@ To avoid mixing warnings from eslint and jetbrains, you can turn them off by def
 1. Hard wrap at 120
 
 #### Exclude directories from indexing
-Mark `nyc` and `dist` directories ex excluded. Mouse 2 on the directory in the project explorer tree -> mark directory as -> excluded
-
+Mark `nyc`, `dist` and `node_modules` directories as excluded. Right mouse click on the directory in the project explorer tree -> mark directory as -> excluded.
 
 ## Style guide and how to
-
 
 ### Code samples with libs it belongs to
 
