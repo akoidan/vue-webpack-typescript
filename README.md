@@ -12,8 +12,8 @@ This project is generated via [vue-webpack-minimal](https://github.com/akoidan/v
 ## Get started
 
 ### Install dependencies:
- - [OPTIONAL] `nvm use 13.6.1` # if compilation doesn't work out of the box, the issue might be with node
- - `yarn install --frozen-lockfile` # please use frozen-lock, otherwise you will get errors
+ - `yarn install --frozen-lockfile`
+ - [OPTIONAL] If compilation above crashes on binaries, do  `nvm use`. In total you need [yarn](https://classic.yarnpkg.com/en/docs/install/) and [nvm](https://github.com/nvm-sh/nvm)
 
 ### Run development server
 
@@ -427,7 +427,7 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
 - ignore tslint error: `// tslint:disable-next-line:variable-name` [guide](https://palantir.github.io/tslint/usage/rule-flags/)
 - ignore eslint error:  `// eslint-disable-line no-prototype-builtins` [guide](https://eslint.org/docs/user-guide/configuring)
 - ignore typescript error: `// @ts-ignore: next-line` [guide](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments)
-- ignore stylelint error: `/* stylelint-disable-line */` [guide](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md)
+- ignore stylelint error: `// stylelint-disable-line` [guide](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/get-started.md)
 
 #### Where I find icons?
 Repo uses material desing icons (mdi). Check [materialdesignicons.com](https://materialdesignicons.com/). And `node_modules/@mdi/font/scss/_variables.scss` directory, this vars are prefixed with `mdi-`, like `mdi-home`.
