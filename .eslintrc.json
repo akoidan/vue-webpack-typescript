@@ -10,7 +10,6 @@
     "plugin:sonarjs/recommended"
   ],
   "plugins": [
-    "vuetify",
     "only-warn",
     "babel",
     "sonarjs"
@@ -151,10 +150,7 @@
           "component": "always"
         }
       }
-    ],
-    "vuetify/grid-unknown-attributes": 1,
-    "vuetify/no-legacy-grid": 0,
-    "vuetify/no-deprecated-classes": 1
+    ]
   },
   "overrides": [
     {

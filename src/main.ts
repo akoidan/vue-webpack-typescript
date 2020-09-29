@@ -8,7 +8,6 @@ import App from "@/components/App.vue";
 import Vue from "vue";
 import {router} from "@/utils/router";
 import {store} from "@/store/store";
-import {vuetify} from "@/utils/vuetify"; // eslint-disable-line import/max-dependencies
 
 Vue.prototype.$api = api;
 
@@ -21,8 +20,7 @@ window.xhr = xhr;
 const vue: Vue = new Vue({
   render: (createElement: Function): typeof Vue.prototype.$createElement => createElement(App),
   router,
-  store,
-  vuetify,
+  store
 });
 
 window.vue = vue;

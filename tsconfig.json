@@ -5,7 +5,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "typeRoots": ["./node_modules/@types", "./node_modules/vuetify/types"],
+    "typeRoots": ["./node_modules/@types"],
     "lib": ["es2017", "dom"],
     "declaration": false,
     "target": "es6",

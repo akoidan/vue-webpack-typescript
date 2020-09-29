@@ -1,4 +1,4 @@
-const merge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const config = require('./webpack.config.base');
 const {sassLoader, fileLoader, getDefinitions, getConfig} = require('./utils');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');

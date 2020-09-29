@@ -4,7 +4,7 @@
 
 This project is generated via [vue-webpack-minimal](https://github.com/akoidan/vue-webpack-typescript) and features:
  - typescript loading with babel with typechecking in a parallel thread. Everything (vuex, cypress, vue-data) is type safe!
- - vue with vuetify, vuex, router, sass, vuex-module-decorators, vue-property-decorator support typescript
+ - vue with vuex, router, sass, vuex-module-decorators, vue-property-decorator support typescript
  - cypress with code-coverage support, unit test support, screenshot assert and typescript support.
  - lint: a compilation of very strict lint rules for everything: vue, styles (sass), typescript that don't conflict with each other.
  - base example of CRUD pages with written api classes, tests and predefined structure
