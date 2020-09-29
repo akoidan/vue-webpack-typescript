@@ -15,7 +15,7 @@ import {store} from "@/store/store";
   name: "alerts",
   store,
 })
-class DefaultStore extends VuexModule implements IAlertsState {
+class AlertsModule extends VuexModule implements IAlertsState {
   public alerts: AlertModel[] = [];
 
   @Mutation
@@ -63,15 +63,15 @@ class DefaultStore extends VuexModule implements IAlertsState {
   }
 }
 
-const alertsModule: DefaultStore = getModule(DefaultStore);
+const alertsModule: AlertsModule = getModule(AlertsModule);
 
 /*
  * TPN - TypePropertyName
  * TCT - TypeConsumerType
  * the generics bellow are inherited strictly from stateDecoratorFactory, see its docs
  */
-const AlertsState: <TCT extends (TCT[TPN] extends DefaultStore[TPN] ? unknown : never),
-  TPN extends (keyof TCT & keyof DefaultStore)>(vueComponent: TCT, fileName: TPN) => void =
+const AlertsState: <TCT extends (TCT[TPN] extends AlertsModule[TPN] ? unknown : never),
+  TPN extends (keyof TCT & keyof AlertsModule)>(vueComponent: TCT, fileName: TPN) => void =
     stateDecoratorFactory(alertsModule);
 
 export {alertsModule, AlertsState};
