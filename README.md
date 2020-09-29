@@ -23,7 +23,7 @@ This runs the development server w/o a linter on.
 yarn start
 ```
 
-##№ Tests
+### Tests
 
 There're multiple things you can do with test:
  - Build into static files and run headless cypress against it
@@ -418,6 +418,8 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
 - [stylelint-order](https://github.com/hudochenkov/stylelint-order) appends stylelint with order rules. This forces css attributes/imports to have specific order.
 - [stylelint](https://github.com/stylelint/stylelint) linter for css files.
 
+### Continuous integration
+ - Project supports with [DroneCI](https://docs.drone.io/) and [TravisCI](https://travis-ci.org/) pipelines. If you run drone on amd64 replace or delete architecture `arm64` in `.drone.yml` 
 
 ### Tips
 
