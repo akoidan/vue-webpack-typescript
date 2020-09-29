@@ -419,7 +419,7 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
 - [stylelint](https://github.com/stylelint/stylelint) linter for css files.
 
 ### Continuous integration
- - Project supports with [DroneCI](https://docs.drone.io/) and [TravisCI](https://travis-ci.org/) pipelines. If you run drone on amd64 replace or delete architecture `arm64` in `.drone.yml` 
+ - Project supports with [DroneCI](https://docs.drone.io/) and [TravisCI](https://travis-ci.org/) pipelines out of the box. 
 
 ### Tips
 
