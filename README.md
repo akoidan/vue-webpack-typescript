@@ -8,6 +8,10 @@ This project is generated via [vue-webpack-minimal](https://github.com/akoidan/v
  - cypress with code-coverage support, unit test support, screenshot assert and typescript support.
  - lint: a compilation of very strict lint rules for everything: vue, styles (sass), typescript that don't conflict with each other.
  - base example of CRUD pages with written api classes, tests and predefined structure
+ 
+## Vue3 status
+
+Atm 09/2020, vue3 is released as stable version 3.0.0, but the ecosystem around is still in progress. Other libraries like [vuetify](https://vuetifyjs.com/en/introduction/roadmap/#v30-titan) / [vue-class-component](https://github.com/vuejs/vue-class-component/issues/406) and vue-property-decorator are still integrating incoming changes from vue3, especially composition API. I would not use vue in q3 2020 for production purposes for new projects. As it's still bare and the libraries you do require would be a pain in the ass. All updates for vue3 you can check in branch [vue3](https://github.com/akoidan/vue-webpack-typescript/tree/vue3)   
 
 ## Get started
 
