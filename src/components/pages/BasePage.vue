@@ -10,9 +10,9 @@
       <v-toolbar-title>Vue-webpack-typescript boilerplate</v-toolbar-title>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <router-view/>
-    </v-content>
+    </v-main>
     <v-footer color="#35495d" app>
       <span class="white--text">&copy; Andrew Koidan</span>
     </v-footer>
