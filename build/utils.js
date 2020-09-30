@@ -9,9 +9,9 @@ module.exports.sassLoader = (function () {
       additionalData: (content, loaderContext) => {
         if (loaderContext.resourcePath.endsWith('.vue') || loaderContext.resourcePath.endsWith('.sass') ) {
           // import global variables like colors to all files
-          return "@import \"~@/assets/sass/variables.sass\"";
+          return "@import \"~@/assets/sass/variables.sass\"\n" + content;
         } else {
-          return "";
+          return content;
         }
       },
       implementation,

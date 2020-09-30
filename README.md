@@ -377,7 +377,7 @@ it("should contain 5 elements", (): void => {
 - html-webpack-plugin ( compiles html from index.ejs)
 - webpack-dev-server is used for development purposes with hot reloading, every time you save the file it will automatically apply. This doesn't affect node running files, only watching files. So files like webpack/base.config.js. To build project for production set `APP_PUBLIC_PATH` and run `yarn run buiild:prod`. This generates static files in `./dist` directory.
 - webpack-cli allows to run webpack from the command line
-- Loaders: css-loader, sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader
+- Loaders: sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader
 - fork-ts-checker-webpack-plugin - runs typescript compiler into a separate thread
 - source-map-support - adds support for source map (show source file in browser instead of transpiled one)
 
