@@ -95,6 +95,7 @@ yarn run build:prod
 - [.stylelintrc](.stylelintrc) is a [configuration](https://stylelint.io/user-guide/rules) for css linting
 - [.drone.yml](.drone.yml) is a [configuration](https://docker-runner.docs.drone.io/configuration/overview/) file for Drone CI.
 - [.eslintrc.json](.eslintrc.json) is a [configuration](https://eslint.org/docs/user-guide/configuring) for ts linting
+- [.mocharc.json](.mocharc.json) is a [configuration](https://mochajs.org/#configuring-mocha-nodejs) for testing library mocha (deprecated mocha.opts)
 - [cypress.json](cypress.json) is a [configuration](https://docs.cypress.io/guides/references/configuration.html#Global) for cypress e2e testing
 - [package.json](package.json) is a [configuration](https://docs.npmjs.com/files/package.json) for yarn (npm), since it doesn't have versions of sublibs they are stored in [yarn.lock](yarn.lock)
 - [tsconfig.json](tsconfig.json) is a [configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) for typescript. While this files is used to build static files for FE, [cypress/tsconfig](cypress/tsconfig.json) is used to build files that would run test in cypress.

@@ -1,5 +1,5 @@
 // fake webpack config used only to help make WebStorm resolve imported .sass files
-var webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   context: __dirname,
