@@ -11,6 +11,6 @@ describe("getUniqueId", (): void => {
   it("should inc", () => {
     const res = getUniqueId();
     const res2 = getUniqueId();
-    expect(res2).to.be.equal(res + 2); // eslint-disable-line
+    expect(res2).to.not.be.equal(res); // eslint-disable-line
   });
 });
