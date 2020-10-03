@@ -1,5 +1,5 @@
 const path = require('path');
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const {execSync} = require('child_process');
 const {getConfig} = require('./utils');
@@ -14,10 +14,9 @@ module.exports = {
     new VueLoaderPlugin(),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
-        tslintsd: false,
-        extensions: {
-          vue: true
-        }
+        vue: true,
+        tslint: false,
+        configFile: '../tsconfig.json'
       }
     }),
   ],
@@ -48,7 +47,7 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: ['babel-preset-typescript-vue', {onlyRemoveTypeImports: true}],
+            presets: [['babel-preset-typescript-vue', { onlyRemoveTypeImports: true}]],
             plugins: [
               "@babel/plugin-proposal-optional-chaining",
               "@babel/plugin-proposal-numeric-separator",

@@ -8,6 +8,10 @@ This project is generated via [vue-webpack-minimal](https://github.com/akoidan/v
  - cypress with code-coverage support, unit test support, screenshot assert and typescript support.
  - lint: a compilation of very strict lint rules for everything: vue, styles (sass), typescript that don't conflict with each other.
  - base example of CRUD pages with written api classes, tests and predefined structure
+ 
+## Vue3 status
+
+Atm 09/2020, vue3 is released as stable version 3.0.0, but the ecosystem around is still in progress. Other libraries like [vuetify](https://vuetifyjs.com/en/introduction/roadmap/#v30-titan) / [vue-class-component](https://github.com/vuejs/vue-class-component/issues/406) and vue-property-decorator are still integrating incoming changes from vue3, especially composition API. I would not use vue in q3 2020 for production purposes for new projects. As it's still bare and the libraries you do require would be a pain in the ass. All updates for vue3 you can check in branch [vue3](https://github.com/akoidan/vue-webpack-typescript/tree/vue3)   
 
 ## Get started
 
@@ -91,6 +95,7 @@ yarn run build:prod
 - [.stylelintrc](.stylelintrc) is a [configuration](https://stylelint.io/user-guide/rules) for css linting
 - [.drone.yml](.drone.yml) is a [configuration](https://docker-runner.docs.drone.io/configuration/overview/) file for Drone CI.
 - [.eslintrc.json](.eslintrc.json) is a [configuration](https://eslint.org/docs/user-guide/configuring) for ts linting
+- [.mocharc.json](.mocharc.json) is a [configuration](https://mochajs.org/#configuring-mocha-nodejs) for testing library mocha (deprecated mocha.opts)
 - [cypress.json](cypress.json) is a [configuration](https://docs.cypress.io/guides/references/configuration.html#Global) for cypress e2e testing
 - [package.json](package.json) is a [configuration](https://docs.npmjs.com/files/package.json) for yarn (npm), since it doesn't have versions of sublibs they are stored in [yarn.lock](yarn.lock)
 - [tsconfig.json](tsconfig.json) is a [configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) for typescript. While this files is used to build static files for FE, [cypress/tsconfig](cypress/tsconfig.json) is used to build files that would run test in cypress.
@@ -373,7 +378,7 @@ it("should contain 5 elements", (): void => {
 - html-webpack-plugin ( compiles html from index.ejs)
 - webpack-dev-server is used for development purposes with hot reloading, every time you save the file it will automatically apply. This doesn't affect node running files, only watching files. So files like webpack/base.config.js. To build project for production set `APP_PUBLIC_PATH` and run `yarn run buiild:prod`. This generates static files in `./dist` directory.
 - webpack-cli allows to run webpack from the command line
-- Loaders: css-loader, sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader
+- Loaders: sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader
 - fork-ts-checker-webpack-plugin - runs typescript compiler into a separate thread
 - source-map-support - adds support for source map (show source file in browser instead of transpiled one)
 
@@ -465,3 +470,4 @@ import {defaultModule} from "@/store/default"; // this is a single import with a
  - https://github.com/benmosher/eslint-plugin-import/issues/1543
  - https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908
  - https://github.com/mysticatea/eslint-plugin-node
+ - https://github.com/bahmutov/start-server-and-test/issues/283
