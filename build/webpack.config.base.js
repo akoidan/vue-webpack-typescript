@@ -7,7 +7,7 @@ const webpack = require('webpack');
 
 
 module.exports = {
-  context: path.join(__dirname, '..'),
+  context: __dirname,
   // cypress doesn't support fetch api, replace it with whatwg-fetch polyfill
   entry: [...(getConfig('APP_TEST') ? ['whatwg-fetch', '../src/assets/sass/test.sass'] : []), 'reflect-metadata', '../src/main.ts'],
   plugins: [
