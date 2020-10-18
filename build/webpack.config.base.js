@@ -47,7 +47,6 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: [['babel-preset-typescript-vue', { onlyRemoveTypeImports: true}]],
             plugins: [
               "@babel/plugin-proposal-optional-chaining",
               "@babel/plugin-proposal-numeric-separator",

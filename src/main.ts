@@ -5,10 +5,12 @@ import "@/utils/mixins"; // eslint-disable-line import/no-unassigned-import
 import {api, xhr} from "@/utils/singletons";
 import {ApiConsts} from "@/utils/consts"; // eslint-disable-line import/no-namespace
 import App from "@/components/App.vue";
-import Vue from "vue";
+import { createApp } from 'vue'
 import {router} from "@/utils/router";
 import {store} from "@/store/store";
 
+
+createApp(App, {}).mount('#app')
 Vue.prototype.$api = api;
 
 window.consts = ApiConsts;
