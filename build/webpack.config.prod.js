@@ -9,7 +9,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(config, {
   mode: 'production',
-  stats: 'errors-only',
+  stats:  {
+    entrypoints: false,
+    children: false,
+    logging: 'info'
+  },
   output: {
     crossOriginLoading: getConfig('APP_FILE_MODE') ? false: 'anonymous',
     publicPath: getConfig('APP_PUBLIC_PATH')

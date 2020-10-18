@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = merge(config, {
   mode: 'development',
-  stats: 'normal',
+  stats: 'minimal',
   output: {
     publicPath: "/"
   },
