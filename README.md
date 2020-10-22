@@ -460,6 +460,7 @@ import {defaultModule} from "@/store/default"; // this is a single import with a
 
 #### Be aware
  - cypress test is run on different browser when you run it locally, the source of truth is drone/ci here. Thing like screenshot could also be different. So this things should be aligned in the future if any issues occur.
+ - if build process is killed or get stack that could be because of out of memory. The only option is to build frontend on machine with more memory and copy files
 
 ## TODO
  - ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/akoidan/vue-webpack-typescript) 

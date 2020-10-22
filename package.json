@@ -24,7 +24,8 @@
     "lint": "run-s -c lint:style lint:es",
     "autoformat": "eslint --fix --ext .ts,.vue src; eslint --fix -c ./cypress/.eslintrc.json --ext .ts --max-warnings=0 cypress/integration",
     "lint:new": "eslint-find-rules -u ./.eslintrc.json",
-    "clean": "rm -rf ./dist && rm -rf ./nyc && rm -rf ./node_modules/.cache"
+    "clean": "rm -rf ./dist && rm -rf ./nyc && rm -rf ./node_modules/.cache",
+    "cp-prod-files": "echo 'example of how to copy files to prod machine'; exit 1; tar c dist/ | ssh http@pychat.org -p 8886 \"rm -rf /srv/http/pychat/frontend/dist && tar x -C /srv/http/pychat/frontend/\""
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "7.10.4",

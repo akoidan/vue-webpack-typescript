@@ -55,6 +55,23 @@ module.exports.getDefinitions =(function() {
   });
 })();
 
+module.exports.createProgressPlugin = function () {
+  const ProgressPlugin = require("webpack/lib/ProgressPlugin");
+  return new ProgressPlugin(function (percentage, msg, current, active, modulepath) {
+    if (process.stdout.isTTY && percentage < 1) {
+      process.stdout.cursorTo(0);
+      modulepath = modulepath ? ' …' + modulepath.substr(modulepath.length - process.stdout.columns + 45) : '';
+      current = current ? ' ' + current : '';
+      active = active ? ' ' + active : '';
+      process.stdout.write((percentage * 100).toFixed(0) + '% ' + msg + current + active + modulepath + ' ');
+      process.stdout.clearLine(1)
+    } else if (percentage === 1) {
+      process.stdout.cursorTo(0);
+      process.stdout.clearLine(1)
+    }
+  });
+};
+
 module.exports.getConfig = (function () {
   const variables = {...require(`./options.json`)};
   const keys = Object.keys(variables);
