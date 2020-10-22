@@ -65,7 +65,7 @@ module.exports.createProgressPlugin = function () {
       active = active ? ' ' + active : '';
       process.stdout.write((percentage * 100).toFixed(0) + '% ' + msg + current + active + modulepath + ' ');
       process.stdout.clearLine(1)
-    } else if (percentage === 1) {
+    } else if (process.stdout.isTTY && percentage === 1) {
       process.stdout.cursorTo(0);
       process.stdout.clearLine(1)
     }
