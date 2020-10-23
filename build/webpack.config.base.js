@@ -19,7 +19,6 @@ module.exports = {
         configFile: '../tsconfig.json'
       }
     }),
-    createProgressPlugin(),
   ],
   resolve: {
     extensions: ['.ts', '.vue', '.json', ".js", '.png', ".sass"],
