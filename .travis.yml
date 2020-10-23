@@ -1,10 +1,7 @@
 language: node_js
 node_js:
-  - "node"
+  - 15.0.0
 script:
-  - nvm install
-  - nvm use
-  - node -v
   - yarn run test
   - yarn run test:codecov
 cache:
