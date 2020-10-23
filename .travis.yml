@@ -2,6 +2,8 @@ language: node_js
 node_js:
   - "node"
 script:
+  - nvm install
+  - nvm use
   - node -v
   - yarn run test
   - yarn run test:codecov
