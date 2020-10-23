@@ -44,8 +44,8 @@ function getCvsVersion() {
 }
 
 module.exports.getDefinitions =(function() {
-  const webpack = require('webpack');
-  return (IS_DEBUG) => new webpack.DefinePlugin({
+  const {DefinePlugin} = require('webpack');
+  return (IS_DEBUG) => new DefinePlugin({
     CONSTS: {
       API_URL: module.exports.getConfig('API_URL', true),
       APP_VERSION: module.exports.getConfig('APP_VERSION', true) || getCvsVersion(),
