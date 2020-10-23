@@ -2,6 +2,8 @@ language: node_js
 node_js:
   - "node"
 script:
+  - nvm install
+  - nvm use
   - yarn run test
   - yarn run test:codecov
 cache:
@@ -9,3 +11,4 @@ cache:
   directories:
     - node_modules
     - ~/.cache
+    - ~/.nvm
