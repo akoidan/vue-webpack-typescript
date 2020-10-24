@@ -5,6 +5,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const SriPlugin = require('webpack-subresource-integrity');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(config, {
@@ -38,6 +39,13 @@ module.exports = merge(config, {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      as: 'font',
+      include: 'allAssets', // it's better to preload fonts, since browser can render the content in required format sooner, so it gives better UX
+      fileWhitelist: [/\.woff2/i], // preload font wince it's required all the time https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fpychat.org%2F%23%2Fpainter
+
+    }),
     new HtmlWebpackPlugin({
       template: '../src/index.ejs',
       inject: false,
