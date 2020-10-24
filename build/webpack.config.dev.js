@@ -13,7 +13,8 @@ module.exports = merge(config, {
     rules: [
       {
         test: /\.(sass|css|scss)$/,
-        use: ["vue-style-loader", 'css-loader?sourceMap', sassLoader],
+        // vue-style-loader doesn't work for webpackdevserver, I'm too lazy to check why, so use style-loader instead
+        use: ["style-loader", 'css-loader?sourceMap', sassLoader],
       },
       fileLoader("/")
     ]
