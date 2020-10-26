@@ -3,7 +3,7 @@ import {AlertModel, AlertType} from "@/types/model";
 import {getUniqueId, sleep} from "@/utils/helpers";
 import {ApiConsts} from "@/utils/consts";
 import {IAlertsState} from "@/types/store";
-import {stateDecoratorFactory} from "@/store/stateDecoratorFactory";
+import {stateDecoratorFactory} from "vuex-module-decorators-state";
 import {store} from "@/store/store";
 
 /**
