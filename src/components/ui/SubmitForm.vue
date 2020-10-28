@@ -23,7 +23,8 @@
 import {Component, Emit, Prop, Ref, Vue} from "vue-property-decorator";
 import {AlertModel} from "@/types/model";
 import AppAlert from "@/components/ui/AppAlert.vue";
-import {HandleLoading} from "@/utils/decorators";
+import {ResolveHandler} from "@/utils/decorators";
+import {HandleLoading} from "vuex-module-decorators-state";
 
 /**
  * Helper async operation handler that provides html form, button and handlers for doing async operation
@@ -80,7 +81,7 @@ export default class SubmitForm extends Vue {
   }
 
   @HandleLoading({
-    errPropName: "serverError",
+    errPropNameOrCB: "serverError",
     loadingPropName: "loading",
   })
   private async handleClick(event: Event): Promise<void> {

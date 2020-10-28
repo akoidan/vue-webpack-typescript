@@ -27,8 +27,8 @@
 import {Component, Vue} from "vue-property-decorator";
 import {GithubState, githubModule} from "@/store/modules/github";
 import {Branch} from "@/types/model";
-import {ResolveHandler} from "@/utils/decorators";
 import ResourceLoader from "@/components/ui/ResourceLoader.vue";
+import {ResolveHandler} from "@/utils/decorators";
 
 /**
  * Represent list of github repositories
