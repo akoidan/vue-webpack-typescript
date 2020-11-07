@@ -22,7 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       # Sets up node environment specified in .nvmrc
-      - uses: cypress-io/github-action@v2
+      - uses: actions/setup-node@v2-beta
         with:
           node-version: '15.0.1'
       - name: Cache multiple paths
@@ -30,6 +30,7 @@ jobs:
         with:
           path: |
             node_modules
+            ~/.cache/Cypress
             yarn-cache
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: install npm dependencies
