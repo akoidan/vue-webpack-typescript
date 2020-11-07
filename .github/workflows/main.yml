@@ -1,14 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
 name: CI
 
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  install-deps:
+  # This workflow contains a single job called "build"
+  test:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -16,7 +25,6 @@ jobs:
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '15.0.1'
-      # Restores cache, so every time yarn install didn't do the same thing
       - name: Cache multiple paths
         uses: actions/cache@v2
         with:
@@ -27,28 +35,12 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: install npm dependencies
         run: yarn config set cache-folder `pwd`/yarn-cache && yarn install --frozen-lockfile
-  build:
-    needs: [install-deps]
-    runs-on: ubuntu-latest
-    steps:
       - name: build
-        run: yarn run build:test
-  lint:
-    needs: [install-deps]
-    runs-on: ubuntu-latest
-    steps:
-      - name: eslint
-        run: yarn run lint
-  test:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: test
+        run: yarn run build:test:no-progress
+      - name: test-cypress
         run: yarn run test:cypress:run:report
-  coverage:
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
+      - name: test-unit
+        run: yarn run test:unit
       - name: coverage
         run: yarn run test:coverage
       - name: eslint
