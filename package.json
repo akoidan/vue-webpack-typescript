@@ -3,6 +3,7 @@
   "license": "MIT",
   "scripts": {
     "build:prod": "webpack --progress --config build/webpack.config.prod.js",
+    "build:prod:no-progress": "webpack --config build/webpack.config.prod.js",
     "build:test": "APP_VERSION=app-v1 APP_TEST=true webpack --progress --config build/webpack.config.prod.js",
     "build:test:no-progress": "APP_VERSION=app-v1 APP_TEST=true webpack --config build/webpack.config.prod.js",
     "build:file": "APP_PUBLIC_PATH='./' APP_FILE_MODE=true webpack --progress --config build/webpack.config.prod.js",

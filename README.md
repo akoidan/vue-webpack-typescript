@@ -94,6 +94,7 @@ yarn run build:prod
 - [.nycrc.json](.nycrc.json) is a [configuration](https://github.com/istanbuljs/nyc#configuration-files) for istanbul code coverage. It can customize reports formats, coverage percentage and other build related things.
 - [.stylelintrc](.stylelintrc) is a [configuration](https://stylelint.io/user-guide/rules) for css linting
 - [.drone.yml](.drone.yml) is a [configuration](https://docker-runner.docs.drone.io/configuration/overview/) file for Drone CI.
+- [.github/workflows/main.yml](.github/workflows/main.yml) is a [configuration](https://docs.github.com/en/free-pro-team@latest/actions/quickstart) file for Github Actions.
 - [.eslintrc.json](.eslintrc.json) is a [configuration](https://eslint.org/docs/user-guide/configuring) for ts linting
 - [.mocharc.json](.mocharc.json) is a [configuration](https://mochajs.org/#configuring-mocha-nodejs) for testing library mocha (deprecated mocha.opts)
 - [cypress.json](cypress.json) is a [configuration](https://docs.cypress.io/guides/references/configuration.html#Global) for cypress e2e testing
@@ -424,7 +425,13 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
 - [stylelint](https://github.com/stylelint/stylelint) linter for css files.
 
 ### Continuous integration
- - Project supports with [DroneCI](https://docs.drone.io/) and [TravisCI](https://travis-ci.org/) pipelines out of the box. 
+This project has support for continuous integration servers:
+
+ - Project supports with [DroneCI](https://docs.drone.io/).
+ - [TravisCI](https://travis-ci.org/) pipelines out of the box.
+ - [Github actions](https://docs.github.com/en/free-pro-team@latest/actions). Config  
+
+You don't need to have all of them. So I recommend leave only 1. I would personally use droneci if I want it to be on my server. Or github actions for serverless.
 
 ### Tips
 
@@ -463,7 +470,6 @@ import {defaultModule} from "@/store/default"; // this is a single import with a
  - if build process is killed or get stack that could be because of out of memory. The only option is to build frontend on machine with more memory and copy files
 
 ## TODO
- - https://docs.github.com/en/free-pro-team@latest/actions/guides/storing-workflow-data-as-artifacts 
  - https://github.com/cypress-io/code-coverage/pull/332
  - ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/akoidan/vue-webpack-typescript) 
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53

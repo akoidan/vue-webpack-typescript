@@ -36,13 +36,18 @@ jobs:
         run: yarn run test:cypress:run:report
       - name: test-unit
         run: yarn run test:unit
+      - name: archive coverage artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: |
+            nyc
       - name: coverage
         run: yarn run test:coverage
       - name: eslint
         run: yarn run lint
 
   # This job is an example of continious deployment
-  # It job above succeeds it will update your production site. 
+  # It job above succeeds it will update your production site.
   # Be aware, in this example this job updates the server on pull request, so either move it to another worflow, either remove pull request trigger above
   deploy:
     runs-on: ubuntu-latest
@@ -63,7 +68,12 @@ jobs:
       - name: install npm dependencies
         run: yarn --frozen-lockfile
       - name: build static files
-        run: yarn build:prod
+        run: yarn build:prod:no-progress
+      - name: archive static files
+        uses: actions/upload-artifact@v2
+        with:
+          path: |
+            dist
       - name: copy static files to destination server
         uses: garygrossgarten/github-action-scp@release
         with:
