@@ -11,6 +11,8 @@ on:
     branches: [ master ]
 
 jobs:
+  # This job is an example of continious integration
+  # It runs test and lints the code
   test:
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +41,9 @@ jobs:
       - name: eslint
         run: yarn run lint
 
+  # This job is an example of continious deployment
+  # It job above succeeds it will update your production site. 
+  # Be aware, in this example this job updates the server on pull request, so either move it to another worflow, either remove pull request trigger above
   deploy:
     runs-on: ubuntu-latest
     needs: [test]
@@ -55,15 +60,22 @@ jobs:
             ~/.cache/Cypress
             yarn-cache
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn --frozen-lockfile
-        name: install npm dependencies
-      - run: yarn build
-        name: build static files
+      - name: install npm dependencies
+        run: yarn --frozen-lockfile
+      - name: build static files
+        run: yarn build:prod
       - name: copy static files to destination server
         uses: garygrossgarten/github-action-scp@release
         with:
           local: dist
           remote: /srv/http/vue/dist
+          # In order for credentials to work you need to put them into github settings https://github.com/USERNAME/REPOSITORY/settings/actions
+          # Check credentials description in https://github.com/garygrossgarten/github-action-scp
+          # I prefer using new pair of ssh keys, instead of exposing password to github
+          # Generate new keypair with: ssh-keygen -t rsa -b 4096 -C "vue-webpack-typescript-github-actions" -f  /tmp/id_rsa
+          # Put /tmp/id_rsa.pub into server ~/.ssh/authorized_keys
+          # And /tmp/id_rsa.pub into github secrets with key ID_RSA (link is above)
+          # Also create github secret with keys HOST, PORT (default is 22), SSH_USER
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
           username: ${{ secrets.SSH_USER }}
