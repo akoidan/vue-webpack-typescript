@@ -1,5 +1,5 @@
 import {Component} from "vue-property-decorator";
-import {Logger} from "lines-logger";
+import type {Logger} from "lines-logger";
 import Vue from "vue";
 import {loggerFactory} from "@/utils/singletons";
 
@@ -26,13 +26,13 @@ class LoggerMixin extends Vue {
   }
 
   public updated(): void {
-    if (this.$logger) { // eslint-disable-line @typescript-eslint/no-unnecessary-condition
+    if (this.$logger) {
       this.$logger.trace("Updated")();
     }
   }
 
   public created(): void {
-    if (this.$logger) { // eslint-disable-line @typescript-eslint/no-unnecessary-condition
+    if (this.$logger) {
       this.$logger.trace("Created")();
     }
   }

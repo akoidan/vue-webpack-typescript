@@ -1,6 +1,7 @@
-import {LogStrict, Logger, LoggerFactory} from "lines-logger";
+import {LogStrict, LoggerFactory} from "lines-logger";
 import {Api} from "@/utils/api";
 import {ApiConsts} from "@/utils/consts";
+import type {Logger} from "lines-logger"; // eslint-disable-line no-duplicate-imports
 import {Xhr} from "@/utils/xhr";
 
 // istanbul ignore next-line ignore IS_DEBUG on next line

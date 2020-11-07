@@ -15,7 +15,7 @@
 <script lang="ts">
 import {AlertsState, alertsModule} from "@/store/modules/alerts";
 import {Component, Vue} from "vue-property-decorator";
-import {AlertModel} from "@/types/model";
+import type {AlertModel} from "@/types/model";
 import AppAlert from "@/components/ui/AppAlert.vue";
 
 @Component({
@@ -23,9 +23,9 @@ import AppAlert from "@/components/ui/AppAlert.vue";
 })
 export default class App extends Vue {
   @AlertsState
-  public alerts!: AlertModel[];
+  public readonly alerts!: AlertModel[];
 
-  private close(alert: AlertModel): void {
+  private close(alert: Readonly<AlertModel>): void {
     alertsModule.removeAlert(alert);
   }
 }

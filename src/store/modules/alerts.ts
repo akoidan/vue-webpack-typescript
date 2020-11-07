@@ -1,8 +1,8 @@
 import {Action, Module, Mutation, VuexModule, getModule} from "vuex-module-decorators";
-import {AlertModel, AlertType} from "@/types/model";
+import type {AlertModel, AlertType} from "@/types/model";
 import {getUniqueId, sleep} from "@/utils/helpers";
 import {ApiConsts} from "@/utils/consts";
-import {IAlertsState} from "@/types/store";
+import type {IAlertsState} from "@/types/store";
 import {stateDecoratorFactory} from "vuex-module-decorators-state";
 import {store} from "@/store/store";
 
@@ -19,18 +19,18 @@ class AlertsModule extends VuexModule implements IAlertsState {
   public alerts: AlertModel[] = [];
 
   @Mutation
-  public addAlert(growlModel: AlertModel): void {
+  public addAlert(growlModel: Readonly<AlertModel>): void {
     this.alerts.push(growlModel);
   }
 
   @Mutation
-  public removeAlert(growlModel: AlertModel): void {
+  public removeAlert(growlModel: Readonly<AlertModel>): void {
     const index = this.alerts.indexOf(growlModel, 0);
     this.alerts.splice(index, 1);
   }
 
   @Action({rawError: true})
-  public async showAlert({text, type}: { text: string; type: AlertType}): Promise<void> {
+  public async showAlert({text, type}: {readonly text: string; type: Readonly<AlertType>}): Promise<void> {
     const alert: AlertModel = {
       id: getUniqueId(),
       text,

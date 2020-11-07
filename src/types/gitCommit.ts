@@ -1,4 +1,4 @@
-/* eslint babel/camelcase: 0 */
+/* eslint @typescript-eslint/naming-convention: 0 */
 
 interface Author {
   name: string;

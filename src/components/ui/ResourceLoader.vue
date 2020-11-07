@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import {Component, Prop, Vue} from "vue-property-decorator";
-import {AlertModel} from "@/types/model";
+import type {AlertModel} from "@/types/model";
 import AppAlert from "@/components/ui/AppAlert.vue";
 import {HandleLoading} from "vuex-module-decorators-state";
 
@@ -49,21 +49,21 @@ import {HandleLoading} from "vuex-module-decorators-state";
   components: {AppAlert},
 })
 export default class ResourceLoader extends Vue {
-  public serverError: AlertModel|null = null;
-
-  public loading: boolean = false;
-
   @Prop({
     default: "Loading",
   })
   public readonly loadingTitle!: string;
+
+  public serverError: AlertModel|null = null;
+
+  public loading: boolean = false;
 
   @HandleLoading({
     errPropNameOrCB: "serverError",
     loadingPropName: "loading",
   })
   private async created(): Promise<void> {
-    await new Promise((resolve: Function, reject: Function) => {
+    await new Promise((resolve: () => void, reject: () => void) => {
       this.$emit("load", {
         reject,
         resolve,

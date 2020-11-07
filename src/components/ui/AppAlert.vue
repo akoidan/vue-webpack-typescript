@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import {Component, Emit, Prop, Vue} from "vue-property-decorator";
-import {AlertModel} from "@/types/model";
+import type {AlertModel} from "@/types/model";
 
 @Component
 export default class AppAlert extends Vue {

@@ -3,11 +3,14 @@
  * When decorated function is finished executing resolves or rejects promise callback
  */
 function ResolveHandler(target: Vue, propertyKey: string, descriptor: PropertyDescriptor): void {
-  const original = descriptor.value;
-  descriptor.value = async function value({resolve, reject}: {resolve: Function; reject: Function}): Promise<void> {
+  const original = descriptor.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+  descriptor.value = async function value(
+    {resolve, reject}: {resolve(): void; reject(a: unknown): void},
+  ): Promise<void> {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
       await original.apply(this);
-    } catch (err) {
+    } catch (err: unknown) {
       reject(err);
       return;
     }
@@ -15,4 +18,4 @@ function ResolveHandler(target: Vue, propertyKey: string, descriptor: PropertyDe
   };
 }
 
-export {ResolveHandler}
+export {ResolveHandler};

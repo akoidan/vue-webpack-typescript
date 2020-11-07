@@ -1,4 +1,4 @@
-declare namespace Cypress {
+declare namespace Cypress { // eslint-disable-line @typescript-eslint/no-unused-vars
   interface cy {
 
     /**
