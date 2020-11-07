@@ -51,3 +51,5 @@ jobs:
     steps:
       - name: coverage
         run: yarn run test:coverage
+      - name: eslint
+        run: yarn run lint

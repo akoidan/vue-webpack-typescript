@@ -463,6 +463,7 @@ import {defaultModule} from "@/store/default"; // this is a single import with a
  - if build process is killed or get stack that could be because of out of memory. The only option is to build frontend on machine with more memory and copy files
 
 ## TODO
+ - https://github.com/cypress-io/code-coverage/pull/332
  - ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/akoidan/vue-webpack-typescript) 
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
  - https://github.com/bahmutov/cypress-vue-unit-test
