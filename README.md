@@ -1,4 +1,4 @@
-[![HitCount](http://hits.dwyl.io/akoidan/vue-webpack-typescript.svg)](http://hits.dwyl.io/akoidan/vue-webpack-typescript) [![Build Status](https://api.travis-ci.org/akoidan/vue-webpack-typescript.svg?branch=master)](https://travis-ci.org/akoidan/vue-webpack-typescript) [![codecov](https://codecov.io/gh/akoidan/vue-webpack-typescript/branch/master/graph/badge.svg)](https://codecov.io/gh/akoidan/vue-webpack-typescript)
+[![HitCount](http://hits.dwyl.io/akoidan/vue-webpack-typescript.svg)](http://hits.dwyl.io/akoidan/vue-webpack-typescript) [![Build Status](https://api.travis-ci.org/akoidan/vue-webpack-typescript.svg?branch=master)](https://travis-ci.org/akoidan/vue-webpack-typescript) [![codecov](https://codecov.io/gh/akoidan/vue-webpack-typescript/branch/master/graph/badge.svg)](https://codecov.io/gh/akoidan/vue-webpack-typescript) [![Github actions](https://github.com/akoidan/vue-webpack-typescript/workflows/CI/badge.svg)](https://github.com/akoidan/vue-webpack-typescript/actions)
 
 # Vue-webpack-typescript project starter
 
