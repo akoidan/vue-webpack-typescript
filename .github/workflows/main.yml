@@ -39,6 +39,7 @@ jobs:
       - name: archive coverage artifacts
         uses: actions/upload-artifact@v2
         with:
+          name: coverage
           path: |
             nyc
       - name: coverage
@@ -72,6 +73,7 @@ jobs:
       - name: archive static files
         uses: actions/upload-artifact@v2
         with:
+          name: dist
           path: |
             dist
       - name: copy static files to destination server
