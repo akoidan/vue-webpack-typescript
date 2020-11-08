@@ -3,6 +3,7 @@
 # Vue-webpack-typescript project starter
 
 This project is generated via [vue-webpack-minimal](https://github.com/akoidan/vue-webpack-typescript) and features:
+ - Project CRUD skeleton [vue.pychat.org](https://vue.pychat.org)
  - typescript loading with babel with typechecking in a parallel thread. Everything (vuex, cypress, vue-data) is type safe!
  - vue with vuetify, vuex, router, sass, vuex-module-decorators, vue-property-decorator support typescript
  - cypress with code-coverage support, unit test support, screenshot assert and typescript support.
@@ -160,9 +161,7 @@ To avoid mixing warnings from eslint and jetbrains, you can turn them off by def
 #### Exclude directories from indexing
 Mark `nyc` and `dist` directories ex excluded. Mouse 2 on the directory in the project explorer tree -> mark directory as -> excluded
 
-
 ## Style guide and how to
-
 
 ### Code samples with libs it belongs to
 
