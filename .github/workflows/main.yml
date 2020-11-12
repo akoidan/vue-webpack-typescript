@@ -52,7 +52,7 @@ jobs:
   # Be aware, in this example this job updates the server on pull request, so either move it to another worflow, either remove pull request trigger above
   deploy:
     runs-on: ubuntu-latest
-    needs: [test]
+    needs: [test] # do not update if tests fail
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
@@ -76,19 +76,15 @@ jobs:
           name: dist
           path: |
             dist
-      - name: copy static files to destination server
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          local: dist
-          remote: /srv/http/vue/dist
-          # In order for credentials to work you need to put them into github settings https://github.com/USERNAME/REPOSITORY/settings/actions
-          # Check credentials description in https://github.com/garygrossgarten/github-action-scp
-          # I prefer using new pair of ssh keys, instead of exposing password to github
-          # Generate new keypair with: ssh-keygen -t rsa -b 4096 -C "vue-webpack-typescript-github-actions" -f  /tmp/id_rsa
-          # Put /tmp/id_rsa.pub into server ~/.ssh/authorized_keys
-          # And /tmp/id_rsa.pub into github secrets with key ID_RSA (link is above)
-          # Also create github secret with keys HOST, PORT (default is 22), SSH_USER
-          host: ${{ secrets.HOST }}
-          port: ${{ secrets.PORT }}
-          username: ${{ secrets.SSH_USER }}
-          privateKey : ${{ secrets.ID_RSA }}
+      - name: Setup ssh
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ID_RSA }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p ${{ secrets.PORT }} ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      - name: Copy static files to destination server
+        # Copying files by packing them into non-compress archive is a lot faster. It takes 8 seconds to copy all files instead of 4 minutes with packages like garygrossgarten/github-action-scp@release
+        run: |
+          cd frontend
+          tar c dist/ | ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} "rm -rf /srv/http/vue/dist && tar x -C /srv/http/vue/"
+
