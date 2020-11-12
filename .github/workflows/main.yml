@@ -27,7 +27,7 @@ jobs:
             node_modules
             ~/.cache/Cypress
             yarn-cache
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-v1-${{ hashFiles('yarn.lock') }}
       - name: install npm dependencies
         run: yarn config set cache-folder `pwd`/yarn-cache && yarn install --frozen-lockfile
       - name: build
@@ -84,7 +84,5 @@ jobs:
           ssh-keyscan -p ${{ secrets.PORT }} ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: Copy static files to destination server
         # Copying files by packing them into non-compress archive is a lot faster. It takes 8 seconds to copy all files instead of 4 minutes with packages like garygrossgarten/github-action-scp@release
-        run: |
-          cd frontend
-          tar c dist/ | ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} "rm -rf /srv/http/vue/dist && tar x -C /srv/http/vue/"
+        run: tar c dist/ | ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} "rm -rf /srv/http/vue/dist && tar x -C /srv/http/vue/"
 
