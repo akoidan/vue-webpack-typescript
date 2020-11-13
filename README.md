@@ -3,12 +3,11 @@
 # Vue-webpack-typescript project starter
 
 This project is generated via [vue-webpack-minimal](https://github.com/akoidan/vue-webpack-typescript) and features:
- - Project CRUD skeleton [vue.pychat.org](https://vue.pychat.org)
- - typescript loading with babel with typechecking in a parallel thread. Everything (vuex, cypress, vue-data) is type safe!
- - vue with vuetify, vuex, router, sass, vuex-module-decorators, vue-property-decorator support typescript
- - cypress with code-coverage support, unit test support, screenshot assert and typescript support.
- - lint: a compilation of very strict lint rules for everything: vue, styles (sass), typescript that don't conflict with each other.
- - base example of CRUD pages with written api classes, tests and predefined structure
+ - Base example of CRUD pages with written api classes, tests and predefined [vue.pychat.org](https://vue.pychat.org)
+ - Typescript loading with babel with typechecking in a parallel thread. Everything (vuex, cypress, vue-data) is type safe!
+ - Vue with vuetify, vuex, router, sass, vuex-module-decorators, vue-property-decorator support typescript
+ - Cypress with code-coverage support, unit test support, screenshot assert and typescript support.
+ - Lint: a compilation of very strict lint rules for everything: vue, styles (sass), typescript that don't conflict with each other.
  
 ## Vue3 status
 
@@ -17,7 +16,7 @@ Atm 09/2020, vue3 is released as stable version 3.0.0, but the ecosystem around 
 ## Get started
 
 ### Install dependencies:
- - `yarn install --frozen-lockfile`
+ - `yarn install --frozen-lockfile`. You can fall back to `npm` if you still use it.
  - [OPTIONAL] If compilation above crashes on binaries, do  `nvm use`. In total you need [yarn](https://classic.yarnpkg.com/en/docs/install/) and [nvm](https://github.com/nvm-sh/nvm)
 
 ### Run development server
@@ -43,11 +42,11 @@ The command bellow builds static files with coverage babel plugin information, c
 yarn test
 ```
 
-You can check reports in `.nyc` directory, including coverage information.
+You can check reports in `nyc` directory, including coverage information.
 
 #### Headful cypress upon webpack-dev-server
 
-This command is useful during development. You can click and inspect in live mode in cypress, and just develop while you're tests are ran automatically on file save somewhere. I usually have cypress test on one display, IDE on another one, and browser on 3rd one. So I instantly see what changes my code introduces.
+This command is useful during development. You can click and inspect in live mode in cypress, and just develop while your tests are being ran automatically on file save. I usually have cypress test on one display, IDE on another one, and browser on 3rd one. So I instantly see which changes my code introduces.
 
 1. Start dev-server in test mode. `yarn start` won't work, cause of missing coverage info and some other polyfills and tweaks required.
 
@@ -55,7 +54,7 @@ This command is useful during development. You can click and inspect in live mod
 yarn start:test
 ```
 
-2. Open cypress debug mode. This mode means you can inspect the cypress UI directly in browser and your test could automatically run upon file save.
+2. Open cypress in debug mode. This mode means you can inspect the cypress UI directly in the browser and your test could automatically run upon file save.
 
 ```bash
 yarn run test:cypress:debug
@@ -80,12 +79,11 @@ yarn run build:prod
 
 ### Environment variables
 
-- `APP_TEST` - adds required code for testing to output files when set to True (istanbul coverage, XHR polyfill for cypress)
-- `APP_API_URL` - public http api url e.g. <https://jsonplaceholder.typicode.com>
-- `APP_PUBLIC_PATH` - specifies public url for images/js/css/fonts instead of relative path like './main.js
-- `APP_VERSION` - git version
-- `APP_FILE_MODE` - sets, whether static files should be built for file mode (dragging index.html to browser) or not.
- That turns off history mode in browser and removes crossOriginLoading links
+- `APP_TEST` - `true`/`false`, adds required code for testing to output files when set to True (istanbul coverage, XHR polyfill for cypress)
+- `APP_API_URL` - url e.g. `https://jsonplaceholder.typicode.com`, public http API url
+- `APP_PUBLIC_PATH` - string, e.g. `https://s3.amazonaws.com/`, url for images/js/css/fonts instead of relative path like './main.js. Can be used if you're using CDN that's on a different domain than `index.html`
+- `APP_VERSION` - string, e.g. `build-v378`, some unique string which identifies your souce code. I usually pass git version or git tag to this variable in Continuous Integration. 
+- `APP_FILE_MODE` - `true`/`false`, sets whether static files should be built for file mode (dragging index.html to browser) or not. By setting to true, this turns off [history mode](https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode) in browser and removes crossOriginLoading links.
 
 ### Configuration files
 
