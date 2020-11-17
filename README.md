@@ -351,8 +351,7 @@ logger.log('Hello world')(); // pay attention to () in the end.
 
 #### [cypress](https://docs.cypress.io/guides/getting-started/writing-your-first-test.html#Add-a-test-file)
 
-A testing framework that allows running test-cases directly in chrome (alternative to Selenium, that runs it on server)
- That part you've already seen on mocha above can be appended with cypress assertions and helpers:
+A testing framework that allows running test-cases directly in chrome (alternative to Selenium, that runs it on server)  That part you've already seen on mocha above can be appended with cypress assertions and helpers:
 
 ```typescript
 it("should contain 5 elements", (): void => {
