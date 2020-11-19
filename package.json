@@ -57,6 +57,7 @@
     "babel-preset-typescript-vue": "1.1.1",
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
+    "clean-terminal-webpack-plugin": "^3.0.0",
     "clean-webpack-plugin": "3.0.0",
     "codecov": "3.7.2",
     "css-loader": "4.3.0",

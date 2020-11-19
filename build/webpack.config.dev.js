@@ -2,6 +2,7 @@ const {merge} = require('webpack-merge');
 const {sassLoader, fileLoader, getDefinitions} = require('./utils');
 const config = require('./webpack.config.base');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanTerminalPlugin = require('clean-terminal-webpack-plugin');
 
 module.exports = merge(config, {
   mode: 'development',
@@ -23,6 +24,7 @@ module.exports = merge(config, {
     disableHostCheck: true, // allow joining under different hostnames to dev server, like ngrok
   },
   plugins: [
+    new CleanTerminalPlugin(),
     getDefinitions(true),
     new HtmlWebpackPlugin({
       template: '../src/index.ejs',
