@@ -36,7 +36,7 @@
     "@babel/plugin-proposal-numeric-separator": "7.10.4",
     "@babel/plugin-proposal-optional-chaining": "7.11.0",
     "@babel/preset-env": "7.11.5",
-    "@cypress/code-coverage": "git+https://github.com/akoidan/code-coverage#d13b0858f1b15c686f559ec0932b2adb8362fd6f",
+    "@cypress/code-coverage": "^3.8.5",
     "@cypress/webpack-preprocessor": "5.4.6",
     "@testing-library/cypress": "7.0.1",
     "@types/chai": "4.2.12",
