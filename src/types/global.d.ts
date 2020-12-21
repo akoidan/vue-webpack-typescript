@@ -1,11 +1,11 @@
-import {Api} from "@/utils/api";
-import {Consts} from "@/types/model";
-import {IRootState} from "@/types/store";
-import {Logger} from "lines-logger";
-import {Store} from "vuex";
-import Vue from "vue";
-import VueRouter from "vue-router";
-import {Xhr} from "@/utils/xhr";
+import type {Api} from "@/utils/api";
+import type {Consts} from "@/types/model";
+import type {IRootState} from "@/types/store";
+import type {Logger} from "lines-logger";
+import type {Store} from "vuex";
+import type Vue from "vue";
+import type VueRouter from "vue-router";
+import type {Xhr} from "@/utils/xhr";
 
 declare module "vue/types/vue" {
 

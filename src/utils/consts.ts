@@ -1,5 +1,5 @@
 // Webpack global consts
-import {Consts} from "@/types/model";
+import type {Consts} from "@/types/model";
 
 declare const CONSTS: Consts;
 
@@ -16,6 +16,7 @@ const {
 } = CONSTS;
 
 export const ApiConsts: Consts = {
+  /* eslint-disable @typescript-eslint/naming-convention */
   API_URL,
   APP_VERSION,
   DISPLAY_ALERTS_MS: 30000,
@@ -23,4 +24,5 @@ export const ApiConsts: Consts = {
   IS_DEBUG,
   MAX_ERROR_NUMBER: 3,
   ROUTER_HISTORY_MODE,
+  /* eslint-enable @typescript-eslint/naming-convention */
 };

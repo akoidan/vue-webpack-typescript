@@ -21,9 +21,9 @@
 </template>
 <script lang="ts">
 import {Component, Emit, Prop, Ref, Vue} from "vue-property-decorator";
-import {AlertModel} from "@/types/model";
+import type {AlertModel} from "@/types/model";
 import AppAlert from "@/components/ui/AppAlert.vue";
-import {HandleLoading} from "@/utils/decorators";
+import {HandleLoading} from "vuex-module-decorators-state";
 
 /**
  * Helper async operation handler that provides html form, button and handlers for doing async operation
@@ -58,12 +58,6 @@ import {HandleLoading} from "@/utils/decorators";
   components: {AppAlert},
 })
 export default class SubmitForm extends Vue {
-  public serverError: AlertModel|null = null;
-
-  public loading: boolean = false;
-
-  public valid: boolean = false;
-
   @Prop()
   public readonly value!: boolean;
 
@@ -73,6 +67,12 @@ export default class SubmitForm extends Vue {
   @Ref()
   private readonly form!: HTMLFormElement;
 
+  public serverError: AlertModel|null = null;
+
+  public loading: boolean = false;
+
+  public valid: boolean = false;
+
   @Emit()
   public input(valid: boolean): boolean {
     this.valid = valid;
@@ -80,15 +80,16 @@ export default class SubmitForm extends Vue {
   }
 
   @HandleLoading({
-    errPropName: "serverError",
+    errPropNameOrCB: "serverError",
     loadingPropName: "loading",
   })
-  private async handleClick(event: Event): Promise<void> {
+  private async handleClick(event: Readonly<Event>): Promise<void> {
     event.preventDefault();
-    if (!this.form.validate()) {
+    // TODO eslint rule
+    if (!this.form.validate()) { // eslint-disable-line @typescript-eslint/no-unsafe-call
       return;
     }
-    await new Promise((resolve: Function, reject: Function) => {
+    await new Promise((resolve: () => void, reject: () => void) => {
       this.$emit("submit", {
         reject,
         resolve,

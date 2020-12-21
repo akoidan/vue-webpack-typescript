@@ -1,6 +1,8 @@
 import {ApiConsts} from "@/utils/consts";
-import {Logger} from "lines-logger";
-import {RequestOptions} from "@/types/model";
+import type {Logger} from "lines-logger";
+import type {RequestOptions} from "@/types/model";
+
+const APP_VERSION_HEADER: string = "app-version";
 
 /**
  * Low level fetch api, something like Axios
@@ -9,8 +11,6 @@ export class Xhr {
   protected readonly httpLogger: Logger;
 
   protected readonly fetchApi: (input: RequestInfo, init?: RequestInit) => Promise<Response>;
-
-  private readonly APP_VERSION_HEADER_KEY: string = "app-version";
 
   // https://github.com/typescript-eslint/typescript-eslint/pull/801#issuecomment-555160908
   public constructor(
@@ -23,8 +23,8 @@ export class Xhr {
 
   public async parseResponse<R>(response: Response): Promise<R> {
     try {
-      return await response.json();
-    } catch (err) {
+      return await response.json() as R;
+    } catch (err: unknown) {
       this.httpLogger.error("Unable to parse server response from {} {}", response, err)();
       throw Error(response.ok ? "Malformed json" : "Http not 200");
     }
@@ -37,7 +37,7 @@ export class Xhr {
     };
     // istanbul ignore else
     if (ApiConsts.APP_VERSION) {
-      headers[this.APP_VERSION_HEADER_KEY] = ApiConsts.APP_VERSION;
+      headers[APP_VERSION_HEADER] = ApiConsts.APP_VERSION;
     }
     return headers;
   }
@@ -73,10 +73,10 @@ export class Xhr {
     let response: Response;
     try {
       response = await this.fetchApi.call(null, fullUrl, request);
-    } catch (error) {
+    } catch (error: unknown) {
       this.httpLogger.error("Failed to {}; error {}", request, error)();
       // istanbul ignore next
-      throw Error(`Communication error ${String(error?.message || error)}`);
+      throw Error(`Communication error ${String((error as Error)?.message || error)}`);
     }
 
     if (response.ok && !parseResponseAsJson) {

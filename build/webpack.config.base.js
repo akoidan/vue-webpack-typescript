@@ -3,7 +3,6 @@ const { VueLoaderPlugin } = require('vue-loader');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const {execSync} = require('child_process');
 const {getConfig} = require('./utils');
-const webpack = require('webpack');
 
 
 module.exports = {
@@ -47,6 +46,7 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           options: {
+            presets: [['babel-preset-typescript-vue', { onlyRemoveTypeImports: true}]],
             plugins: [
               "@babel/plugin-proposal-optional-chaining",
               "@babel/plugin-proposal-numeric-separator",

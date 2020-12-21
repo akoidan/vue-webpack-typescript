@@ -1,0 +1,90 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+    paths-ignore: 
+      - 'README.md'
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  # This job is an example of continious integration
+  # It runs test and lints the code
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '15.0.1'
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            ~/.cache/Cypress
+            yarn-cache
+          key: ${{ runner.os }}-v1-${{ hashFiles('yarn.lock') }}
+      - name: install npm dependencies
+        run: yarn config set cache-folder `pwd`/yarn-cache && yarn install --frozen-lockfile
+      - name: build
+        run: yarn run build:test:no-progress
+      - name: test-cypress
+        run: yarn run test:cypress:run:report
+      - name: test-unit
+        run: yarn run test:unit
+      - name: archive coverage artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: |
+            nyc
+      - name: coverage
+        run: yarn run test:coverage
+      - name: eslint
+        run: yarn run lint
+
+  # This job is an example of continious deployment
+  # It job above succeeds it will update your production site.
+  # Be aware, in this example this job updates the server on pull request, so either move it to another worflow, either remove pull request trigger above
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [test] # do not update if tests fail
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '15.0.1'
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            ~/.cache/Cypress
+            yarn-cache
+          key: ${{ runner.os }}-v1-${{ hashFiles('yarn.lock') }}
+      - name: install npm dependencies
+        run: yarn --frozen-lockfile
+      - name: build static files
+        run: yarn build:prod:no-progress
+      - name: archive static files
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: |
+            dist
+      - name: Setup ssh
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ID_RSA }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p ${{ secrets.PORT }} ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      - name: Copy static files to destination server
+        # Copying files by packing them into non-compress archive is a lot faster. It takes 8 seconds to copy all files instead of 4 minutes with packages like garygrossgarten/github-action-scp@release
+        run: tar c dist/ | ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST }} -p ${{ secrets.PORT }} "rm -rf /srv/http/vue/dist && tar x -C /srv/http/vue/"
+

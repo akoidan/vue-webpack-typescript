@@ -25,9 +25,10 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from "vue-property-decorator";
-import {CommitResponse} from "@/types/gitCommit";
+import type {CommitResponse} from "@/types/gitCommit";
 import {ResolveHandler} from "@/utils/decorators";
 import ResourceLoader from "@/components/ui/ResourceLoader.vue";
+
 @Component({
   components: {ResourceLoader},
 })

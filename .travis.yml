@@ -1,9 +1,15 @@
 language: node_js
 node_js:
-  - "node"
-script:
-  - yarn run test
-  - yarn run test:codecov
+  - 15.0.1
+jobs:
+  include:
+    - stage: test
+      script:
+       - yarn run test
+       - yarn run test:codecov
+    - stage: lint
+      script:
+        - yarn run lint
 cache:
   yarn: true
   directories:

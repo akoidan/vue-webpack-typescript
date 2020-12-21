@@ -2,10 +2,11 @@ const {merge} = require('webpack-merge');
 const {sassLoader, fileLoader, getDefinitions} = require('./utils');
 const config = require('./webpack.config.base');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanTerminalPlugin = require('clean-terminal-webpack-plugin');
 
 module.exports = merge(config, {
   mode: 'development',
-  stats: 'normal',
+  stats: 'minimal',
   output: {
     publicPath: "/"
   },
@@ -13,7 +14,8 @@ module.exports = merge(config, {
     rules: [
       {
         test: /\.(sass|css|scss)$/,
-        use: ["vue-style-loader", 'css-loader?sourceMap', sassLoader],
+        // vue-style-loader doesn't work for webpackdevserver, I'm too lazy to check why, so use style-loader instead
+        use: ["style-loader", 'css-loader?sourceMap', sassLoader],
       },
       fileLoader("/")
     ]
@@ -22,6 +24,7 @@ module.exports = merge(config, {
     disableHostCheck: true, // allow joining under different hostnames to dev server, like ngrok
   },
   plugins: [
+    new CleanTerminalPlugin(),
     getDefinitions(true),
     new HtmlWebpackPlugin({
       template: '../src/index.ejs',

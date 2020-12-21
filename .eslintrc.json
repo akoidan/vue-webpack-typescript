@@ -34,7 +34,7 @@
     "multiline-ternary": 0,
     "new-cap": 0, // babel/new-cap
     "array-element-newline": [1, "consistent"],
-    "comma-dangle": [1, "always-multiline"],
+    "comma-dangle": 0, // using typescript-eslint/comma-dangle
     "function-call-argument-newline": [1, "consistent"],
     "max-len": [1, { "code": 120, "ignorePattern": "http?s:\/\/", "ignoreTrailingComments": true}], // override 80 that is too low
     "padded-blocks": [1, "never"],
@@ -67,13 +67,23 @@
         "enforceConst": true
       }
     ],
+    "@typescript-eslint/comma-dangle": [1, "always-multiline"],
+    "@typescript-eslint/method-signature-style": [1, "method"],
+    "@typescript-eslint/init-declarations": 0, // let a ; try {a = funct()} catch (e) throw e; if a.sdfsd . In this example we can't have instant init
+    "@typescript-eslint/prefer-readonly-parameter-types": 0, // too many issues, we can't mofidy arguments, we can' use type like number[], because rule @typescript-eslint/array-type
+    "@typescript-eslint/naming-convention": [1,
+      {
+        "selector": "property",
+        "format": ["PascalCase", "camelCase"] // PascalCase for Vue-property-decorator components: {AppAlert}
+      }
+    ],
     "babel/object-curly-spacing": 1,
     "babel/quotes": 1,
     "babel/semi": 1,
     "babel/no-unused-expressions": 1,
     "babel/valid-typeof": 1,
     "babel/new-cap": 1,
-    "babel/camelcase": 1,
+    "babel/camelcase": 0, // use typescript-eslint/naming-convention
     "babel/no-invalid-this": 1,
     "import/no-named-as-default": 1, //is not part of default sert
     "import/no-unresolved": 0,
@@ -150,21 +160,22 @@
           "component": "always"
         }
       }
-    ]
+    ],
+    "class-methods-use-this": 0,
+    "@typescript-eslint/no-unnecessary-condition": 0 // too many times we want to make sure that variable that is not null is present or not. Let's say window.RTPConnection is declaread as non-nullable but we still check it in runtime
   },
   "overrides": [
     {
       "files": ["*.vue", "*.d.ts"],
       "rules": {
-        "import/no-default-export": 0,
-        "class-methods-use-this": 0
+        "import/no-default-export": 0
+
       }
     },
     {
       "files": ["*.vue"],
       "rules": {
         "@typescript-eslint/prefer-readonly": 0, // can be used in template
-        "class-methods-use-this": 0,
         "import/unambiguous": 0 // vue SFC can miss script tags
       }
     }

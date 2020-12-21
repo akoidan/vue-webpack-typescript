@@ -97,7 +97,8 @@ describe("Xhr", (): void => {
           url: "/test",
         });
         cy.get("@test-get").should((req: JQuery) => {
-          // @ts-ignore next-line
+          // @ts-expect-error
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           expect(req.request.headers).to.include({"app-version": "app-v1"});
         });
       });
@@ -120,7 +121,8 @@ describe("Xhr", (): void => {
         url: "/test",
       });
       cy.get("@test-get").should((req: JQuery) => {
-        // @ts-ignore next-line
+        // @ts-expect-error
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         expect(req.request.body).to.be.deep.eq({aa: 1});
       });
     });

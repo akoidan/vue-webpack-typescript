@@ -1,13 +1,13 @@
-[![HitCount](http://hits.dwyl.io/akoidan/vue-webpack-typescript.svg)](http://hits.dwyl.io/akoidan/vue-webpack-typescript) [![Build Status](https://api.travis-ci.org/akoidan/vue-webpack-typescript.svg?branch=master)](https://travis-ci.org/akoidan/vue-webpack-typescript) [![codecov](https://codecov.io/gh/akoidan/vue-webpack-typescript/branch/master/graph/badge.svg)](https://codecov.io/gh/akoidan/vue-webpack-typescript)
+[![HitCount](http://hits.dwyl.io/akoidan/vue-webpack-typescript.svg)](http://hits.dwyl.io/akoidan/vue-webpack-typescript) [![Build Status](https://api.travis-ci.org/akoidan/vue-webpack-typescript.svg?branch=master)](https://travis-ci.org/akoidan/vue-webpack-typescript) [![codecov](https://codecov.io/gh/akoidan/vue-webpack-typescript/branch/master/graph/badge.svg)](https://codecov.io/gh/akoidan/vue-webpack-typescript) [![Github actions](https://github.com/akoidan/vue-webpack-typescript/workflows/CI/badge.svg)](https://github.com/akoidan/vue-webpack-typescript/actions)
 
 # Vue-webpack-typescript project starter
 
 This project is generated via [vue-webpack-minimal](https://github.com/akoidan/vue-webpack-typescript) and features:
- - typescript loading with babel with typechecking in a parallel thread. Everything (vuex, cypress, vue-data) is type safe!
- - vue with vuex, router, sass, vuex-module-decorators, vue-property-decorator support typescript
- - cypress with code-coverage support, unit test support, screenshot assert and typescript support.
- - lint: a compilation of very strict lint rules for everything: vue, styles (sass), typescript that don't conflict with each other.
- - base example of CRUD pages with written api classes, tests and predefined structure
+ - Base example of CRUD pages with written api classes, tests and predefined [vue.pychat.org](https://vue.pychat.org)
+ - Typescript loading with babel with typechecking in a parallel thread. Everything (vuex, cypress, vue-data) is type safe!
+ - Vue with vuetify, vuex, router, sass, vuex-module-decorators, vue-property-decorator support typescript
+ - Cypress with code-coverage support, unit test support, screenshot assert and typescript support.
+ - Lint: a compilation of very strict lint rules for everything: vue, styles (sass), typescript that don't conflict with each other.
  
 ## Vue3 status
 
@@ -16,7 +16,7 @@ Atm 09/2020, vue3 is released as stable version 3.0.0, but the ecosystem around 
 ## Get started
 
 ### Install dependencies:
- - `yarn install --frozen-lockfile`
+ - `yarn install --frozen-lockfile`. You can fall back to `npm` if you still use it.
  - [OPTIONAL] If compilation above crashes on binaries, do  `nvm use`. In total you need [yarn](https://classic.yarnpkg.com/en/docs/install/) and [nvm](https://github.com/nvm-sh/nvm)
 
 ### Run development server
@@ -42,11 +42,11 @@ The command bellow builds static files with coverage babel plugin information, c
 yarn test
 ```
 
-You can check reports in `.nyc` directory, including coverage information.
+You can check reports in `nyc` directory, including coverage information.
 
 #### Headful cypress upon webpack-dev-server
 
-This command is useful during development. You can click and inspect in live mode in cypress, and just develop while you're tests are ran automatically on file save somewhere. I usually have cypress test on one display, IDE on another one, and browser on 3rd one. So I instantly see what changes my code introduces.
+This command is useful during development. You can click and inspect in live mode in cypress, and just develop while your tests are being ran automatically on file save. I usually have cypress test on one display, IDE on another one, and browser on 3rd one. So I instantly see which changes my code introduces.
 
 1. Start dev-server in test mode. `yarn start` won't work, cause of missing coverage info and some other polyfills and tweaks required.
 
@@ -54,7 +54,7 @@ This command is useful during development. You can click and inspect in live mod
 yarn start:test
 ```
 
-2. Open cypress debug mode. This mode means you can inspect the cypress UI directly in browser and your test could automatically run upon file save.
+2. Open cypress in debug mode. This mode means you can inspect the cypress UI directly in the browser and your test could automatically run upon file save.
 
 ```bash
 yarn run test:cypress:debug
@@ -79,12 +79,11 @@ yarn run build:prod
 
 ### Environment variables
 
-- `APP_TEST` - adds required code for testing to output files when set to True (istanbul coverage, XHR polyfill for cypress)
-- `APP_API_URL` - public http api url e.g. <https://jsonplaceholder.typicode.com>
-- `APP_PUBLIC_PATH` - specifies public url for images/js/css/fonts instead of relative path like './main.js
-- `APP_VERSION` - git version
-- `APP_FILE_MODE` - sets, whether static files should be built for file mode (dragging index.html to browser) or not.
- That turns off history mode in browser and removes crossOriginLoading links
+- `APP_TEST` - `true`/`false`, adds required code for testing to output files when set to True (istanbul coverage, XHR polyfill for cypress)
+- `APP_API_URL` - url e.g. `https://jsonplaceholder.typicode.com`, public http API url
+- `APP_PUBLIC_PATH` - string, e.g. `https://s3.amazonaws.com/`, url for images/js/css/fonts instead of relative path like './main.js. Can be used if you're using CDN that's on a different domain than `index.html`
+- `APP_VERSION` - string, e.g. `build-v378`, some unique string which identifies your souce code. I usually pass git version or git tag to this variable in Continuous Integration. 
+- `APP_FILE_MODE` - `true`/`false`, sets whether static files should be built for file mode (dragging index.html to browser) or not. By setting to true, this turns off [history mode](https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode) in browser and removes crossOriginLoading links.
 
 ### Configuration files
 
@@ -94,6 +93,7 @@ yarn run build:prod
 - [.nycrc.json](.nycrc.json) is a [configuration](https://github.com/istanbuljs/nyc#configuration-files) for istanbul code coverage. It can customize reports formats, coverage percentage and other build related things.
 - [.stylelintrc](.stylelintrc) is a [configuration](https://stylelint.io/user-guide/rules) for css linting
 - [.drone.yml](.drone.yml) is a [configuration](https://docker-runner.docs.drone.io/configuration/overview/) file for Drone CI.
+- [.github/workflows/main.yml](.github/workflows/main.yml) is a [configuration](https://docs.github.com/en/free-pro-team@latest/actions/quickstart) file for Github Actions.
 - [.eslintrc.json](.eslintrc.json) is a [configuration](https://eslint.org/docs/user-guide/configuring) for ts linting
 - [.mocharc.json](.mocharc.json) is a [configuration](https://mochajs.org/#configuring-mocha-nodejs) for testing library mocha (deprecated mocha.opts)
 - [cypress.json](cypress.json) is a [configuration](https://docs.cypress.io/guides/references/configuration.html#Global) for cypress e2e testing
@@ -159,9 +159,7 @@ To avoid mixing warnings from eslint and jetbrains, you can turn them off by def
 #### Exclude directories from indexing
 Mark `nyc` and `dist` directories ex excluded. Mouse 2 on the directory in the project explorer tree -> mark directory as -> excluded
 
-
 ## Style guide and how to
-
 
 ### Code samples with libs it belongs to
 
@@ -353,8 +351,7 @@ logger.log('Hello world')(); // pay attention to () in the end.
 
 #### [cypress](https://docs.cypress.io/guides/getting-started/writing-your-first-test.html#Add-a-test-file)
 
-A testing framework that allows running test-cases directly in chrome (alternative to Selenium, that runs it on server)
- That part you've already seen on mocha above can be appended with cypress assertions and helpers:
+A testing framework that allows running test-cases directly in chrome (alternative to Selenium, that runs it on server)  That part you've already seen on mocha above can be appended with cypress assertions and helpers:
 
 ```typescript
 it("should contain 5 elements", (): void => {
@@ -378,7 +375,7 @@ it("should contain 5 elements", (): void => {
 - html-webpack-plugin ( compiles html from index.ejs)
 - webpack-dev-server is used for development purposes with hot reloading, every time you save the file it will automatically apply. This doesn't affect node running files, only watching files. So files like webpack/base.config.js. To build project for production set `APP_PUBLIC_PATH` and run `yarn run buiild:prod`. This generates static files in `./dist` directory.
 - webpack-cli allows to run webpack from the command line
-- Loaders: sass-loader, vue-loader, url-loader, tslint-loader, vue-template-compiler, style-loader, file-loader
+- Loaders: sass-loader (pipes sass into css), css-loader - resolves import css files inside js modules, ' vue-loader (resolves vue sfc), vue-template-compiler (compiles <template into dom api), style-loader (packs css into js file with eval and pushes it to syle tag, file-loader (saves it as a file, and puting exported path to file as an url)
 - fork-ts-checker-webpack-plugin - runs typescript compiler into a separate thread
 - source-map-support - adds support for source map (show source file in browser instead of transpiled one)
 
@@ -424,7 +421,13 @@ Typescript is compiled via babel, this means that it doesn't have typechecks, th
 - [stylelint](https://github.com/stylelint/stylelint) linter for css files.
 
 ### Continuous integration
- - Project supports with [DroneCI](https://docs.drone.io/) and [TravisCI](https://travis-ci.org/) pipelines out of the box. 
+This project has support for continuous integration servers:
+
+ - Project supports with [DroneCI](https://docs.drone.io/).
+ - [TravisCI](https://travis-ci.org/) pipelines out of the box.
+ - [Github actions](https://docs.github.com/en/free-pro-team@latest/actions). Config  
+
+You don't need to have all of them. So I recommend leave only 1. I would personally use droneci if I want it to be on my server. Or github actions for serverless.
 
 ### Tips
 
@@ -460,8 +463,10 @@ import {defaultModule} from "@/store/default"; // this is a single import with a
 
 #### Be aware
  - cypress test is run on different browser when you run it locally, the source of truth is drone/ci here. Thing like screenshot could also be different. So this things should be aligned in the future if any issues occur.
+ - if build process is killed or get stack that could be because of out of memory. The only option is to build frontend on machine with more memory and copy files
 
 ## TODO
+ - https://github.com/cypress-io/code-coverage/pull/332
  - ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/akoidan/vue-webpack-typescript) 
  - @for sass loops doesn't work in linter https://github.com/AleshaOleg/postcss-sass/issues/53
  - https://github.com/bahmutov/cypress-vue-unit-test

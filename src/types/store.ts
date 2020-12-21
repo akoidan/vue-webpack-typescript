@@ -1,4 +1,4 @@
-import {AlertModel, Branch} from "@/types/model";
+import type {AlertModel, Branch} from "@/types/model";
 
 interface IGithubState {
   branches: Branch[]|null;

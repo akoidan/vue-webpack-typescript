@@ -28,7 +28,7 @@ describe("Branches page", (): void => {
     cy.visit("/branches");
     cy.get("[data-cy=hamburger-icon]").click();
     cy.contains("Home").click();
-    cy.url().should("eq", `${Cypress.config().baseUrl}/`);
+    cy.url().should("eq", `${String(Cypress.config().baseUrl)}/`);
     cy.get("[data-cy=hamburger-icon]").click();
     cy.contains("Branches").click();
     cy.assertCalledTimes("get-branches", 1);
