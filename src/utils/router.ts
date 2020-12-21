@@ -4,16 +4,13 @@ import HomePage from "@/components/pages/HomePage.vue";
 import NotFoundPage from "@/components/pages/NotFoundPage.vue";
 import RepoBranchesPage from "@/components/pages/RepoBranchesPage.vue";
 import RepoCommitPage from "@/components/pages/RepoCommitPage.vue"; // eslint-disable-line import/max-dependencies
-import Vue from "vue";
-import VueRouter from "vue-router";
+import {createRouter} from "vue-router";
 
-Vue.use(VueRouter);
 
-export const router: VueRouter = new VueRouter({
+export const router = createRouter({
   // https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode
   mode: ApiConsts.ROUTER_HISTORY_MODE,
   routes: [
-
     {
       children: [
         {
