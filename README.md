@@ -427,7 +427,22 @@ This project has support for continuous integration servers:
  - [TravisCI](https://travis-ci.org/) pipelines out of the box.
  - [Github actions](https://docs.github.com/en/free-pro-team@latest/actions). Config  
 
-You don't need to have all of them. So I recommend leave only 1. I would personally use droneci if I want it to be on my server. Or github actions for serverless.
+You don't need to have all of them. So I recommend leave only 1. I would pick github actions since it doesn't require any setup.
+
+#### Github actions
+In order to setup continuous delivery via github:
+- Generate a new pair of ssh keys `mkdir /tmp/sshkey; ssh-keygen -t rsa -b 4096 -C "github actions" -f  /tmp/sshkey/id_rsa`
+- Append content of `/tmp/sshkey/id_rsa.pub` to your server last line of file `~/.ssh/authorized_keys` where `~` is the home for ssh user to use ( I used `http`) 
+- Create ssh variables at https://github.com/akoidan/pychat/settings/secrets/actions (where akoidan/pychat is your repo) :
+   - `HOST` -ssh host (your domain)
+   - `PORT` - ssh port (22)
+   - `SSH_USER` - ssh user, if you used my setup it's `http`
+   - `ID_RSA` - what ssh-keygen has generated in step above to`/tmp/sshkey/id_rsa`
+- I used alias to give http user to access tornado systemd service like in [this](https://serverfault.com/a/841104/304770) example. So append `/etc/sudoers` with
+ ```
+Cmnd_Alias RESTART_TORNADO = /usr/bin/systemctl restart tornado
+http ALL=(ALL) NOPASSWD: RESTART_TORNADO
+``` 
 
 ### Tips
 
