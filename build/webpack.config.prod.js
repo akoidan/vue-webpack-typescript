@@ -17,7 +17,9 @@ module.exports = merge(config, {
   },
   output: {
     crossOriginLoading: getConfig('APP_FILE_MODE') ? false: 'anonymous',
-    publicPath: getConfig('APP_PUBLIC_PATH')
+    publicPath: getConfig('APP_PUBLIC_PATH'),
+    filename: `[name].js?[contenthash]`, // contenthash should be here rather then in HtmlWebpackPlugin.
+    // otherwise chunked js would be loaded from js w/o hash
   },
   module: {
     rules: [
@@ -50,7 +52,7 @@ module.exports = merge(config, {
       template: '../src/index.ejs',
       inject: false,
       favicon: '../src/assets/favicon.ico',
-      hash: true,
+      hash: false, // use hashes from webpack.output.filename and miniextract plugin
       minify: {
         collapseWhitespace: true,
         removeComments: true,
@@ -72,6 +74,9 @@ module.exports = merge(config, {
       hashFuncNames: ['sha256', 'sha384'],
       enabled: !getConfig('APP_FILE_MODE'),
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin({
+      filename: '[name].css?[contenthash]' // hash should be here instead of HtmlWebpackPlugin
+      // otherwise if chunk css is loaded from js it would be w/o hash
+    })
   ]
 });
