@@ -75,7 +75,7 @@ module.exports = merge(config, {
       enabled: !getConfig('APP_FILE_MODE'),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css?[contenthash]' // hash should be here instead of HtmlWebpackPlugin
+      filename: '[name].css?[contenthash:6]' // hash should be here instead of HtmlWebpackPlugin
       // otherwise if chunk css is loaded from js it would be w/o hash
     })
   ]
