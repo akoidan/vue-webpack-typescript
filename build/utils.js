@@ -90,9 +90,9 @@ module.exports.fileLoader = function(publicPath) {
         let assetsAbsolutePath = path.join(path.dirname(__dirname), 'src', 'assets');
         if (f.startsWith(assetsAbsolutePath)) {
           let dirNameInsideAssets = path.relative(assetsAbsolutePath, path.dirname(f));
-          return `${dirNameInsideAssets}/[name].[ext]?[sha512:hash:base64:6]`;
+          return `${dirNameInsideAssets}/[name].[ext]?[contenthash:6]`;
         } else if (/\.(woff2|woff|eot|ttf)$/.test(f)) {
-          return `fonts/node_modules/[name].[ext]?[sha512:hash:base64:6]`;
+          return `fonts/node_modules/[name].[ext]?[contenthash:6]`;
         } else {
           // throw error as we don't support images yet, what if there are 2 images with the same name
           throw Error('Unexpected image inside of node_modules')
