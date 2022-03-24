@@ -1,19 +1,21 @@
-import {Component} from "vue-property-decorator";
+import {
+  Options,
+  Vue,
+} from "vue-class-component";
 import type {Logger} from "lines-logger";
-import Vue from "vue";
 import {loggerFactory} from "@/utils/singletons";
 
 /**
  * Injects $logger to every component
  */
 // istanbul ignore next
-@Component
+@Options({})
 class LoggerMixin extends Vue {
-  private privateLogger!: Logger|null|undefined;
+  private privateLogger!: Logger | null | undefined;
 
   public get $logger(): Logger {
     if (this.privateLogger !== null) {
-      const tag: string|undefined = this.$vnode?.tag;
+      const tag: string | undefined = this.$vnode?.tag;
       // Provide logger only to vew component, exclude those one we don't need
       if (tag && !(/^vue-component-\d+-(transition|v-.*|-LoggerMixin)$/u).test(tag)) { // eslint-disable-line prefer-named-capture-group
         this.privateLogger = loggerFactory.getLoggerColor(tag, "#35495e");
@@ -37,7 +39,5 @@ class LoggerMixin extends Vue {
     }
   }
 }
-
-Vue.mixin(LoggerMixin);
 
 export {LoggerMixin};

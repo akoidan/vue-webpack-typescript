@@ -1,15 +1,14 @@
+import {createRouter, createWebHashHistory, createWebHistory} from "vue-router";
 import {ApiConsts} from "@/utils/consts";
 import BasePage from "@/components/pages/BasePage.vue";
 import HomePage from "@/components/pages/HomePage.vue";
 import NotFoundPage from "@/components/pages/NotFoundPage.vue";
 import RepoBranchesPage from "@/components/pages/RepoBranchesPage.vue";
 import RepoCommitPage from "@/components/pages/RepoCommitPage.vue"; // eslint-disable-line import/max-dependencies
-import {createRouter} from "vue-router";
 
 
-export const router = createRouter({
-  // https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode
-  mode: ApiConsts.ROUTER_HISTORY_MODE,
+const router = createRouter({
+  history: ApiConsts.ROUTER_HISTORY_MODE === "history" ? createWebHistory() : createWebHashHistory(),
   routes: [
     {
       children: [
@@ -28,11 +27,13 @@ export const router = createRouter({
         },
       ],
       component: BasePage,
-      path: "",
+      path: "/",
     },
     {
       component: NotFoundPage,
-      path: "*",
+      path: "/:catchAll(.*)",
     },
   ],
 });
+
+export {router};

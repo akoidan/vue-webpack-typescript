@@ -74,9 +74,9 @@ export default class ResourceLoader extends Vue {
 </script>
 <!-- eslint-disable -->
 <style lang="sass" scoped>
-  .resource-loader
-    padding: 10px
+.resource-loader
+  padding: 10px
 
-  .loading-wrapper
-    text-align: center
+.loading-wrapper
+  text-align: center
 </style>

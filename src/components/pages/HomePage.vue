@@ -21,14 +21,14 @@ export default class HomePage extends Vue {
 }
 </script>
 <style lang="sass">
-  .home-page
-    margin: auto
-    text-align: center
+.home-page
+  margin: auto
+  text-align: center
 
-  img
-    height: 100px
+img
+  height: 100px
 
-  p
-    margin-top: 16px
+p
+  margin-top: 16px
 
 </style>

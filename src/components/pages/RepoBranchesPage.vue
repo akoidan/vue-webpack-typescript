@@ -2,8 +2,8 @@
   <div>
     <h1>Repository Branches:</h1>
     <resource-loader class="layout-wrapper" @load="load">
-      <template v-for="(branch, index) in branches">
-        <v-list-item :key="branch.name">
+      <template v-for="(branch, index) in branches" :key="branch.name">
+        <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
               <router-link :to="`/commit/${branch.commit.sha}`">
@@ -48,7 +48,7 @@ export default class RepoBranches extends Vue {
 </script>
 
 <style lang="sass" scoped>
-  h1
-    padding: 10px
-    text-align: center
+h1
+  padding: 10px
+  text-align: center
 </style>

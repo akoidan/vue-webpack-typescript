@@ -31,10 +31,10 @@ export default class App extends Vue {
 }
 </script>
 <style lang="sass" scoped>
-  .alerts
-    padding: 5px
-    position: fixed
-    right: 5px
-    top: 5px
-    z-index: 10
+.alerts
+  padding: 5px
+  position: fixed
+  right: 5px
+  top: 5px
+  z-index: 10
 </style>
