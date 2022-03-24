@@ -127,6 +127,7 @@
     "vue-class-component": "^8.0.0-beta.4",
     "vue-property-decorator": "npm:@smyld/vue-property-decorator@^10.0.17",
     "vue-router": "^4.0.14",
+    "vuetify": "3.0.0-beta.0",
     "vuex": "^4.0.2",
     "vuex-module-decorators": "^2.0.0",
     "vuex-module-decorators-state": "1.2.1"

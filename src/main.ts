@@ -12,14 +12,16 @@ import {createApp} from "vue";
 // TODO https://github.com/typescript-eslint/typescript-eslint/issues/2315
 import {router} from "@/utils/router";
 import {store} from "@/store/store";
+import {vuetify} from "@/utils/vuetify";
 
 
 const vue = createApp(App, {
   mixins: [LoggerMixin],
   store,
-})
-vue.use(router);
+});
 
+vue.use(router);
+vue.use(vuetify);
 vue.mount("#app");
 
 vue.config.globalProperties.$api = api;
